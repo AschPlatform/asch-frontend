@@ -1,0 +1,106 @@
+{
+  "error": {
+    "returnCode": "0",
+    "returnMessage": "操作成功！",
+    "returnUserMessage": "操作成功！"
+  },
+  "data": {
+    "cur_page" :  2,
+    "total_page": 4,
+    "totalNum" :  12,
+    "cur_page" :    1,
+    "total_page": 1,
+    "totalNum" :  40,
+    "list": [
+      {
+        "memberId":"2333",
+        "name" : "张三",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "0",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "xxxxxxx"
+      },
+      {
+        "memberId":"2334",
+        "name" : "王五",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "1",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "xxxxxxx"
+      },
+      {
+        "memberId":"2335",
+        "name" : "李四",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "-1",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "违规"
+      },
+      {
+        "memberId":"2336",
+        "name" : "马六",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "2",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "资料不全"
+      },
+      {
+        "memberId":"2336",
+        "name" : "张飞",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "5",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "资料不全"
+      },{
+        "memberId":"2336",
+        "name" : "关于",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "3",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "资料不全"
+      },
+      {
+        "memberId":"2336",
+        "name" : "刘备",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "4",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "资料不全"
+      },
+      {
+        "memberId":"2336",
+        "name" : "诸葛亮",
+        "cardId" : "142301199303280098",
+        "phone" : "18234567876",
+        "status" : "4",
+        "applyTime" : "2015-12-01 16:23:23",
+        "updateTime" : "2015-12-01 16:23:23",
+        "auditor": "呵呵谁呀",
+        "reason" : "不知道"
+      }
+
+    ]
+
+  }
+}

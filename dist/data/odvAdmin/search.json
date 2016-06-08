@@ -1,0 +1,26 @@
+{
+  "error": {
+    "returnCode": 0,
+    "returnMessage": "success",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "list": [
+      {
+        "member_id": "540216767813787696",
+        "name": "巩立新",
+        "phone": "18904806276"
+      },
+      {
+        "member_id": "540216767813787696",
+        "name": "巩立新",
+        "phone": "18904806276"
+      },
+      {
+        "member_id": "540216767813787696",
+        "name": "巩立新",
+        "phone": "18904806276"
+      }
+    ]
+  }
+}

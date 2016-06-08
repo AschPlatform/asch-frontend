@@ -1,0 +1,48 @@
+{
+  "error": {
+    "returnCode": "0",
+    "returnMessage": "操作成功！",
+    "returnUserMessage": "操作成功！"
+  },
+  "data": {
+    "base" :{
+      "phone"         : "18234567876",
+      "name"          : "张三",
+      "sex"          : "男",
+      "cardId"        : "142301199303280098",
+      "address"       : "山西省吕梁市",
+      "eduction"      : "本科",
+      "school"        : "中北大学"
+    },
+    "emergence":{
+      "name"     : "李四",
+      "phone"    : "18767654678"
+    },
+    "employmentRecord": [
+      {   "start"       : "2015-12",
+        "end"         : "2015-12",
+        "job"         : "xxx",
+        "name"         : "借贷宝",
+        "address"     : "xxxxxx",
+        "referenceName": "李四",
+        "referencePhone":"13456766417"
+      },
+      {   "start"       : "2014-12",
+        "end"         : "2014-12",
+        "job"         : "xxx",
+        "name"         : "借贷宝",
+        "address"     : "xxxxxx",
+        "referenceName": "马三",
+        "referencePhone":"13456765567"
+      }
+
+    ],
+    "area" : [
+      {   "name" : "北京"
+      },
+      {   "name" : "天津"
+      }
+    ],
+    "otherInfo":"xxxxx"
+  }
+}

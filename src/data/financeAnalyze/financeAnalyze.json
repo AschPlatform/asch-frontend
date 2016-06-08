@@ -1,0 +1,48 @@
+{
+  "error" : {
+    "returnCode": "0",
+    "returnMessage": "操作成功",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+
+    "pager": {
+      "total": 12,
+      "pn": 2
+    },
+    "totalinfo": {
+      "reword": "1000",
+      "diposit": "2000"
+    },
+    "list": [
+      {
+        "time": "2016-03-24",
+        "phone":"183387678987",
+        "type": "催收奖金",
+        "status": "成功",
+        "money":"2000"
+      },
+      {
+        "time": "2016-03-24",
+        "phone":"183387678987",
+        "type": "催收奖金",
+        "status": "成功",
+        "money":"2000"
+      },
+      {
+        "time": "2016-03-24",
+        "phone":"183387678987",
+        "type": "催收奖金",
+        "status": "成功",
+        "money":"2000"
+      },
+      {
+        "time": "2016-03-24",
+        "phone":"183387678987",
+        "type": "催收奖金",
+        "status": "成功",
+        "money":"2000"
+      }
+    ]
+  }
+}

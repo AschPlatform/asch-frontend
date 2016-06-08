@@ -1,0 +1,19 @@
+"use strict";
+
+var through2 = require('through2');
+
+/**
+ * Send stream content to server response
+ * @param {Object} res
+ * @returns {Object}
+ */
+module.exports = function (res) {
+    return through2.obj(function (data, encoding, callback) {
+        res.write(data.contents);
+        this.push(data);
+        callback();
+    }, function () {
+        res.end();
+        this.emit('end');
+    });
+};

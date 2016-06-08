@@ -1,0 +1,27 @@
+{
+  "error": {
+    "returnCode": "0",
+    "returnMessage": "操作成功",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "pager": {
+      "total": 60,
+      "pn": 2,
+      "count" : 5
+    },
+    "list": [
+      {
+        "type": "外访催收",
+        "option": "接通",
+        "result": "承诺还款",
+        "content": "XXXXXX, XXXX, XX.",
+        "pictures": [
+          { "url" :  "xxxxxx"}
+        ],
+        "additionalInfo": "XXXXX",
+        "recordTime": "2015-12-01 16:23:23"
+      }
+    ]
+  }
+}

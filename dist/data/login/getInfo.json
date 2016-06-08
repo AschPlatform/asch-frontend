@@ -1,0 +1,24 @@
+{
+  "error": {
+    "returnCode": 0,
+    "returnMessage": "success",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "role_type": "1",
+    "role_name" : "总部运管",
+    "province_id" : 3,
+    "name": "巩立新",
+    "phone": "18904806276",
+    "area": [
+      {
+        "id": "42",
+        "name": "河北省保定市"
+      },
+      {
+        "id": "37",
+        "name": "河北省石家庄市"
+      }
+    ]
+  }
+}

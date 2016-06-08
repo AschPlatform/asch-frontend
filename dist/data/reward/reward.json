@@ -1,0 +1,42 @@
+{
+  "error": {
+    "returnCode": 0,
+    "returnMessage": "success",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "admin" : {
+      "name" : "张三",
+      "phone" : "18888888888",
+      "role_type" : "区域催收经理"
+    },
+    "reward" : {
+      "cur_month" : 88.88,
+      "unsettled" : 88.88,
+      "settled" : 888.88
+    },
+    "list": [
+      {
+        "date" : "2016.01",
+        "before_tax": "888.88",
+        "tax" : "8.88",
+        "after_tax" : "880",
+        "status" : "已结算"
+      },
+      {
+        "data" : "2016.01",
+        "before_tax": "888.88",
+        "tax" : "8.88",
+        "after_tax" : "880",
+        "status" : "已结算"
+      },
+      {
+        "data" : "2016.01",
+        "before_tax": "888.88",
+        "tax" : "8.88",
+        "after_tax" : "880",
+        "status" : "已结算"
+      }
+    ]
+  }
+}

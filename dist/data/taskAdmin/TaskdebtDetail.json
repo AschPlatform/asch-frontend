@@ -1,0 +1,32 @@
+{
+  "error" : {
+    "returnCode": "0",
+    "returnMessage": "操作成功",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "id": "xxxxxx",
+    "name": "张三",
+    "portrait": "xxxxx",
+    "gender": "男",
+    "cardID": "xxxxxx",
+    "phone": "18734111",
+    "addressID": "北京市朝阳区xxx",
+    "addressLBS": "北京市朝阳区xxx",
+    "addressIP": "北京市朝阳区xxx",
+    "addressHome": "北京市朝阳区示例图三里春风吹打地2012你好我好大家好29102啦啦",
+    "usualAddress": "北京市朝阳区xxx",
+    "companyAddress": "xxxxxxx",
+    "companyName": "借贷宝",
+    "companyTel": "010-xxx",
+    "platContactTel": 17011120001,
+    "createTime": "2015-12-11 13:20:11",
+    "additionInfo":[
+      {
+        "name" : "张三",
+        "time" : "2015-10-10 13:22:23",
+        "content": "xxxxxxx"
+      }
+    ]
+  }
+}

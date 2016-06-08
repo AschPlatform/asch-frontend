@@ -1,0 +1,249 @@
+{
+  "error": {
+    "returnCode": 0,
+    "returnMessage": "success",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "list": [
+      {
+        "name": "巩立新",
+        "member_id": "533692863018810532",
+        "phone": "15210208859",
+        "region_id": "1",
+        "region_name": "北京市"
+      },
+      {
+        "name": "测试_天津市",
+        "member_id": "12122122",
+        "phone": "1800000002",
+        "region_id": "2",
+        "region_name": "天津市"
+      },
+      {
+        "name": "测试_河北省",
+        "member_id": "12122123",
+        "phone": "1800000003",
+        "region_id": "3",
+        "region_name": "河北省"
+      },
+      {
+        "name": "测试_山西省",
+        "member_id": "12122124",
+        "phone": "1800000004",
+        "region_id": "4",
+        "region_name": "山西省"
+      },
+      {
+        "name": "测试_内蒙古自治区",
+        "member_id": "12122125",
+        "phone": "1800000005",
+        "region_id": "5",
+        "region_name": "内蒙古自治区"
+      },
+      {
+        "name": "测试_辽宁省",
+        "member_id": "12122126",
+        "phone": "1800000006",
+        "region_id": "6",
+        "region_name": "辽宁省"
+      },
+      {
+        "name": "测试_吉林省",
+        "member_id": "12122127",
+        "phone": "1800000007",
+        "region_id": "7",
+        "region_name": "吉林省"
+      },
+      {
+        "name": "测试_黑龙江省",
+        "member_id": "12122128",
+        "phone": "1800000008",
+        "region_id": "8",
+        "region_name": "黑龙江省"
+      },
+      {
+        "name": "测试_上海市",
+        "member_id": "12122129",
+        "phone": "1800000009",
+        "region_id": "9",
+        "region_name": "上海市"
+      },
+      {
+        "name": "测试_江苏省",
+        "member_id": "12122120",
+        "phone": "18000000010",
+        "region_id": "10",
+        "region_name": "江苏省"
+      },
+      {
+        "name": "测试_浙江省",
+        "member_id": "12122121",
+        "phone": "18000000011",
+        "region_id": "11",
+        "region_name": "浙江省"
+      },
+      {
+        "name": "测试_安徽省",
+        "member_id": "12122122",
+        "phone": "18000000012",
+        "region_id": "12",
+        "region_name": "安徽省"
+      },
+      {
+        "name": "测试_福建省",
+        "member_id": "121221213",
+        "phone": "18000000013",
+        "region_id": "13",
+        "region_name": "福建省"
+      },
+      {
+        "name": "测试_江西省",
+        "member_id": "12122124",
+        "phone": "18000000014",
+        "region_id": "14",
+        "region_name": "江西省"
+      },
+      {
+        "name": "测试_山东省",
+        "member_id": "12122125",
+        "phone": "18000000015",
+        "region_id": "15",
+        "region_name": "山东省"
+      },
+      {
+        "name": "测试_河南省",
+        "member_id": "12122126",
+        "phone": "18000000016",
+        "region_id": "16",
+        "region_name": "河南省"
+      },
+      {
+        "name": "测试_湖北省",
+        "member_id": "12122127",
+        "phone": "18000000017",
+        "region_id": "17",
+        "region_name": "湖北省"
+      },
+      {
+        "name": "测试_湖南省",
+        "member_id": "12122128",
+        "phone": "18000000018",
+        "region_id": "18",
+        "region_name": "湖南省"
+      },
+      {
+        "name": "测试_广东省",
+        "member_id": "12122129",
+        "phone": "18000000019",
+        "region_id": "19",
+        "region_name": "广东省"
+      },
+      {
+        "name": "测试_广西壮族自治区",
+        "member_id": "12122120",
+        "phone": "18000000020",
+        "region_id": "20",
+        "region_name": "广西壮族自治区"
+      },
+      {
+        "name": "测试_海南省",
+        "member_id": "12122121",
+        "phone": "18000000021",
+        "region_id": "21",
+        "region_name": "海南省"
+      },
+      {
+        "name": "测试_重庆市",
+        "member_id": "12122122",
+        "phone": "18000000022",
+        "region_id": "22",
+        "region_name": "重庆市"
+      },
+      {
+        "name": "测试_四川省",
+        "member_id": "121221223",
+        "phone": "18000000023",
+        "region_id": "23",
+        "region_name": "四川省"
+      },
+      {
+        "name": "测试_贵州省",
+        "member_id": "12122124",
+        "phone": "18000000024",
+        "region_id": "24",
+        "region_name": "贵州省"
+      },
+      {
+        "name": "测试_云南省",
+        "member_id": "12122125",
+        "phone": "18000000025",
+        "region_id": "25",
+        "region_name": "云南省"
+      },
+      {
+        "name": "测试_西藏自治区",
+        "member_id": "12122126",
+        "phone": "18000000026",
+        "region_id": "26",
+        "region_name": "西藏自治区"
+      },
+      {
+        "name": "测试_陕西省",
+        "member_id": "12122127",
+        "phone": "18000000027",
+        "region_id": "27",
+        "region_name": "陕西省"
+      },
+      {
+        "name": "测试_甘肃省",
+        "member_id": "12122128",
+        "phone": "18000000028",
+        "region_id": "28",
+        "region_name": "甘肃省"
+      },
+      {
+        "name": "测试_青海省",
+        "member_id": "12122129",
+        "phone": "18000000029",
+        "region_id": "29",
+        "region_name": "青海省"
+      },
+      {
+        "name": "测试_宁夏回族自治区",
+        "member_id": "12122120",
+        "phone": "18000000030",
+        "region_id": "30",
+        "region_name": "宁夏回族自治区"
+      },
+      {
+        "name": "测试_新疆维吾尔自治区",
+        "member_id": "12122121",
+        "phone": "18000000031",
+        "region_id": "31",
+        "region_name": "新疆维吾尔自治区"
+      },
+      {
+        "name": "测试_台湾省",
+        "member_id": "12122122",
+        "phone": "18000000032",
+        "region_id": "32",
+        "region_name": "台湾省"
+      },
+      {
+        "name": "测试_香港特别行政区",
+        "member_id": "121221233",
+        "phone": "18000000033",
+        "region_id": "33",
+        "region_name": "香港特别行政区"
+      },
+      {
+        "name": "测试_澳门特别行政区",
+        "member_id": "12122124",
+        "phone": "18000000034",
+        "region_id": "34",
+        "region_name": "澳门特别行政区"
+      }
+    ]
+  }
+}

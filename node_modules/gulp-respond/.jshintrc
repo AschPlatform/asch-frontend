@@ -1,0 +1,30 @@
+{
+    "bitwise": true,
+    "camelcase": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "noarg": true,
+    "noempty": true,
+    "nonew": true,
+    "undef": true,
+    "nomen": true,
+    "onevar": true,
+    "node": true,
+    "browser": false,
+    "jquery": true,
+    "immed": true,
+    "curly": true,
+    "newcap": false,
+    "strict": false,
+    "globals": {
+        "require": true,
+        "module": true,
+        "describe": false,
+        "it": false,
+        "before": false,
+        "beforeEach": false,
+        "after": false,
+        "afterEach": false
+    }
+}

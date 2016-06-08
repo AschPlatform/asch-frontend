@@ -1,0 +1,39 @@
+{
+  "error": {
+    "returnCode": 0,
+    "returnMessage": "success",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "admin": {
+      "member_id": "12122123",
+      "name": "测试_河北省"
+    },
+    "province_id": 3,
+    "region_type": 1,
+    "admin_list": [
+      {
+        "admin_member_id": "540216767813787696",
+        "amdin_name": "巩立新",
+        "admin_phone": "18904806276",
+        "region_num" : 1,
+        "region_list": [
+          "河北省保定市"
+        ]
+      }
+    ],
+    "unassigned_num" : 10,
+    "unassigned_region": [
+      "河北省沧州市",
+      "河北省承德市",
+      "河北省邯郸市",
+      "河北省衡水市",
+      "河北省廊坊市",
+      "河北省秦皇岛市",
+      "河北省石家庄市",
+      "河北省唐山市",
+      "河北省邢台市",
+      "河北省张家口市"
+    ]
+  }
+}

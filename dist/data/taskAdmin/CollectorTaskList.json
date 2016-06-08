@@ -1,0 +1,177 @@
+{
+  "error" : {
+    "returnCode": "0",
+    "returnMessage": "操作成功",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "pager": {
+      "total": 12,
+      "pn": 1,
+      "totalNum":5
+    },
+    "collectionTask": [{
+      "debtName": "张三",
+      "debtorMemberId": "111111111",
+      "debtId"  : "434343",
+
+      "collectorId":"2454665",
+
+      "status": "催收中",
+      "reason": "因为所以",
+      "hands" :"1",
+      "pointTime":"2015-01-01 13:20:20",
+      "collectorName":"李四",
+      "taskId":"xxxx",
+
+      "lastRecordTime":"",
+
+      "payedDebt": "2350.00元",
+      "unpayedDebt": "35.2万元",
+      "totalReword": "5451.91元",
+      "longestDebt": 83,
+      "takeTaskTime": "2016-02-13 12:21",
+
+      "optName": "张胜利" ,
+      "optTime": "2016-03-14 11:00",
+
+      "cashDeposit": "230",
+      "returnedDeposit": "230",
+      "returnedOpt": "王思",
+      "returnTime": "2016-11-13 13:00:00",
+      "returnSeason": "xxxxx",
+      "applayStatus":1
+    },
+      {
+        "debtName": "张三",
+        "debtorMemberId": "111111111",
+        "debtId"  : "434343",
+
+        "collectorId":"2454665",
+
+        "status": "征集中",
+        "reason": "因为所以",
+        "hands" :"0",
+        "pointTime":"2015-01-01 13:20:20",
+        "collectorName":"李四",
+        "taskId":"xxxx",
+
+        "lastRecordTime":"",
+
+        "payedDebt": "2350.00元",
+        "unpayedDebt": "35.2万元",
+        "totalReword": "5451.91元",
+        "longestDebt": 83,
+        "takeTaskTime": "2016-02-13 12:21",
+
+        "optName": "张胜利" ,
+        "optTime": "2016-03-14 11:00",
+
+        "cashDeposit": "230",
+        "returnedDeposit": "230",
+        "returnedOpt": "王思",
+        "returnTime": "2016-11-13 13:00:00",
+        "returnSeason": "xxxxx",
+        "applayStatus":0
+      },
+      {
+        "debtName": "张三",
+        "debtorMemberId": "111111111",
+        "debtId"  : "434343",
+
+        "collectorId":"2454665",
+
+        "status": "申请取消",
+        "reason": "因为所以",
+        "hands" :"1",
+        "pointTime":"2015-01-01 13:20:20",
+        "collectorName":"李四",
+        "taskId":"xxxx",
+
+        "lastRecordTime":"",
+
+        "payedDebt": "2350.00元",
+        "unpayedDebt": "35.2万元",
+        "totalReword": "5451.91元",
+        "longestDebt": 83,
+        "takeTaskTime": "2016-02-13 12:21",
+
+        "optName": "张胜利" ,
+        "optTime": "2016-03-14 11:00",
+
+        "cashDeposit": "230",
+        "returnedDeposit": "230",
+        "returnedOpt": "王思",
+        "returnTime": "2016-11-13 13:00:00",
+        "returnSeason": "xxxxx",
+        "applayStatus":0
+      },
+      {
+        "debtName": "张三",
+        "debtorMemberId": "111111111",
+        "debtId"  : "434343",
+
+        "collectorId":"2454665",
+
+        "status": "已结束",
+        "reason": "因为所以",
+        "hands" :"1",
+        "pointTime":"2015-01-01 13:20:20",
+        "collectorName":"李四",
+        "taskId":"xxxx",
+
+        "lastRecordTime":"",
+
+        "payedDebt": "2350.00元",
+        "unpayedDebt": "35.2万元",
+        "totalReword": "5451.91元",
+        "longestDebt": 83,
+        "takeTaskTime": "2016-02-13 12:21",
+
+        "optName": "张胜利" ,
+        "optTime": "2016-03-14 11:00",
+
+        "cashDeposit": "230",
+        "returnedDeposit": "230",
+        "returnedOpt": "王思",
+        "returnTime": "2016-11-13 13:00:00",
+        "returnSeason": "xxxxx",
+        "applayStatus":1
+      },
+      {
+        "debtName": "张三",
+        "debtorMemberId": "111111111",
+        "debtId"  : "434343",
+
+        "collectorId":"2454665",
+
+        "status": "催收中",
+        "reason": "因为所以",
+        "hands" :"1",
+        "pointTime":"2015-01-01 13:20:20",
+        "collectorName":"李四",
+        "taskId":"xxxx",
+
+        "lastRecordTime":"",
+
+        "payedDebt": "2350.00元",
+        "unpayedDebt": "35.2万元",
+        "totalReword": "5451.91元",
+        "longestDebt": 83,
+        "takeTaskTime": "2016-02-13 12:21",
+
+        "optName": "张胜利" ,
+        "optTime": "2016-03-14 11:00",
+
+        "cashDeposit": "230",
+        "returnedDeposit": "230",
+        "returnedOpt": "王思",
+        "returnTime": "2016-11-13 13:00:00",
+        "returnSeason": "xxxxx",
+        "applayStatus":0
+      }
+    ]
+
+
+  }
+}

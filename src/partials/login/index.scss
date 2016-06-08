@@ -1,0 +1,36 @@
+.fullContent {
+	left: 0 !important;
+	background: #f1f1f1;
+
+	.login-wrap {
+		// position: absolute;
+		// top: 50%;
+		// left: 50%;
+		// width: 400px;
+		// height: 320px;
+		// margin: -160px -200px;
+		// text-align: center;
+		.code {
+		  display: inline-block;
+		  width: 300px;
+		  height: 300px;
+		  padding: 10px;
+		  // border: 1px solid #000;
+		  // background: #fff;
+		}
+		img {
+			width: 260px;
+			height: 260px;
+			border: 1px solid #666;
+			padding: 10px;
+			background: #fff;
+		}
+
+		p {
+			font-size: 18px;
+			margin-top: 30px;
+			line-height: 30px;
+			color: #666;
+		}
+	}
+}

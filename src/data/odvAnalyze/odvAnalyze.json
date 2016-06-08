@@ -1,0 +1,27 @@
+{
+  "error" : {
+    "returnCode": "0",
+    "returnMessage": "操作成功",
+    "returnUserMessage": "操作成功"
+  },
+  "data": {
+    "pager": {
+      "total": 12,
+      "pn": 2,
+      "count":30
+    },
+    "list": [
+      {
+        "name": "张三",
+        "phone":"183387678987",
+        "status": "xxx",
+        "updateTime":"2016-01-01 00:00:00",
+        "inhandNum":"3",
+        "orderNum":"3",
+        "finishNum":"3",
+        "colMoney":"1000",
+        "reward":"200"
+      }
+    ]
+  }
+}
