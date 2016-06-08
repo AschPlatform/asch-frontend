@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,OAAO;EACH,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,IAAI;EACX,GAAG,EAAE,CAAC;EACN,UAAU,EAAE,OAAO;EACnB,UAAU,EAAC,IAAI;EACf,WAAG;IACF,UAAU,EAAE,OAAO;IACnB,MAAM,EAAE,IAAI",
-"sources": ["../../../../../src/partials/common/header/header.scss"],
-"names": [],
-"file": "header.css"
-}
