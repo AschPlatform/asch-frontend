@@ -1,0 +1,33 @@
+"use strict";
+
+var vinyl = require('vinyl-fs'),
+    respond = require('..'),
+    through2 = require('through2'),
+    assert = require('assert');
+
+describe('gulp-respond', function () {
+    describe('main', function () {
+        it('it should be equal', function (done) {
+            var res = {
+                    content: '',
+                    write: function (content) {
+                        this.content += String(content);
+                    },
+                    end: function () {
+                    }
+                },
+                txt = '';
+            vinyl.src('test/txt/*')
+                .pipe(respond(res))
+                .pipe(through2.obj(
+                    function (file, encoding, callback) {
+                        txt += file.contents.toString();
+                        callback();
+                    }, function () {
+                        assert.equal(res.content, txt);
+                        done();
+                    }
+                ));
+        });
+    });
+});
