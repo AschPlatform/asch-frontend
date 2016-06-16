@@ -1,6 +1,9 @@
-angular.module('webrrc').controller('blockchainCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
 	$rootScope.active = 'blockchain';
+	$rootScope.userlogin = true;
 
+	//下拉菜单隐藏
+	$rootScope.blockStatus = false;
 
 	
 	$scope.init = function(params) {

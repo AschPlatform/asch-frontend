@@ -1,0 +1,148 @@
+#personal{
+	width: 100%;
+	border: 1px solid #dddddd;
+}
+.clear{
+	clear: both;
+}
+.none{
+	display: none;
+}
+
+/*.nav 开始*/
+
+.nav{
+	height: 62px;
+	background: #efefef;
+}
+.nav .nav_per{
+	width: 185px;
+	font-size: 24px;
+	border-right: 1px solid #dddddd;
+	line-height: 62px;
+	float: left;
+	text-align:center;
+	color: #777777;
+}
+.accountInfo{}
+.passwordInfo{}
+.nav .nav_exit{
+	margin-top: 11px;
+	width: 140px;
+	height: 40px;
+	background: #c53e3e;
+	color: #fff;
+	float: right;
+	text-align: center;
+	line-height: 40px;
+	margin-right: 20px;
+}
+.nav .active{
+	background: #ffffff;
+	border-bottom: 5px solid #e97a28;
+	color: #e97a28;
+	height: 57px;
+}
+/*.nav 结束*/
+
+
+/*.baseInfo 开始*/
+.baseInfo{
+	padding: 0 20px;
+	height: 440px;
+}
+._title{
+	height: 89px;
+	font-size: 30px;
+	line-height: 89px;
+	border-bottom: 5px solid #bcbcbc;
+}
+
+.baseInfo .baseInfo_tx{
+	width: 318px;
+	height: 352px;
+	background: url("/assets/personal/user-anonymous.png") no-repeat center center;
+	background-size: 80% auto;
+	float: left;
+}
+.baseInfo .baseInfo_text{
+	width: 870px;
+	height: 352px;
+	float: left;
+	
+}
+
+.baseInfo .baseInfo_text .text_row{
+	height: 60px;
+	border-bottom: 1px solid #dddddd;
+	line-height:60px;
+	font-size: 22px;
+}
+
+.greyFont{
+	font-size: 24px;
+	color: #aaaaaa;
+}
+
+.orangeFont{
+	font-size: 30px;
+	color: #e97a28;
+}
+/*.baseInfo 结束*/
+
+
+/*.businessInfo 开始*/
+.businessInfo{
+	padding: 0 20px;
+	/*height: 440px;*/
+}
+.greyFont_size{
+	font-size: 20px;
+	color: #aaaaaa;
+}
+
+.more{
+	width: 100%;
+	height: 46px;
+	text-align: center;
+	line-height: 46px;
+	border: 1px solid #dddddd;
+	margin-top:4px ;
+	margin-bottom:34px ;
+}
+
+/*.businessInfo 结束*/
+
+
+.passwordInfo_cont{
+	
+}
+
+.finishSet{
+	width: 100%;
+	height: 460px;
+	text-align: center;
+}
+.finishSet .finishSet_icon{
+	width: 156px;
+	height: 156px;
+	margin-top: 102px;
+}
+.finishSet .finishSet_text{
+	margin-top: 36px;
+	color: #aaaaaa;
+	font-size: 18px;
+}
+
+
+.setPassword{
+	padding: 0 30px;
+}
+.setPassword_tip{
+	font-size: 20px;
+	color: #777777;
+	text-align: center;
+	margin-top: 40px;
+	
+	
+}

@@ -509,8 +509,10 @@ body {
     top: 119px;
     left: 0px;
     right: 0;
-    bottom: 60px;
+    bottom: 45px;
     overflow: auto;
+    padding: 30px 48px 30px 48px;
+    box-sizing: border-box;
 }
 
 
@@ -535,4 +537,10 @@ body {
     background: #000;
     opacity: .8;
     z-index: 4;
+}
+.isbg{
+    height: 100vh;
+    width: 100vw;
+    background: #fff  url('/assets/common/asch_bg.jpg') center center no-repeat;
+    background-size: 100% auto;
 }

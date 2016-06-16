@@ -1,15 +1,15 @@
 {
-  "name": "webrrc",
+  "name": "ASCH",
   "version": "0.0.1",
   "authors": [
-    "juntao.wu <wujuntao.com@gmail.com>"
+    "zenking<zhangling@whatsmax.com>"
   ],
-  "description": "webrrc",
+  "description": "asch",
   "moduleType": [
     "globals"
   ],
   "keywords": [
-    "webrrc"
+    "ASCH"
   ],
   "license": "MIT",
   "ignore": [
@@ -27,5 +27,8 @@
     "angular-bootstrap": "~0.14.3",
     "angular-cookie": "~4.0.9",
     "angular-qr": "^0.2.0"
+  },
+  "devDependencies": {
+    "angular-bootstrap": "^1.3.3"
   }
 }

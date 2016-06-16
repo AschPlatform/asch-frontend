@@ -1,4 +1,4 @@
-angular.module('webrrc').service('apiService', function($http, $rootScope,$location) {
+angular.module('asch').service('apiService', function($http, $rootScope,$location) {
 
 	function json2url(json) {
 		var arr = [];
@@ -20,7 +20,7 @@ angular.module('webrrc').service('apiService', function($http, $rootScope,$locat
 			// }
 		};
 		if (data) {
-			data.from = 'webrrc';
+			data.from = 'asch';
 			/*/!*上线要删掉*!/
 			data.admin_member_id = $location.search().admin_member_id;
 			/!*-------*!/*/

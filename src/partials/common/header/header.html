@@ -1,21 +1,48 @@
-<ul ng-controller="headerCtrl" ng-init="init()">
-    
-    <li class="item level-one">
-        <a ng-class="{'active':$root.active=='home'}" ng-href="#/home" >首页</a>
-    </li>
+<div>
+    <div class="asch_nav">
+        <div class="logo"></div>
+        <ul ng-controller="headerCtrl" ng-init="init()">
+            <li>
+                <a ng-class="{'active':$root.active=='home'}" ng-href="#/home"><img src="/assets/common/home.png" alt="">首页</a>
+            </li>
+            <li>
+                <a ng-class="{'active':$root.active=='application'}" ng-href="#/application"><img src="/assets/common/application.png" alt="">应用中心</a>
+            </li>
+            <li class="blockforging" ng-click="blockClick()">
+                <a ng-class="{'active':$root.active=='blockforging'}" ng-href="#/blockforging" ><img src="/assets/common/blockforging.png" alt="">区块锻造 <b class="caret"></b></a>
+                <!-- 下拉菜单  -->
+                <div ng-show="blockStatus" class="dropdown_menu">
+                   <p><a ng-href="#/blockforging">区块锻造</a></p>
+                   <p><a ng-href="#/assignee">受托人</a></p>
+                   <p><a ng-href="#/myvote">我的投票</a></p>
+                </div>
+            </li>
 
-    <li class="item level-one cur ui-cs-people">
-        <a ng-class="{'active':$root.active=='application'}" ng-href="#/application" >应用中心</a>
-    </li>
-   
-    <li><a ng-class="{'active':$root.active=='blockforging'}" ng-href="#/blockforging">区块锻造</a></li>
-    
-    <li>
-        <a ng-class="{'active':$root.active=='blockchain'}" ng-href="#/blockchain">区块链</a>
-    </li>
-    <li>
-        <a ng-class="{'active':$root.active=='personal'}" ng-href="#/personal">个人中心</a>
-    </li>
-</ul>
 
-
+            <li>
+                <a ng-class="{'active':$root.active=='blockchain'}" ng-href="#/blockchain"><img src="/assets/common/blockchains.png" alt="">区块链</a>
+            </li>
+            <li>
+                <a ng-class="{'active':$root.active=='personal'}" ng-href="#/personal"><img src="/assets/common/personal.png" alt="">个人中心</a>
+            </li>
+            <li>
+                <a ng-class="{'active':$root.active=='vote'}" ng-href="#/vote"><img src="/assets/common/personal.png" alt="">投票</a>
+            </li>
+            <li>
+                <a ng-class="{'active':$root.active=='pay'}" ng-href="#/pay"><img src="/assets/common/personal.png" alt="">支付</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="asch_tip">
+    <p>
+        <a ng-href="#/home"> <img src="/assets/common/min_logo.png" alt="">首页</a>
+        <span ng-show="$root.active=='application'"> > 应用中心</span>
+        <span ng-show="$root.active=='blockforging'"> > 区块锻造</span>
+        <span ng-show="$root.active=='blockchain'"> > 区块链</span>
+        <span ng-show="$root.active=='personal'"> > 个人中心</span>
+        <span ng-show="$root.active=='pay'"> > 个人中心</span>
+        <span ng-show="$root.active=='vote'"> > 个人中心</span>
+        <span class="asch_tip_rights">ASCH客户端已经过期 <a href="">立即更新</a></span>
+    </p>
+</div>

@@ -1,0 +1,58 @@
+#home {
+    /*background: #300;*/
+    .account {
+        width: 100%;
+        height: 140px;
+        background: #e97a28 url('/assets/home/account_bg.png') no-repeat;
+        background-size: 100% 100%;
+        span {
+            margin-left: 30px;
+            margin-right: 30px;
+            font-size: 20px;
+            color: #fff;
+            line-height: 140px;
+        }
+        i {
+            font-size: 84px;
+            color: #fff;
+            margin-right: 25px;
+            font-style: normal;
+            height: 140px;
+            line-height: 140px;
+        }
+        b {
+            font-style: normal;
+            font-size: 20px;
+            color: #fff;
+        }
+    }
+    .latest {
+        .table_title {
+            margin-top: 46px;
+            font-size: 40px;
+            color: #333;
+        }
+        .table {
+
+        }
+    }
+    .deal_table{
+    	.table{
+    		td {
+                text-align: center;
+                border: 0;
+            }
+            tr:nth-child(even) {
+                background: #f5f5f5;
+                border: 0;
+            }
+            tr:nth-child(odd) {
+                background: #fff;
+                border: 0;
+            }
+            tr:hover{
+            	background: #eff3f9;
+            }
+    	}
+    }
+}

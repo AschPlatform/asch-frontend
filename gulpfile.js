@@ -40,7 +40,7 @@ var inject = require('gulp-inject');
 var serverApi = cjson.load('./server.json');
 var args = process.argv.slice(2);
 var cmd = 'serve';
-var projectName = 'webrrc';
+var projectName = 'asch';
 if (/^--project/.test(args[1])) {
 	projectName = args[1].split('=')[1];
 }
@@ -241,7 +241,7 @@ gulp.task('partials', function() {
 	fs.ensureDirSync(scssOptions.tmpPath);
 	return gulp.src('src/partials/**/*.html')
 		.pipe(ngTemplate({
-			moduleName: 'webrrc',
+			moduleName: 'asch',
 			filePath: 'js/templateCache.js',
 			prefix: 'partials/'
 		}))

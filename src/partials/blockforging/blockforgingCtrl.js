@@ -1,6 +1,7 @@
-angular.module('webrrc').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
 	$rootScope.active = 'blockforging';
-
+	$rootScope.userlogin = true;
+	$rootScope.blockStatus = false;
 
 	
 	$scope.init = function(params) {

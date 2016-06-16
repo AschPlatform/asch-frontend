@@ -1,6 +1,9 @@
-angular.module('webrrc').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
 	$rootScope.active = 'application';
+	$rootScope.userlogin = true;
 
+	//下拉菜单隐藏
+	$rootScope.blockStatus = false;
 
 	
 	$scope.init = function(params) {
