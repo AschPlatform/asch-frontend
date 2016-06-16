@@ -1,4 +1,4 @@
-
+.DS_Store
 de_modules
 bower_components
 npm-debug.log
@@ -8,4 +8,3 @@ dist
 .tmp
 .DS_Store
 .gulp
-
