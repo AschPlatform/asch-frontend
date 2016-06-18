@@ -504,7 +504,7 @@ body {
 
 /* 页面样式 */
 
-#content {
+.bodycontent {
     position: absolute;
     top: 119px;
     left: 0px;
@@ -541,6 +541,7 @@ body {
 .isbg{
     height: 100vh;
     width: 100vw;
+    position: relative;
     background: #fff  url('/assets/common/asch_bg.jpg') center center no-repeat;
     background-size: 100% auto;
 }

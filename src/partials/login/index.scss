@@ -1,36 +1,172 @@
-.fullContent {
-	left: 0 !important;
-	background: #f1f1f1;
+#login{
+  width: 672px;
+  height: 635px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -336px;
+  margin-top: -318px;
+  background-color: #fff;
+  .wrap1{
+    .header{
+      height: 100px;
+      width: 100%;
+      background: #182533 url('/assets/common/login_logo.png') center center no-repeat;
+      background-size: 186px auto;
+    }
+    .content{
+      width:100%;
+      box-sizing: border-box;
+      padding: 56px 45px 56px 52px;
+      .content_top{
+        width: 100%;
+        height: 300px;
+        padding-bottom:49px;
+        .left{
+          width: 155px;
+          height: 250px;
+          float: left;
+          img{
+            width: 100%;
+          }
+        }
+        .right{
+          float: right;
+          width: 400px;
+          height: 250px;
+          input{
+            width: 100%;
+            height: 70px;
+            background-color: #f8f8f8;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            font-size:28px;
+            color:#aaa;
+            padding:24px 11px 24px 15px;
+          }
+          .is-agree{
+            font-size: 20px;
+            color:#333;
+            margin-top: 48px;
+            input{
+              display: inline-block;
+              width: 24px;
+              height: 24px;
+              outline:0;
+            }
+          }
+        }
+      }
+      button{
+        height: 50px;
+        width: 400px;
+        margin: 0 auto;
+        display: block;
+        background-color: #e97a28;
+        border: 1px solid #ddd;
+        font-size: 24px;
+        box-sizing: border-box;
+        color:#fff;
+        &:last-child{
+          margin-top:38px;
+          background-color: #fff;
+          color:#333;
+        }
+      }
 
-	.login-wrap {
-		// position: absolute;
-		// top: 50%;
-		// left: 50%;
-		// width: 400px;
-		// height: 320px;
-		// margin: -160px -200px;
-		// text-align: center;
-		.code {
-		  display: inline-block;
-		  width: 300px;
-		  height: 300px;
-		  padding: 10px;
-		  // border: 1px solid #000;
-		  // background: #fff;
-		}
-		img {
-			width: 260px;
-			height: 260px;
-			border: 1px solid #666;
-			padding: 10px;
-			background: #fff;
-		}
+    }
+  }
+  .wrap2,.wrap3{
+    .header{
+      height: 100px;
+      width: 100%;
+      line-height: 100px;
+      background: #182533 ;
+      p{
+        font-size: 24px;
+        color:#fff;
+        text-align: center;
+        i,b{
+          font-style: normal;
+          font-weight: normal;
+        }
+        i{
+          font-size: 40px;
+        }
+        b{
+          font-size: 20px;
+        }
+        span{
+          font-size: 30px;
+          margin-left: 20px;
+        }
+      }
+    }
+    .content{
+      width:100%;
+      box-sizing: border-box;
+      padding: 56px 45px 56px 52px;
+      .content_top{
+        width: 100%;
+        height: 300px;
+        padding-bottom:49px;
+        .left{
+          width: 155px;
+          height: 250px;
+          float: left;
+          img{
+            width: 100%;
+          }
+        }
+        .right{
+          float: right;
+          width: 400px;
+          height: 250px;
+          label{
+            padding-left: 10px;
+            font-size: 24px;
+            color:#777;
+          }
+          #textarea,#textarea1{
+            width: 390px;
+            height: 125px;
+            margin-left: 10px;
+            margin-top: 24px;
+            padding: 20px;
+            font-size: 24px;
+            color: #333;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+          }
+          p{
+            font-size: 18px;
+            padding-left: 10px;
+            margin-top: 18px;
+            color:#aaa;
+          }
+        }
+      }
+      button{
+        height: 50px;
+        width: 400px;
+        margin: 0 auto;
+        display: block;
+        background-color: #e97a28;
+        border: 1px solid #ddd;
+        font-size: 24px;
+        box-sizing: border-box;
+        color:#fff;
+        &:last-child{
+          margin-top:38px;
+          background-color: #fff;
+          color:#333;
+        }
+      }
 
-		p {
-			font-size: 18px;
-			margin-top: 30px;
-			line-height: 30px;
-			color: #666;
-		}
-	}
+    }
+  }
+
+}
+.hide{
+  display: none;
 }
