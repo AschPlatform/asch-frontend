@@ -1,9 +1,9 @@
 <div id="personal" ng-controller="personalCtrl" ng-init="init()">
 				<div class="nav">
-					<div class="nav_per accountInfo ">
+					<div class="nav_per accountInfo " ng-class=" {'active':accountInfo}" ng-click="accountchange()">
 						账户信息
 					</div>
-					<div class="nav_per passwordInfo active">
+					<div class="nav_per passwordInfo " ng-class=" {'active':passwordInfo}" ng-click="passwordchange()">
 						支付密码
 					</div>
 					<div class="nav_exit">
@@ -12,7 +12,7 @@
 					<div class="clear"></div>
 				</div>
 				<!---账户信息 start-->
-				<div class="accountInfo_cont none">
+				<div ng-show="accountInfo" class="accountInfo_cont ">
 					<div class="baseInfo">
 						<div class="_title">
 							基本信息
@@ -71,7 +71,7 @@
 				</div>
 				<!-- -账户信息 end -->
 				<!-- -支付信息 start -->
-				<div class="passwordInfo_cont">
+				<div ng-show="passwordInfo" class="passwordInfo_cont ">
 					<div class="finishSet none">
 						<img src="img/tip_passwordNo.png" class="finishSet_icon"/>
 						<div class="finishSet_text">
@@ -85,15 +85,14 @@
 						<div class="setPassword_tip">
 							为了更好的保护您的帐户密码，请稍等片刻让支付密码配置生效请在下方填写您的支付密码。
 						</div>
-						<div class="setPassword_tip">
-							为了更好的保护您的帐户密码，请稍等片刻让支付密码配置生效请在下方填写您的支付密码。
+						<div class="psw"><label>支付密码</label><input type="text"><span>换一换</span></div>
+						<p class="pwd_tip">请确定您已经安全保存了支付密码，稍后将会要求您重复输入以确认支付密码.</p>
+						<div class="pwd_btn">
+							<button class="accept_nxt">接受下一步</button>
 						</div>
+
 					</div>
-					<div class="confirmPassword">
-						<div class="_title">
-							支付密码
-						</div>
-					</div>
+
 				</div>
 				<!--支付信息 end-->
 				

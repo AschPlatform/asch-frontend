@@ -1,5 +1,5 @@
 angular.module('asch').run(function($rootScope, $location, ipCookie, apiService, $window) {
-
+    $rootScope.isBodyMask = false;
     $rootScope.userlogin = false;
     // if( !$rootScope.userInfo ) {
     //     var cookie_userInfo = ipCookie( 'rrc_user' );

@@ -8,14 +8,10 @@
             <li>
                 <a ng-class="{'active':$root.active=='application'}" ng-href="#/application"><img src="/assets/common/application.png" alt="">应用中心</a>
             </li>
-            <li class="blockforging" ng-click="blockClick()">
-                <a ng-class="{'active':$root.active=='blockforging'}" ng-href="#/blockforging" ><img src="/assets/common/blockforging.png" alt="">区块锻造 <b class="caret"></b></a>
+            <li class="blockforging" >
+                <a ng-class="{'active':$root.active=='blockforging'}" ng-href="#/blockforging" ><img src="/assets/common/blockforging.png" alt="">区块锻造</a>
                 <!-- 下拉菜单  -->
-                <div ng-show="blockStatus" class="dropdown_menu">
-                   <p><a ng-href="#/blockforging">区块锻造</a></p>
-                   <p><a ng-href="#/assignee">受托人</a></p>
-                   <p><a ng-href="#/myvote">我的投票</a></p>
-                </div>
+
             </li>
 
 
@@ -26,10 +22,10 @@
                 <a ng-class="{'active':$root.active=='personal'}" ng-href="#/personal"><img src="/assets/common/personal.png" alt="">个人中心</a>
             </li>
             <li>
-                <a ng-class="{'active':$root.active=='vote'}" ng-href="#/vote"><img src="/assets/common/personal.png" alt="">投票</a>
+                <a ng-class="{'active':$root.active=='vote'}" ng-href="#/vote"><img src="/assets/common/vote.png" alt="">投票</a>
             </li>
             <li>
-                <a ng-class="{'active':$root.active=='pay'}" ng-href="#/pay"><img src="/assets/common/personal.png" alt="">支付</a>
+                <a ng-class="{'active':$root.active=='pay'}" ng-href="#/pay"><img src="/assets/common/pay.png" alt="">支付</a>
             </li>
         </ul>
     </div>

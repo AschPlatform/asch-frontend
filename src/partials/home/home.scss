@@ -27,6 +27,7 @@
         }
     }
     .latest {
+        border-bottom: 5px solid #bcbcbc;
         .table_title {
             margin-top: 46px;
             font-size: 40px;
@@ -54,5 +55,9 @@
             	background: #eff3f9;
             }
     	}
+        .deal_table_title{
+            font-size: 20px;
+            color:#333;
+        }
     }
 }

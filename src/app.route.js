@@ -18,18 +18,18 @@ angular.module('asch').config(function($routeProvider) {
 	$routeProvider.when('/blockforging', {
 		templateUrl: 'partials/blockforging/index.html'
 	});
-	$routeProvider.when('/myvote', {
-		templateUrl: 'partials/myvote/index.html'
-	});
+	// $routeProvider.when('/myvote', {
+	// 	templateUrl: 'partials/myvote/index.html'
+	// });
 	$routeProvider.when('/pay', {
 		templateUrl: 'partials/pay/index.html'
 	});
 	$routeProvider.when('/vote', {
 		templateUrl: 'partials/vote/index.html'
 	});
-	$routeProvider.when('/assignee', {
-		templateUrl: 'partials/assignee/index.html'
-	});
+	// $routeProvider.when('/assignee', {
+	// 	templateUrl: 'partials/assignee/index.html'
+	// });
 	$routeProvider.when('/login', {
 		templateUrl: 'partials/login/index.html'
 	});

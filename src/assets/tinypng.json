@@ -23,5 +23,21 @@
     "./src/assets/common/close.png": 1,
     "./src/assets/common/ui-rw-c.png": 1,
     "./src/assets/common/ui-tj.png": 1,
-    "./src/assets/common/ui-segmentation.png": 1
+    "./src/assets/common/ui-segmentation.png": 1,
+    "./src/assets/common/min_logo.png": 1,
+    "./src/assets/common/blockchains.png": 1,
+    "./src/assets/common/application.png": 1,
+    "./src/assets/common/home.png": 1,
+    "./src/assets/common/pay.png": 1,
+    "./src/assets/common/rerush.png": 1,
+    "./src/assets/common/vote.png": 1,
+    "./src/assets/personal/tip_passwordNo.png": 1,
+    "./src/assets/common/search.png": 1,
+    "./src/assets/common/personal.png": 1,
+    "./src/assets/common/blockforging.png": 1,
+    "./src/assets/home/account_bg.png": 1,
+    "./src/assets/common/user-anonymous.png": 1,
+    "./src/assets/common/login_logo.png": 1,
+    "./src/assets/common/asch_bg.jpg": 1,
+    "./src/assets/personal/user-anonymous.png": 1
 }

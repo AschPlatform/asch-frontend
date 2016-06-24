@@ -1,7 +1,7 @@
 angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
 	$rootScope.active = 'blockforging';
 	$rootScope.userlogin = true;
-	$rootScope.blockStatus = false;
+	
 	//设置基本像素
 	document.documentElement.style.fontSize = document.documentElement.clientWidth/20 + "px";
 	// 设置  进度条
@@ -43,14 +43,7 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 	}
 	
 	$scope.init = function(params) {
-		// window.location.href = '#/login';
-		$scope.setInfo();
-		apiService.taskAdmin(params).success(function(res) {
-			
 
-		}).error(function(err) {
-			toastError('服务器错误！');
-		});
 	};
 
 

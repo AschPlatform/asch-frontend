@@ -1,5 +1,5 @@
 <div id="login" ng-controller="loginCtrl" ng-init="init()" >
-	<div class="wrap1 hide">
+	<div class="wrap1 " ng-show="register">
 		<div class="header"></div>
 		<div class="content">
 			<div class="content_top">
@@ -15,11 +15,11 @@
 				</div>
 
 			</div>
-			<button class="register">登录</button>
-			<button class="newuser">新账户</button>
+			<button class="register" ng-click="registerin()">登录</button>
+			<button class="newuser" ng-click="newuser()">新账户</button>
 		</div>
 	</div>
-	<div class="wrap2 hide">
+	<div class="wrap2 " ng-show="creatpwd">
 		<div class="header">
 			<p>步骤 <i>1</i><b>/ 2</b><span>创建主要密码</span></p>
 		</div>
@@ -35,11 +35,11 @@
 				</div>
 
 			</div>
-			<button class="register">登录</button>
-			<button class="newuser">新账户</button>
+			<button class="checkstep" ng-click="checkstep()">确认下一步</button>
+			<button class="savepsw">保存主密码</button>
 		</div>
 	</div>
-	<div class="wrap3">
+	<div class="wrap3" ng-show="checkpwd">
 		<div class="header">
 			<p>步骤 <i>2</i><b>/ 2</b><span>确认主要密码</span></p>
 		</div>
@@ -55,8 +55,8 @@
 				</div>
 
 			</div>
-			<button class="register">确认</button>
-			<button class="newuser">返回</button>
+			<button class="lastcheck" ng-click="lastcheck()">确认</button>
+			<button class="backto" ng-click="backto()">返回</button>
 		</div>
 	</div>
 </div>

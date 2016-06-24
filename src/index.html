@@ -17,14 +17,20 @@
     <link rel="stylesheet" href="/partials/pay/index.scss">
     <link rel="stylesheet" href="/partials/home/home.scss">
     <link rel="stylesheet" href="/partials/personal/personal.scss">
+    <link rel="stylesheet" href="/partials/modal/blockhigh/index.scss">
+    <link rel="stylesheet" href="/partials/modal/dealinfo/index.scss">
+    <link rel="stylesheet" href="/partials/blockchain/index.scss">
     <link rel="stylesheet" href="/partials/blockforging/index.scss">
+    <link rel="stylesheet" href="/partials/vote/index.scss">
 	<!-- endbuild -->
 </head>
 <body ng-class="{'isbg':!userlogin}">
-
+<div ng-class={'bodyMask':isBodyMask}></div>
 <div id="bd">
     <div id="footer"  ng-show="userlogin" ng-include="'partials/common/footer/index.html'"></div>
     <div id="header" ng-show="userlogin" ng-include="'partials/common/header/header.html'"></div>
+    <div id="blockhign" ng-show="blockhigninfo" ng-include="'/partials/modal/blockhigh/index.html'"></div>
+    <div id="dealinfo" ng-show="dealdetailinfo" ng-include="'/partials/modal/dealinfo/index.html'"></div>
     <div ng-class="{'bodycontent':userlogin}"  ng-view></div>
 </div>
 
@@ -32,10 +38,9 @@
 <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/angular/angular.min.js"></script>
 <script type="text/javascript" src="/jquery/dist/jquery.js"></script>
-<script type="text/javascript" src="/bootstrap/dist/bootstrap.js"></script>
+<script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script type="text/javascript" src="/partials/common/pagination/tm.pagination.js"></script>
-<script type="text/javascript" src="/partials/common/header/header.controller.js"></script>
 <script type="text/javascript" src="/partials/common/toast/toast.js"></script>
 <script type="text/javascript" src="/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="/angular-cookie/angular-cookie.min.js"></script>
@@ -47,15 +52,14 @@
 <script type="text/javascript" src="/partials/home/homeCtrl.js"></script>
 <script type="text/javascript" src="/partials/vote/voteCtrl.js"></script>
 <script type="text/javascript" src="/partials/login/loginCtrl.js"></script>
-<script type="text/javascript" src="/partials/myvote/myvoteCtrl.js"></script>
 <script type="text/javascript" src="/partials/pay/payCtrl.js"></script>
-<script type="text/javascript" src="/partials/assignee/assigneeCtrl.js"></script>
 <script type="text/javascript" src="/partials/application/applicationCtrl.js"></script>
 <script type="text/javascript" src="/partials/blockforging/blockforgingCtrl.js"></script>
 <script type="text/javascript" src="/partials/blockchain/blockchainCtrl.js"></script>
 <script type="text/javascript" src="/partials/personal/personalCtrl.js"></script>
-<script type="text/javascript" src="/partials/login/index.controller.js"></script>
 <script type="text/javascript" src="/partials/common/header/headerCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/blockhigh/blockhignCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/dealinfo/dealinfoCtrl.js"></script>
 <script type="text/javascript" src="/filter/myfilter.js"></script>
 <script type="text/javascript" src="/partials/tips/tips.js"></script>
 <script type="text/javascript" src="/partials/common/header/headerCtrl.js"></script>

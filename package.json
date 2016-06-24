@@ -4,6 +4,9 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "angular-chart.js": "^1.0.0-alpha8",
+    "asch-js": "^0.9.0",
+    "chart.js": "^2.1.6",
     "cjson": "^0.3.2",
     "colors": "^1.1.2",
     "date-format": "0.0.2",

@@ -24,8 +24,12 @@
 	text-align:center;
 	color: #777777;
 }
-.accountInfo{}
-.passwordInfo{}
+.accountInfo{
+	cursor: pointer;
+}
+.passwordInfo{
+	cursor: pointer;
+}
 .nav .nav_exit{
 	margin-top: 11px;
 	width: 140px;
@@ -66,7 +70,7 @@
 	float: left;
 }
 .baseInfo .baseInfo_text{
-	width: 870px;
+	width: 60%;
 	height: 352px;
 	float: left;
 	
@@ -115,7 +119,7 @@
 
 
 .passwordInfo_cont{
-	
+	margin-bottom: 110px;
 }
 
 .finishSet{
@@ -137,6 +141,64 @@
 
 .setPassword{
 	padding: 0 30px;
+	.pwd_tip{
+		font-size:14px;
+		color:#aaa;
+		text-align: center;
+		margin-top: 26px;
+		margin-bottom: 32px;
+	}
+	.psw{
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		font-size: 20px;
+		margin-top: 26px;
+		label{
+			color:#777;
+			margin-right: 20px;
+		}
+		input{
+			height: 50px;
+			width: 60%;
+			line-height: 50px;
+			font-size: 20px;
+			color: #777777;
+			padding: 13px 16px;
+			border: 1px solid #ddd;
+		}
+		span{
+			color:#3276c3;
+			margin-left: 55px;
+			position: relative;
+			&:before{
+				content: '';
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				background: #fff url('/assets/common/rerush.png') center center no-repeat;
+				background-size: 100% auto;
+				left: -35px;
+				top: 0;
+			}
+		}
+	}
+	.pwd_btn{
+		margin: 0 auto;
+		text-align: center;
+		.accept_nxt{
+			display: inline-block;
+			width: 160px;
+			height: 40px;
+			line-height: 40px;
+			font-size:20px;
+			color:#fff;
+			background-color: #e97a28;
+			border: 0;
+			outline: 0;
+		}
+	}
+
 }
 .setPassword_tip{
 	font-size: 20px;
