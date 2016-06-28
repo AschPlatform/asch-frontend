@@ -28,15 +28,17 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	//登录
 	$scope.registerin = function () {
 		//$location.path('/home').replace();
+		
+		// 放在localstroge secret
 		apiService.loginin({
 			secret: 'enhance gun coral like skull reform entire virus torch hunt blame category'
 		}).success(function(res) {
 			$rootScope.homedata = res;
-			if(!!res){
+			if(res.success='true'){
 				$window.location.href = '#/home'
 			}
 		}).error(function(err) {
-			toastError('服务器错误！');
+			toastError(res.error);
 		});
 		
 	}

@@ -3,5 +3,15 @@
 	"loginApi": {
 		"serve": "/data/login/login.json",
 		"prod": "//post/api/accounts/open/"
+	},
+	//	余额账单Apiget /api/accounts?address=4205898691220223329L
+	"accountApi": {
+		"serve": "/data/home/account.json",
+		"prod": "//api/accounts/"
+	},
+	//	余额账单Apiget /api/transactions
+	"transactionsApi": {
+		"serve": "/data/home/transactions.json",
+		"prod": "//api/transactions/"
 	}
 }

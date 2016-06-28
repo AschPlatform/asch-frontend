@@ -41,4 +41,12 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	this.loginin = function(params) {
 		return fetch('{{loginApi}}', params, 'post');
 	};
+	//账户请求
+	this.account = function(params) {
+		return fetch('{{accountApi}}', params, 'post');
+	};
+	//交易请求
+	this.transactions = function(params) {
+		return fetch('{{transactionsApi}}', params, 'post');
+	};
 });

@@ -1,6 +1,6 @@
 <div id="home" ng-controller="homeCtrl" ng-init="init()">
 	<div class="account">
-		<span>余额</span><i>3000,000</i> <b>XAS</b>
+		<span>余额</span><i>{{ balance }}</i> <b>XAS</b>
 	</div>
 	<div class="latest">
 		<div class="table_title">最新交易</div>
@@ -13,61 +13,12 @@
 				<td>日期</td>
 				<td>金额(手续费)</td>
 			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
+			<tr ng-repeat="i in transactions">
+				<td>{{ i.senderId }}</td>
+				<td>{{ i.recipientId }}</td>
+				<td>{{ i.timestamp | timeAgoFilter}}</td>
+				<td>{{ i.amount /100000000}}</td>
 			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-			<tr >
-				<td>1</td>
-				<td>2</td>
-				<td>1</td>
-				<td>1</td>
-			</tr>
-
 		</table>
 	</div>
 </div>
