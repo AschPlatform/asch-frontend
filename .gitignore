@@ -1,5 +1,4 @@
 .DS_Store
-de_modules
 node_modules
 bower_components
 npm-debug.log
@@ -7,5 +6,4 @@ dist
 .idea
 .sass-cache
 .tmp
-.DS_Store
 .gulp
