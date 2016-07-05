@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var del = require('del');
-var browserify = require('browserify');
 // fs扩展模块
 var fs = require('fs-extra');
 var cssmin = require('gulp-cssmin');
@@ -251,8 +250,8 @@ gulp.task('partials', function() {
 
 gulp.task('htmls', function() {
 	console.log('开始build app页面...'.cyan);
-	console.log(browserify);
-	console.log(Mnemonic);
+	// console.log(browserify);
+	//console.log(Mnemonic);
 	return outputHtml('./src/index.html');
 });
 

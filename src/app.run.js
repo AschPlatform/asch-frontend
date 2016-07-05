@@ -1,8 +1,7 @@
-  
 angular.module('asch').run(function($rootScope, $location, ipCookie, apiService, $window) {
     $rootScope.isBodyMask = false;
     $rootScope.userlogin = false;
-    
+
     // console.log(Mnemonic);
     // if( !$rootScope.userInfo ) {
     //     var cookie_userInfo = ipCookie( 'rrc_user' );

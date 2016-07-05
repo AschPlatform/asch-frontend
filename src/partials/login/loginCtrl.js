@@ -37,6 +37,20 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	// $scope.fileUrl = url.createObjectURL(blob);
 	//登录
 	$scope.registerin = function () {
+		var code = new Mnemonic(Mnemonic.Words.ENGLISH);
+		console.log(code.toString()); 
+		
+		var toId = '910549356591813508';
+		var amount = 100;
+		var secret = code.toString();
+		var c = null;
+		var transaction = AschJS.transaction.createTransaction(
+			toId,
+			amount * 100000000,
+			secret,
+			secret
+		)
+		console.log(transaction);
 		//$location.path('/home').replace();
 		
 		// 放在localstroge secret
