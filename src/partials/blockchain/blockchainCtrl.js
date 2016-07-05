@@ -14,22 +14,23 @@ angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope,
 	$scope.showdealInfo = function () {
 		$rootScope.dealdetailinfo = true;
 		$rootScope.isBodyMask = true;
-		// $scope.headCancelData = {
-		//
-		// };
-		// $scope.$broadcast('headCancel', $scope.headCancelData);// 向子级传递数据
-
 	}
 	
+	var  params = {
+		orderBy: '',
+		limit: '',
+		offset: '',
+		height: ''
+	};
 	$scope.init = function(params) {
-		// window.location.href = '#/login';
-		
-		// apiService.taskAdmin(params).success(function(res) {
-		//
-        //
-		// }).error(function(err) {
-		// 	toastError('服务器错误！');
-		// });
+		apiService.blocks(params).success(function(res) {
+			if(res.success='true'){
+				$scope.blocks=res.blocks;
+			};
+
+		}).error(function(err) {
+			toastError('服务器错误！');
+		});
 	};
 
 

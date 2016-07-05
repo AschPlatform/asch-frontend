@@ -1,3 +1,7 @@
+// angular.module('asch').config(['$compileProvider', function ($compileProvider) {
+// 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
+// }]);
+
 angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiService, ipCookie, $window, $location) {
 	$rootScope.userlogin = false;
 	 $rootScope.register = true;
@@ -25,6 +29,12 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	$scope.lastcheck = function () {
 		$location.path('/home');
 	}
+
+	//保存密码
+	// var data = $scope.secret,
+	// 	blob = new Blob([data], { type: 'text/plain' }),
+	// 	url = $window.URL || $window.webkitURL;
+	// $scope.fileUrl = url.createObjectURL(blob);
 	//登录
 	$scope.registerin = function () {
 		//$location.path('/home').replace();

@@ -38,7 +38,11 @@
         }
     }
     .deal_table{
+        width: 100%;
+        min-height: 400px;
     	.table{
+            width: 100%;
+            height: auto;
     		td {
                 text-align: center;
                 border: 0;
@@ -51,6 +55,7 @@
                 background: #fff;
                 border: 0;
             }
+
             tr:hover{
             	background: #eff3f9;
             }
@@ -60,4 +65,29 @@
             color:#333;
         }
     }
+}
+#accept{
+    width: 840px;
+    //height: 530px;
+    z-index: 1000;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -420px;
+    margin-top: -295px;
+}
+#sent{
+    width: 840px;
+    //height: 530px;
+    z-index: 1000;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -420px;
+    margin-top: -295px;
+}
+.item_accept{
+    cursor: pointer;
 }

@@ -2,16 +2,31 @@
 	// 登录api
 	"loginApi": {
 		"serve": "/data/login/login.json",
-		"prod": "//post/api/accounts/open/"
+		"prod": "//post/api/accounts/open"
 	},
 	//	余额账单Apiget /api/accounts?address=4205898691220223329L
 	"accountApi": {
 		"serve": "/data/home/account.json",
-		"prod": "//api/accounts/"
+		"prod": "//api/accounts"
 	},
 	//	余额账单Apiget /api/transactions
 	"transactionsApi": {
 		"serve": "/data/home/transactions.json",
-		"prod": "//api/transactions/"
+		"prod": "//api/transactions"
+	},
+	// 获取受托人接口
+	"delegatesApi": {
+		"serve": "/data/vote/delegates.json",
+		"prod": "//api/delegates"
+	},
+	// 获取我的投票列表借口
+	"accountsApi": {
+		"serve": "/data/vote/accounts.json",
+		"prod": "//api/accounts/delegates"
+	},
+	// 获取我的投票列表借口
+	"blocksApi": {
+		"serve": "/data/blockchain/blocks.json",
+		"prod": "//api/blocks"
 	}
 }

@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "colors": "^1.1.2",
+    "gulp-browserify": "^0.5.1",
     "gulp-callback": "0.0.3",
     "gulp-run-sequence": "^0.3.2",
     "gulp-util": "^3.0.7",

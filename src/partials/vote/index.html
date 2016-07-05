@@ -2,14 +2,14 @@
     <div class="toVote">
         <div class="nav">
             <span>我要投票</span>
-            <div class="nav_register">
+            <div class="nav_register" ng-click="assigneeShowInfo()">
                 想成为受托人 注册
             </div>
         </div>
         <div class="vote_content">
             <div class="vote_title">
                 入围受托人 <span>共112人</span>
-                <div class="voteButton">
+                <div class="voteButton" ng-click="votetoShowInfo()">
                     投票
                 </div>
             </div>
@@ -23,83 +23,19 @@
                         <td>在线率</td>
                         <td>得票率</td>
                     </tr>
-                    <tr >
+                    <tr ng-repeat="i in voteList">
                         <td><span class="noSelect"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="noSelect"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="noSelect"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>{{ i.rate}}</td>
+                        <td>{{i.username}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.productivity}}</td>
+                        <td>{{i.approval}}</td>
                     </tr>
                 </table>
             </div>
             <div class="vote_title">
                 候选受托人 <span>共112人</span>
-                <div class="voteButton">
+                <div class="voteButton" ng-click="votetoShowInfo()">
                     投票
                 </div>
             </div>
@@ -113,78 +49,15 @@
                         <td>在线率</td>
                         <td>得票率</td>
                     </tr>
-                    <tr >
+                    <tr ng-repeat="i in voteList2">
                         <td><span class="noSelect"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>{{ i.rate}}</td>
+                        <td>{{i.username}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.productivity}}</td>
+                        <td>{{i.approval}}</td>
                     </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="noSelect"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="noSelect"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
+
                 </table>
             </div>
         </div>
@@ -212,69 +85,15 @@
                         <td>在线率</td>
                         <td>得票率</td>
                     </tr>
-                    <tr >
+                    <tr ng-repeat="i in myvotelist">
                         <td><span class="noSelect"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>{{ i.rate}}</td>
+                        <td>{{i.username}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.productivity}}</td>
+                        <td>{{i.approval}}</td>
                     </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="noSelect"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="noSelect"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr >
-                        <td><span class="selected"></span></td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
+
                 </table>
             </div>
         </div>

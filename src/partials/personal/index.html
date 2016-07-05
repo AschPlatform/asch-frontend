@@ -6,7 +6,7 @@
 					<div class="nav_per passwordInfo " ng-class=" {'active':passwordInfo}" ng-click="passwordchange()">
 						支付密码
 					</div>
-					<div class="nav_exit">
+					<div class="nav_exit" ng-click="quitout()">
 						退出系统
 					</div>
 					<div class="clear"></div>
@@ -21,19 +21,19 @@
 							<div class="baseInfo_tx"></div>
 							<div class="baseInfo_text">
 								<div class="account_text text_row">
-									<span class="greyFont">账户名 : </span> 2323236473289675612L 
+									<span class="greyFont">账户名 : </span> {{accountinfo.address}}
 								</div>
 								<div class="sum_text text_row">
-									<span class="greyFont">总余额 : </span> <span class="orangeFont"> 0.69103029</span> <span class="greyFont">XAS</span> 
+									<span class="greyFont">总余额 : </span> <span class="orangeFont"> {{accountinfo.balance}}</span> <span class="greyFont">XAS</span>
 								</div>
 								<div class="dallor_text text_row">
 									<span class="greyFont">美元折算 : </span><span class="orangeFont"> $0.28</span>
 								</div>
 								<div class="publickey_text text_row">
-									<span class="greyFont">公钥 : </span> 58d55f95d6383d526a150e69c767c9eb78b2dd6ebe55837cbb133319a3d
+									<span class="greyFont">公钥 : </span> {{accountinfo.publicKey}}
 								</div>
 								<div class="summary_text text_row">
-									<span class="greyFont">摘要 : </span> 2323236473289675612L 	
+									<span class="greyFont">摘要 : </span> {{accountinfo.address}}
 								</div>
 							</div>
 							<div class="clear"></div>

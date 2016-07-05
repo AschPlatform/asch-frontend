@@ -49,4 +49,16 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	this.transactions = function(params) {
 		return fetch('{{transactionsApi}}', params, 'post');
 	};
+	//获取受托人
+	this.delegates = function(params) {
+		return fetch('{{delegatesApi}}', params, 'post');
+	};
+	//获取投票列表
+	this.accounts = function(params) {
+		return fetch('{{accountsApi}}', params, 'post');
+	};
+	//获取最新区块
+	this.blocks = function(params) {
+		return fetch('{{blocksApi}}', params, 'post');
+	};
 });

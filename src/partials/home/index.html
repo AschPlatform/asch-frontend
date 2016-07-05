@@ -5,20 +5,24 @@
 	<div class="latest">
 		<div class="table_title">最新交易</div>
 	</div>
-	<div class="deal_table">
-		<table class="table">
+	<div class="deal_table" >
+		<table class="table"  >
 			<tr class="deal_table_title ">
 				<td>发送者</td>
-				<td>接受者</td>
+				<td>接收者</td>
 				<td>日期</td>
 				<td>金额(手续费)</td>
 			</tr>
 			<tr ng-repeat="i in transactions">
 				<td>{{ i.senderId }}</td>
-				<td>{{ i.recipientId }}</td>
-				<td>{{ i.timestamp | timeAgoFilter}}</td>
+				<td class="item_accept" ng-click="acceptShowInfo(i)">{{ i.recipientId }}</td>
+				<td>{{ i.timestamp | timeAgoFilter : showFullTime}}</td>
 				<td>{{ i.amount /100000000}}</td>
 			</tr>
 		</table>
 	</div>
+	<!--<div id="pager" ng-controller="pageCtrl">-->
+		<!--<tm-pagination conf="paginationConf"></tm-pagination>-->
+	<!--</div>-->
+
 </div>

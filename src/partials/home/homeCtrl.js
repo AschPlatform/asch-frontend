@@ -1,9 +1,13 @@
-angular.module('asch').controller('homeCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $interval) {
+angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiService, $http,ipCookie, $location, $interval) {
 	$rootScope.active = 'home';
 	$rootScope.userlogin = true;
-	$scope.$pagination = $('.pagination >li').closest('.active').children().html();
+	//$scope.$pagination = $('.pagination >li').closest('.active').children().html();
 
 
+	$scope.acceptShowInfo = function (i) {
+		$rootScope.acceptinfo = true;
+		$rootScope.isBodyMask = true;
+	}
 	
 	$scope.init = function(params) {
 		apiService.loginin({
@@ -13,11 +17,16 @@ angular.module('asch').controller('homeCtrl', function($scope, $rootScope, apiSe
 			if(res.success='true'){
 				// 余额显示
 				Account(res.address);
-				var timer = $interval(function(){
-					Account(res.address);
-				},10000);
+				//console.log(ngTableParams)
+				//if($rootScope.active == '/home'){
+					var timer = $interval(function(){
+						Account(res.address);
+					},10000);
+				//}
+
 				// 最新价易展示
 				transactions('0','','')
+
 			};
 			
 		}).error(function(res) {

@@ -9,7 +9,7 @@
     <meta content="telephone=no" name="format-detection" />
 	<!-- build:css [cssBuildPath] -->
     <link rel="stylesheet" href="/app.css">
-    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/ng-table/dist/ng-table.min.css">
     <link rel="stylesheet" href="/partials/common/footer/footer.scss">
     <link rel="stylesheet" href="/partials/common/pager/pager.scss">
@@ -19,7 +19,11 @@
     <link rel="stylesheet" href="/partials/home/home.scss">
     <link rel="stylesheet" href="/partials/personal/personal.scss">
     <link rel="stylesheet" href="/partials/modal/blockhigh/index.scss">
+    <link rel="stylesheet" href="/partials/modal/assignee/index.scss">
     <link rel="stylesheet" href="/partials/modal/dealinfo/index.scss">
+    <link rel="stylesheet" href="/partials/modal/accept/index.scss">
+    <link rel="stylesheet" href="/partials/modal/sent/index.scss">
+    <link rel="stylesheet" href="/partials/modal/voteto/index.scss">
     <link rel="stylesheet" href="/partials/blockchain/index.scss">
     <link rel="stylesheet" href="/partials/blockforging/index.scss">
     <link rel="stylesheet" href="/partials/vote/index.scss">
@@ -31,18 +35,21 @@
     <div id="footer"  ng-show="userlogin" ng-include="'partials/common/footer/index.html'"></div>
     <div id="header" ng-show="userlogin" ng-include="'partials/common/header/header.html'"></div>
     <div id="blockhign" ng-show="blockhigninfo" ng-include="'/partials/modal/blockhigh/index.html'"></div>
+    <div id="assignee" ng-show="assigneeinfo" ng-include="'/partials/modal/assignee/index.html'"></div>
     <div id="dealinfo" ng-show="dealdetailinfo" ng-include="'/partials/modal/dealinfo/index.html'"></div>
+    <div id="accept" ng-show="acceptinfo" ng-include="'/partials/modal/accept/index.html'"></div>
+    <div id="sent" ng-show="sentinfo" ng-include="'/partials/modal/sent/index.html'"></div>
+    <div id="voteto" ng-show="votetoinfo" ng-include="'/partials/modal/voteto/index.html'"></div>
     <div ng-class="{'bodycontent':userlogin}"  ng-view></div>
 </div>
-
 <!-- build:js [jsBuildPath] -->
 <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/angular/angular.min.js"></script>
-<script type="text/javascript" src="/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/si-table/dist/si-table.min.js"></script>
 <script type="text/javascript" src="/ng-table/dist/ng-table.js"></script>
 <script type="text/javascript" src="/bitcore-mnemonic/bitcore-mnemonic.js"></script>
 <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
-<script type="text/javascript" src="/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="/angular-bootstrap/ui-bootstrap.js"></script>
 <script type="text/javascript" src="/partials/common/pagination/tm.pagination.js"></script>
 <script type="text/javascript" src="/partials/common/toast/toast.js"></script>
 <script type="text/javascript" src="/angular-route/angular-route.js"></script>
@@ -62,8 +69,13 @@
 <script type="text/javascript" src="/partials/personal/personalCtrl.js"></script>
 <script type="text/javascript" src="/partials/common/header/headerCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/blockhigh/blockhignCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/assignee/assigneeCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/accept/acceptCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/dealinfo/dealinfoCtrl.js"></script>
-<script type="text/javascript" src="/filter/myfilter.js"></script>
+<script type="text/javascript" src="/partials/modal/sent/sentCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/voteto/votetoCtrl.js"></script>
+<script type="text/javascript" src="/filter/timeAgoFilter.js"></script>
+<script type="text/javascript" src="/filter/liskFilter.js"></script>
 <script type="text/javascript" src="/partials/tips/tips.js"></script>
 <script type="text/javascript" src="/partials/common/header/headerCtrl.js"></script>
 <!--<script type="text/javascript" src="/partials/common/DatePicker/WdatePicker.js"></script>-->

@@ -7,7 +7,7 @@
 		</div>
 	</div>
 	<div class="deal_table">
-		<table class="table">
+		<table ng-table="tableBlocks" class="table">
 			<tr class="deal_table_title ">
 				<td>高度</td>
 				<td>日期</td>
@@ -17,62 +17,31 @@
 				<td>费用</td>
 				<td>奖励</td>
 			</tr>
-			<tr >
-				<td class="level" ng-click="showhignInfo()">412268</td>
-				<td> 5 minutes ago</td>
-				<td>1847</td>
-				<td><i class="level" ng-click="showdealInfo()">5</i> 个</td>
-				<td>810.37<i class="XAScolor">XAS</i></td>
-				<td>16,123<i class="XAScolor">XAS</i></td>
-				<td>33352<i class="XAScolor">XAS</i></td>
+			<!--<tr ng-repeat="i in blocks">-->
+				<!--<td class="level" ng-click="showhignInfo()">{{i.height}}</td>-->
+				<!--<td>-->
+					<!--<span ng-show="i.timestamp > 0">{{i.timestamp | timeAgoFilter : showFullTime}}</span>-->
+					<!--&lt;!&ndash;<span ng-show="i.timestamp == 0">-</span>&ndash;&gt;-->
+				<!--</td>-->
+				<!--<td>{{i.id}}</td>-->
+				<!--<td><i class="level" ng-click="showdealInfo()">{{i.numberOfTransactions}}</i> 个</td>-->
+				<!--<td>{{i.totalAmount}}<i class="XAScolor">XAS</i></td>-->
+				<!--<td>{{i.totalFee | liskFilter}}<i class="XAScolor">XAS</i></td>-->
+				<!--<td>{{i.reward | liskFilter}}<i class="XAScolor">XAS</i></td>-->
+			<!--</tr>-->
+			<tr ng-repeat="i in $data">
+				<td class="level" data-title="tableBlocks.cols.height"  ng-click="showhignInfo()" sortable="'height'" >{{i.height}}</td>
+				<td data-title="tableBlocks.cols.blockId">
+					{{i.id}}<
+				</td>
+				<td data-title="tableBlocks.cols.timestamp" sortable="'timestamp'">
+					<span ng-show="i.timestamp > 0">{{i.timestamp | timeAgoFilter : showFullTime}}</span>
+					<span ng-show="i.timestamp == 0">-</span>
+				</td>
+				<td data-title="tableBlocks.cols.totalFee" sortable="'totalFee'">{{i.totalFee | liskFilter}}</td>
+				<td data-title="tableBlocks.cols.reward" sortable="'reward'">{{i.reward | liskFilter}}</td>
+				<td data-title="''" ></td>
 			</tr>
-			<tr >
-				<td class="level" ng-click="showhignInfo()">412268</td>
-				<td> 5 minutes ago</td>
-				<td>1847</td>
-				<td><i class="level" ng-click="showdealInfo()">5</i> 个</td>
-				<td>810.37<i class="XAScolor">XAS</i></td>
-				<td>16,123<i class="XAScolor">XAS</i></td>
-				<td>33352<i class="XAScolor">XAS</i></td>
-			</tr>
-			<tr >
-				<td class="level" ng-click="showhignInfo()">412268</td>
-				<td> 5 minutes ago</td>
-				<td>1847</td>
-				<td><i class="level" ng-click="showdealInfo()">5</i> 个</td>
-				<td>810.37<i class="XAScolor">XAS</i></td>
-				<td>16,123<i class="XAScolor">XAS</i></td>
-				<td>33352<i class="XAScolor">XAS</i></td>
-			</tr>
-			<tr >
-				<td class="level" ng-click="showhignInfo()">412268</td>
-				<td > 5 minutes ago</td>
-				<td>1847</td>
-				<td><i class="level" ng-click="showdealInfo()">5</i> 个</td>
-				<td>810.37<i class="XAScolor">XAS</i></td>
-				<td>16,123<i class="XAScolor">XAS</i></td>
-				<td>33352<i class="XAScolor">XAS</i></td>
-			</tr>
-			<tr >
-				<td class="level" ng-click="showhignInfo()">412268</td>
-				<td> 5 minutes ago</td>
-				<td>1847</td>
-				<td><i class="level" ng-click="showdealInfo()">5</i> 个</td>
-				<td>810.37<i class="XAScolor">XAS</i></td>
-				<td>16,123<i class="XAScolor">XAS</i></td>
-				<td>33352<i class="XAScolor">XAS</i></td>
-			</tr>
-			<tr >
-				<td class="level" ng-click="showhignInfo()">412268</td>
-				<td> 5 minutes ago</td>
-				<td>1847</td>
-				<td><i class="level" ng-click="showdealInfo()">5</i> 个</td>
-				<td>810.37<i class="XAScolor">XAS</i></td>
-				<td>16,123<i class="XAScolor">XAS</i></td>
-				<td>33352<i class="XAScolor">XAS</i></td>
-			</tr>
-
-
 		</table>
 	</div>
 
