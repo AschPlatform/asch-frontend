@@ -2,7 +2,10 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 	$rootScope.active = 'home';
 	$rootScope.userlogin = true;
 	//$scope.$pagination = $('.pagination >li').closest('.active').children().html();
+	if(!ipCookie('userSecret')){
 
+		$location.path('/')
+	}
 
 	$scope.acceptShowInfo = function (i) {
 		$rootScope.acceptinfo = true;
@@ -11,21 +14,26 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 	
 	$scope.init = function(params) {
 		apiService.loginin({
-			secret: '从cookie中读取'
+			secret: ipCookie('userSecret')
 		}).success(function(res) {
 			//$rootScope.homedata = res;
 			if(res.success='true'){
 				// 余额显示
-				Account(res.address);
+				Account(res.account.address);
+				console.log(res.account.address)
 				//console.log(ngTableParams)
 				//if($rootScope.active == '/home'){
 					var timer = $interval(function(){
-						Account(res.address);
+						Account(res.account.address);
 					},10000);
 				//}
-
+				if(!ipCookie('userSecret')){
+					var timer = $interval(function(){
+						Account(res.account.address);
+					},10000);
+				}
 				// 最新价易展示
-				transactions('0','','')
+				transactions('0',res.account.address,res.account.publicKey)
 
 			};
 			
@@ -58,7 +66,7 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 		apiService.transactions(params).success(function (res) {
 			if(res.success='true'){
             
-				console.log(res.transactions)
+				//console.log(res.transactions)
 				$scope.transactions=res.transactions
 			};
 		}).error(function (res) {

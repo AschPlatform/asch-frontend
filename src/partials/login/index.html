@@ -9,8 +9,8 @@
 				<div class="right">
 					<input ng-model="secret" type="text" placeholder="输入主密码">
 					<div class="is-agree">
-						<input class="magic-checkbox" type="checkbox" name="layout" id="1">
-						<label for="1">保持登录状态</label>
+						<input class="magic-checkbox" type="checkbox" ng-checked="saveLogin" ng-click="saveLoginChange()" name="layout" id="1">
+						<label  for="1">保持登录状态</label>
 					</div>
 				</div>
 
@@ -30,13 +30,14 @@
 				</div>
 				<div class="right">
 					<label for="textarea">以下就是您的主密码</label>
-					<textarea type="textarea" id="textarea" ></textarea>
+					<textarea type="textarea" id="textarea" ng-model="newsecret" ></textarea>
 					<p>	请确定您已经安全保存了主密码，下一步将会要求 您重复输入以确认密码.</p>
 				</div>
 
 			</div>
-			<button class="checkstep" ng-click="checkstep()">确认下一步</button>
-			<button class="savepsw"><a ng-href="{{ fileUrl }}" download="账号.txt">保存主密码</a></button>
+			<button class="checkstep" ng-click="nextStep()">确认下一步</button>
+			<!--<button class="savepsw"><a ng-href="{{ fileUrl }}" download="账号.txt">保存主密码</a></button>-->
+			<button class="savepsw"><a ng-click="saveTxt('ASCH-PASS')">保存主密码</a></button>
 		</div>
 	</div>
 	<div class="wrap3" ng-show="checkpwd">

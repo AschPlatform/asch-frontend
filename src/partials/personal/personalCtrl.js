@@ -6,6 +6,7 @@ angular.module('asch').controller('personalCtrl', function($scope, $rootScope, a
 	$scope.accountInfo  = true;
 	$scope.passwordInfo  = false;
 	$scope.quitout = function () {
+		ipCookie('userSecret','')
 		$window.location.href = '/'
 	}
 	$scope.accountchange = function () {
