@@ -3,7 +3,7 @@ angular.module('asch').filter('timeAgoFilter', function($filter) {
 		if (fullTime) {
 			return $filter('timestampFilter')(time);
 		}
-		var d = new Date(Date.UTC(2015, 3, 9, 0, 0, 0, 0));
+		var d = new Date(Date.UTC(2016, 5, 27, 20, 0, 0, 0));
 		var t = parseInt(d.getTime() / 1000);
 
 		time = new Date((time + t) * 1000);

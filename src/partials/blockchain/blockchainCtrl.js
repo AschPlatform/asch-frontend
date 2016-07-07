@@ -1,7 +1,9 @@
-angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window) {
 	$rootScope.active = 'blockchain';
 	$rootScope.userlogin = true;
-	
+	if(!$rootScope.isLogin){
+		$window.location.href = '#/login'
+	}
 	$scope.showhignInfo = function () {
 		$rootScope.blockhigninfo = true;
 		$rootScope.isBodyMask = true;

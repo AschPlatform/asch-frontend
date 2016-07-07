@@ -4,7 +4,7 @@
 angular.module('asch').filter('timestampFilter', function($filter) {
     return function (timestamp) {
         // Epoch time
-        var d = new Date(Date.UTC(2015, 3, 9, 0, 0, 0, 0));
+        var d = new Date(Date.UTC(2016, 5, 27, 20, 0, 0, 0));
         var t = parseInt(d.getTime() / 1000);
 
         var d = new Date((timestamp + t) * 1000);

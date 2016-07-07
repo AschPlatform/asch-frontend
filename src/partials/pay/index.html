@@ -1,7 +1,7 @@
 <div id="pay" ng-controller="payCtrl" ng-init="init()">
     <div class="_item">
         <label >发送者</label>
-        <input type="text" ng-model="sent" id="pay_item1">
+        <input type="text" ng-model="sent" id="pay_item1" disabled>
     </div>
     <div class="_item">
         <label >接收者</label>
@@ -9,12 +9,16 @@
     </div>
     <div class="_item">
         <label >输入金额</label>
-        <input type="text" ng-model="amount"  id="pay_item3">
+        <input type="number" ng-model="amount"  id="pay_item3">
+    </div>
+    <div class="_item" ng-show="userpublickey">
+        <label >二级密码</label>
+        <input type="number" ng-model="sendpasswoed"  id="pay_item5">
     </div>
     <div class="_item">
         <label >手续费</label>
-        <input type="text" ng-model="fee"id="pay_item4">
+        <input type="text" ng-model="fee" id="pay_item4" disabled >
     </div>
     <p>请确保您正在发送LSK给正确的地址，本操作无法撤消。</p>
-    <button class="sent" ng-click="sentMsg()">发送LSK 拷贝</button> <button class="cancel">取消</button>
+    <button class="sent" ng-click="sentMsg()">发送LSK 拷贝</button>
 </div>

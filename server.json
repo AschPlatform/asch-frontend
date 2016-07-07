@@ -2,11 +2,17 @@
 	// 登录api
 	"loginApi": {
 		"serve": "/data/login/login.json",
-		"prod": "//post/api/accounts/open"
+		"prod": "/api/accounts/open"
+	},
+	//登录接口
+	"homeloginApi": {
+		"serve": "/data/home/account.json",
+		"dev": "//192.168.1.104:4096/api/accounts/open2",
+		"prod": "//192.168.1.104:4096/api/accounts/open2"
 	},
 	//	余额账单Apiget /api/accounts?address=4205898691220223329L
 	"accountApi": {
-		"serve": "/data/home/account.json",
+		"serve": "/data/home/accounts.json",
 		"prod": "//api/accounts"
 	},
 	//	余额账单Apiget /api/transactions
@@ -21,12 +27,27 @@
 	},
 	// 获取我的投票列表借口
 	"accountsApi": {
-		"serve": "/data/vote/accounts.json",
+		"serve": "/data/vote/delegates.json",
 		"prod": "//api/accounts/delegates"
 	},
 	// 获取我的投票列表借口
 	"blocksApi": {
 		"serve": "/data/blockchain/blocks.json",
 		"prod": "//api/blocks"
+	},
+	//二级密码设置
+	"passwordApi": {
+		"serve": "/data/personal/password.json",
+		"prod": "//peer/transactions"
+	},
+	//二级密码设置
+	"payApi": {
+		"serve": "/data/pay/pay.json",
+		"prod": "//peer/transactions"
+	},
+	//受托人的基本信息
+	"blockforgingApi": {
+		"serve": "/data/blockforging/delegates.json",
+		"prod": "//api/delegates/get/"
 	}
 }

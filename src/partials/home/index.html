@@ -1,6 +1,14 @@
 <div id="home" ng-controller="homeCtrl" ng-init="init()">
-	<div class="account">
-		<span>余额</span><i>{{ balance }}</i> <b>XAS</b>
+	<div class="homeinfo">
+		<div class="account">
+			<span>余额</span><i>{{ account.balance }}<strong>XAS</strong></i>
+		</div>
+		<div class="account">
+			<span>最后区块高度</span><i>{{ latestBlock.height }}</i> <b>{{latestBlock.timestamp | timestampFilter }}</b>
+		</div>
+		<div class="account">
+			<span>版本信息</span><i>{{ version.version }}</i> <b></b>
+		</div>
 	</div>
 	<div class="latest">
 		<div class="table_title">最新交易</div>
@@ -8,6 +16,8 @@
 	<div class="deal_table" >
 		<table class="table"  >
 			<tr class="deal_table_title ">
+				<td>交易ID</td>
+				<td>类型</td>
 				<td>发送者</td>
 				<td>接收者</td>
 				<td>日期</td>
@@ -15,8 +25,10 @@
 			</tr>
 			<tr ng-repeat="i in transactions">
 				<td>{{ i.senderId }}</td>
+				<td>{{ i.senderId }}</td>
+				<td>{{ i.senderId }}</td>
 				<td class="item_accept" ng-click="acceptShowInfo(i)">{{ i.recipientId }}</td>
-				<td>{{ i.timestamp | timeAgoFilter : showFullTime}}</td>
+				<td>{{ i.timestamp | timestampFilter }}</td>
 				<td>{{ i.amount /100000000}}</td>
 			</tr>
 		</table>

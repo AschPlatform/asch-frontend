@@ -52,7 +52,7 @@
 		}
 
 		$toast.css( 'visibility', 'hidden' ).show();
-		$text.css( 'width', ( option.text.length > 17 ? '150' : '100' ) + 'px' );
+		$text.css( 'width', ( option.text.length > 17 ? '250' : '220' ) + 'px' );
 		$text.text( option.text );
 		$toast.attr( 'class', 'toast-base' ).addClass( typeClass )
 			.css( 'margin', '-' + $toast.height() / 2 + 'px 0 0 -' + $toast.width() / 2 + 'px' )

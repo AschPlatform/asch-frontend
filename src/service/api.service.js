@@ -41,6 +41,9 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	this.loginin = function(params) {
 		return fetch('{{loginApi}}', params, 'post');
 	};
+	this.homeloginin = function(params) {
+		return fetch('//192.168.1.104:4096/api/accounts/open2', params, 'post');
+	};
 	//账户请求
 	this.account = function(params) {
 		return fetch('{{accountApi}}', params, 'post');
@@ -60,5 +63,13 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	//获取最新区块
 	this.blocks = function(params) {
 		return fetch('{{blocksApi}}', params, 'post');
+	};
+	//支付模块
+	this.pay = function(params) {
+		return fetch('{{payApi}}', params, 'post');
+	};
+	//受托人模块
+	this.blockforging = function(params) {
+		return fetch('{{blockforgingApi}}', params, 'post');
 	};
 });

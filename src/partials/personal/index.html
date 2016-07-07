@@ -1,4 +1,4 @@
-<div id="personal" ng-controller="personalCtrl" ng-init="init()">
+<div id="personal" ng-controller="personalCtrl" ng-init="init()" ng-show="isLogin">
 				<div class="nav">
 					<div class="nav_per accountInfo " ng-class=" {'active':accountInfo}" ng-click="accountchange()">
 						账户信息
@@ -20,15 +20,15 @@
 						<div class="baseInfo_content">
 							<div class="baseInfo_tx"></div>
 							<div class="baseInfo_text">
-								<div class="account_text text_row">
-									<span class="greyFont">账户名 : </span> {{accountinfo.address}}
-								</div>
+								<!--<div class="account_text text_row">-->
+									<!--<span class="greyFont">账户名 : </span> {{accountinfo.address}}-->
+								<!--</div>-->
 								<div class="sum_text text_row">
 									<span class="greyFont">总余额 : </span> <span class="orangeFont"> {{accountinfo.balance}}</span> <span class="greyFont">XAS</span>
 								</div>
-								<div class="dallor_text text_row">
-									<span class="greyFont">美元折算 : </span><span class="orangeFont"> $0.28</span>
-								</div>
+								<!--<div class="dallor_text text_row">-->
+									<!--<span class="greyFont">美元折算 : </span><span class="orangeFont"> $0.28</span>-->
+								<!--</div>-->
 								<div class="publickey_text text_row">
 									<span class="greyFont">公钥 : </span> {{accountinfo.publicKey}}
 								</div>
@@ -39,56 +39,58 @@
 							<div class="clear"></div>
 						</div>
 					</div>
-					<div class="businessInfo">
-					<div class="_title">
-						交易记录<span class="greyFont_size">   共六条</span>
-					</div>
-					<div class="business_text">
-						<div class="">
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-							1<br/>
-						</div>
-						<div class="more">
-							加载更多...
-						</div>
-					</div>
-				</div>
+					<!--<div class="businessInfo">-->
+					<!--<div class="_title">-->
+						<!--交易记录<span class="greyFont_size">   共六条</span>-->
+					<!--</div>-->
+					<!--<div class="business_text">-->
+						<!--<div class="">-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!---->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+							<!--1<br/>-->
+						<!--</div>-->
+						<!--<div class="more">-->
+							<!--加载更多...-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
 				</div>
 				<!-- -账户信息 end -->
 				<!-- -支付信息 start -->
 				<div ng-show="passwordInfo" class="passwordInfo_cont ">
-					<div class="finishSet none">
-						<img src="img/tip_passwordNo.png" class="finishSet_icon"/>
+					<div class="finishSet" ng-show="accountinfo.secondPublicKey||passwordsure">
+						<img src="/assets/personal/tip_passwordNo.png" class="finishSet_icon"/>
 						<div class="finishSet_text">
 							您已经设置好支付密码，无需设置。
 						</div>
 					</div>
-					<div class="setPassword">
+					<div class="setPassword" ng-hide="accountinfo.secondPublicKey || passwordsure">
 						<div class="_title">
 							支付密码
 						</div>
 						<div class="setPassword_tip">
 							为了更好的保护您的帐户密码，请稍等片刻让支付密码配置生效请在下方填写您的支付密码。
 						</div>
-						<div class="psw"><label>支付密码</label><input type="text"><span>换一换</span></div>
+						<div class="psw"><label>支付密码</label><input type="password" ng-model="secondpassword" minlength="8" maxlength="16" placeholder="至少8为数字和字母组合">
+							<!--<span>换一换</span>-->
+						</div>
 						<p class="pwd_tip">请确定您已经安全保存了支付密码，稍后将会要求您重复输入以确认支付密码.</p>
 						<div class="pwd_btn">
-							<button class="accept_nxt">接受下一步</button>
+							<button class="accept_nxt" ng-click="setPassWord()">接受下一步</button>
 						</div>
 
 					</div>

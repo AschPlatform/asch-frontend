@@ -13,27 +13,29 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 	}
 	
 	$scope.init = function(params) {
-		apiService.loginin({
+		apiService.homeloginin({
 			secret: ipCookie('userSecret')
 		}).success(function(res) {
 			//$rootScope.homedata = res;
 			if(res.success='true'){
+				$scope.account = res.account;
+				$scope.latestBlock = res.latestBlock;
+				$scope.version = res.version;
 				// 余额显示
-				Account(res.account.address);
-				console.log(res.account.address)
+				//Account(res.account.address);
+				//console.log(res.account.address)
 				//console.log(ngTableParams)
 				//if($rootScope.active == '/home'){
-					var timer = $interval(function(){
-						Account(res.account.address);
-					},10000);
+				// 	var timer = $interval(function(){
+				// 		Account(res.account.address);
+				// 	},10000);
 				//}
 				if(!ipCookie('userSecret')){
-					var timer = $interval(function(){
-						Account(res.account.address);
-					},10000);
+
+					$location.path('/')
 				}
 				// 最新价易展示
-				transactions('0',res.account.address,res.account.publicKey)
+				transactions('0','',res.account.publicKey)
 
 			};
 			
@@ -42,19 +44,19 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 		});
 	};
     // 账号请求函数
-	function Account(address) {
-		apiService.account({
-			address:address
-		}).success(function (res) {
-			if(res.success='true'){
-				//console.log('account'+ res.account.balance)
-				$scope.balance=res.account.balance
-			};
-		}).error(function (res) {
-			toastError(res.error);
-		})
-
-	}
+    // function Account(address) {
+		// apiService.account({
+		// 	address:address
+		// }).success(function (res) {
+		// 	if(res.success='true'){
+		// 		//console.log('account'+ res.account.balance)
+		// 		$scope.balance=res.account.balance
+		// 	};
+		// }).error(function (res) {
+		// 	toastError(res.error);
+		// })
+    //
+    // }
 	// 获取最新交易
 	function transactions(limit,recipientId,senderPublicKey) {
 		var params = {

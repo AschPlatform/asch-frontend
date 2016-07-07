@@ -1,30 +1,66 @@
 #home {
     /*background: #300;*/
+    .homeinfo{
+        //display: box;
+        //display: flex;
+        //display: -webkit-box;
+        padding: 0 auto;
     .account {
-        width: 100%;
+        width: 30%;
+        display: inline-block;
+        margin-right: 15px;
         height: 140px;
-        background: #e97a28 url('/assets/home/account_bg.png') no-repeat;
-        background-size: 100% 100%;
+        border-radius: 6px;
+        overflow: hidden;
+
+        position: relative;
         span {
-            margin-left: 30px;
-            margin-right: 30px;
+            //margin-left: 30px;
+            //margin-right: 30px;
             font-size: 20px;
             color: #fff;
-            line-height: 140px;
+           // line-height: 140px;
+            position: absolute;
+            left: 20px;
+            top: 20px;
         }
         i {
-            font-size: 84px;
+            font-size: 30px;
             color: #fff;
-            margin-right: 25px;
+           // margin-right: 25px;
             font-style: normal;
-            height: 140px;
-            line-height: 140px;
+           // height: 140px;
+           // line-height: 140px;
+            position: absolute;
+            left: 20px;
+            top: 72px;
+            strong{
+                font-weight: normal;
+                font-size: 20px;
+                margin-left: 5px;
+            }
         }
         b {
             font-style: normal;
-            font-size: 20px;
+            font-size: 14px;
             color: #fff;
+            position: absolute;
+            left: 205px;
+            top: 88px;
         }
+        &:nth-child(1){
+            background: #5e92cc url("/assets/home/account_bg.png") no-repeat;
+            background-size: 100% 100%;
+        }
+        &:nth-child(2){
+            background: #7f9ebf ;
+        }
+        &:nth-child(3){
+            background: #7f9ebf;
+            margin-right:0;
+        }
+    }
+
     }
     .latest {
         border-bottom: 5px solid #bcbcbc;

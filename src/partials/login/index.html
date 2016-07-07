@@ -7,7 +7,7 @@
 					<img src="/assets/common/user-anonymous.png" alt="">
 				</div>
 				<div class="right">
-					<input ng-model="secret" type="text" placeholder="输入主密码">
+					<input ng-model="secret" type="password" placeholder="输入主密码">
 					<div class="is-agree">
 						<input class="magic-checkbox" type="checkbox" ng-checked="saveLogin" ng-click="saveLoginChange()" name="layout" id="1">
 						<label  for="1">保持登录状态</label>
@@ -21,7 +21,8 @@
 	</div>
 	<div class="wrap2 " ng-show="creatpwd">
 		<div class="header">
-			<p>步骤 <i>1</i><b>/ 2</b><span>创建主要密码</span></p>
+			<p>步骤 <i>1</i><b>/ 2</b><span>创建主要密码</span> </p>
+			<!--<img src="/assets/common/close.png" class="close" ng-click="close()" alt="">-->
 		</div>
 		<div class="content">
 			<div class="content_top">
@@ -37,21 +38,22 @@
 			</div>
 			<button class="checkstep" ng-click="nextStep()">确认下一步</button>
 			<!--<button class="savepsw"><a ng-href="{{ fileUrl }}" download="账号.txt">保存主密码</a></button>-->
-			<button class="savepsw"><a ng-click="saveTxt('ASCH-PASS')">保存主密码</a></button>
+			<button class="savepsw"><a ng-click="saveTxt('ASCH-secret')">保存主密码</a></button>
 		</div>
 	</div>
 	<div class="wrap3" ng-show="checkpwd">
 		<div class="header">
-			<p>步骤 <i>2</i><b>/ 2</b><span>确认主要密码</span></p>
+			<p>步骤 <i>2</i><b>/ 2</b><span>确认主要密码</span> </p>
+			<img src="/assets/common/close.png" ng-click="close()" class="close" alt="">
 		</div>
 		<div class="content">
 			<div class="content_top">
 				<div class="left">
-					<img src="/assets/common/user-anonymous.png" alt="">
+					<img src="/assets/common/user-anonymous.png"  alt="">
 				</div>
 				<div class="right">
 					<label for="textarea1">请重新输入您的主密码</label>
-					<textarea type="textarea" id="textarea1" ></textarea>
+					<textarea type="textarea" id="textarea1"  ng-model="lastsecret" ></textarea>
 					<p>	请确保您已安全保存主密码，如果您失去您的主密码，您的帐户将永远无法再打开，您将失去您所有的XAS</p>
 				</div>
 

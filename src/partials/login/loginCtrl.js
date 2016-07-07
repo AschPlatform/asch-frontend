@@ -11,13 +11,18 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 
 	//密码生成
 	var code = new Mnemonic(Mnemonic.Words.ENGLISH);
-	//$scope.secret=code.toString();
+	$scope.secret=code.toString();
+	var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
+	var address = AschJS.crypto.getAddress(publicKey);
+
 	$scope.newuser = function () {
 		$rootScope.register = false;
 		$rootScope.creatpwd = true;
 		$rootScope.checkpwd = false;
 		$scope.newsecret=code.toString();
+		newpublicKey = AschJS.crypto.getKeys($scope.newsecret).publicKey;
 	};
+
 	//默认保持登录
 	$scope.saveLogin =true;
 	//读取cookie
@@ -54,20 +59,47 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 		$rootScope.creatpwd = false;
 		$rootScope.checkpwd = false;
 	};
+	$scope.close = function () {
+		$rootScope.register = true;
+		$rootScope.creatpwd = false;
+		$rootScope.checkpwd = false;
+	}
 	//确认
 	$scope.lastcheck = function () {
-		$location.path('/home');
+		if($scope.newsecret == $scope.lastsecret){
+			apiService.homeloginin({
+				publicKey: newpublicKey
+			}).success(function(res) {
+				$rootScope.homedata = res;
+				if(res.success='true'){
+					ipCookie('userSecret',$scope.newsecret);
+					$rootScope.useraddress=res.account.address;
+					$rootScope.userbalance=res.account.balance;
+					$rootScope.userpublickey=res.account.secondPublicKey;
+					// 是否登录的全局变量
+					$rootScope.isLogin = true;
+					console.log(ipCookie('userSecret'))
+					$window.location.href = '#/home'
+				}
+			}).error(function(res) {
+				toastError(res.error);
+			});
+		} else {
+			toastError('您输入的主密码不一致')
+		}
+		//$location.path('/home');
 	}
 	$scope.saveTxt = function (filename) {
 		var text = $scope.newsecret;
+		txt = 'secret:'+'\r\n'+text + '\r\n\r\n' +'address:'+ '\r\n'+address+'\r\n';
 		console.log($scope.newsecret)
 		var link = document.createElement("a");
 		link.setAttribute("target","_blank");
 		if(Blob !== undefined) {
-			var blob = new Blob([text], {type: "text/plain"});
+			var blob = new Blob([txt], {type: "text/plain"});
 			link.setAttribute("href", URL.createObjectURL(blob));
 		} else {
-			link.setAttribute("href","data:text/plain," + encodeURIComponent(text));
+			link.setAttribute("href","data:text/plain," + encodeURIComponent(txt));
 		}
 		link.setAttribute("download",filename);
 		document.body.appendChild(link);
@@ -77,26 +109,33 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	}
 	$scope.saveCookie = function () {
 		ipCookie('userSecret',$scope.secret);
-		console.log(ipCookie('userSecret'));
+		//console.log(ipCookie('userSecret'));
 	}
 	//登录
 	$scope.registerin = function () {
 		//$location.path('/home').replace();
-		if($scope.secret ==ipCookie('userSecret')){
+		//if($scope.secret ==ipCookie('userSecret')){
 			// 放在localstroge secret
-			apiService.loginin({
-				secret: $scope.secret
+			apiService.homeloginin({
+				publicKey: publicKey
 			}).success(function(res) {
 				$rootScope.homedata = res;
 				if(res.success='true'){
+					// 是否登录的全局变量
+					$rootScope.isLogin = true;
+					$rootScope.useraddress=res.account.address;
+					$rootScope.userbalance=res.account.balance;
+					$rootScope.userpublickey=res.account.secondPublicKey;
+					$rootScope.publickey=res.account.publicKey;
+					
 					$window.location.href = '#/home'
 				}
 			}).error(function(res) {
-				toastError(res.error);
+				toastError('服务器错误!');
 			});
-		} else{
-			toastError('账户不存在,清新注册');
-		}
+		// } else{
+		// 	toastError('密码格式不符合规范');
+		// }
 
 
 	}
@@ -107,17 +146,5 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 		$rootScope.register = false;
 		$rootScope.creatpwd = false;
 		$rootScope.checkpwd = true;
-		apiService.loginin({
-			secret: $scope.secret
-		}).success(function(res) {
-			$rootScope.homedata = res;
-			if(res.success='true'){
-				ipCookie('userSecret',$scope.newsecret);
-				console.log(ipCookie('userSecret'))
-				$window.location.href = '#/home'
-			}
-		}).error(function(res) {
-			toastError(res.error);
-		});
 	}
 });

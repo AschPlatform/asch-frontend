@@ -1,14 +1,21 @@
 {
   "success": true,
   "account": {
-    "address": "4205898691220223329L",
-    "unconfirmedBalance": "0",
-    "balance": "300000",
-    "publicKey": "a28242b61ee3c0a71da60ea2e1fcd976bb7b3a48e65f5c2487a53707658fcc0b",
-    "unconfirmedSignature": 0,
-    "secondSignature": 0,
-    "secondPublicKey": null,
-    "multisignatures": [ ],
-    "u_multisignatures": [ ]
+    "address": "10174159498857769178",
+    "unconfirmedBalance": 10000000000000000,
+    "balance": 10000000000000000,
+    "unconfirmedSignature": false,
+    "secondSignature": false,
+    "secondPublicKey": "",
+    "multisignatures": [],
+    "u_multisignatures": []
+  },
+  "latestBlock": {
+    "height": 171,
+    "timestamp": 804390
+  },
+  "version": {
+    "version": "0.9.0",
+    "build": "development"
   }
 }

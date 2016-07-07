@@ -1,7 +1,9 @@
-angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window) {
 	$rootScope.active = 'blockforging';
 	$rootScope.userlogin = true;
-	
+	// if(!$rootScope.isLogin){
+	// 	$window.location.href = '#/login'
+	// }
 	//设置基本像素
 	document.documentElement.style.fontSize = document.documentElement.clientWidth/20 + "px";
 	// 设置  进度条
@@ -50,7 +52,27 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 		// $scope.$broadcast('headCancel', $scope.headCancelData);// 向子级传递数据
 
 	}
-	$scope.init = function(params) {
+	$scope.init = function() {
+
+		apiService.blockforging({
+			publicKey:$rootScope.publickey
+		}).success(function (res) {
+			if(res.success='true'){
+				$scope.delegate = res.delegate
+			};
+		}).error(function (res) {
+
+		});
+		apiService.blocks({
+			publicKey:$rootScope.publickey
+		}).success(function (res) {
+			if(res.success='true'){
+				$scope.blocks=res.blocks;
+			};
+		}).error(function (res) {
+
+		});
+
 
 	};
 

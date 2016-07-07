@@ -2,7 +2,9 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
     $rootScope.active = 'vote';
     $rootScope.userlogin = true;
 
-
+    if(!$rootScope.isLogin){
+        $window.location.href = '#/login'
+    }
     $scope.assigneeShowInfo = function () {
         $rootScope.assigneeinfo = true;
         $rootScope.isBodyMask = true;

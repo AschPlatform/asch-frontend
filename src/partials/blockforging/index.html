@@ -1,7 +1,7 @@
 <div id="blockforging" ng-controller="blockforgingCtrl" ng-init="init()">
 		<div class="accountInfo_cont">
 			<div class="_title">
-				区块锻造的基本信息
+				受托人基本信息  :{{delegate.username}}
 				<div class="nav_register" ng-click="assigneeShowInfo()">
 					想成为受托人 注册
 				</div>
@@ -9,26 +9,26 @@
 			<div class="circlePicInfo">
 				<div class="circle allMoney">
 					<div class="pagea circle"></div>
-					<div class="text1">总转取</div>
-					<div class="text2">300,000</div>
+					<div class="text1">总收益</div>
+					<div class="text2">{{delegate.forged}}</div>
 					<div class="text3">XAS</div>
 				</div>
 				<div class="circle rank">
 					<div class="pagea circle">
 						<div class="title">排名</div>
-						<div class="num">150</div>
+						<div class="num">{{delegate.rate}}</div>
 					</div>
 				</div>
 				<div class="circle output">
 					<div class="pagea circle">
 						<div class="title">生产率</div>
-						<div class="num">0.32%</div>
+						<div class="num">{{delegate.productivity}}%</div>
 					</div>
 				</div>
 				<div class="circle depiao">
 					<div class="pagea circle">
 						<div class="title">得票率</div>
-						<div class="num">0.82%</div>
+						<div class="num">{{delegate.approval}}%</div>
 					</div>
 				</div>
 
@@ -40,12 +40,34 @@
 			</div>
 			<div class="baseInfo_content">
 				<table class="table">
-					<tr ><th>区块高度</th><th>接收者</th><th>日期</th><th>金额（手续费）</th></tr>
-					<tr><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="reduceIcon"></span>5493（0.1）</td></tr>
-					<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="addIcon"></span>5493（0.1）</td></tr>
-					<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="reduceIcon"></span>5493（0.1）</td></tr>
-					<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="addIcon"></span>5493（0.1）</td></tr>
-					<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="addIcon"></span>5493（0.1）</td></tr>
+					<!--<tr ><th>区块高度</th><th>接收者</th><th>日期</th><th>金额（手续费）</th></tr>-->
+					<!--<tr><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="reduceIcon"></span>5493（0.1）</td></tr>-->
+					<!--<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="addIcon"></span>5493（0.1）</td></tr>-->
+					<!--<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="reduceIcon"></span>5493（0.1）</td></tr>-->
+					<!--<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="addIcon"></span>5493（0.1）</td></tr>-->
+					<!--<tr ><td>3347762178747334519L</td><td>3347762178747334519L</td><td>7 days ago</td><td><span class="addIcon"></span>5493（0.1）</td></tr>-->
+
+					<tr class="deal_table_title ">
+						<td>高度</td>
+						<td>日期</td>
+						<td>创建者</td>
+						<td>交易信息</td>
+						<td>金额</td>
+						<td>费用</td>
+						<td>奖励</td>
+					</tr>
+					<tr ng-repeat="i in blocks">
+						<td class="level" ng-click="showhignInfo()">{{i.height}}</td>
+						<td>
+							<span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span>
+							<!--<span ng-show="i.timestamp == 0">-</span>-->
+						</td>
+						<td>{{i.id}}</td>
+						<td><i class="level" ng-click="showdealInfo()">{{i.numberOfTransactions}}</i> 个</td>
+						<td>{{i.totalAmount}}<i class="XAScolor">XAS</i></td>
+						<td>{{i.totalFee | liskFilter}}<i class="XAScolor">XAS</i></td>
+						<td>{{i.reward | liskFilter}}<i class="XAScolor">XAS</i></td>
+					</tr>
 				</table>
 			</div>
 
