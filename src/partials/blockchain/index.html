@@ -7,42 +7,65 @@
 		</div>
 	</div>
 	<div class="deal_table">
-		<table ng-table="tableBlocks" class="table">
-			<tr class="deal_table_title ">
-				<td>高度</td>
-				<td>日期</td>
-				<td>创建者</td>
-				<td>交易信息</td>
-				<td>金额</td>
-				<td>费用</td>
-				<td>奖励</td>
-			</tr>
-			<tr ng-repeat="i in blocks">
-				<td class="level" ng-click="showhignInfo()">{{i.height}}</td>
-				<td>
-					<span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span>
-					<!--<span ng-show="i.timestamp == 0">-</span>-->
-				</td>
-				<td>{{i.id}}</td>
-				<td><i class="level" ng-click="showdealInfo()">{{i.numberOfTransactions}}</i> 个</td>
-				<td>{{i.totalAmount}}<i class="XAScolor">XAS</i></td>
-				<td>{{i.totalFee | liskFilter}}<i class="XAScolor">XAS</i></td>
-				<td>{{i.reward | liskFilter}}<i class="XAScolor">XAS</i></td>
-			</tr>
-			<!--<tr ng-repeat="i in $data">-->
-				<!--<td class="level" data-title="tableBlocks.cols.height"  ng-click="showhignInfo()" sortable="'height'" >{{i.height}}</td>-->
-				<!--<td data-title="tableBlocks.cols.blockId">-->
-					<!--{{i.id}}<-->
-				<!--</td>-->
-				<!--<td data-title="tableBlocks.cols.timestamp" sortable="'timestamp'">-->
-					<!--<span ng-show="i.timestamp > 0">{{i.timestamp | timeAgoFilter : showFullTime}}</span>-->
-					<!--<span ng-show="i.timestamp == 0">-</span>-->
-				<!--</td>-->
-				<!--<td data-title="tableBlocks.cols.totalFee" sortable="'totalFee'">{{i.totalFee | liskFilter}}</td>-->
-				<!--<td data-title="tableBlocks.cols.reward" sortable="'reward'">{{i.reward | liskFilter}}</td>-->
-				<!--<td data-title="''" ></td>-->
+		<!--<table ng-table="tableBlocks" class="table">-->
+			<!--<tr class="deal_table_title ">-->
+				<!--<td>高度</td>-->
+				<!--<td>日期</td>-->
+				<!--<td>创建者</td>-->
+				<!--<td>交易信息</td>-->
+				<!--<td>金额</td>-->
+				<!--<td>费用</td>-->
+				<!--<td>奖励</td>-->
 			<!--</tr>-->
+			<!--<tr ng-repeat="i in blocks">-->
+				<!--<td class="level" ng-click="showhignInfo()">{{i.height}}</td>-->
+				<!--<td>-->
+					<!--<span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span>-->
+					<!--&lt;!&ndash;<span ng-show="i.timestamp == 0">-</span>&ndash;&gt;-->
+				<!--</td>-->
+				<!--<td>{{i.id}}</td>-->
+				<!--<td><i class="level" ng-click="showdealInfo()">{{i.numberOfTransactions}}</i> 个</td>-->
+				<!--<td>{{i.totalAmount}}<i class="XAScolor">XAS</i></td>-->
+				<!--<td>{{i.totalFee | xasFilter}}<i class="XAScolor">XAS</i></td>-->
+				<!--<td>{{i.reward | xasFilter}}<i class="XAScolor">XAS</i></td>-->
+			<!--</tr>-->
+		<!---->
+		<!--</table>-->
+		<table class="table" ng-table="blockchaintableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
+			   template-pagination="custom/pager" >
+
+			<tr ng-repeat="i in $data"  >
+				<td  data-title="'高度'"> {{i.height}}</td>
+				<td  data-title="'日期'"><span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span></td>
+				<td  data-title="'创建者'">{{i.id}}</td>
+				<td  data-title="'交易信息'" ><i class="level" ng-click="showdealInfo(i)">{{i.numberOfTransactions}}</i></td>
+				<td  data-title="'金额'">{{i.totalAmount}}<i class="XAScolor">XAS</i></td>
+				<td  data-title="'费用'">{{i.totalFee | xasFilter}}<i class="XAScolor">XAS</i></td>
+				<td  data-title="'奖励'">{{i.reward | xasFilter}}<i class="XAScolor">XAS</i></td>
+			</tr>
 		</table>
+		<script type="text/ng-template" id="custom/pager">
+			<ul class="pagination ng-table-pagination">
+				<li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">
+					<a ng-switch-when="prev" ng-click="params.page(page.number)" href="">
+						<i class="mdi-hardware-keyboard-arrow-left">上一页</i>
+					</a>
+					<a ng-switch-when="first" ng-click="params.page(page.number)" href="">
+						<span ng-bind="page.number"></span>
+					</a>
+					<a ng-switch-when="page" ng-click="params.page(page.number)" href="">
+						<span ng-bind="page.number"></span>
+					</a>
+					<a ng-switch-when="more" ng-click="params.page(page.number)" href="">&#8230;</a>
+					<a ng-switch-when="last" ng-click="params.page(page.number)" href="">
+						<span ng-bind="page.number"></span>
+					</a>
+					<a ng-switch-when="next" ng-click="params.page(page.number)" href="">
+						<i class="mdi-hardware-keyboard-arrow-right">下一页</i>
+					</a>
+				</li>
+			</ul>
+		</script>
 	</div>
 
 

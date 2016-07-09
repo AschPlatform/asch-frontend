@@ -1,9 +1,6 @@
-angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window) {
+angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams) {
 	$rootScope.active = 'blockforging';
 	$rootScope.userlogin = true;
-	// if(!$rootScope.isLogin){
-	// 	$window.location.href = '#/login'
-	// }
 	//设置基本像素
 	document.documentElement.style.fontSize = document.documentElement.clientWidth/20 + "px";
 	// 设置  进度条
@@ -46,10 +43,6 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 	$scope.assigneeShowInfo = function () {
 		$rootScope.assigneeinfo = true;
 		$rootScope.isBodyMask = true;
-		// $scope.headCancelData = {
-		//
-		// };
-		// $scope.$broadcast('headCancel', $scope.headCancelData);// 向子级传递数据
 
 	}
 	$scope.init = function() {
@@ -63,16 +56,44 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 		}).error(function (res) {
 
 		});
-		apiService.blocks({
-			publicKey:$rootScope.publickey
-		}).success(function (res) {
-			if(res.success='true'){
-				$scope.blocks=res.blocks;
-			};
-		}).error(function (res) {
-
+		// apiService.blocks({
+		// 	publicKey:$rootScope.publickey
+		// }).success(function (res) {
+		// 	if(res.success='true'){
+		// 		$scope.blocks=res.blocks;
+		// 	};
+		// }).error(function (res) {
+        //
+		// });
+////////////////ng-table
+		$scope.blockforgingtableparams = new NgTableParams({
+			page: 1,
+			count: 20,
+			sorting: {
+				height: 'desc'
+			}
+		}, {
+			total: 0,
+			counts: [],
+			getData: function($defer,params) {
+				//console.log($defer)
+				// console.log(params)
+				apiService.blocks({
+					generatorPublicKey:$rootScope.publickey,
+					limit: params.count(),
+					orderBy: 'height:desc',
+					offset: (params.page() - 1) * params.count()
+				}).success(function(res) {
+					//  $scope.res =res;
+					// params.data=res.delegates;
+					params.total(res.count);
+					// return res.delegates;
+					$defer.resolve(res.blocks);
+				}).error(function(res) {
+					toastError('服务器错误！');
+				});
+			}
 		});
-
 
 	};
 

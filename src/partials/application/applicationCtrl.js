@@ -1,11 +1,6 @@
-angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window) {
 	$rootScope.active = 'application';
 	$rootScope.userlogin = true;
-
-	if(!$rootScope.isLogin){
-		$window.location.href = '#/login'
-	}
-
 	
 	$scope.init = function(params) {
 		// window.location.href = '#/login';

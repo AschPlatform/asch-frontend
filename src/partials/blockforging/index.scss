@@ -68,11 +68,12 @@
     line-height: 0.40rem;
     margin-right: 0.20rem;
     font-size: 0.20rem;
+    cursor: pointer;
   }
   .nav .active{
     background: #ffffff;
-    border-bottom: 0.05rem solid #e97a28;
-    color: #e97a28;
+    border-bottom: 0.05rem solid #3989de;
+    color: #3989de;
     height: 0.57rem;
   }
   /*.nav 结束*/
@@ -119,7 +120,7 @@
 
   .orangeFont{
     font-size: 0.30rem;
-    color: #e97a28;
+    color: #3989de;
   }
   /*.baseInfo 结束*/
 
@@ -206,7 +207,7 @@
 
   .allMoney{
     position: relative;
-    background: #e97a28;
+    background: #3989de;
   }
   .rank{
     position: relative;

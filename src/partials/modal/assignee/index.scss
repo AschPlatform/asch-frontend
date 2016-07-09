@@ -3,7 +3,7 @@
   /*height: 590px;*/
   background-color: #fff;
   box-sizing: border-box;
-  padding: 0 46px;
+  padding: 0px 46px;
   .h_header {
     height: 109px;
     line-height: 109px;
@@ -29,20 +29,22 @@
   .item_detail {
 
     box-sizing: border-box;
-    height: 188px;
+   // height: 188px;
     width: 100%;
     .left{
       float: left;
       width: 100px;
-      height: 188px;
+     // height: 188px;
       color: #777777;
       font-size: 20px;
       line-height: 48px;
+      margin-bottom: 20px;
     }
     .right{
       float: right;
       width: 623px;
       //height: 189px;
+      margin-bottom: 20px;
       input{
         width: 100%;
         height: 48px;
@@ -63,7 +65,7 @@
   .btn_wrap{
     width: 100%;
     height: 50px;
-    margin-top: 45px;
+    //margin-top: 45px;
     a{
       color: #3276c3;
       font-size: 20px;
@@ -76,7 +78,7 @@
       width:145px;
       line-height: 45px;
       text-align: center;
-      background:#e97a28;
+      background:#3989de;
       border: 0;
       outline: 0;
       font-size: 28px;
@@ -86,13 +88,15 @@
 
 
   }
+  .clearfloat{clear:both}
   p{
-    color: #c53e3e;
+    color: #3989de;
     font-size: 14px;
     text-align: right;
     margin-top: 15px;
+    margin-bottom: 40px;
+    height: 40px;
+    width: 100%;
   }
-  .hide{
-    display:none;
-  }
+
 }

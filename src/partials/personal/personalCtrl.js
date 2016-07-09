@@ -1,15 +1,14 @@
-angular.module('asch').controller('personalCtrl',function($scope, $rootScope, apiService, checkloginservice,ipCookie,$window,$http) {
+angular.module('asch').controller('personalCtrl',function($scope, $rootScope, apiService, checkloginservice,ipCookie,$window,$http,userService) {
 	$rootScope.active = 'personal';
 	$rootScope.userlogin = true;
+	
 	//下拉菜单隐藏
 	// 账单默认显示
 	$scope.accountInfo  = true;
 	$scope.passwordInfo  = false;
-	// checkloginservice();
+
 	// 二级密码 $scope.secondpassword
-	if(!$rootScope.isLogin){
-		$window.location.href = '#/login'
-	}
+
 	$scope.accountchange = function () {
 		$scope.accountInfo = true;
 		$scope.passwordInfo  = !$scope.accountInfo;
@@ -25,10 +24,9 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 	//个人中心账户信息
 	function Account(address) {
 		apiService.account({
-			address:ipCookie('address')
+			address:$rootScope.useraddress
 		}).success(function (res) {
 			if(res.success='true'){
-				//console.log('account'+ res.account.balance)
 				$scope.accountinfo=res.account
 			};
 		}).error(function (res) {
@@ -41,7 +39,7 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 		var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
 		
 		if(reg.test($scope.secondpassword)){
-			var transaction = AschJS.signature.createSignature(ipCookie('userSecret'), $scope.secondpassword);
+			var transaction = AschJS.signature.createSignature(userService.setsecret, $scope.secondpassword);
 			$http({
 				method: 'POST',
 				url:'{{passwordApi}}',
@@ -64,8 +62,6 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 	}
 	// 退出函数
 	$scope.quitout = function () {
-		//console.log(1)
-		//ipCookie('userSecret','')
 	   $window.location.href = '#/login'
 	}
 });

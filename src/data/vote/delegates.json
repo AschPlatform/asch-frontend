@@ -10,7 +10,8 @@
       "missedblocks": 0,
       "rate": 1,
       "approval": "100.00",
-      "productivity": "100.00"
+      "productivity": "100.00",
+      "voted": true
     },
     {
       "username": "genesis_77",

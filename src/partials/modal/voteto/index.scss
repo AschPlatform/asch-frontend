@@ -1,4 +1,4 @@
-.voteto {
+.voteto,.deletevote {
   width: 840px;
   /*height: 590px;*/
   background-color: #fff;
@@ -65,7 +65,7 @@
           float: left;
         }
         .right{
-          color: #c53e3e;
+          color: #3989de;
           float: right;
           padding-right:42px;
 
@@ -81,6 +81,9 @@
     margin-top: 43px;
     font-size: 20px;
     color:#aaa;
+    input{
+      width: 660px;
+    }
   }
   .btn_wrap{
     width: 100%;
@@ -96,15 +99,16 @@
       float: right;
     }
     button{
-      width:145px;
+      width: 145px;
       line-height: 45px;
       text-align: center;
-      background:#e97a28;
+      background: #3989de;
       border: 0;
       outline: 0;
-      font-size: 28px;
+      font-size: 19px;
       color: #ffffff;
       float: right;
+      border-radius: 5px;
     }
 
 
@@ -116,7 +120,7 @@
   }
   .tar{
     text-align: right;
-    color: #c53e3e;
+    color: #3989de;
     font-size: 14px;
 
 
@@ -134,6 +138,17 @@
   }
 }
 #voteto{
+  width: 840px;
+  //height: 530px;
+  z-index: 1000;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -420px;
+  margin-top: -295px;
+}
+#deletevoteto{
   width: 840px;
   //height: 530px;
   z-index: 1000;

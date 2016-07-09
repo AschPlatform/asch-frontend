@@ -1,0 +1,114 @@
+.clear{
+  clear:both ;
+}
+/*我要投票*/
+.toVote{
+  width: 55.7%;
+  border: 1px solid #dddddd;
+  float: left;
+}
+/*投票记录*/
+.voteRecord{
+  width: 36%;
+  margin-left: 50px;
+  border: 1px solid #dddddd;
+  float: left;
+}
+.vote_content{
+  padding: 0 20px;
+}
+
+.nav{
+  position: relative;
+  top: 0;
+  height: 67px;
+  width: 100%;
+  background: #efefef;
+}
+.nav span{
+  line-height: 67px;
+  font-size:30px;
+  color: #777777;
+  display: inline-block;
+  text-align: center;
+  border-right: 1px solid #dddddd;
+}
+.toVote span{
+  width: 187px;
+}
+.voteRecord span{
+  width: 180px;
+}
+.nav_register {
+  margin-top: 15px;
+  width: 200px;
+  height: 40px;
+  background: #3276c3;
+  color: #fff;
+  float: right;
+  text-align: center;
+  line-height: 40px;
+  margin-right:20px;
+  font-size: 20px;
+}
+
+
+
+.vote_title{
+  height: 80px;
+  line-height: 80px;
+  font-size:30px;
+  padding-left:27px ;
+  color: #333333;
+  border-bottom: 5px solid #bcbcbc;
+}
+.vote_title span{
+  font-size: 20px;
+  color: #aaaaaa;
+}
+.vote_title .tip{
+  font-size: 18px !important;
+  float: right;
+  margin-right: 12px;
+  color: #aaaaaa;
+  line-height: 50px;
+}
+.vote_title .voteButton{
+  margin-top: 25px;
+  width:100px;
+  height: 40px;
+  background: #e97a28;
+  color: #fff;
+  float: right;
+  text-align: center;
+  line-height: 40px;
+  margin-right:20px;
+  font-size: 18px;
+  cursor:pointer;
+}
+.vote_title .deleteButton{
+  margin-top: 25px;
+  width:100px;
+  height: 40px;
+  background: #c12f2f;
+  color: #fff;
+  float: right;
+  text-align: center;
+  line-height: 40px;
+  margin-right:20px;
+  font-size: 18px;
+}
+.noSelect{
+  width: 20px !important;
+  height:20px !important;
+  display: inline-block;
+  background: url(noselect.png) no-repeat center center;
+  background-size:100% auto ;
+}
+.selected{
+  width: 20px !important;
+  height:20px !important;
+  display: inline-block;
+  background: url(selected.png) no-repeat center center;
+  background-size:100% auto ;
+}

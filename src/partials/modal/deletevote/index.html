@@ -1,11 +1,11 @@
-<div class="voteto" ng-controller="votetoCtrl" ng-init="init()">
+<div class="deletevote" ng-controller="deletevoteCtrl" ng-init="init()">
     <div class="h_header">
-        <span>投票给受托人</span><a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a>
-        <p class="tips">请确认您的选择与投票。</p>
+        <span>取消给受托人的投票</span><a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a>
+        <p class="tips"></p>
     </div>
     <div class="listing">
         <ul >
-            <li class="left" ng-repeat="i in showusername"> {{ i.username }}<span class="right">{{ i.address }}</span></li>
+            <li class="left" ng-repeat="i in showdelusername"> {{ i.username }}<span class="right">{{ i.address }}</span></li>
 
         </ul>
     </div>
@@ -14,7 +14,7 @@
         <label for="ercemima" ng-show="userpublickey">二级密码</label> <input maxlength="16" ng-model="secondpassword" id= "ercemima" type="text" class="tips_voteto" ng-show="userpublickey">
     </div>
     <div class="btn_wrap">
-        <button ng-click="checkvoteto()">确认投票</button>
+        <button ng-click="checkvoteto()">删除投票</button>
         <a href="" ng-click="Close()">取消</a>
     </div>
     <p class="tar">需要支付 1 XAS</p>

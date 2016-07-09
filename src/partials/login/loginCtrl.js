@@ -2,58 +2,58 @@
 // 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
 // }]);
 
-angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiService, ipCookie, $window, $location) {
+angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiService, ipCookie, $window, $location,userService) {
 	$rootScope.userlogin = false;
 	 $rootScope.register = true;
 	 $rootScope.creatpwd = false;
 	 $rootScope.checkpwd = false;
 	 $rootScope.homedata = {};
-
 	//密码生成
-	var code = new Mnemonic(Mnemonic.Words.ENGLISH);
-	$scope.secret=code.toString();
-	var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
-	var address = AschJS.crypto.getAddress(publicKey);
+
+	//$scope.secret=code.toString();
+	//console.log($scope.secret)
+
+	//var address = AschJS.crypto.getAddress(publicKey);
 
 	$scope.newuser = function () {
 		$rootScope.register = false;
 		$rootScope.creatpwd = true;
 		$rootScope.checkpwd = false;
+		var code = new Mnemonic(Mnemonic.Words.ENGLISH);
 		$scope.newsecret=code.toString();
 		newpublicKey = AschJS.crypto.getKeys($scope.newsecret).publicKey;
+		$rootScope.newpublicKey=newpublicKey
 	};
 
+	// if(userService.setsecret){
+	// 			$scope.secret =userService.setsecret;
+	// } else {
+	// 	$scope.secret = '';
+	// }
 	//默认保持登录
 	$scope.saveLogin =true;
 	//读取cookie
-	if(ipCookie('userSecret')){
-		if($scope.saveLogin){
-			$scope.secret =ipCookie('userSecret');
-		} else {
-			$scope.secret='';
-		}
-	};
-	// 取消默认保持状态清楚cookie
-	$scope.saveLoginChange = function () {
-		$scope.saveLogin =!$scope.saveLogin;
-		//}
-		//console.log($scope.saveLogin)
-		if(!$scope.saveLogin){
-
-			$scope.secret =ipCookie('userSecret');
-		}
-		else {
-			ipCookie('userSecret','');
-			$scope.secret =ipCookie('userSecret');
-		}
-	}
-	// //确认下一步
-	// $scope.checkstep = function () {
-	// 	$rootScope.register = false;
-	// 	$rootScope.creatpwd = false;
-	// 	$rootScope.checkpwd = true;
+	// if(ipCookie('userSecret')){
+	// 	if($scope.saveLogin){
+	// 		$scope.secret =ipCookie('userSecret');
+	// 	} else {
+	// 		$scope.secret='';
+	// 	}
 	// };
-	// 返回
+	// 取消默认保持状态清楚cookie
+	// $scope.saveLoginChange = function () {
+	// 	$scope.saveLogin =!$scope.saveLogin;
+	// 	//}
+	// 	//console.log($scope.saveLogin)
+	// 	if(!$scope.saveLogin){
+    //
+	// 		$scope.secret =ipCookie('userSecret');
+	// 	}
+	// 	else {
+	//
+	// 		$scope.secret =ipCookie('userSecret');
+	// 	}
+	// }
 	$scope.backto = function () {
 		$rootScope.register = true;
 		$rootScope.creatpwd = false;
@@ -72,13 +72,14 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 			}).success(function(res) {
 				$rootScope.homedata = res;
 				if(res.success='true'){
-					ipCookie('userSecret',$scope.newsecret);
+					userService.setsecret($scope.newsecret)
+					// console.log(userService.setsecret)
+					// ipCookie('userSecret',$scope.newsecret);
 					$rootScope.useraddress=res.account.address;
 					$rootScope.userbalance=res.account.balance;
 					$rootScope.userpublickey=res.account.secondPublicKey;
 					// 是否登录的全局变量
 					$rootScope.isLogin = true;
-					console.log(ipCookie('userSecret'))
 					$window.location.href = '#/home'
 				}
 			}).error(function(res) {
@@ -87,7 +88,6 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 		} else {
 			toastError('您输入的主密码不一致')
 		}
-		//$location.path('/home');
 	}
 	$scope.saveTxt = function (filename) {
 		var text = $scope.newsecret;
@@ -107,40 +107,34 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 		document.body.removeChild(link);
 		$scope.saveCookie();
 	}
-	$scope.saveCookie = function () {
-		ipCookie('userSecret',$scope.secret);
-		//console.log(ipCookie('userSecret'));
-	}
+	// $scope.saveCookie = function () {
+	// 	ipCookie('userSecret',$scope.secret);
+	// 	//console.log(ipCookie('userSecret'));
+	//}
 	//登录
 	$scope.registerin = function () {
-		//$location.path('/home').replace();
-		//if($scope.secret ==ipCookie('userSecret')){
-			// 放在localstroge secret
+		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
+		    $rootScope.publickey = publicKey;
 			apiService.homeloginin({
 				publicKey: publicKey
 			}).success(function(res) {
 				$rootScope.homedata = res;
 				if(res.success='true'){
+					userService.setsecret($scope.secret)
 					// 是否登录的全局变量
 					$rootScope.isLogin = true;
 					$rootScope.useraddress=res.account.address;
 					$rootScope.userbalance=res.account.balance;
 					$rootScope.userpublickey=res.account.secondPublicKey;
-					$rootScope.publickey=res.account.publicKey;
-					
+					//$rootScope.publickey=res.account.publicKey;
 					$window.location.href = '#/home'
+				} else{
+					toastError('服务器错误!');
 				}
 			}).error(function(res) {
 				toastError('服务器错误!');
-			});
-		// } else{
-		// 	toastError('密码格式不符合规范');
-		// }
-
-
+			})
 	}
-
-
 	//下一步登录
 	$scope.nextStep = function () {
 		$rootScope.register = false;

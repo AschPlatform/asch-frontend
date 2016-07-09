@@ -1,4 +1,4 @@
-angular.module('asch').filter('liskFilter', function () {
+angular.module('asch').filter('xasFilter', function () {
     return function (fee) {
         if (!fee) {
             return 0;

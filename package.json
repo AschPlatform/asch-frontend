@@ -37,7 +37,8 @@
     "gulp-uglify": "^1.4.2",
     "gulp-useref": "^2.0.0",
     "gulp-util": "^3.0.7",
-    "json-beautify": "^1.0.1"
+    "json-beautify": "^1.0.1",
+    "ng-table": "^0.5.4"
   },
   "devDependencies": {
     "colors": "^1.1.2",

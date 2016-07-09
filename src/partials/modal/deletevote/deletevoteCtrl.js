@@ -1,18 +1,18 @@
-angular.module('asch').controller('votetoCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$http,userService) {
+angular.module('asch').controller('deletevoteCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$http,userService) {
 
-    $rootScope.votetoinfo = false;
-   
+    $rootScope.deletevotetoinfo = false;
+
     $scope.Close = function () {
         $rootScope.isBodyMask = false;
-        $rootScope.votetoinfo = false;
+        $rootScope.deletevotetoinfo = false;
     };
 
-    $scope.checkvoteto = function() {
+    $scope.checkvoteto = function(params) {
         var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         $scope.secondpassword = $scope.secondpassword || undefined;
         if($rootScope.userpublickey){
             if(reg.test($scope.secondpassword)){
-                var transaction = AschJS.vote.createVote(userService.setsecret, $rootScope.voteContent,$scope.secondpassword)
+                var transaction = AschJS.vote.createVote(userService.setsecret, $rootScope.deletevoteContent,$scope.secondpassword)
                 $http({
                     method: 'POST',
                     url:'{{passwordApi}}',
@@ -20,9 +20,8 @@ angular.module('asch').controller('votetoCtrl', function($scope, $rootScope, api
                     data:transaction
                 }).success( function(res) {
                         if(res.success='true'){
-                            $rootScope.checkobj = {}
                             $rootScope.coedobj = {}
-                            console.log($rootScope.checkobj);
+                            console.log($rootScope.coedobj);
                             $scope.Close()
                             toast('投票成功!')
                         };
@@ -33,8 +32,8 @@ angular.module('asch').controller('votetoCtrl', function($scope, $rootScope, api
             }else{
                 toastError('支付密码输入格式不正确!');
             }
-        } else {
-            var transaction = AschJS.vote.createVote(userService.setsecret, $rootScope.voteContent,$scope.secondpassword)
+        }else {
+            var transaction = AschJS.vote.createVote(userService.setsecret, $rootScope.deletevoteContent,$scope.secondpassword)
             $http({
                 method: 'POST',
                 url:'{{passwordApi}}',
@@ -42,9 +41,8 @@ angular.module('asch').controller('votetoCtrl', function($scope, $rootScope, api
                 data:transaction
             }).success( function(res) {
                     if(res.success='true'){
-                        $rootScope.checkobj = {}
                         $rootScope.coedobj = {}
-                        console.log($rootScope.checkobj);
+                        console.log($rootScope.coedobj);
                         $scope.Close()
                         toast('投票成功!')
                     };

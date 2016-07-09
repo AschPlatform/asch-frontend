@@ -6,7 +6,7 @@
     background: #efefef;
     //overflow-y: auto;
     .asch_nav {
-        background: #182533;
+        background: #1a4273;;
         height: 80px;
         display: flex;
         display: box;
@@ -37,7 +37,7 @@
                 /*width: 105px;*/
                 box-sizing: border-box;
                 line-height: 80px;
-                border-right: 1px solid #0b1219;
+                border-right: 1px solid #153863;
                 margin: 0;
                 cursor: pointer;
                 &:first-child {
@@ -95,7 +95,7 @@
             }
 
             .active {
-                background: #e97a28!important;
+                background: #3989de!important;
             }
         }
     }

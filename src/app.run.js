@@ -1,28 +1,15 @@
-angular.module('asch').run(function($rootScope, $location, ipCookie, apiService, $window) {
+angular.module('asch').run(function($rootScope, $location, ipCookie, apiService, $window,userService) {
     $rootScope.isBodyMask = false;
     $rootScope.userlogin = false;
-
-    // console.log(Mnemonic);
-    // if( !$rootScope.userInfo ) {
-    //     var cookie_userInfo = ipCookie( 'rrc_user' );
-    //     if( !cookie_userInfo ) {
-    //         $location.path( '/login');
-    //         return;
-    //     }
-    //     $rootScope.userInfo = cookie_userInfo;
-    // }
-    //
-    // $rootScope.quickLogin = function () {
-    //     apiService.kickout();
-    //     $rootScope.userInfo = undefined;
-    //     ipCookie.remove( 'rrc_user' );
-    //     $window.location.href = '#/login';
-    // };
-    // $rootScope.headInfo = function () {
-    //     $rootScope.isBodyMask = true;
-    //     $rootScope.showInfo = true;
-    // };
-    // $rootScope.$on('showInfo', function(d,data) {
-    //     $rootScope.showInfo = data;
-    // });
+    $rootScope.checkobj = {};
+    $rootScope.coedobj = {};
+    $rootScope.$on('$routeChangeStart',function (r,n,x) {
+        console.log('监听路由跳转')
+        console.log(r,n,x)
+        console.log(userService.secret)
+        if(!userService.secret){
+            
+            $window.location.href = '#/login'
+        }
+    })
 });

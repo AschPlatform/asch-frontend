@@ -1,26 +1,22 @@
 <div class="assignee" ng-controller="assigneeCtrl" ng-init="init()">
-    <div class="h_header hide"><span>注册为受托人</span><a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a></div>
-    <div class="h_header"><span>账户确认</span><a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a></div>
-    <div class="item_detail one hide">
+    <div class="h_header" ><span>注册为受托人</span><a class="close" href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a></div>
+    <!--<div class="h_header" ng-show="checkit"><span>账户确认</span><a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a></div>-->
+    <div class="item_detail one" >
         <div class="left">受托人名称</div>
         <div class="right">
-            <input type="text" value="请输入受托人名称">
-            <div class="explain">要成为受托人是需要注册的，请先选好您的受托人昵称，以便于您推
-                广自己的受托人帐户，并获得投票。只有得票率进入前101名的人才有
-                资格锻造，所有锻造费用将平均分配给101位受托人。
-            </div>
+            <input type="text" ng-model="userName" placeholder="请输入受托人名称">
         </div>
-    </div>
-    <div class="item_detail two">
-        <div class="left">主密码</div>
+        <div class="left" ng-show="userpublickey">二级密码</div>
         <div class="right">
-            <input type="text" value="请输入密码确认">
+            <input placeholder="至少8为数字和字母组合"maxlength="16" ng-model="secondpassword"type="text" class="tips_voteto" ng-show="userpublickey">
         </div>
     </div>
-    <div class="btn_wrap">
-        <button>注册</button>
-        <a href="" ng-click="Close()">返回</a>
+
+    <div class="btn_wrap" >
+        <button ng-click="nextstep()">注册</button>
+        <a href="" ng-click="Close()">取消</a>
 
     </div>
-    <p>需要支付0.33XAS</p>
+    <div class="clearfloat"></div>
+    <p>需要支付100XAS</p>
 </div>
