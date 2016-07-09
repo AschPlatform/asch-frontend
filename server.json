@@ -1,67 +1,60 @@
 {
+	"server": {
+		"dev": "192.168.1.104:4096"
+	},
 	// 登录api
 	"loginApi": {
-		"serve": "/data/login/login.json",
-		"prod": "/api/accounts/open"
+		"mock": "/data/login/login.json",
+		"url": "//api/accounts/open"
 	},
 	//登录接口
 	"homeloginApi": {
-		"serve": "/data/home/accounts.json",
-		"dev": "//192.168.1.104:4096/api/accounts/open2",
-		"prod": "//192.168.1.104:4096/api/accounts/open2"
+		"mock": "/data/home/accounts.json",
+		"url": "/api/accounts/open2"
 	},
 	//	余额账单Apiget /api/accounts?address=4205898691220223329L
 	"accountApi": {
-		"serve": "/data/home/accounts.json",
-		"dev": "//192.168.1.104:4096/api/accounts",
-		"prod": "//api/accounts"
+		"mock": "/data/home/accounts.json",
+		"url": "//api/accounts"
 	},
 	//	余额账单Apiget /api/transactions
 	"transactionsApi": {
-		"serve": "/data/home/transactions.json",
-		"dev": "//192.168.1.104:4096/api/transactions",
-		"prod": "//api/transactions"
+		"mock": "/data/home/transactions.json",
+		"url": "//api/transactions"
 	},
 	// 获取受托人接口
 	"delegatesApi": {
-		"serve": "/data/vote/delegates.json",
-		"dev": "//192.168.1.104:4096/api/delegates",
-		"prod": "//api/delegates"
+		"mock": "/data/vote/delegates.json",
+		"url": "//api/delegates"
 	},
 	// 获取我的投票列表借口
 	"accountsApi": {
-		"serve": "/data/vote/delegates.json",
-		"dev": "//192.168.1.104:4096/api/accounts/delegates",
-		"prod": "//api/accounts/delegates"
+		"mock": "/data/vote/delegates.json",
+		"url": "//api/accounts/delegates"
 	},
 	// 获取我的投票列表借口
 	"blocksApi": {
-		"serve": "/data/blockchain/blocks.json",
-		"dev": "//192.168.1.104:4096/api/blocks",
-		"prod": "//api/blocks"
+		"mock": "/data/blockchain/blocks.json",
+		"url": "//api/blocks"
 	},
 	//二级密码设置
 	"passwordApi": {
-		"serve": "/data/personal/password.json",
-		"dev": "//192.168.1.104:4096/peer/transactions",
-		"prod": "//peer/transactions"
+		"mock": "/data/personal/password.json",
+		"url": "//peer/transactions"
 	},
 	//二级密码设置
 	"payApi": {
-		"serve": "/data/pay/pay.json",
-		"dev": "//192.168.1.104:4096/peer/transactions",
-		"prod": "//peer/transactions"
+		"mock": "/data/pay/pay.json",
+		"url": "//peer/transactions"
 	},
 	//受托人的基本信息
 	"blockforgingApi": {
-		"serve": "/data/blockforging/delegates.json",
-		"dev": "//192.168.1.104:4096/api/delegates/get",
-		"prod": "//api/delegates/get"
+		"mock": "/data/blockforging/delegates.json",
+		"url": "//api/delegates/get"
 	},
 	//入围受托人接口
 	"letinvoteApi": {
-		"serve": "/data/vote/delegates.json",
-		"dev": "//192.168.1.104:4096/api/delegates",
-		"prod": "//api/delegates"
+		"mock": "/data/vote/delegates.json",
+		"url": "//api/delegates"
 	}
 }

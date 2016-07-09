@@ -39,7 +39,7 @@ var inject = require('gulp-inject');
 
 var serverApi = cjson.load('./server.json');
 var args = process.argv.slice(2);
-var cmd = 'serve';
+var cmd = 'mock';
 var projectName = 'asch';
 if (/^--project/.test(args[1])) {
 	projectName = args[1].split('=')[1];
@@ -128,8 +128,8 @@ function outputHtml(path) {
 		.pipe(inject(injectFiles, injectOptions));
 
 	// 如果是dev命令且--api=serve, 则接口使用假数据接口
-	if (args[0] == 'dev' && args[1] == '--api=serve') {
-		env = 'serve';
+	if (args[0] == 'dev' && args[1] == '--api=mock') {
+		env = 'mock';
 	}
 
 	compileStream = compileStream
@@ -296,14 +296,22 @@ gulp.task('connect', function() {
 				}
 				gulp.src(url)
 				.pipe(gulpif('*.js', replace(/\{\{(\w+Api)\}\}/g, function(match, $1) {
-					var envArr = ['serve', 'dev', 'dev2', 'dev3', 'prod', 'beta'];
+					var envArr = ['mock', 'dev', 'dev2', 'dev3', 'prod', 'beta'];
 					//var env = cmd == 'beta' ? 'prod' : cmd;
 					var env = cmd;
 					// 默认使用serve环境的api, 如果有环境参数，则切换到对应环境
 					if (params.env && envArr.indexOf(params.env) > -1) {
 						env = params.env;
 					}
-					return serverApi[$1][env];
+					if (env == 'mock') {
+						return serverApi[$1][env];
+					}
+					var serverAddr = serverApi["server"][env];
+					if (serverAddr) {
+						return serverAddr + serverApi[$1]['url'];
+					} else {
+						return serverApi[$1]['url'];
+					}
 				})))
 				// 动态编译scss文件
 				.pipe(gulpif('*.scss', gulpScss(scssOptions)))
