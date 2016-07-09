@@ -24,61 +24,33 @@
 									<!--<span class="greyFont">账户名 : </span> {{accountinfo.address}}-->
 								<!--</div>-->
 								<div class="sum_text text_row">
-									<span class="greyFont">总余额 : </span> <span class="orangeFont"> {{accountinfo.balance}}</span> <span class="greyFont">XAS</span>
+									<span class="greyFont">总余额 : </span> <span class="orangeFont"> {{userService.balance  | xasFilter  }}</span> <span class="greyFont">XAS</span>
 								</div>
 								<!--<div class="dallor_text text_row">-->
 									<!--<span class="greyFont">美元折算 : </span><span class="orangeFont"> $0.28</span>-->
 								<!--</div>-->
 								<div class="publickey_text text_row">
-									<span class="greyFont">公钥 : </span> {{accountinfo.publicKey}}
+									<span class="greyFont">公钥 : </span> {{userService.publicKey}}
 								</div>
 								<div class="summary_text text_row">
-									<span class="greyFont">摘要 : </span> {{accountinfo.address}}
+									<span class="greyFont">摘要 : </span> {{userService.address}}
 								</div>
 							</div>
 							<div class="clear"></div>
 						</div>
 					</div>
-					<!--<div class="businessInfo">-->
-					<!--<div class="_title">-->
-						<!--交易记录<span class="greyFont_size">   共六条</span>-->
-					<!--</div>-->
-					<!--<div class="business_text">-->
-						<!--<div class="">-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!---->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-							<!--1<br/>-->
-						<!--</div>-->
-						<!--<div class="more">-->
-							<!--加载更多...-->
-						<!--</div>-->
-					<!--</div>-->
-				<!--</div>-->
+
 				</div>
 				<!-- -账户信息 end -->
 				<!-- -支付信息 start -->
 				<div ng-show="passwordInfo" class="passwordInfo_cont ">
-					<div class="finishSet" ng-show="accountinfo.secondPublicKey||passwordsure">
+					<div class="finishSet" ng-show="userService.secondPublicKey||passwordsure">
 						<img src="/assets/personal/tip_passwordNo.png" class="finishSet_icon"/>
 						<div class="finishSet_text">
 							您已经设置好支付密码，无需设置。
 						</div>
 					</div>
-					<div class="setPassword" ng-hide="accountinfo.secondPublicKey || passwordsure">
+					<div class="setPassword" ng-hide="userService.secondPublicKey || passwordsure">
 						<div class="_title">
 							支付密码
 						</div>

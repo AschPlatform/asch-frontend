@@ -5,11 +5,11 @@
     </div>
     <div class="_item">
         <label >接收者</label>
-        <input type="number"  ng-model="collect" id="pay_item2">
+        <input type="text" required ng-model="fromto" ng-trim="true"  id="pay_item2">
     </div>
     <div class="_item">
         <label >输入金额</label>
-        <input type="number" ng-model="amount"  id="pay_item3">
+        <input type="number" required ng-model="amount" ng-trim="true" id="pay_item3">
     </div>
     <div class="_item" ng-show="userpublickey">
         <label >二级密码</label>
@@ -19,6 +19,6 @@
         <label >手续费</label>
         <input type="text" ng-model="fee" id="pay_item4" disabled >
     </div>
-    <p>请确保您正在发送LSK给正确的地址，本操作无法撤消。</p>
-    <button class="sent" ng-click="sentMsg()">发送LSK 拷贝</button>
+    <p>请确保您正在发送XAS给正确的地址，本操作无法撤消。</p>
+    <button class="sent" ng-click="sentMsg()">发送</button>
 </div>

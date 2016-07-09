@@ -1,4 +1,4 @@
-angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams) {
+angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams,userService) {
     $rootScope.active = 'vote';
     $rootScope.userlogin = true;
    $scope.letin = true;
@@ -21,7 +21,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 //console.log($defer)
                // console.log(params)
                 apiService.letinvote({
-                    address:'',
+                    address:userService.address,
                     orderBy: 'rate:asc',
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()
@@ -82,8 +82,8 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             total: 0,
             counts: [],
             getData: function($defer,params) {
-                apiService.letinvote({
-                    address:'',
+                apiService.accounts({
+                    address:userService.address,
                     orderBy: 'rate:asc',
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()
@@ -111,7 +111,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             counts: [],
             getData: function($defer,params) {
                 apiService.letinvote({
-                    address:'',
+                    address:userService.address,
                     orderBy: 'rate:asc',
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()
@@ -164,7 +164,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             var showdelusername = {};
 
             angular.forEach($rootScope.coedobj, function(data,index,array){
-                deletevoteContent.push('+'+data.publicKey);
+                deletevoteContent.push('-'+data.publicKey);
                 showdelusername[data.username]={
                     "username":data.username,
                     "address":data.address
@@ -188,7 +188,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             var showusername = {};
 
             angular.forEach($rootScope.checkobj, function(data,index,array){
-                voteContent.push('-'+data.publicKey);
+                voteContent.push('+'+data.publicKey);
                 showusername[data.username]={
                     "username":data.username,
                     "address":data.address

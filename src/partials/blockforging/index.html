@@ -1,34 +1,41 @@
 <div id="blockforging" ng-controller="blockforgingCtrl" ng-init="init()">
 		<div class="accountInfo_cont">
 			<div class="_title">
-				受托人基本信息  :{{delegate.username}}
-				<div class="nav_register" ng-click="assigneeShowInfo()">
-					想成为受托人 注册
+				受托人基本信息
+				<div class="nav_register" ng-click="assigneeShowInfo()" ng-show="!delegate.username">
+					注册受托人
+				</div>
+				<div class="nav_register"  ng-show="delegate.username">
+					{{delegate.username}}
 				</div>
 			</div>
 			<div class="circlePicInfo">
 				<div class="circle allMoney">
 					<div class="pagea circle"></div>
 					<div class="text1">总收益</div>
-					<div class="text2">{{delegate.forged}}</div>
+					<div class="text2"  ng-show="delegate.forged || delegate.forged == 0">{{delegate.forged | xasFilter }}</div>
+					<div class="text2"  ng-show="!delegate.forged && delegate.forged != 0">--</div>
 					<div class="text3">XAS</div>
 				</div>
 				<div class="circle rank">
 					<div class="pagea circle">
 						<div class="title">排名</div>
-						<div class="num">{{delegate.rate}}</div>
+						<div class="num"  ng-show="delegate.rate  || delegate.rate == 0">{{delegate.rate}}</div>
+						<div class="num" ng-show="!delegate.rate && delegate.rate != 0">--</div>
 					</div>
 				</div>
 				<div class="circle output">
 					<div class="pagea circle">
 						<div class="title">生产率</div>
-						<div class="num">{{delegate.productivity}}%</div>
+						<div class="num" ng-show="delegate.productivity  || delegate.productivity == 0">{{delegate.productivity}}%</div>
+						<div class="num" ng-show="!delegate.productivity  && delegate.productivity != 0">--</div>
 					</div>
 				</div>
 				<div class="circle depiao">
 					<div class="pagea circle">
 						<div class="title">得票率</div>
-						<div class="num">{{delegate.approval}}%</div>
+						<div class="num" ng-show="delegate.approval   || delegate.approval == 0">{{delegate.approval}}%</div>
+						<div class="num" ng-show="!delegate.approval  && delegate.approval != 0">--</div>
 					</div>
 				</div>
 
@@ -47,7 +54,7 @@
 						<td  data-title="'日期'"><span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span></td>
 						<td  data-title="'创建者'">{{i.id}}</td>
 						<td  data-title="'交易信息'" ><i class="level" ng-click="showdealInfo(i)">{{i.numberOfTransactions}}</i></td>
-						<td  data-title="'金额'">{{i.totalAmount}}<i class="XAScolor">XAS</i></td>
+						<td  data-title="'金额'">{{i.totalAmount | xasFilter}}<i class="XAScolor">XAS</i></td>
 						<td  data-title="'费用'">{{i.totalFee | xasFilter}}<i class="XAScolor">XAS</i></td>
 						<td  data-title="'奖励'">{{i.reward | xasFilter}}<i class="XAScolor">XAS</i></td>
 					</tr>

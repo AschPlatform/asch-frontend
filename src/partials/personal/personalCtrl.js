@@ -1,4 +1,4 @@
-angular.module('asch').controller('personalCtrl',function($scope, $rootScope, apiService, checkloginservice,ipCookie,$window,$http,userService) {
+angular.module('asch').controller('personalCtrl',function($scope, $rootScope, apiService, checkloginservice,ipCookie,$window,$http,userService,postSerivice) {
 	$rootScope.active = 'personal';
 	$rootScope.userlogin = true;
 	
@@ -18,42 +18,57 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 		$scope.passwordInfo  = !$scope.accountInfo;
 	}
 	
-	$scope.init = function() {
-		Account()
-	};
+	// $scope.init = function() {
+	// 	Account()
+	// };
+	$scope.userService = userService;
 	//个人中心账户信息
-	function Account(address) {
-		apiService.account({
-			address:$rootScope.useraddress
-		}).success(function (res) {
-			if(res.success='true'){
-				$scope.accountinfo=res.account
-			};
-		}).error(function (res) {
-			toastError(res.error);
-		})
-
-	}
+	// function Account(address) {
+	// 	apiService.account({
+	// 		address:userService.address
+	// 	}).success(function (res) {
+	// 		if(res.success==true){
+	// 			$scope.accountinfo=res.account
+	// 		};
+	// 	}).error(function (res) {
+	// 		toastError(res.error);
+	// 	})
+    //
+	// }
 	//二级密码设置函数
 	$scope.setPassWord = function () {
 		var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
 		
 		if(reg.test($scope.secondpassword)){
-			var transaction = AschJS.signature.createSignature(userService.setsecret, $scope.secondpassword);
-			$http({
-				method: 'POST',
-				url:'{{passwordApi}}',
-				headers: {'magic': '43194d2b','version':''},
-				data:transaction
-			}).success( function(res) {
-					if(res.success='true'){
-						$scope.passwordsure = true;
-						toast('支付密码设置成功!')
-					};
-				})
-				.error( function(res) {
-					toastError(res.error);
-				});
+			var transaction = AschJS.signature.createSignature(userService.secret, $scope.secondpassword);
+			postSerivice.post(transaction).success(function(res) {
+				if(res.success==true){
+				   $scope.passwordsure = true;
+				   toast('支付密码设置成功!')
+				} else{
+					toastError(res.error)
+				};
+			}).error( function(res) {
+						toastError('服务器错误!');
+			});
+			// $http({
+			// 	method: 'post',
+			// 	url:'{{passwordApi}}',
+			// 	headers: {'magic': '43194d2b','version':''},
+			// 	data:{
+			// 		transaction:transaction
+			// 	}
+			// }).success( function(res) {
+			// 		if(res.success==true){
+			// 			$scope.passwordsure = true;
+			// 			toast('支付密码设置成功!')
+			// 		} else{
+			// 			toastError(res.error)
+			// 		};
+			// 	})
+			// 	.error( function(res) {
+			// 		toastError('服务器错误!');
+			// 	});
 		}else{
 			toastError('支付密码设置格式不正确!');
 		}

@@ -12,14 +12,14 @@ angular.module('asch').controller('dealinfoCtrl', function($scope, $rootScope, a
         apiService.transactions({
             blockId:$scope.blockId
         }).success(function (res) {
-            if(res.success='true'){
+            if(res.success==true){
                 $rootScope.dealdetailinfo = true;
                 $rootScope.isBodyMask = true;
-                if(res.transactions.length>20){
-                    $scope.transactions=res.transactions.slice(0,20)
-                } else {
+                // if(res.transactions.length>20){
+                //     $scope.transactions=res.transactions.slice(0,20)
+                // } else {
                     $scope.transactions=res.transactions 
-                }
+               // }
                 
             };
         }).error(function () {

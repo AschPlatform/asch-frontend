@@ -1,8 +1,9 @@
 angular.module('asch').service('userService', function() {
-    this.setsecret = function (secret) {
+    this.setData = function (secret,address, publicKey, balance,secondPublicKey) {
         this.secret = secret;
-    };
-    this.setaddress = function (address) {
         this.address = address;
+        this.publicKey = publicKey;
+        this.balance = balance ;
+        this.secondPublicKey = secondPublicKey ;
     }
 });

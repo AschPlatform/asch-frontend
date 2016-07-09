@@ -9,7 +9,7 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 		}
 		return arr.join('&');
 	};
-	function fetch(url, data, method) {
+	function fetch(url, data, method,headers) {
 		var cb = function(res) {
 			// if (res.error.returnCode == '10007') {
 			// 	window.setTimeout( function(){
@@ -31,9 +31,24 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 			});
 		} else {
 			//console.log(url,data)
-			return $http.post(url, data).success(function(res) {
-				cb(res);
-			});
+			if(headers){
+				var req = {
+					method: 'POST',
+					url: url,
+					headers: {'magic': '43194d2b','version':''},
+					data: {
+						transaction:data
+					}
+				}
+				return $http(req).success(function(res) {
+					cb(res);
+				});
+			}  else{
+				return $http.post(url, data).success(function(res) {
+					cb(res);
+				});
+			}
+
 		}
 	}
 
@@ -57,11 +72,11 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	};
 	//获取投票列表
 	this.accounts = function(params) {
-		return fetch('http://192.168.1.104:4096/api/accounts/delegates', params, 'post');
+		return fetch('http://192.168.1.104:4096/api/accounts/delegates', params, 'get');
 	};
 	//获取最新区块
 	this.blocks = function(params) {
-		return fetch('http://192.168.1.104:4096/api/blocks', params, 'post');
+		return fetch('http://192.168.1.104:4096/api/blocks', params, 'get');
 	};
 	//支付模块
 	this.pay = function(params) {
@@ -69,10 +84,14 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	};
 	//受托人模块
 	this.blockforging = function(params) {
-		return fetch('http://192.168.1.104:4096/peer/transactions', params, 'get');
+		return fetch('http://192.168.1.104:4096/api/delegates/get', params, 'get');
 	};
 	// 入围候选人
    this.letinvote = function (params) {
+	   return fetch('http://192.168.1.104:4096/api/delegates', params, 'get');
+   }
+	// 二级密码设置
+   this.password = function (params) {
 	   return fetch('http://192.168.1.104:4096/api/delegates', params, 'post');
    }
 });

@@ -2,7 +2,7 @@
 	<div class="latest">
 		<div class="table_title">最新区块</div>
 		<div class="search">
-			<input type="text" value="输入搜索内容">
+			<input type="text" placeholder="输入搜索内容">
 			<a class="search_icon"><img src="../assets/common/search.png" alt=""></a>
 		</div>
 	</div>
@@ -39,7 +39,7 @@
 				<td  data-title="'日期'"><span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span></td>
 				<td  data-title="'创建者'">{{i.id}}</td>
 				<td  data-title="'交易信息'" ><i class="level" ng-click="showdealInfo(i)">{{i.numberOfTransactions}}</i></td>
-				<td  data-title="'金额'">{{i.totalAmount}}<i class="XAScolor">XAS</i></td>
+				<td  data-title="'金额'">{{i.totalAmount  | xasFilter }}<i class="XAScolor">XAS</i></td>
 				<td  data-title="'费用'">{{i.totalFee | xasFilter}}<i class="XAScolor">XAS</i></td>
 				<td  data-title="'奖励'">{{i.reward | xasFilter}}<i class="XAScolor">XAS</i></td>
 			</tr>

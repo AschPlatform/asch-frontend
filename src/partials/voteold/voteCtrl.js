@@ -27,7 +27,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
     $scope.init = function(params) {
         //入围受托人接口
         apiService.delegates(params).success(function(res) {
-            if(res.success='true'){
+            if(res.success==true){
                $scope.voteList=res.delegates;
                 //console.log($scope.voteList)
             };
@@ -36,7 +36,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
         });
         //  候选候选人接口 参数不一样
         apiService.delegates(params).success(function(res) {
-            if(res.success='true'){
+            if(res.success==true){
                 $scope.voteList2=res.delegates;
                 console.log($scope.voteList2)
             };
@@ -45,7 +45,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
         });
         // 获取我的投票接口
         apiService.accounts(params).success(function(res) {
-            if(res.success='true'){
+            if(res.success==true){
                 $scope.myvotelist=res.delegates;
                 console.log($scope.myvotelist)
             };

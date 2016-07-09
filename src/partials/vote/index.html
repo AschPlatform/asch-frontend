@@ -35,7 +35,7 @@
                    template-pagination="custom/pager" >
 
                 <tr ng-repeat="i in $data"  >
-                    <td  data-title=""><input type="checkbox" ng-checked="(i.username | saveCheckfilter)" ng-click="checkitem2(i)"></td>
+                    <td  data-title=""><input type="checkbox" ng-checked="(i.username | saveCodeFilter )" ng-click="checkitem2(i)"></td>
                     <td  data-title="'排名'"> {{i.rate}}</td>
                     <td  data-title="'受托人'">{{i.username}}</td>
                     <td  data-title="'Asch地址'">{{i.address}}</td>

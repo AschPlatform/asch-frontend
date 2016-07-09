@@ -1,7 +1,7 @@
 /**
  * Created by zenking on 16/7/2.
  */
-angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$http,userService) {
+angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$http,userService,postSerivice) {
 
     $rootScope.assigneeinfo = false;
     $scope.Close = function () {
@@ -16,49 +16,52 @@ angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, a
         //     // return ;
         // }
         $scope.secondpassword = $scope.secondpassword || undefined;
-        if($rootScope.userpublickey){
+        if(userService.secondPublicKey){
             if(reg.test($scope.secondpassword)){
     
-                var transaction = AschJS.delegate.createDelegate(userService.setsecret, $scope.userName,$scope.secondpassword)
-                $http({
-                    method: 'POST',
-                    url:'{{passwordApi}}',
-                    headers: {'magic': '43194d2b','version':''},
-                    data:transaction
-                }).success( function(res) {
-                        if(res.success='true'){
-                            $rootScope.checkobj = {}
-                            $rootScope.coedobj = {}
-                            console.log($rootScope.checkobj);
-                            $scope.Close()
-                            toast('注册成功!')
-                        };
-                    })
-                    .error( function(res) {
-                        toastError(res.error);
-                    });
+                var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName,$scope.secondpassword)
+                postSerivice.post(transaction).success(function(res) {
+                    if(res.success==true){
+                        $scope.Close()
+                        toast('注册成功!');
+                        $scope.userName = '';
+                    } else{
+                        toastError(res.error)
+                    };
+                }).error( function(res) {
+                    toastError('服务器错误!');
+                });
+                // $http({
+                //     method: 'POST',
+                //     url:'{{passwordApi}}',
+                //     headers: {'magic': '43194d2b','version':''},
+                //     data:transaction
+                // }).success( function(res) {
+                //         if(res.success==true){
+                //
+                //             $scope.Close()
+                //             toast('注册成功!')
+                //         };
+                //     })
+                //     .error( function(res) {
+                //         toastError(res.error);
+                //     });
             }else{
                 toastError('支付密码输入格式不正确!');
             }
         } else {
     
-                var transaction = AschJS.delegate.createDelegate(userService.setsecret, $scope.userName,$scope.secondpassword)
-                $http({
-                    method: 'POST',
-                    url:'{{passwordApi}}',
-                    headers: {'magic': '43194d2b','version':''},
-                    data:transaction
-                }).success( function(res) {
-                        if(res.success='true'){
-                            $rootScope.checkobj = {}
-                            $rootScope.coedobj = {}
-                            console.log($rootScope.checkobj);
+                var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName,$scope.secondpassword)
+                    postSerivice.post(transaction).success(function(res) {
+                        if(res.success==true){
                             $scope.Close()
+                            $scope.userName = '';
                             toast('注册成功!')
+                        } else{
+                            toastError(res.error)
                         };
-                    })
-                    .error( function(res) {
-                        toastError(res.error);
+                    }).error( function(res) {
+                        toastError('服务器错误!');
                     });
     
         }

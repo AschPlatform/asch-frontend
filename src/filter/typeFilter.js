@@ -1,5 +1,2 @@
-angular.module('asch').filter('xasFilter', function () {
-    return function (fee) {
-        
-    }
+angular.module('asch').filter('typeFilter', function () {
 });

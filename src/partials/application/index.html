@@ -1,6 +1,19 @@
 <div id="application" ng-controller="applicationCtrl" ng-init="init()">
-	此功能陆续开通!
-	
-	
-	
+
+	<div class="voteheader">
+		<div class="titleitem newapplication "  ng-class=" {'active':newapplication}" ng-click="newapplicationchange()">最新安装</div>
+		<!--<div class="titleitem hosting"  ng-class=" {'active':hosting}" ng-click="hostingchange()">候选受托人</div>-->
+		<div class="titleitem installed"  ng-class=" {'active':installed}" ng-click="installedchange()">已安装</div>
+	</div>
+	<div class="content first" ng-show="newapplication">
+		<div class="innerheader">
+			<button >提交应用</button>
+		</div>
+	</div>
+
+	<div class="content third" ng-show="installed">
+		<div class="innerheader">
+			<button class="delete">提交应用</button>
+		</div>
+	</div>
 </div>

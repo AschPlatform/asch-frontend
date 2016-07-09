@@ -8,9 +8,9 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 	
 	$scope.init = function(params) {
 		apiService.loginin({
-			address: AschJS.crypto.getAddress($rootScope.newpublicKey || $rootScope.publickey)
+			address: AschJS.crypto.getAddress(userService.publicKey)
 		}).success(function(res) {
-			if(res.success='true'){
+			if(res.success==true){
 				$scope.account = res.account;
 				$scope.latestBlock = res.latestBlock;
 				$scope.version = res.version;
@@ -26,31 +26,13 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 
 				// 最新价易展示
 				//transactions('0','',res.account.publicKey)
-				jiaoyi(res.account.address,res.account.publicKey)
+				jiaoyi(userService.address,userService.publicKey)
 			};
 			
 		}).error(function(res) {
 			toastError(res.error);
 		});
 	};
-
-	// // 获取最新交易
-	// function transactions(limit,recipientId,senderPublicKey) {
-	// 	var params = {
-	// 		limit:limit,
-	// 		recipientId:recipientId,
-	// 		senderPublicKey:$rootScope.newpublicKey || $rootScope.publickey,
-	// 		orderBy:'t_timestamp:desc'
-	// 	};
-	// 	apiService.transactions(params).success(function (res) {
-	// 		if(res.success='true'){
-     //
-	// 			$scope.transactions=res.transactions
-	// 		};
-	// 	}).error(function (res) {
-	// 		toastError();
-	// 	})
-	// }
    // 交易ngtable版
 
 	function jiaoyi(recipientId,senderPublicKey) {
@@ -67,12 +49,12 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 			getData: function($defer,params) {
 				apiService.transactions({
 					recipientId:recipientId,
-					senderPublicKey:$rootScope.newpublicKey || $rootScope.publickey,
+					senderPublicKey:userService.publicKey,
 					orderBy: 't_timestamp:desc',
 					limit: params.count(),
 					offset: (params.page() - 1) * params.count()
 				}).success(function(res) {
-					if(res.success='true'){
+					if(res.success==true){
 						params.total(res.count);
 						$defer.resolve(res.transactions);
 					}else{
