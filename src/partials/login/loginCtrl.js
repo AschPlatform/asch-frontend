@@ -83,9 +83,9 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 		}
 	}
 	$scope.saveTxt = function (filename) {
-		var text = $scope.newsecret;
+		var text = $scope.newsecret.trim();
+		var address = AschJS.crypto.getAddress(newpublicKey);
 		txt = 'secret:'+'\r\n'+text + '\r\n\r\n' +'address:'+ '\r\n'+address+'\r\n';
-		console.log($scope.newsecret)
 		var link = document.createElement("a");
 		link.setAttribute("target","_blank");
 		if(Blob !== undefined) {
@@ -98,7 +98,6 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
-		$scope.saveCookie();
 	}
 	// $scope.saveCookie = function () {
 	// 	ipCookie('userSecret',$scope.secret);
