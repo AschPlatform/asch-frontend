@@ -4,7 +4,7 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
    
 
    $scope.sent=userService.address;
-   $scope.fee='0.1  XAS';
+   $scope.fee='0.1';
    // $scope.amount=;
 
     $scope.sentMsg = function () {
@@ -28,7 +28,7 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
                 $scope.fromto = '';
                 $scope.amount = '';
                 toast('支付成功!')
-            } else{
+            } else {
                 toastError(res.error)
             };
         }).error( function(res) {
