@@ -105,6 +105,10 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	//}
 	//登录
 	$scope.registerin = function () {
+		if (!$scope.secret) {
+			toastError('请输入密码');
+			return;
+		}
 		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
 		    $rootScope.publickey = publicKey;
 			apiService.login({
