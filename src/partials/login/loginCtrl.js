@@ -60,7 +60,7 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	//确认
 	$scope.lastcheck = function () {
 		if($scope.newsecret == $scope.lastsecret){
-			apiService.homeloginin({
+			apiService.login({
 				publicKey: newpublicKey
 			}).success(function(res) {
 				$rootScope.homedata = res;
@@ -108,7 +108,7 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	$scope.registerin = function () {
 		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
 		    $rootScope.publickey = publicKey;
-			apiService.homeloginin({
+			apiService.login({
 				publicKey: publicKey
 			}).success(function(res) {
 				$rootScope.homedata = res;

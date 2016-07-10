@@ -20,7 +20,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             getData: function($defer,params) {
                 //console.log($defer)
                // console.log(params)
-                apiService.letinvote({
+                apiService.delegates({
                     address:userService.address,
                     orderBy: 'rate:asc',
                     limit: params.count(),
@@ -83,7 +83,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             total: 0,
             counts: [],
             getData: function($defer,params) {
-                apiService.accounts({
+                apiService.myvotes({
                     address:userService.address,
                     orderBy: 'rate:asc',
                     limit: params.count(),
@@ -112,7 +112,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             total: 0,
             counts: [],
             getData: function($defer,params) {
-                apiService.letinvote({
+                apiService.delegates({
                     address:userService.address,
                     orderBy: 'rate:asc',
                     limit: params.count(),

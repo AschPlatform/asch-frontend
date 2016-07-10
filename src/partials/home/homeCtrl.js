@@ -7,7 +7,7 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 	}
 	
 	$scope.init = function(params) {
-		apiService.loginin({
+		apiService.account({
 			address: AschJS.crypto.getAddress(userService.publicKey)
 		}).success(function(res) {
 			if(res.success==true){

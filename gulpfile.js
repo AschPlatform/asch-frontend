@@ -158,7 +158,8 @@ function outputHtml(path) {
 	return compileStream
 		// 不同环境使用不同的api接口
 		.pipe(gulpif('*.js', replace(/\{\{(\w+Api)\}\}/g, function(match, $1) {
-			return serverApi[$1][env];
+			console.log($1, env, serverApi[$1]['url']);
+			return serverApi[$1]['url'];
 		})))
 		// string模版路径替换成对应的文件内容
 		.pipe(gulpif('*.js', ngAnnotate()))

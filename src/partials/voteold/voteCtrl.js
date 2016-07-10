@@ -44,7 +44,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             toastError('服务器错误！');
         });
         // 获取我的投票接口
-        apiService.accounts(params).success(function(res) {
+        apiService.myvotes(params).success(function(res) {
             if(res.success==true){
                 $scope.myvotelist=res.delegates;
                 console.log($scope.myvotelist)

@@ -51,47 +51,31 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 
 		}
 	}
-
-	this.loginin = function(params) {
-		return fetch('http://192.168.1.104:4096/api/accounts', params, 'get');
-	};
-	this.homeloginin = function(params) {
-		return fetch('http://192.168.1.104:4096/api/accounts/open2', params, 'post');
+	this.login = function(params) {
+		return fetch('{{loginApi}}', params, 'post');
 	};
 	//账户请求
 	this.account = function(params) {
-		return fetch('{{accountApi}}', params, 'post');
+		return fetch('{{accountApi}}', params, 'get');
 	};
 	//交易请求
 	this.transactions = function(params) {
-		return fetch('http://192.168.1.104:4096/api/transactions', params, 'get');
-	};
-	//获取受托人
-	this.delegates = function(params) {
-		return fetch('http://192.168.1.104:4096/api/delegates', params, 'post');
+		return fetch('{{transactionsApi}}', params, 'get');
 	};
 	//获取投票列表
-	this.accounts = function(params) {
-		return fetch('http://192.168.1.104:4096/api/accounts/delegates', params, 'get');
+	this.myvotes = function(params) {
+		return fetch('{{myvotesApi}}', params, 'get');
 	};
 	//获取最新区块
 	this.blocks = function(params) {
-		return fetch('http://192.168.1.104:4096/api/blocks', params, 'get');
-	};
-	//支付模块
-	this.pay = function(params) {
-		return fetch('{{payApi}}', params, 'post');
+		return fetch('{{blocksApi}}', params, 'get');
 	};
 	//受托人模块
 	this.blockforging = function(params) {
-		return fetch('http://192.168.1.104:4096/api/delegates/get', params, 'get');
+		return fetch('{{blockforgingApi}}', params, 'get');
 	};
 	// 入围候选人
-   this.letinvote = function (params) {
-	   return fetch('http://192.168.1.104:4096/api/delegates', params, 'get');
-   }
-	// 二级密码设置
-   this.password = function (params) {
-	   return fetch('http://192.168.1.104:4096/api/delegates', params, 'post');
+   this.delegates = function (params) {
+	   return fetch('{{delegatesApi}}', params, 'get');
    }
 });

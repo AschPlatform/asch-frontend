@@ -2,59 +2,48 @@
 	"server": {
 		"dev": "192.168.1.104:4096"
 	},
-	// 登录api
-	"loginApi": {
-		"mock": "/data/login/login.json",
-		"url": "//api/accounts/open"
-	},
 	//登录接口
-	"homeloginApi": {
+	"loginApi": {
 		"mock": "/data/home/accounts.json",
 		"url": "/api/accounts/open2"
 	},
 	//	余额账单Apiget /api/accounts?address=4205898691220223329L
 	"accountApi": {
 		"mock": "/data/home/accounts.json",
-		"url": "//api/accounts"
+		"url": "/api/accounts"
 	},
 	//	余额账单Apiget /api/transactions
 	"transactionsApi": {
 		"mock": "/data/home/transactions.json",
-		"url": "//api/transactions"
+		"url": "/api/transactions"
 	},
 	// 获取受托人接口
 	"delegatesApi": {
 		"mock": "/data/vote/delegates.json",
-		"url": "//api/delegates"
+		"url": "/api/delegates"
 	},
 	// 获取我的投票列表借口
-	"accountsApi": {
+	"myvotesApi": {
 		"mock": "/data/vote/delegates.json",
-		"url": "//api/accounts/delegates"
+		"url": "/api/accounts/delegates"
 	},
 	// 获取我的投票列表借口
 	"blocksApi": {
 		"mock": "/data/blockchain/blocks.json",
-		"url": "//api/blocks"
-	},
-	//二级密码设置
-	"passwordApi": {
-		"mock": "/data/personal/password.json",
-		"url": "//peer/transactions"
-	},
-	//二级密码设置
-	"payApi": {
-		"mock": "/data/pay/pay.json",
-		"url": "//peer/transactions"
+		"url": "/api/blocks"
 	},
 	//受托人的基本信息
 	"blockforgingApi": {
 		"mock": "/data/blockforging/delegates.json",
-		"url": "//api/delegates/get"
+		"url": "/api/delegates/get"
 	},
 	//入围受托人接口
-	"letinvoteApi": {
+	"delegatesApi": {
 		"mock": "/data/vote/delegates.json",
-		"url": "//api/delegates"
+		"url": "/api/delegates"
+	},
+	"postApi": {
+		"mock": "/data/vote/delegates.json",
+		"url": "/peer/transactions"
 	}
 }
