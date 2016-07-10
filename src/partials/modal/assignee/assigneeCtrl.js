@@ -12,6 +12,10 @@ angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, a
         var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         var usernamereg =  /^[a-z0-9!@$&_.]{2,}$/;
         var isAddress = /^[0-9]{1,21}$/g;
+        if (!$scope.userName) {
+            toastError('受托人名称不能为空');
+            return;
+        }
         if (isAddress.test($scope.userName)) {
             toastError('受托人名称不能为账户地址');
             return;
@@ -41,7 +45,7 @@ angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, a
             }
         } else {
     
-                var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName,$scope.secondpassword)
+                var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName)
                     postSerivice.post(transaction).success(function(res) {
                         if(res.success==true){
                             $scope.Close()
