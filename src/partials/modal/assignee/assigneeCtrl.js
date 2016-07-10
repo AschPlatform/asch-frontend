@@ -31,21 +31,6 @@ angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, a
                 }).error( function(res) {
                     toastError('服务器错误!');
                 });
-                // $http({
-                //     method: 'POST',
-                //     url:'{{passwordApi}}',
-                //     headers: {'magic': '43194d2b','version':''},
-                //     data:transaction
-                // }).success( function(res) {
-                //         if(res.success==true){
-                //
-                //             $scope.Close()
-                //             toast('注册成功!')
-                //         };
-                //     })
-                //     .error( function(res) {
-                //         toastError(res.error);
-                //     });
             }else{
                 toastError('支付密码输入格式不正确!');
             }

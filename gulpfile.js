@@ -304,6 +304,9 @@ gulp.task('connect', function() {
 					if (params.env && envArr.indexOf(params.env) > -1) {
 						env = params.env;
 					}
+					if (!serverApi[$1]) {
+						return $1;
+					}
 					if (env == 'mock') {
 						return serverApi[$1][env];
 					}
