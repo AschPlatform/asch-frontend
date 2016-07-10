@@ -21,6 +21,10 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
             toastError('接收地址格式不正确!');
             return false;
         }
+        if (userService.secondPublicKey && !$scope.sendpasswoed) {
+            toastError('必须输入二级密码!');
+            return false;
+        }
         var transaction = AschJS.transaction.createTransaction(String($scope.fromto), $scope.amount*100000000, userService.secret,  $scope.sendpasswoed);
         postSerivice.post(transaction).success(function(res) {
             if(res.success==true){
