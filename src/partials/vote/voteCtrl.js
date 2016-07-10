@@ -29,6 +29,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                     //  $scope.res =res;
                     // params.data=res.delegates;
                     params.total(res.totalCount);
+                    $scope.delegateCount = res.totalCount;
                     // return res.delegates;
                     $defer.resolve(res.delegates);
                 }).error(function(res) {
@@ -91,6 +92,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                     //  $scope.res =res;
                     // params.data=res.delegates;
                     params.total(res.totalCount);
+                    $scope.myvoteCount = res.delegates.length;
                     // return res.delegates;
                     $defer.resolve(res.delegates);
                 }).error(function(res) {
@@ -119,6 +121,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                     //  $scope.res =res;
                     // params.data=res.delegates;
                     params.total(res.totalCount);
+                    $scope.delegateCount = res.totalCount;
                     // return res.delegates;
                     $defer.resolve(res.delegates);
                 }).error(function(res) {

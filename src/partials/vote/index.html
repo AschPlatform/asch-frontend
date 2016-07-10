@@ -6,7 +6,7 @@
 </div>
     <div class="content first" ng-show="letin">
         <div class="innerheader">
-            <span>共122人</span>
+            <span>共{{delegateCount}}人</span>
             <button ng-click="votetoShowInfo()">投票</button>
         </div>
         <div class="tablewrap">
@@ -27,7 +27,7 @@
 
     <div class="content third" ng-show="mgvotecord">
         <div class="innerheader">
-            <span>共122人</span>
+            <span>共{{myvoteCount}}人</span>
             <button class="delete" ng-click="votetoShowInfo(1)">删除</button>
         </div>
         <div class="tablewrap">
