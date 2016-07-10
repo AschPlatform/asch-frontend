@@ -38,13 +38,18 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 	//二级密码设置函数
 	$scope.setPassWord = function () {
 		var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
-		
-		if(reg.test($scope.secondpassword)){
+		var secondPwd = $scope.secondpassword.trim();
+		var confirmPwd = $scope.confirmPassword.trim();
+		if (secondPwd != confirmPwd) {
+			toastError('两次输入不一致!');
+		} else if (!reg.test(secondPwd)) {
+			toastError('密码格式不正确!');
+		} else if(reg.test(secondPwd) && reg.test(confirmPwd) && secondPwd == confirmPwd) {
 			var transaction = AschJS.signature.createSignature(userService.secret, $scope.secondpassword);
 			postSerivice.post(transaction).success(function(res) {
 				if(res.success==true){
 				   $scope.passwordsure = true;
-				   toast('支付密码设置成功!')
+				   toast('二级密码设置成功!')
 				} else{
 					toastError(res.error)
 				};
@@ -69,8 +74,6 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 			// 	.error( function(res) {
 			// 		toastError('服务器错误!');
 			// 	});
-		}else{
-			toastError('支付密码设置格式不正确!');
 		}
 
 
