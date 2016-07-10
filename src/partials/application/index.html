@@ -1,19 +1,20 @@
 <div id="application" ng-controller="applicationCtrl" ng-init="init()">
 
-	<div class="voteheader">
+	<div class="appheader">
 		<div class="titleitem newapplication "  ng-class=" {'active':newapplication}" ng-click="newapplicationchange()">最新安装</div>
 		<!--<div class="titleitem hosting"  ng-class=" {'active':hosting}" ng-click="hostingchange()">候选受托人</div>-->
 		<div class="titleitem installed"  ng-class=" {'active':installed}" ng-click="installedchange()">已安装</div>
+		<button class="right">提交应用</button>
+		<div class="right1">
+			<a class="search_icon"><img src="../assets/common/search.png" alt=""></a>
+			<label for="">类型</label>
+			<input type="text" placeholder="请输入应用名称">
+		</div>
 	</div>
 	<div class="content first" ng-show="newapplication">
-		<div class="innerheader">
-			<button >提交应用</button>
-		</div>
-	</div>
 
+	</div>
 	<div class="content third" ng-show="installed">
-		<div class="innerheader">
-			<button class="delete">提交应用</button>
-		</div>
+
 	</div>
 </div>
