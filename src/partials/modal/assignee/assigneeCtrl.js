@@ -10,11 +10,16 @@ angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, a
     };
     $scope.nextstep = function() {
         var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
-        var usernamereg =  /^[a-z0-9!@$&_.]{2,}$/g;
-        // if(usernamereg.test($scope.userName)){
-        //     console.log('受托人名称格式不正确!');
-        //     // return ;
-        // }
+        var usernamereg =  /^[a-z0-9!@$&_.]{2,}$/;
+        var isAddress = /^[0-9]{1,21}$/g;
+        if (isAddress.test($scope.userName)) {
+            toastError('受托人名称不能为账户地址');
+            return;
+        }
+        if(!usernamereg.test($scope.userName)){
+            toastError('受托人名称格式不正确');
+            return;
+        }
         $scope.secondpassword = $scope.secondpassword || undefined;
         if(userService.secondPublicKey){
             if(reg.test($scope.secondpassword)){
@@ -32,7 +37,7 @@ angular.module('asch').controller('assigneeCtrl', function($scope, $rootScope, a
                     toastError('服务器错误!');
                 });
             }else{
-                toastError('支付密码输入格式不正确!');
+                toastError('二级密码输入格式不正确!');
             }
         } else {
     

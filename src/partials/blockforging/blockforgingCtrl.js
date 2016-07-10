@@ -45,7 +45,6 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 		$rootScope.isBodyMask = true;
 
 	}
-	console.log(userService)
 	$scope.init = function() {
 
 		apiService.blockforging({
