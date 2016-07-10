@@ -4,7 +4,7 @@
 						账户信息
 					</div>
 					<div class="nav_per passwordInfo " ng-class=" {'active':passwordInfo}" ng-click="passwordchange()">
-						支付密码
+						二级密码
 					</div>
 					<div class="nav_exit" ng-click="quitout()">
 						退出系统
@@ -33,7 +33,10 @@
 									<span class="greyFont">公钥 : </span> {{userService.publicKey}}
 								</div>
 								<div class="summary_text text_row">
-									<span class="greyFont">摘要 : </span> {{userService.address}}
+									<span class="greyFont">地址 : </span> {{userService.address}}
+								</div>
+								<div class="summary_text text_row">
+									<span class="greyFont">二级密码 : </span> {{userService.secondPublicKey ? '已设置' : '未设置'}}
 								</div>
 							</div>
 							<div class="clear"></div>
