@@ -50,14 +50,14 @@
 					<div class="finishSet" ng-show="userService.secondPublicKey||passwordsure">
 						<img src="/assets/personal/tip_passwordNo.png" class="finishSet_icon"/>
 						<div class="finishSet_text">
-							您已经设置好二级密码，无需设置。
+							您已经设置过二级密码。
 						</div>
 					</div>
 					<div class="setPassword" ng-hide="userService.secondPublicKey || passwordsure">
 						<div class="_title">
-							二级密码
+							设置二级密码
 						</div>
-						<div class="psw"><label>密码</label><input type="password" ng-trim="true" ng-model="secondpassword" maxlength="16" placeholder="至少8位数字和字母组合">
+						<div class="psw"><label>密码</label><input type="password" ng-trim="true" ng-model="secondpassword" maxlength="16" placeholder="输入8到16位数字和字母组合">
 							<!--<span>换一换</span>-->
 						</div>
 						<div class="psw"><label>确认</label><input type="password" ng-trim="true" ng-model="confirmPassword" maxlength="16" placeholder="再次输入">
