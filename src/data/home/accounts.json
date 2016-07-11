@@ -8,15 +8,16 @@
     "unconfirmedSignature": 0,
     "secondSignature": 0,
     "secondPublicKey": null,
-    "multisignatures": [ ],
-    "u_multisignatures": [ ],
-    "latestBlock": {
-      "height": 171,
-      "timestamp": 804390
-    },
-    "version": {
-      "version": "0.9.0",
-      "build": "development"
-    }
+    "multisignatures": [],
+    "u_multisignatures": []
+  },
+  "latestBlock": {
+    "height": 171,
+    "timestamp": 804390
+  },
+  "version": {
+    "version": "0.9.0",
+    "build": "development",
+    "net": "localnet"
   }
 }
