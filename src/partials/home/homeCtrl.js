@@ -5,7 +5,7 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 		$rootScope.acceptinfo = true;
 		$rootScope.isBodyMask = true;
 	}
-	
+	$scope.userService = userService;
 	$scope.init = function(params) {
 		apiService.account({
 			address: AschJS.crypto.getAddress(userService.publicKey)
@@ -14,18 +14,7 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 				$scope.account = res.account;
 				$scope.latestBlock = res.latestBlock;
 				$scope.version = res.version;
-				// 余额显示
-				//Account(res.account.address);
-				//console.log(res.account.publicKey)
-				//console.log(ngTableParams)
-				//if($rootScope.active == '/home'){
-				// 	var timer = $interval(function(){
-				// 		Account(res.account.address);
-				// 	},10000);
-				//}
-
-				// 最新价易展示
-				//transactions('0','',res.account.publicKey)
+				
 				jiaoyi(userService.address,userService.publicKey)
 			};
 			

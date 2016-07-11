@@ -1,7 +1,7 @@
 <div id="home" ng-controller="homeCtrl" ng-init="init()">
 	<div class="homeinfo">
 		<div class="account">
-			<span>余额</span><i>{{ account.balance | xasFilter }}<strong>XAS</strong></i>
+			<span>余额</span><i>{{ userService.balance | xasFilter }}<strong>XAS</strong></i>
 		</div>
 		<div class="account">
 			<span>最后区块高度</span><i>{{ latestBlock.height }}</i> <b>{{latestBlock.timestamp | timestampFilter }}</b>
