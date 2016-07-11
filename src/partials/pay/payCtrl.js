@@ -9,28 +9,34 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
 
     $scope.sentMsg = function () {
         var isAddress = /^[0-9]{1,21}$/g;
+        if (!$scope.fromto) {
+            toastError('必须输入接收地址');
+            return false;
+        }
+        if (!isAddress.test($scope.fromto)) {
+            toastError('接收地址格式不正确!');
+            return false;
+        }
         if (!$scope.amount || Number($scope.amount) <= 0) {
             toastError('发送金额输入不正确!');
             return false;
         }
-        if( $scope.amount*100000000>userService.balance){
+        var realAmount = parseFloat(($scope.amount * 100000000).toFixed(0));
+        if(realAmount > userService.balance) {
             toastError('余额不足!');
             return false;
         }
-        if(!isAddress.test($scope.fromto)){
-            toastError('接收地址格式不正确!');
-            return false;
-        }
-        if (userService.secondPublicKey && !$scope.sendpasswoed) {
+        if (userService.secondPublicKey && !$scope.secondPassword) {
             toastError('必须输入二级密码!');
             return false;
         }
-        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), $scope.amount*100000000, userService.secret,  $scope.sendpasswoed);
+        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), realAmount, userService.secret,  $scope.secondPassword);
         postSerivice.post(transaction).success(function(res) {
             if(res.success==true){
                 $scope.passwordsure = true;
                 $scope.fromto = '';
                 $scope.amount = '';
+                $scope.secondPassword = '';
                 toast('支付成功!')
             } else {
                 toastError(res.error)
