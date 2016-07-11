@@ -109,6 +109,9 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 			toastError('请输入密码');
 			return;
 		}
+		if (!Mnemonic.isValid($scope.secret)) {
+			return toastError('密码格式不符合BIP39安全规范');
+		}
 		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
 		    $rootScope.publickey = publicKey;
 			apiService.login({
