@@ -6,6 +6,7 @@
   "dependencies": {
     "angular-chart.js": "^1.0.0-alpha8",
     "asch-js": "*",
+    "bitcore-mnemonic": "^0.11.0",
     "chart.js": "^2.1.6",
     "cjson": "^0.3.2",
     "colors": "^1.1.2",
