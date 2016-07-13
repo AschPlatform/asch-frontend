@@ -2,27 +2,27 @@
     <div class="asch_nav">
         <div class="logo"></div>
         <ul ng-controller="headerCtrl" ng-init="init()">
-            <li>
-                <a ng-class="{'active':$root.active=='home'}" ng-href="#/home"><img src="/assets/common/home.png" alt="">首页</a>
+            <li ng-class="{'active':$root.active=='home'}">
+                <a  ng-href="#/home"><img src="/assets/common/home.png" alt="">首页</a>
             </li>
-            <li>
-                <a ng-class="{'active':$root.active=='personal'}" ng-href="#/personal"><img src="/assets/common/personal.png" alt="">个人中心</a>
+            <li ng-class="{'active':$root.active=='personal'}" >
+                <a ng-href="#/personal"><img src="/assets/common/personal.png" alt="">个人中心</a>
             </li>
-            <li>
-                <a ng-class="{'active':$root.active=='application'}" ng-href="#/application"><img src="/assets/common/application.png" alt="">应用中心</a>
+            <li ng-class="{'active':$root.active=='application'}" >
+                <a ng-href="#/application"><img src="/assets/common/application.png" alt="">应用中心</a>
             </li>
-            <li class="blockforging" >
-                <a ng-class="{'active':$root.active=='blockforging'}" ng-href="#/blockforging" ><img src="/assets/common/blockforging.png" alt="">区块生产</a>
+            <li ng-class="{'active':$root.active=='blockforging'}">
+                <a  ng-href="#/blockforging" ><img src="/assets/common/blockforging.png" alt="">区块生产</a>
                 <!-- 下拉菜单  -->
             </li>
-            <li>
-                <a ng-class="{'active':$root.active=='blockchain'}" ng-href="#/blockchain"><img src="/assets/common/blockchains.png" alt="">区块浏览</a>
+            <li ng-class="{'active':$root.active=='blockchain'}">
+                <a  ng-href="#/blockchain"><img src="/assets/common/blockchains.png" alt="">区块浏览</a>
             </li>
-            <li>
-                <a ng-class="{'active':$root.active=='vote'}" ng-href="#/vote"><img src="/assets/common/vote.png" alt="">投票</a>
+            <li ng-class="{'active':$root.active=='vote'}" >
+                <a ng-href="#/vote"><img src="/assets/common/vote.png" alt="">投票</a>
             </li>
-            <li>
-                <a ng-class="{'active':$root.active=='pay'}" ng-href="#/pay"><img src="/assets/common/pay.png" alt="">转账</a>
+            <li ng-class="{'active':$root.active=='pay'}">
+                <a  ng-href="#/pay"><img src="/assets/common/pay.png" alt="">转账</a>
             </li>
         </ul>
     </div>
