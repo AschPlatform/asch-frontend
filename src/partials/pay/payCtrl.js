@@ -17,6 +17,10 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
             toastError('接收地址格式不正确!');
             return false;
         }
+        if ($scope.fromto == userService.address) {
+            toastError('接受地址与发送地址不能相同');
+            return false;
+        }
         if (!$scope.amount || Number($scope.amount) <= 0) {
             toastError('发送金额输入不正确!');
             return false;

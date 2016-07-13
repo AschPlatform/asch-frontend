@@ -39,8 +39,8 @@
 				<td  data-title="'日期'"><span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span></td>
 				<td  data-title="'ID'">{{i.id}}</td>
 				<td  data-title="'交易'" ><i class="level" ng-click="showdealInfo(i)">{{i.numberOfTransactions}}</i></td>
-				<td  data-title="'金额'">{{i.totalAmount  | xasFilter }}</td>
-				<td  data-title="'费用'">{{i.totalFee | xasFilter}}</td>
+				<td  data-title="'总金额'">{{i.totalAmount  | xasFilter }}</td>
+				<td  data-title="'总费用'">{{i.totalFee | xasFilter}}</td>
 				<td  data-title="'奖励'">{{i.reward | xasFilter}}</td>
 			</tr>
 		</table>

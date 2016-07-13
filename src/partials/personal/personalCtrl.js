@@ -38,6 +38,9 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 	//二级密码设置函数
 	$scope.setPassWord = function () {
 		var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
+		if (!$scope.secondpassword || !$scope.confirmPassword) {
+			return toastError('请输入二级密码');
+		}
 		var secondPwd = $scope.secondpassword.trim();
 		var confirmPwd = $scope.confirmPassword.trim();
 		if (secondPwd != confirmPwd) {
