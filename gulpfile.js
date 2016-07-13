@@ -264,6 +264,11 @@ gulp.task('images', function() {
 	outputImages();
 });
 
+gulp.task('favicon', function () {
+	console.log('copy favicon to public root');
+	gulp.src('src/favicon.ico').pipe(gulp.dest(config.output));
+});
+
 gulp.task('data', function() {
 	console.log('开始copy data假数据...'.cyan);
 	gulp.src(config.src + '/data/**')
@@ -350,7 +355,7 @@ gulp.task('replace:prod', function() {
 });
 
 gulp.task('handle', function() {
-	runSequence('partials', 'htmls', 'images');
+	runSequence('partials', 'htmls', 'images', 'favicon');
 });
 
 // 开发环境
