@@ -35,6 +35,9 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
             toastError('必须输入二级密码!');
             return false;
         }
+        if(!userService.secondPublicKey){
+            $scope.secondPassword = '';
+        }
         var transaction = AschJS.transaction.createTransaction(String($scope.fromto), realAmount, userService.secret,  $scope.secondPassword);
         postSerivice.post(transaction).success(function(res) {
             if(res.success==true){
