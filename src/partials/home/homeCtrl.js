@@ -5,7 +5,7 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 		$rootScope.acceptinfo = true;
 		$rootScope.isBodyMask = true;
 	}
-	$scope.userService = userService;
+	
 	$scope.init = function(params) {
 		apiService.account({
 			address: AschJS.crypto.getAddress(userService.publicKey)
@@ -14,6 +14,8 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 				$scope.account = res.account;
 				$scope.latestBlock = res.latestBlock;
 				$scope.version = res.version;
+				userService.balance = res.account.balance;
+				$scope.userService = userService;
 				jiaoyi(userService.address,userService.publicKey)
 			};
 			
