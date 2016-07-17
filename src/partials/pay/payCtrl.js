@@ -3,6 +3,7 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
     $rootScope.userlogin = true;
    
 
+   $scope.userService=userService;
    $scope.sent=userService.address;
    $scope.fee='0.1';
    // $scope.amount=;

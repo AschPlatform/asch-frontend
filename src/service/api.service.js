@@ -78,4 +78,12 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
    this.delegates = function (params) {
 	   return fetch('{{delegatesApi}}', params, 'get');
    }
+   // 投我的票
+	this.votetome = function (params) {
+		return fetch('{{votetomeApi}}', params, 'get');
+	}
+	// 节点列表
+	this.peer = function (params) {
+		return fetch('{{peerApi}}', params, 'get');
+	}
 });

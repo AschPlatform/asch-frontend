@@ -16,12 +16,9 @@
 
         .logo {
             height: 80px;
-            /* webkit-flex: 230px;
-            flex: 230px;
-            -webkit-box-flex: 230px;*/
-            width: 230px;
-            background: url('/assets/common/logo.png') center center no-repeat;
-            background-size: auto 45px;
+            width: 130px;
+            background: url("/assets/common/logo.png") center center no-repeat;
+            background-size: 100px auto;
         }
         ul {
             /*width: 780px;*/
@@ -58,7 +55,7 @@
                     text-decoration: none;
                     img {
                         width: auto;
-                        height: 34px;
+                        height: 24px;
                         margin-right: 12px;
                     }
                 }

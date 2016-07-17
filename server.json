@@ -37,10 +37,15 @@
 		"mock": "/data/blockforging/delegates.json",
 		"url": "/api/delegates/get"
 	},
-	//入围受托人接口
-	"delegatesApi": {
-		"mock": "/data/vote/delegates.json",
-		"url": "/api/delegates"
+	//谁投我的票接口
+	"votetomeApi": {
+		"mock": "/data/vote/voter.json",
+		"url": "/api/delegates/voters"
+	},
+	//节点列表
+	"peerApi": {
+		"mock": "/data/peer/peers.json",
+		"url": "/api/peers"
 	},
 	"postApi": {
 		"mock": "/data/vote/delegates.json",

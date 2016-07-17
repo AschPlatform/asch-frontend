@@ -38,37 +38,38 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             }
         });
     }
-    // $scope.hostingchange = function () {
-    //     $scope.letin = false;
-    //     $scope.hosting = true;
-    //     $scope.mgvotecord = false;
-    //     $scope.tableparams1 = new NgTableParams({
-    //         page: 1,
-    //         count: 20,
-    //         sorting: {
-    //             height: 'desc'
-    //         }
-    //     }, {
-    //         total: 0,
-    //         counts: [],
-    //         getData: function($defer,params) {
-    //             apiService.letinvote({
-    //                 address:'',
-    //                 orderBy: 'rate:asc',
-    //                 limit: params.count(),
-    //                 offset: (params.page() - 1) * params.count()
-    //             }).success(function(res) {
-    //                 //  $scope.res =res;
-    //                 // params.data=res.delegates;
-    //                 params.total(res.totalCount);
-    //                 // return res.delegates;
-    //                 $defer.resolve(res.delegates);
-    //             }).error(function(res) {
-    //                 toastError('服务器错误！');
-    //             });
-    //         }
-    //     });
-    // }
+    $scope.hostingchange = function () {
+        $scope.letin = false;
+        $scope.hosting = true;
+        $scope.mgvotecord = false;
+        $scope.tableparams3 = new NgTableParams({
+            page: 1,
+            count: 20,
+            sorting: {
+                height: 'desc'
+            }
+        }, {
+            total: 0,
+            counts: [],
+            getData: function($defer,params) {
+                apiService.votetome({
+                    publicKey:userService.publicKey,
+                    orderBy: 'rate:asc',
+                    limit: params.count(),
+                    offset: (params.page() - 1) * params.count()
+                }).success(function(res) {
+                    //  $scope.res =res;
+                    // params.data=res.delegates;
+                   // params.total(res.totalCount);
+                    // return res.delegates;
+                    $scope.totalVoter = res.accounts.length,
+                    $defer.resolve(res.accounts);
+                }).error(function(res) {
+                    toastError('服务器错误！');
+                });
+            }
+        });
+    }
     $scope.mgvotecordchange = function () {
         $scope.letin = false;
         $scope.hosting = false;

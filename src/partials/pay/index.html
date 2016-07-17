@@ -11,7 +11,7 @@
         <label >输入金额</label>
         <input type="number" required ng-model="amount" ng-trim="true" id="pay_item3">
     </div>
-    <div class="_item" ng-show="userpublickey">
+    <div class="_item" ng-show="userService.secondPublicKey">
         <label >二级密码</label>
         <input type="password" ng-model="secondPassword" id="pay_item5">
     </div>

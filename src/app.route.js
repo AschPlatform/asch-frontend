@@ -18,9 +18,9 @@ angular.module('asch').config(function($routeProvider) {
 	$routeProvider.when('/blockforging', {
 		templateUrl: 'partials/blockforging/index.html'
 	});
-	// $routeProvider.when('/myvote', {
-	// 	templateUrl: 'partials/myvote/index.html'
-	// });
+	$routeProvider.when('/peer', {
+		templateUrl: 'partials/peer/index.html'
+	});
 	$routeProvider.when('/pay', {
 		templateUrl: 'partials/pay/index.html'
 	});

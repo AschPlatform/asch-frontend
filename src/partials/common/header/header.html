@@ -22,7 +22,10 @@
                 <a ng-href="#/vote"><img src="/assets/common/vote.png" alt="">投票</a>
             </li>
             <li ng-class="{'active':$root.active=='pay'}">
-                <a  ng-href="#/pay"><img src="/assets/common/pay.png" alt="">转账</a>
+            <a  ng-href="#/pay"><img src="/assets/common/pay.png" alt="">转账</a>
+           </li>
+            <li ng-class="{'active':$root.active=='peer'}">
+                <a  ng-href="#/peer"><img src="/assets/common/per.png" alt="">节点</a>
             </li>
         </ul>
     </div>
@@ -36,5 +39,6 @@
         <span ng-show="$root.active=='blockchain'"> > 区块浏览</span>
         <span ng-show="$root.active=='vote'"> > 投票</span>
         <span ng-show="$root.active=='pay'"> > 转账</span>
+        <span ng-show="$root.active=='peer'"> > 节点</span>
     </p>
 </div>
