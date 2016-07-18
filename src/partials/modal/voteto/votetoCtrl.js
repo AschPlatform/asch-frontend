@@ -61,6 +61,7 @@ angular.module('asch').controller('votetoCtrl', function($scope, $rootScope, api
                     $rootScope.coedobj = {}
                    // console.log($rootScope.checkobj);
                     $scope.Close()
+                    $rootScope.$emit('upvoteSuccess');
                     toast('投票成功!')
                 } else{
                     toastError(res.error)

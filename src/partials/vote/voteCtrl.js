@@ -184,7 +184,7 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 $rootScope.isBodyMask = true;
                 $rootScope.showdelusername = showdelusername;
                 $rootScope.deletevoteContent = deletevoteContent;
-                console.log($rootScope.showdelusername)
+                // console.log($rootScope.showdelusername)
             }
         }
         if($scope.letin){
@@ -208,19 +208,22 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 $rootScope.isBodyMask = true;
                 $rootScope.showusername = showusername;
                 $rootScope.voteContent = voteContent;
-                console.log($rootScope.showusername)
+                // console.log($rootScope.showusername)
             }
         }
-
-
-
-      //  var transaction = AschJS.delegate.createDelegate((password, userName, user.secondPassword || undefined));
-
-
-
-
-
     }
-
-
+    
+    $rootScope.$on('upvoteSuccess', function () {
+        // console.log('voteDone');
+        if ($scope.tableparams) {
+            $scope.tableparams.reload();
+        }
+    });
+    
+    $rootScope.$on('downvoteSuccess', function () {
+        // console.log('voteDone');
+        if ($scope.tableparams2) {
+            $scope.tableparams2.reload();
+        }
+    });
 });

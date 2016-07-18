@@ -38,6 +38,7 @@ angular.module('asch').controller('deletevoteCtrl', function($scope, $rootScope,
                     console.log($rootScope.coedobj)
                     // console.log($rootScope.checkobj);
                     $scope.Close()
+                    $rootScope.$emit('downvoteSuccess');
                     toast('删除成功!')
                 } else{
                     toastError(res.error)
@@ -45,11 +46,6 @@ angular.module('asch').controller('deletevoteCtrl', function($scope, $rootScope,
             }).error( function(res) {
                 toastError('服务器错误!');
             });
-
-
         }
-
     };
-
-
 });
