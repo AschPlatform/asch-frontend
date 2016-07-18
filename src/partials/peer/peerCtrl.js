@@ -19,7 +19,6 @@ angular.module('asch').controller('peerCtrl', function($scope, $rootScope, apiSe
             getData: function($defer,params) {
                 apiService.peer({
                     limit: params.count(),
-                    orderBy: 'height:desc',
                     offset: (params.page() - 1) * params.count()
                 }).success(function(res) {
                     //  $scope.res =res;
