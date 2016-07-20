@@ -178,10 +178,7 @@ function outputHtml(path) {
 function outputImages() {
 	// tinypng的开发者key
 	var appKeys = [
-		'xMYaN3BaIQv4U11qMTiKSHiRle-4CcQJ',
-		'cXrHaVpfUyAxJETKGXUqXtMLkv6OXnSm',
-		'2AkR2IApbA5LE7kIjkDczQxyahpOF4Sp',
-		'v6aTztRcc56bCfGmvUf5H9o2lsK5UvK3'
+		'W29I3_rPLwwW1kRMHf1l65vjXuZI2YhD'
 	];
 	// 随机使用一个key, 避免达到每月最多500个压缩上限
 	var appKey = appKeys[Math.floor(Math.random() * appKeys.length)];
