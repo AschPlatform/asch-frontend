@@ -23830,7 +23830,7 @@ function createVote(secret, delegates, secondSecret) {
 		type: 3,
 		amount: 0,
 		fee: constants.fees.vote,
-		recipientId: crypto.getAddress(keys.publicKey),
+		recipientId: null,
 		senderPublicKey: keys.publicKey,
 		timestamp: slots.getTime() - constants.clientDriftSeconds,
 		asset: {
