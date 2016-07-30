@@ -23166,7 +23166,7 @@ module.exports = asch;
 module.exports = {
   fees:{
     send: 10000000,
-    vote: 100000000,
+    vote: 10000000,
     delegate: 10000000000,
     secondsignature: 500000000,
     multisignature: 500000000,
@@ -23775,11 +23775,17 @@ var crypto = require("./crypto.js"),
     constants = require("../constants.js"),
     slots = require("../time/slots.js");
 
+function calculateFee(amount) {
+    var min = constants.fees.send;
+    var fee = parseFloat((amount * 0.0001).toFixed(0));
+    return fee < min ? min : fee;
+}
+
 function createTransaction(recipientId, amount, secret, secondSecret) {
 	var transaction = {
 		type: 0,
 		amount: amount,
-		fee: constants.fees.send,
+		fee: calculateFee(amount),
 		recipientId: recipientId,
 		timestamp: slots.getTime() - constants.clientDriftSeconds,
 		asset: {}
@@ -23800,7 +23806,8 @@ function createTransaction(recipientId, amount, secret, secondSecret) {
 }
 
 module.exports = {
-	createTransaction: createTransaction
+	createTransaction: createTransaction,
+	calculateFee: calculateFee
 }
 
 },{"../constants.js":143,"../time/slots.js":145,"./crypto.js":146}],151:[function(require,module,exports){
