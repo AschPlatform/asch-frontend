@@ -1,13 +1,19 @@
-angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiService, ipCookie, $http,$window,userService,postSerivice) {
+angular.module('asch').controller('payCtrl', function($scope, $rootScope, $filter, apiService, ipCookie, $http,$window,userService,postSerivice) {
     $rootScope.active = 'pay';
     $rootScope.userlogin = true;
    
 
-   $scope.userService=userService;
-   $scope.sent=userService.address;
-   $scope.fee='0.1';
+   $scope.userService = userService;
+   $scope.sent = userService.address;
+   $scope.fee = '0.1';
    // $scope.amount=;
-
+   $scope.calculateFee = function() {
+       if ($scope.amount && Number($scope.amount) > 0) {
+            var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
+            var fee = AschJS.transaction.calculateFee(amount);
+            $scope.fee = $filter('xasFilter')(fee);
+       }
+   }
     $scope.sentMsg = function () {
         var isAddress = /^[0-9]{1,21}$/g;
         if (!$scope.fromto) {
@@ -26,8 +32,9 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
             toastError('发送金额输入不正确!');
             return false;
         }
-        var realAmount = parseFloat(($scope.amount * 100000000).toFixed(0));
-        if(realAmount > userService.balance) {
+        var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
+        var fee = AschJS.transaction.calculateFee(amount);
+        if(amount + fee > userService.balance) {
             toastError('余额不足!');
             return false;
         }
@@ -38,7 +45,7 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, apiSer
         if(!userService.secondPublicKey){
             $scope.secondPassword = '';
         }
-        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), realAmount, userService.secret,  $scope.secondPassword);
+        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret,  $scope.secondPassword);
         postSerivice.post(transaction).success(function(res) {
             if(res.success==true){
                 $scope.passwordsure = true;
