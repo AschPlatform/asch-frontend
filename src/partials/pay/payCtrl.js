@@ -33,7 +33,7 @@ angular.module('asch').controller('payCtrl', function($scope, $rootScope, $filte
             return false;
         }
         var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
-        var fee = AschJS.transaction.calculateFee(amount);
+        var fee = 10000000;
         if(amount + fee > userService.balance) {
             toastError('余额不足!');
             return false;
