@@ -3,7 +3,7 @@ angular.module('asch').service('postSerivice', function($http) {
        var req = {
            method: 'post',
            url: '{{postApi}}',
-           headers: {'magic': '43194d2b','version':''},
+           headers: {'magic': '15a3b1d6','version':''},
            data: {
                transaction:data
            }
