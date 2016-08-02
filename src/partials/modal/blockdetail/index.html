@@ -8,10 +8,10 @@
                 <tr><td>ID:</td><td>{{block.id}}</td></tr>
                 <tr><td>版本:</td><td>{{block.version}}</td></tr>
                 <tr><td>时间:</td><td>{{block.timestamp | timestampFilter}}</td></tr>
-                <tr><td>高度:</td><td> <i class="level" ng-click="showdetailInfo(block.generatorId)">{{block.height}}</i></td></tr>
-                <tr><td>上一块:</td><td>{{block.previousBlock}}</td></tr>
+                <tr><td>高度:</td><td>{{block.height}}</td></tr>
+                <tr><td>上一块:</td><td> <i class="level" ng-click="showdetailInfo(block.previousBlock)">{{block.previousBlock}}</i></td></tr>
                 <tr><td>交易数:</td><td>{{block.numberOfTransactions}}</td></tr>
-                <tr><td>交易总额:</td><td><i class="level" ng-click="showdealInfo()">{{block.totalAmount}}</i></td></tr>
+                <tr><td>交易总额:</td><td>{{block.totalAmount}}</td></tr>
                 <tr><td>奖励:</td><td>{{block.reward}}</td></tr>
                 <tr><td>哈希:</td><td>{{block.payloadHash}}</td></tr>
                 <tr><td>生产者:</td><td> <i class="level" ng-click="showdetailInfo(block.generatorId)">{{block.generatorId}}</i></td></tr>
