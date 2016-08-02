@@ -6,9 +6,9 @@
         <div class="right">
             <input type="text" ng-model="userName" placeholder="请输入受托人名称">
         </div>
-        <div class="left" ng-show="userpublickey">二级密码</div>
+        <div class="left" ng-show="userService.secondPublicKey">二级密码</div>
         <div class="right">
-            <input placeholder="至少8为数字和字母组合"maxlength="16" ng-model="secondpassword"type="password" class="tips_voteto" ng-show="userpublickey">
+            <input placeholder="至少8为数字和字母组合"maxlength="16" ng-model="secondpassword"type="password" class="tips_voteto" ng-show="userService.secondPublicKey">
         </div>
     </div>
 

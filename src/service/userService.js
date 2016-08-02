@@ -6,4 +6,8 @@ angular.module('asch').service('userService', function() {
         this.balance = balance ;
         this.secondPublicKey = secondPublicKey ;
     }
+    this.update = function (account) {
+        this.balance = account.balance;
+        this.secondPublicKey = account.secondPublicKey;
+    }
 });

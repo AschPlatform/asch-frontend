@@ -9,6 +9,23 @@ angular.module('asch').controller('personalCtrl',function($scope, $rootScope, ap
 
 	// 二级密码 $scope.secondpassword
 
+	$scope.init = function(params) {
+		apiService.account({
+			address: AschJS.crypto.getAddress(userService.publicKey)
+		}).success(function(res) {
+			if(res.success==true){
+				$scope.account = res.account;
+				$scope.latestBlock = res.latestBlock;
+				$scope.version = res.version;
+				userService.update(res.account);
+				$scope.userService = userService;
+			};
+			
+		}).error(function(res) {
+			toastError(res.error);
+		});
+	};
+
 	$scope.accountchange = function () {
 		$scope.accountInfo = true;
 		$scope.passwordInfo  = !$scope.accountInfo;

@@ -1,7 +1,7 @@
 angular.module('asch').controller('deletevoteCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$http,userService,postSerivice) {
 
     $rootScope.deletevotetoinfo = false;
-
+    $scope.userService = userService;
     $scope.Close = function () {
         $rootScope.isBodyMask = false;
         $rootScope.deletevotetoinfo = false;

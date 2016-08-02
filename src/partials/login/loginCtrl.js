@@ -66,11 +66,6 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 				$rootScope.homedata = res;
 				if(res.success==true){
 					userService.setData($scope.newsecret,res.account.address,newpublicKey,res.account.balance,res.account.secondPublicKey);
-					// console.log(userService.setsecret)
-					// ipCookie('userSecret',$scope.newsecret);
-					// $rootScope.useraddress=res.account.address;
-					// $rootScope.userbalance=res.account.balance;
-					$rootScope.userpublickey=res.account.secondPublicKey;
 					// 是否登录的全局变量
 					$rootScope.isLogin = true;
 					$location.path('/home');
@@ -122,10 +117,6 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 					userService.setData($scope.secret,res.account.address,publicKey,res.account.balance,res.account.secondPublicKey)
 					// 是否登录的全局变量
 					$rootScope.isLogin = true;
-					// $rootScope.useraddress=res.account.address;
-					// $rootScope.userbalance=res.account.balance;
-					$rootScope.userpublickey=res.account.secondPublicKey;
-					//$rootScope.publickey=res.account.publicKey;
 					$location.path('/home');
 				} else{
 					toastError('服务器错误!');

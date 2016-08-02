@@ -14,7 +14,7 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 				$scope.account = res.account;
 				$scope.latestBlock = res.latestBlock;
 				$scope.version = res.version;
-				userService.balance = res.account.balance;
+				userService.update(res.account);
 				$scope.userService = userService;
 				jiaoyi(userService.address,userService.publicKey)
 			};
