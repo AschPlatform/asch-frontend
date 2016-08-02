@@ -50,7 +50,7 @@
 					   template-pagination="custom/pager" >
 
 					<tr ng-repeat="i in $data"  >
-						<td  data-title="'高度'"> {{i.height}}</td>
+						<td  data-title="'高度'"> <i class="level" ng-click="showdetailInfo(i)">{{i.height}}</i></td>
 						<td  data-title="'日期'"><span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span></td>
 						<td  data-title="'ID'"><i class="level" ng-click="showdetailInfo(i)">{{i.id}}</i></td>
 						<td  data-title="'交易'" ><i class="level" ng-click="showdealInfo(i)">{{i.numberOfTransactions}}</i></td>

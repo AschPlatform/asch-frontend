@@ -26,11 +26,14 @@ angular.module('asch').controller('blockdetailCtrl', function($scope, $rootScope
         $rootScope.$broadcast('accountdetail',$scope.i)
     }
     $rootScope.$on('detail', function(d,data) {
-        // if(!!data.id){
-        //     $scope.blockId = data.id;
-        // } else{
-            $scope.blockId = data;
-       // }
+       if(typeof data == 'object'){
+           $scope.blockId = data.id;
+       }else{
+           $scope.blockId = data;
+       }
+        if(!$scope.blockId){
+           return ; 
+        }
         apiService.blockDetail({
             id:$scope.blockId
         }).success(function (res) {

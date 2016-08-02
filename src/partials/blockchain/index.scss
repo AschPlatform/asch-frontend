@@ -95,14 +95,14 @@
 }
 #blockdetail{
   width: 840px;
-  height: 395px;
+  min-height: 395px;
   z-index: 1000;
   background-color: #fff;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   margin-left: -420px;
-  margin-top: -195px;
+  margin-top: -205px;
 }#accountdetail{
   width: 640px;
   height: 200px;

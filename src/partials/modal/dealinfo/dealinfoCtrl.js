@@ -19,14 +19,16 @@ angular.module('asch').controller('dealinfoCtrl', function($scope, $rootScope, a
         $rootScope.$broadcast('accountdetail',$scope.i)
     }
     $rootScope.$on('jiaoyi', function(d,data) {
-        // if(!!data.id){
-        //     $scope.blockId = data.id;
-        // } else{
+        if(typeof data == 'object'){
+            $scope.blockId = data.id;
+        }else{
             $scope.blockId = data;
-        //}
-        
+        }
+        if(!$scope.blockId){
+            return ;
+        }
         apiService.transactions({
-            blockId:$scope.blockId
+            id:$scope.blockId
         }).success(function (res) {
             if(res.success==true){
                 $rootScope.dealdetailinfo = true;
