@@ -8,7 +8,7 @@ angular.module('asch').controller('accountdetailCtrl', function($scope, $rootSco
         $rootScope.accountdetailinfo = false;
     };
     $rootScope.$on('accountdetail', function(d,data) {
-        $scope.address = data.address || data.generatorId ||data.senderId || data.recipientId;
+        $scope.address = data;
         apiService.accountdetail({
             address:$scope.address
         }).success(function (res) {

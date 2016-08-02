@@ -24,8 +24,8 @@
 			<tr ng-repeat="i in $data"  >
 				<td  data-title="'交易ID'"> {{i.id}}</td>
 				<td  data-title="'类型'">{{i.type | typeFilter}}</td>
-				<td  data-title="'发送者'"> <i class="level" ng-click="showdetailInfo(i.senderId)">{{i.senderId}}</i></td>
-				<td  data-title="'接收者'" class="item_accept"> <i class="level" ng-click="showdetailInfo(i.recipientId)">{{i.recipientId || '系统'}}</i></td>
+				<td  data-title="'发送者'"> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
+				<td  data-title="'接收者'" class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || '系统'}}</i></td>
 				<td  data-title="'日期'">{{i.timestamp | timestampFilter}}</td>
 				<td  data-title="'金额(手续费)'">{{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
 			</tr>

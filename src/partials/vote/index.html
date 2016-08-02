@@ -17,7 +17,7 @@
                     <td  data-title=""><input type="checkbox" ng-disabled="i.voted" ng-checked="i.voted || (i.username | saveCheckfilter)" ng-click="checkitem(i)"></td>
                     <td  data-title="'排名'"> {{i.rate }}</td>
                     <td  data-title="'受托人'">{{i.username}}</td>
-                    <td  data-title="'Asch地址'">{{i.address}}</td>
+                    <td  data-title="'Asch地址'"><i class="level" ng-click="showaccountdetailInfo(i.address)">{{i.address}}</i></td>
                     <td  data-title="'生产率'">{{i.productivity}}%</td>
                     <td  data-title="'生产块数'">{{i.producedblocks}}</td>
                     <td  data-title="'得票率'">{{i.approval}}%</td>
@@ -39,7 +39,7 @@
                     <td  data-title=""><input type="checkbox" ng-checked="(i.username | saveCodeFilter )" ng-click="checkitem2(i)"></td>
                     <td  data-title="'排名'"> {{i.rate}}</td>
                     <td  data-title="'受托人'">{{i.username}}</td>
-                    <td  data-title="'Asch地址'">{{i.address}}</td>
+                    <td  data-title="'Asch地址'"><i class="level" ng-click="showaccountdetailInfo(i.address)">{{i.address}}</i></td>
                     <td  data-title="'生产率'">{{i.productivity}}%</td>
                     <td  data-title="'生产块数'">{{i.producedblocks}}</td>
                     <td  data-title="'得票率'">{{i.approval}}%</td>
