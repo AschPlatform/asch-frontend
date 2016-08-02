@@ -2,8 +2,22 @@ angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope,
 	$rootScope.active = 'blockchain';
 	$rootScope.userlogin = true;
 	$rootScope.showdealInfo = function (i) {
+		$rootScope.blockdetailinfo = false;
+		$rootScope.accountdetailinfo = false;
 		$scope.i=i;
 		$rootScope.$broadcast('jiaoyi',$scope.i)
+	}
+	$rootScope.showdetailInfo = function (i) {
+		$rootScope.accountdetailinfo = false;
+		$rootScope.dealdetailinfo = false;
+		$scope.i=i;
+		$rootScope.$broadcast('detail',$scope.i)
+	}
+	$rootScope.showaccountdetailInfo = function (i) {
+		$rootScope.blockdetailinfo = false;
+		$rootScope.dealdetailinfo = false;
+		$scope.i=i;
+		$rootScope.$broadcast('accountdetail',$scope.i)
 	}
 	
 	$scope.init = function() {

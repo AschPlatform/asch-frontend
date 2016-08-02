@@ -86,4 +86,12 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	this.peer = function (params) {
 		return fetch('{{peerApi}}', params, 'get');
 	}
+	// 区块详情
+	this.blockDetail = function (params) {
+		return fetch('{{blocksDetailApi}}', params, 'get');
+	}
+	// 账户详情
+	this.accountdetail = function (params) {
+		return fetch('{{accountdetailApi}}', params, 'get');
+	}
 });

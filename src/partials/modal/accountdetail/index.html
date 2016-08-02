@@ -1,0 +1,13 @@
+<div class="accountdetail" ng-controller="accountdetailCtrl" ng-init="init()">
+    <div class="h_header">账户详情<a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a></div>
+
+    <div class="deal_info" >
+
+        <table class="table">
+            <tr><td>地址:</td><td>{{account.address}}</td></tr>
+            <tr><td>公钥:</td><td>{{account.publicKey}}</td></tr>
+            <tr><td>余额:</td><td>{{account.balance  | xasFilter}}</td></tr>
+            <tr ng-show="account.username"><td>受托人名称:</td><td>{{account.username}}</td></tr>
+        </table>
+    </div>
+</div>

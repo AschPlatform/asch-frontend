@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/partials/modal/assignee/index.scss">
     <link rel="stylesheet" href="/partials/modal/dealinfo/index.scss">
     <link rel="stylesheet" href="/partials/modal/accept/index.scss">
+    <link rel="stylesheet" href="/partials/modal/blockdetail/index.scss">
+    <link rel="stylesheet" href="/partials/modal/accountdetail/index.scss">
     <link rel="stylesheet" href="/partials/modal/voteto/index.scss">
     <link rel="stylesheet" href="/partials/blockchain/index.scss">
     <link rel="stylesheet" href="/partials/common/toast/toast.scss">
@@ -41,6 +43,8 @@
     <div id="assignee" ng-show="assigneeinfo" ng-include="'partials/modal/assignee/index.html'"></div>
     <div id="dealinfo" ng-show="dealdetailinfo" ng-include="'partials/modal/dealinfo/index.html'"></div>
     <div id="accept" ng-show="acceptinfo" ng-include="'partials/modal/accept/index.html'"></div>
+    <div id="blockdetail" ng-show="blockdetailinfo" ng-include="'partials/modal/blockdetail/index.html'"></div>
+    <div id="accountdetail" ng-show="accountdetailinfo" ng-include="'partials/modal/accountdetail/index.html'"></div>
     <div id="voteto" ng-show="votetoinfo" ng-include="'partials/modal/voteto/index.html'"></div>
     <div id="deletevoteto" ng-show="deletevotetoinfo" ng-include="'partials/modal/deletevote/index.html'"></div>
     <div ng-class="{'bodycontent':userlogin}"  ng-view></div>
@@ -77,6 +81,8 @@
 <script type="text/javascript" src="/partials/modal/blockhigh/blockhignCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/assignee/assigneeCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/accept/acceptCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/blockdetail/blockdetailCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/accountdetail/accountdetailCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/dealinfo/dealinfoCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/deletevote/deletevoteCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/voteto/votetoCtrl.js"></script>

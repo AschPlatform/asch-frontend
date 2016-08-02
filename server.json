@@ -37,6 +37,16 @@
 		"mock": "/data/blockforging/delegates.json",
 		"url": "/api/delegates/get"
 	},
+	//详情基本信息
+	"blocksDetailApi": {
+		"mock": "/data/blockDetail/getblocks.json",
+		"url": "/api/blocks/get"
+	},
+	//账户基本信息
+	"accountdetailApi": {
+		"mock": "/data/accountdetail/accounts.json",
+		"url": "/api/accounts"
+	},
 	//谁投我的票接口
 	"votetomeApi": {
 		"mock": "/data/vote/voter.json",

@@ -10,8 +10,15 @@ angular.module('asch').controller('blockhignCtrl', function($scope, $rootScope, 
     $scope.Close = function () {
         $rootScope.isBodyMask = false;
         $rootScope.blockhigninfo = false;
-    }; 
-   
+    };
+    $rootScope.showdealInfo = function (i) {
+        $scope.i=i;
+        $rootScope.$broadcast('jiaoyi',$scope.i)
+    }
+    $rootScope.showdetailInfo = function (i) {
+        $scope.i=i;
+        $rootScope.$broadcast('detail',$scope.i)
+    }
     $scope.init = function(params) {
         // window.location.href = '#/login';
 

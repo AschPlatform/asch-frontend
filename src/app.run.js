@@ -7,5 +7,6 @@ angular.module('asch').run(function($rootScope, $location, ipCookie, apiService,
         if(!userService.secret){
             $location.path('/login');
         }
-    })
+    });
+   
 });

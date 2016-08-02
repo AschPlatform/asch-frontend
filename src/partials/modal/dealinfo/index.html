@@ -10,7 +10,7 @@
                 <td>日期</td>
             </tr>
             <tr class="table_content" ng-repeat="i in transactions">
-                <td>{{i.id}}</td>
+                <td><i class="level" ng-click="showdetailInfo(i)">{{i.id}}</i></td>
                 <td>{{i.confirmations}}</td>
                 <td class="orangeFont">{{i.amount | xasFilter}}<i>XAS</i></td>
                 <td class="orangeFont">{{i.fee | xasFilter}}<i>XAS</i></td>
@@ -19,3 +19,4 @@
         </table>
     </div>
 </div>
+
