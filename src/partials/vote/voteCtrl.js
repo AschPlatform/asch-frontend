@@ -4,6 +4,12 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
    $scope.letin = true;
    $scope.hosting = false;
    $scope.mgvotecord = false;
+    $rootScope.showaccountdetailInfo = function (i) {
+        $rootScope.blockdetailinfo = false;
+        $rootScope.dealdetailinfo = false;
+        $scope.i=i;
+        $rootScope.$broadcast('accountdetail',$scope.i)
+    }
     $scope.letinchange = function () {
         $scope.letin = true;
         $scope.hosting = false;
