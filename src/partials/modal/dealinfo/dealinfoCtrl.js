@@ -28,7 +28,7 @@ angular.module('asch').controller('dealinfoCtrl', function($scope, $rootScope, a
             return ;
         }
         apiService.transactions({
-            id:$scope.blockId
+            blockId:$scope.blockId
         }).success(function (res) {
             if(res.success==true){
                 $rootScope.dealdetailinfo = true;
