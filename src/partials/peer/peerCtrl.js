@@ -25,6 +25,9 @@ angular.module('asch').controller('peerCtrl', function($scope, $rootScope, apiSe
                     // params.data=res.delegates;
                     params.total(res.totalCount);
                     // return res.delegates;
+                    for (var i = 0; i < res.peers.length; ++i) {
+                        peers.ip = peers.ip.replace(/^[0-9]+.[0-9]+/, '*.*');
+                    }
                     $defer.resolve(res.peers);
                 }).error(function(res) {
                     toastError('服务器错误！');
