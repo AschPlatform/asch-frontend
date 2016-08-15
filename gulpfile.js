@@ -55,6 +55,10 @@ var scssOptions = {
 };
 var timestamp = dateFormat('yyyyMMddhhmmss', new Date());
 
+var magic = '';
+var TEST_MAGIC = '594fe0f3';
+var MAIN_MAGIC = '8b77db62';
+
 String.prototype.endsWith = function(suffix) {
 	return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
@@ -160,6 +164,7 @@ function outputHtml(path) {
 		.pipe(gulpif('*.js', replace(/\{\{(\w+Api)\}\}/g, function(match, $1) {
 			return serverApi[$1]['url'];
 		})))
+		.pipe(gulpif('*.js', replace(/\{\{magic\}\}/g, magic)))
 		// string模版路径替换成对应的文件内容
 		.pipe(gulpif('*.js', ngAnnotate()))
 		// 引入css和js的入口加上时间戳，清除浏览器缓存
@@ -318,6 +323,7 @@ gulp.task('connect', function() {
 						return serverApi[$1]['url'];
 					}
 				})))
+				.pipe(gulpif('*.js', replace(/\{\{magic\}\}/g, TEST_MAGIC)))
 				// 动态编译scss文件
 				.pipe(gulpif('*.scss', gulpScss(scssOptions)))
 				.pipe(respond(res));
@@ -339,16 +345,14 @@ gulp.task('clean', function() {
 	.pipe(clean());
 });
 
-gulp.task('replace:dev', function() {
-	cmd = 'dev';
+gulp.task('replace:test', function() {
+	cmd = 'test';
+	magic = TEST_MAGIC;
 });
 
-gulp.task('replace:beta', function() {
-	cmd = 'beta';
-});
-
-gulp.task('replace:prod', function() {
-	cmd = 'prod';
+gulp.task('replace:main', function() {
+	cmd = 'main';
+	magic = MAIN_MAGIC;
 });
 
 gulp.task('handle', function() {
@@ -358,17 +362,12 @@ gulp.task('handle', function() {
 // 开发环境
 gulp.task('serve', ['connect','watch']);
 
-// 联调环境
-gulp.task('dev', function() {
-	runSequence('clean', 'replace:dev', ['handle', 'data']);
-});
-
 // beta环境
-gulp.task('beta', function() {
-	runSequence('clean', 'replace:beta', ['handle']);
+gulp.task('build-test', function() {
+	runSequence('clean', 'replace:test', ['handle']);
 });
 
 // 线上环境
-gulp.task('build', function() {
-	runSequence('clean', 'replace:prod', ['handle']);
+gulp.task('build-main', function() {
+	runSequence('clean', 'replace:main', ['handle']);
 });
