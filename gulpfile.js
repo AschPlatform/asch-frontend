@@ -57,7 +57,7 @@ var timestamp = dateFormat('yyyyMMddhhmmss', new Date());
 
 var magic = '';
 var TEST_MAGIC = '594fe0f3';
-var MAIN_MAGIC = '8b77db62';
+var MAIN_MAGIC = '5f5b3cf5';
 
 String.prototype.endsWith = function(suffix) {
 	return this.indexOf(suffix, this.length - suffix.length) !== -1;

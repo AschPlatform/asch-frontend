@@ -12,7 +12,7 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 		$rootScope.register = false;
 		$rootScope.creatpwd = true;
 		$rootScope.checkpwd = false;
-		var code = new Mnemonic(Mnemonic.Words.ENGLISH);
+		var code = new AschJS.Mnemonic(AschJS.Mnemonic.Words.ENGLISH);
 		$scope.newsecret=code.toString();
 		newpublicKey = AschJS.crypto.getKeys($scope.newsecret).publicKey;
 		$rootScope.newpublicKey=newpublicKey
@@ -104,7 +104,7 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 			toastError('请输入密码');
 			return;
 		}
-		if (!Mnemonic.isValid($scope.secret)) {
+		if (!AschJS.Mnemonic.isValid($scope.secret)) {
 			return toastError('密码格式不符合BIP39安全规范');
 		}
 		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
