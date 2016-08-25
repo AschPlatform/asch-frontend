@@ -252,8 +252,6 @@ gulp.task('partials', function() {
 
 gulp.task('htmls', function() {
 	console.log('开始build app页面...'.cyan);
-	// console.log(browserify);
-	//console.log(Mnemonic);
 	return outputHtml('./src/index.html');
 });
 
