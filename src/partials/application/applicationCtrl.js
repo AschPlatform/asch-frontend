@@ -19,7 +19,6 @@ angular.module('asch').controller('applicationCtrl', function($scope, $rootScope
 			getData: function($defer,params) {
 				apiService.appList({
 					limit: params.count(),
-					orderBy: 'height:desc',
 					offset: (params.page() - 1) * params.count()
 				}).success(function(res) {
 
@@ -39,9 +38,6 @@ angular.module('asch').controller('applicationCtrl', function($scope, $rootScope
 		$scope.appinstalled = new NgTableParams({
 			page: 1,
 			count: 20,
-			sorting: {
-				height: 'desc'
-			}
 		}, {
 			total: 0,
 			counts: [],

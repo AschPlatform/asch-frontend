@@ -9,7 +9,7 @@
 			   template-pagination="custom/pager" >
 
 			<tr ng-repeat="i in $data"  >
-				<td  data-title="'图标'"><a ><img class="ico-img" src="{{i.icon}}" alt=""></a></td>
+				<td  data-title="'图标'"><a ><img class="ico-img" src="{{i.icon}}" onerror="this.src='favicon.ico'"></a></td>
 				<td  data-title="'名称'"><a >{{i.name}}</a></td>
 				<td  data-title="'简介'" class="wop">{{i.description}}</td>
 				<td  data-title="'ID'" >{{i.transactionId}}</td>
@@ -25,8 +25,8 @@
 			   template-pagination="custom/pager" >
 
 			<tr ng-repeat="i in $data"  >
-				<td  data-title="'图标'"><a target="_blank" ng-href="/dapps/ {{i.transactionId }}"><img class="ico-img" src="{{i.icon}}" alt=""></a></td>
-				<td  data-title="'名称'"><a target="_blank" ng-href="/dapps/ {{i.transactionId }}">{{i.name}}</a></td>
+				<td  data-title="'图标'"><a target="_blank" ng-href="/dapps/{{i.transactionId }}"><img class="ico-img" src="{{i.icon}}"></a></td>
+				<td  data-title="'名称'"><a target="_blank" ng-href="/dapps/{{i.transactionId }}">{{i.name}}</a></td>
 				<td  data-title="'简介'" class="wop">{{i.description}}</td>
 				<td  data-title="'ID'" >{{i.transactionId}}</td>
 				<!--<td  data-title="'标签'" >{{i.tags}}</td>-->
