@@ -7,6 +7,7 @@ angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope,
 		$scope.i=i;
 		$rootScope.$broadcast('jiaoyi',$scope.i)
 	}
+	$scope.searchres =false;
 	$rootScope.showdetailInfo = function (i) {
 		$rootScope.accountdetailinfo = false;
 		$rootScope.dealdetailinfo = false;
@@ -19,7 +20,6 @@ angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope,
 		$scope.i=i;
 		$rootScope.$broadcast('accountdetail',$scope.i)
 	}
-	
 	$scope.init = function() {
 		$scope.blockchaintableparams = new NgTableParams({
 			page: 1,
@@ -29,7 +29,6 @@ angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope,
 			}
 		}, {
 			total: 0,
-			counts: [],
 			getData: function($defer,params) {
 				apiService.blocks({
 					limit: params.count(),
@@ -46,8 +45,25 @@ angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope,
 				});
 			}
 		});
+		
+		
 	};
-	
 
+	$scope.searchBlock = function () {
+		if(!$scope.search){
+			$scope.init();
+		}
+		apiService.blockDetail({
+			height: $scope.search
+		}).success(function (res) {
+			$scope.blockchaintableparams = new NgTableParams({
+				page: 1,
+				count: 2
+			}, {
+				total: 1,
+				data: [res.block]
+			});
+		});
 
+	}
 });

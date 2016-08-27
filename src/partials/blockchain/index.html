@@ -2,8 +2,8 @@
 	<div class="latest">
 		<div class="table_title">最新区块</div>
 		<div class="search">
-			<input type="text" placeholder="输入搜索内容">
-			<a class="search_icon"><img src="../assets/common/search.png" alt=""></a>
+			<input type="text" ng-model="search" placeholder="输入搜索内容">
+			<a class="search_icon" ng-click="searchBlock()"><img src="../assets/common/search.png" alt=""></a>
 		</div>
 	</div>
 	<div class="deal_table">
@@ -21,6 +21,7 @@
 				<td  data-title="'奖励'">{{i.reward | xasFilter}}</td>
 			</tr>
 		</table>
+
 		<script type="text/ng-template" id="custom/pager">
 			<ul class="pagination ng-table-pagination">
 				<li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">
@@ -41,9 +42,9 @@
 						<i class="mdi-hardware-keyboard-arrow-right">下一页</i>
 					</a>
 				</li>
-				<button ng-click="params.page(inputPage)">跳转到</button>
-				<input type="text" placeholder="" ng-model="inputPage">
-			  <label>页</label>
+				<!--<button ng-click="params.page(inputPage)">跳转到</button>-->
+				<!--<input type="text" placeholder="" ng-model="inputPage">-->
+			  <!--<label>页</label>-->
 			</ul>
 		</script>
 	</div>

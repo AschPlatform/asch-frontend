@@ -40,6 +40,14 @@
       box-sizing: border-box;
       border-bottom: 5px solid #bcbcbc;
       position: relative;
+      .search{
+        position: absolute;
+        right: 120px;
+        top: 12px;
+        width: 200px;
+        height: 40px;
+        padding-left: 10px;
+      }
       button{
         width: 100px;
         height: 40px;
