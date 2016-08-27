@@ -2,6 +2,22 @@
   width: 100%;
   min-height: 508px;
   border: 1px solid #dddddd;
+  td{
+    text-align: center;
+    line-height: 60px;
+  }
+  .wop{
+    width: 25%;
+    overflow: auto;
+  }
+  .ico-img{
+    width: 48px;
+    height: 48px;
+  }
+  tr{
+    height: 60px;
+    line-height: 60px;
+  }
   .appheader{
     width: 100%;
     height: 65px;

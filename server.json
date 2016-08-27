@@ -60,5 +60,13 @@
 	"postApi": {
 		"mock": "/data/vote/delegates.json",
 		"url": "/peer/transactions"
+	},
+	"appListApi": {
+		"mock": "/data/application/applist.json",
+		"url": "/api/dapps"
+	},
+	"appInstalledApi": {
+		"mock": "/data/application/applist.json",
+		"url": "/api/dapps/installed"
 	}
 }

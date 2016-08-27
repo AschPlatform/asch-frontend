@@ -93,5 +93,13 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	// 账户详情
 	this.accountdetail = function (params) {
 		return fetch('{{accountdetailApi}}', params, 'get');
+	};
+	// 应用列表
+	this.appList = function (params) {
+		return fetch('{{appListApi}}', params, 'get');
+	}
+	// 已安装应用列表
+	this.appInstalled = function (params) {
+		return fetch('{{appInstalledApi}}', params, 'get');
 	}
 });
