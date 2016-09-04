@@ -57,6 +57,15 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 
 		});
 
+		apiService.forgingStatus({
+			publicKey:userService.publicKey
+		}).success(function (res) {
+			if(res.success == true){
+				$scope.forgingEnabled = res.enabled
+			};
+		}).error(function (res) {
+		});
+
 		$scope.blockforgingtableparams = new NgTableParams({
 			page: 1,
 			count: 20,
@@ -67,7 +76,6 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 			total: 0,
 			counts: [],
 			getData: function($defer,params) {
-
 				apiService.blocks({
 					generatorPublicKey:userService.publicKey,
 					limit: params.count(),
@@ -81,8 +89,5 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 				});
 			}
 		});
-
 	};
-
-
 });

@@ -57,6 +57,7 @@
                    template-pagination="custom/pager" >
                 <tr ng-repeat="i in $data"  >
                     <td class="level" data-title="'账户地址'"> {{i.address}}</td>
+                    <td  data-title="'用户名'">{{i.username}}</td>
                     <td  data-title="'投票权重'">{{i.weight}}%</td>
                 </tr>
             </table>

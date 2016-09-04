@@ -102,4 +102,7 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	this.appInstalled = function (params) {
 		return fetch('{{appInstalledApi}}', params, 'get');
 	}
+	this.forgingStatus = function (params) {
+		return fetch('{{forgingStatusApi}}', params, 'get');
+	}
 });

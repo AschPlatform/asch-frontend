@@ -1,6 +1,6 @@
 {
 	"server": {
-		"dev": "http://192.168.1.101:4096"
+		"dev": "http://192.168.1.104:4096"
 	},
 	//登录接口
 	"loginApi": {
@@ -68,5 +68,9 @@
 	"appInstalledApi": {
 		"mock": "/data/application/applist.json",
 		"url": "/api/dapps/installed"
+	},
+	"forgingStatusApi": {
+		"mock": "/data/blockforging/status.json",
+		"url": "/api/delegates/forging/status"
 	}
 }
