@@ -1,40 +1,40 @@
 <div id="blockforging" ng-controller="blockforgingCtrl" ng-init="init()">
 		<div class="accountInfo_cont">
 			<div class="_title">
-				受托人基本信息
+				{{'DELEGATE_INFO' | translate}}
 				<div class="nav_register" ng-click="assigneeShowInfo()" ng-show="!delegate.username">
-					注册受托人
+					{{'DELEGATE_REGISTER' | translate}}
 				</div>
 				<div class="nav_register"  ng-show="delegate.username">
 					{{delegate.username}}
 				</div>
-				<div class="nav_register">{{forgingEnabled ? '已开启' : '未开启'}}</div>
+				<div class="nav_register">{{forgingStatus()}}</div>
 			</div>
 			<div class="circlePicInfo">
 				<div class="circle allMoney">
 					<div class="pagea circle"></div>
-					<div class="text1">总收益</div>
+					<div class="text1">{{'TOTAL_EARNINGS' | translate}}</div>
 					<div class="text2"  ng-show="delegate.forged || delegate.forged == 0">{{delegate.forged | xasFilter }}</div>
 					<div class="text2"  ng-show="!delegate.forged && delegate.forged != 0">--</div>
 					<div class="text3">XAS</div>
 				</div>
 				<div class="circle rank">
 					<div class="pagea circle">
-						<div class="title">排名</div>
+						<div class="title">{{'RANKING' | translate}}</div>
 						<div class="num"  ng-show="delegate.rate  || delegate.rate == 0">{{delegate.rate}}</div>
 						<div class="num" ng-show="!delegate.rate && delegate.rate != 0">--</div>
 					</div>
 				</div>
 				<div class="circle output">
 					<div class="pagea circle">
-						<div class="title">生产率</div>
+						<div class="title">{{'PRODUCTIVITY' | translate}}</div>
 						<div class="num" ng-show="delegate.productivity  || delegate.productivity == 0">{{delegate.productivity}}%</div>
 						<div class="num" ng-show="!delegate.productivity  && delegate.productivity != 0">--</div>
 					</div>
 				</div>
 				<div class="circle depiao">
 					<div class="pagea circle">
-						<div class="title">得票率</div>
+						<div class="title">{{'APPROVAL' | translate}}</div>
 						<div class="num" ng-show="delegate.approval   || delegate.approval == 0">{{delegate.approval}}%</div>
 						<div class="num" ng-show="!delegate.approval  && delegate.approval != 0">--</div>
 					</div>
@@ -44,20 +44,30 @@
 		</div>
 		<div class="baseInfo">
 			<div class="_title">
-				生产的区块
+				{{'PRODUCED_BLOCKS' | translate}}
 			</div>
 			<div class="baseInfo_content">
 				<table class="table"ng-table="blockforgingtableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
 					   template-pagination="custom/pager" >
-
+				<thread>
+					<tr>
+						<td>{{'HEIGHT' | translate}}</td>
+						<td>{{'DATE' | translate}}</td>
+						<td>ID</td>
+						<td>{{'TRANSACTIONS' | translate}}</td>
+						<td>{{'AMOUNTS' | translate}}</td>
+						<td>{{'FEES' | translate}}</td>
+						<td>{{'REWARDS' | translate}}</td>
+					</tr>
+				</thread>
 					<tr ng-repeat="i in $data"  >
-						<td  data-title="'高度'"> <i class="level" ng-click="showdetailInfo(i)">{{i.height}}</i></td>
-						<td  data-title="'日期'"><span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span></td>
-						<td  data-title="'ID'"><i class="level" ng-click="showdetailInfo(i)">{{i.id}}</i></td>
-						<td  data-title="'交易'" ><i class="level" ng-click="showdealInfo(i)">{{i.numberOfTransactions}}</i></td>
-						<td  data-title="'金额'">{{i.totalAmount | xasFilter}}</td>
-						<td  data-title="'费用'">{{i.totalFee | xasFilter}}</td>
-						<td  data-title="'奖励'">{{i.reward | xasFilter}}</td>
+						<td> <i class="level" ng-click="showdetailInfo(i)">{{i.height}}</i></td>
+						<td><span ng-show="i.timestamp > 0">{{i.timestamp | timestampFilter}}</span></td>
+						<td><i class="level" ng-click="showdetailInfo(i)">{{i.id}}</i></td>
+						<td><i class="level" ng-click="showdealInfo(i)">{{i.numberOfTransactions}}</i></td>
+						<td>{{i.totalAmount | xasFilter}}</td>
+						<td>{{i.totalFee | xasFilter}}</td>
+						<td>{{i.reward | xasFilter}}</td>
 					</tr>
 				</table>
 			</div>
@@ -69,7 +79,7 @@
 				<ul class="pagination ng-table-pagination">
 					<li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">
 						<a ng-switch-when="prev" ng-click="params.page(page.number)" href="">
-							<i class="mdi-hardware-keyboard-arrow-left">上一页</i>
+							<i class="mdi-hardware-keyboard-arrow-left">{{'PREV_PAGE' | translate}}</i>
 						</a>
 						<a ng-switch-when="first" ng-click="params.page(page.number)" href="">
 							<span ng-bind="page.number"></span>
@@ -82,7 +92,7 @@
 							<span ng-bind="page.number"></span>
 						</a>
 						<a ng-switch-when="next" ng-click="params.page(page.number)" href="">
-							<i class="mdi-hardware-keyboard-arrow-right">下一页</i>
+							<i class="mdi-hardware-keyboard-arrow-right">{{'NEXT_PAGE' | translate}}</i>
 						</a>
 					</li>
 				</ul>

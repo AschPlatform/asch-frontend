@@ -1,27 +1,35 @@
 <div id="vote" ng-controller="voteCtrl" ng-init="init()">
 <div class="voteheader">
-    <div class="titleitem letin "  ng-class=" {'active':letin}" ng-click="letinchange()">受托人列表</div>
-    <div class="titleitem mgvotecord"  ng-class=" {'active':mgvotecord}" ng-click="mgvotecordchange()">投票记录</div>
-    <div class="titleitem hosting"  ng-class=" {'active':hosting}" ng-click="hostingchange()">谁投了我</div>
+    <div class="titleitem letin "  ng-class=" {'active':letin}" ng-click="letinchange()">{{'DELEGATE_LIST' | translate}}</div>
+    <div class="titleitem mgvotecord"  ng-class=" {'active':mgvotecord}" ng-click="mgvotecordchange()">{{'VOTE_RECORD' | translate}}</div>
+    <div class="titleitem hosting"  ng-class=" {'active':hosting}" ng-click="hostingchange()">{{'MY_VOTERS' | translate}}</div>
 </div>
     <div class="content first" ng-show="letin">
         <div class="innerheader">
-            <span>共{{delegateCount}}人</span>
+            <span translate="TOTAL_PEOPLES" translate-values="{ count: delegateCount }"></span>
             <!--<input class="search" type="text">-->
-            <button ng-click="votetoShowInfo()">投票</button>
+            <button ng-click="votetoShowInfo()">{{'VOTE' | translate}}</button>
         </div>
         <div class="tablewrap">
             <table class="table"ng-table="tableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
                    template-pagination="custom/pager" >
-
+                <tr>
+					<td></td>
+					<td>{{'RANKING' | translate}}</td>
+					<td>{{'DELEGATE' | translate}}</td>
+					<td>{{'ADDRESS' | translate}}</td>
+					<td>{{'PRODUCTIVITY' | translate}}</td>
+					<td>{{'PRODUCED_NUMBER' | translate}}</td>
+					<td>{{'APPROVAL' | translate}}</td>
+				</tr>
                 <tr ng-repeat="i in $data"  >
-                    <td  data-title=""><input type="checkbox" ng-disabled="i.voted" ng-checked="i.voted || (i.username | saveCheckfilter)" ng-click="checkitem(i)"></td>
-                    <td  data-title="'排名'"> {{i.rate }}</td>
-                    <td  data-title="'受托人'">{{i.username}}</td>
-                    <td  data-title="'Asch地址'"><i class="level" ng-click="showaccountdetailInfo(i.address)">{{i.address}}</i></td>
-                    <td  data-title="'生产率'">{{i.productivity}}%</td>
-                    <td  data-title="'生产块数'">{{i.producedblocks}}</td>
-                    <td  data-title="'得票率'">{{i.approval}}%</td>
+                    <td><input type="checkbox" ng-disabled="i.voted" ng-checked="i.voted || (i.username | saveCheckfilter)" ng-click="checkitem(i)"></td>
+                    <td> {{i.rate }}</td>
+                    <td>{{i.username}}</td>
+                    <td><i class="level" ng-click="showaccountdetailInfo(i.address)">{{i.address}}</i></td>
+                    <td>{{i.productivity}}%</td>
+                    <td>{{i.producedblocks}}</td>
+                    <td>{{i.approval}}%</td>
                 </tr>
             </table>
         </div>
@@ -29,36 +37,49 @@
 
     <div class="content third" ng-show="mgvotecord">
         <div class="innerheader">
-            <span>共{{myvoteCount}}人</span>
-            <button class="delete" ng-click="votetoShowInfo(1)">删除</button>
+            <span translate="TOTAL_PEOPLES" translate-values="{ count: myvoteCount }"></span>
+            <button class="delete" ng-click="votetoShowInfo(1)">{{'DELETE' | translate}}</button>
         </div>
         <div class="tablewrap">
             <table class="table"ng-table="tableparams2" border="0" width="100%" cellpadding="0" cellspacing="0"
                    template-pagination="custom/pager" >
-
+                <tr>
+					<td></td>
+					<td>{{'RANKING' | translate}}</td>
+					<td>{{'DELEGATE' | translate}}</td>
+					<td>{{'ADDRESS' | translate}}</td>
+					<td>{{'PRODUCTIVITY' | translate}}</td>
+					<td>{{'PRODUCED_NUMBER' | translate}}</td>
+					<td>{{'APPROVAL' | translate}}</td>
+				</tr>
                 <tr ng-repeat="i in $data"  >
-                    <td  data-title=""><input type="checkbox" ng-checked="(i.username | saveCodeFilter )" ng-click="checkitem2(i)"></td>
-                    <td  data-title="'排名'"> {{i.rate}}</td>
-                    <td  data-title="'受托人'">{{i.username}}</td>
-                    <td  data-title="'Asch地址'"><i class="level" ng-click="showaccountdetailInfo(i.address)">{{i.address}}</i></td>
-                    <td  data-title="'生产率'">{{i.productivity}}%</td>
-                    <td  data-title="'生产块数'">{{i.producedblocks}}</td>
-                    <td  data-title="'得票率'">{{i.approval}}%</td>
+                    <td><input type="checkbox" ng-checked="(i.username | saveCodeFilter )" ng-click="checkitem2(i)"></td>
+                    <td> {{i.rate}}</td>
+                    <td>{{i.username}}</td>
+                    <td><i class="level" ng-click="showaccountdetailInfo(i.address)">{{i.address}}</i></td>
+                    <td>{{i.productivity}}%</td>
+                    <td>{{i.producedblocks}}</td>
+                    <td>{{i.approval}}%</td>
                 </tr>
             </table>
         </div>
     </div>
     <div class="content second" ng-show="hosting">
         <div class="innerheader">
-            <span>共 {{totalVoter}} 人</span>
+            <span translate="TOTAL_PEOPLES" translate-values="{ count: totalVoter }"></span>
         </div>
         <div class="tablewrap">
             <table class="table"ng-table="tableparams3" border="0" width="100%" cellpadding="0" cellspacing="0"
                    template-pagination="custom/pager" >
+                <tr>
+					<td>{{'ADDRESS' | translate}}</td>
+					<td>{{'USERNAME' | translate}}</td>
+					<td>{{'WEIGHT' | translate}}</td>
+				</tr>
                 <tr ng-repeat="i in $data"  >
-                    <td class="level" data-title="'账户地址'"> {{i.address}}</td>
-                    <td  data-title="'用户名'">{{i.username}}</td>
-                    <td  data-title="'投票权重'">{{i.weight}}%</td>
+                    <td class="level"> {{i.address}}</td>
+                    <td>{{i.username}}</td>
+                    <td>{{i.weight}}%</td>
                 </tr>
             </table>
         </div>
@@ -67,7 +88,7 @@
         <ul class="pagination ng-table-pagination">
             <li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">
                 <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">
-                    <i class="mdi-hardware-keyboard-arrow-left">上一页</i>
+                    <i class="mdi-hardware-keyboard-arrow-left">{{'PREV_PAGE' | translate}}</i>
                 </a>
                 <a ng-switch-when="first" ng-click="params.page(page.number)" href="">
                     <span ng-bind="page.number"></span>
@@ -80,7 +101,7 @@
                     <span ng-bind="page.number"></span>
                 </a>
                 <a ng-switch-when="next" ng-click="params.page(page.number)" href="">
-                    <i class="mdi-hardware-keyboard-arrow-right">下一页</i>
+                    <i class="mdi-hardware-keyboard-arrow-right">{{'NEXT_PAGE' | translate}}</i>
                 </a>
             </li>
         </ul>

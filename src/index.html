@@ -21,10 +21,8 @@
     <link rel="stylesheet" href="/partials/home/home.scss">
     <link rel="stylesheet" href="/partials/application/index.scss">
     <link rel="stylesheet" href="/partials/personal/personal.scss">
-    <link rel="stylesheet" href="/partials/modal/blockhigh/index.scss">
     <link rel="stylesheet" href="/partials/modal/assignee/index.scss">
     <link rel="stylesheet" href="/partials/modal/dealinfo/index.scss">
-    <link rel="stylesheet" href="/partials/modal/accept/index.scss">
     <link rel="stylesheet" href="/partials/modal/blockdetail/index.scss">
     <link rel="stylesheet" href="/partials/modal/accountdetail/index.scss">
     <link rel="stylesheet" href="/partials/modal/voteto/index.scss">
@@ -39,10 +37,8 @@
 <div id="bd">
     <!--<div id="footer"  ng-show="userlogin" ng-include="'partials/common/footer/index.html'"></div>-->
     <div id="header" ng-show="userlogin" ng-include="'partials/common/header/header.html'"></div>
-    <div id="blockhign" ng-show="blockhigninfo" ng-include="'partials/modal/blockhigh/index.html'"></div>
     <div id="assignee" ng-show="assigneeinfo" ng-include="'partials/modal/assignee/index.html'"></div>
     <div id="dealinfo" ng-show="dealdetailinfo" ng-include="'partials/modal/dealinfo/index.html'"></div>
-    <div id="accept" ng-show="acceptinfo" ng-include="'partials/modal/accept/index.html'"></div>
     <div id="blockdetail" ng-show="blockdetailinfo" ng-include="'partials/modal/blockdetail/index.html'"></div>
     <div id="accountdetail" ng-show="accountdetailinfo" ng-include="'partials/modal/accountdetail/index.html'"></div>
     <div id="voteto" ng-show="votetoinfo" ng-include="'partials/modal/voteto/index.html'"></div>
@@ -60,8 +56,11 @@
 <script type="text/javascript" src="/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="/angular-cookie/angular-cookie.min.js"></script>
 <script type="text/javascript" src="/angular-qr/angular-qr.min.js"></script>
+<script type="text/javascript" src="/angular-translate/angular-translate.js"></script>
 <script type="text/javascript" src="/browserify-asch.js"></script>
 <script type="text/javascript" src="/bitcore-mnemonic.js"></script>
+<script type="text/javascript" src="/translations/en-us.js"></script>
+<script type="text/javascript" src="/translations/zh-cn.js"></script>
 <script type="text/javascript" src="/app.module.js"></script>
 <script type="text/javascript" src="/app.route.js"></script>
 <script type="text/javascript" src="/app.run.js"></script>
@@ -79,9 +78,7 @@
 <script type="text/javascript" src="/partials/blockchain/blockchainCtrl.js"></script>
 <script type="text/javascript" src="/partials/personal/personalCtrl.js"></script>
 <script type="text/javascript" src="/partials/common/header/headerCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/blockhigh/blockhignCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/assignee/assigneeCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/accept/acceptCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/blockdetail/blockdetailCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/accountdetail/accountdetailCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/dealinfo/dealinfoCtrl.js"></script>

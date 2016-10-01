@@ -1,7 +1,7 @@
 <div class="deletevote" ng-controller="deletevoteCtrl" ng-init="init()">
     <div class="h_header">
-        <span>取消给受托人的投票</span><a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a>
-        <p class="tips">每次可最多同时删除对33人的投票</p>
+        <span>{{'DELETE_VOTE_TITLE' | translate}}</span><a class="close"href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a>
+        <p class="tips">{{'DELETE_VOTE_TIP' | translate}}</p>
     </div>
     <div class="listing">
         <ul >
@@ -11,12 +11,12 @@
     </div>
 
     <div class="item_detail" ng-show="userService.secondPublicKey">
-        <label for="ercemima"">二级密码</label>
+        <label for="ercemima"">{{'SECOND_PASSWORD' | translate}}</label>
         <input maxlength="16" ng-model="secondpassword" id= "ercemima" type="password" class="tips_voteto">
     </div>
     <div class="btn_wrap">
-        <button ng-click="checkvoteto()">删除投票</button>
-        <a href="" ng-click="Close()">取消</a>
+        <button ng-click="checkvoteto()">{{'DELETE' | translate}}{{'VOTE' | translate}}</button>
+        <a href="" ng-click="Close()">{{'CANCEL' | translate}}</a>
     </div>
-    <p class="tar">需要支付 0.1 XAS</p>
+    <p class="tar">{{'NEED_PAY' | translate}} 0.1 XAS</p>
 </div>

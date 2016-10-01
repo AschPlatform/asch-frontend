@@ -1,22 +1,25 @@
 <div id="peer" ng-controller="peerCtrl" ng-init="init()">
     <div class="latest">
-        <div class="table_title">节点列表</div>
+        <div class="table_title">{{'PEER_LIST' | translate}}</div>
     </div>
     <div class="deal_table">
-        <table class="table" ng-table="pertableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
-               template-pagination="custom/pager" >
-
+        <table class="table" ng-table="pertableparams" border="0" width="100%" cellpadding="0" cellspacing="0" template-pagination="custom/pager" >
+            <tr>
+                <td>IP</td>
+                <td>{{'VERSION' | translate}}</td>
+                <td>{{'OPERATING_SYSTEM' | translate}}</td>
+            </tr>
             <tr ng-repeat="i in $data"  >
-                <td  data-title="'IP地址'" class="level"> {{i.ip}}</td>
-                <td  data-title="'版本'" class="level">{{i.version }}</td>
-                <td  data-title="'操作系统'">{{i.os}}</td>
+                <td class="level"> {{i.ip}}</td>
+                <td class="level">{{i.version }}</td>
+                <td>{{i.os}}</td>
             </tr>
         </table>
         <script type="text/ng-template" id="custom/pager">
             <ul class="pagination ng-table-pagination">
                 <li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">
                     <a ng-switch-when="prev" ng-click="params.page(page.number)" href="">
-                        <i class="mdi-hardware-keyboard-arrow-left">上一页</i>
+                        <i class="mdi-hardware-keyboard-arrow-left">{{'PREV_PAGE' | translate}}</i>
                     </a>
                     <a ng-switch-when="first" ng-click="params.page(page.number)" href="">
                         <span ng-bind="page.number"></span>
@@ -29,7 +32,7 @@
                         <span ng-bind="page.number"></span>
                     </a>
                     <a ng-switch-when="next" ng-click="params.page(page.number)" href="">
-                        <i class="mdi-hardware-keyboard-arrow-right">下一页</i>
+                        <i class="mdi-hardware-keyboard-arrow-right">{{'NEXT_PAGE' | translate}}</i>
                     </a>
                 </li>
             </ul>

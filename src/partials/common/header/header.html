@@ -3,42 +3,42 @@
         <div class="logo"></div>
         <ul ng-controller="headerCtrl" ng-init="init()">
             <li ng-class="{'active':$root.active=='home'}">
-                <a  ng-href="#/home"><img src="/assets/common/home.png" alt="">首页</a>
+                <a  ng-href="#/home"><img src="/assets/common/home.png" alt="">{{'HOME' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='personal'}" >
-                <a ng-href="#/personal"><img src="/assets/common/personal.png" alt="">个人中心</a>
+                <a ng-href="#/personal"><img src="/assets/common/personal.png" alt="">{{'PERSONAL' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='application'}" >
-                <a ng-href="#/application"><img src="/assets/common/application.png" alt="">应用中心</a>
+                <a ng-href="#/application"><img src="/assets/common/application.png" alt="">{{'APPLICATIONS' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='blockforging'}">
-                <a  ng-href="#/blockforging" ><img src="/assets/common/blockforging.png" alt="">区块生产</a>
+                <a  ng-href="#/blockforging" ><img src="/assets/common/blockforging.png" alt="">{{'FORGING' | translate}}</a>
                 <!-- 下拉菜单  -->
             </li>
             <li ng-class="{'active':$root.active=='blockchain'}">
-                <a  ng-href="#/blockchain"><img src="/assets/common/blockchains.png" alt="">区块浏览</a>
+                <a  ng-href="#/blockchain"><img src="/assets/common/blockchains.png" alt="">{{'BLOCKS' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='vote'}" >
-                <a ng-href="#/vote"><img src="/assets/common/vote.png" alt="">投票</a>
+                <a ng-href="#/vote"><img src="/assets/common/vote.png" alt="">{{'VOTE' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='pay'}">
-            <a  ng-href="#/pay"><img src="/assets/common/pay.png" alt="">转账</a>
+            <a  ng-href="#/pay"><img src="/assets/common/pay.png" alt="">{{'TRANSFER' | translate}}</a>
            </li>
             <li ng-class="{'active':$root.active=='peer'}">
-                <a  ng-href="#/peer"><img src="/assets/common/per.png" alt="">节点</a>
+                <a  ng-href="#/peer"><img src="/assets/common/per.png" alt="">{{'PEERS' | translate}}</a>
             </li>
         </ul>
     </div>
 </div>
 <div class="asch_tip">
     <p>
-        <a ng-href="#/home"> <img src="/assets/common/min_logo.png" alt="">首页</a>
-        <span ng-show="$root.active=='personal'"> > 个人中心</span>
-        <span ng-show="$root.active=='application'"> > 应用中心</span>
-        <span ng-show="$root.active=='blockforging'"> > 区块生产</span>
-        <span ng-show="$root.active=='blockchain'"> > 区块浏览</span>
-        <span ng-show="$root.active=='vote'"> > 投票</span>
-        <span ng-show="$root.active=='pay'"> > 转账</span>
-        <span ng-show="$root.active=='peer'"> > 节点</span>
+        <a ng-href="#/home"> <img src="/assets/common/min_logo.png" alt="">{{'HOME' | translate}}</a>
+        <span ng-show="$root.active=='personal'">{{'PERSONAL' | translate}}</span>
+        <span ng-show="$root.active=='application'">{{'APPLICATIONS' | translate}}</span>
+        <span ng-show="$root.active=='blockforging'">{{'FORGING' | translate}}</span>
+        <span ng-show="$root.active=='blockchain'">{{'BLOCKS' | translate}}</span>
+        <span ng-show="$root.active=='vote'">{{'VOTE' | translate}}</span>
+        <span ng-show="$root.active=='pay'">{{'TRANSFER' | translate}}</span>
+        <span ng-show="$root.active=='peer'">{{'PEERS' | translate}}</span>
     </p>
 </div>

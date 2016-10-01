@@ -1,4 +1,4 @@
-angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams,userService) {
+angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService) {
 	$rootScope.active = 'application';
 	$rootScope.userlogin = true;
 	$scope.newapplication = true;

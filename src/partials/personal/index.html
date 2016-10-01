@@ -1,13 +1,13 @@
 <div id="personal" ng-controller="personalCtrl" ng-init="init()" ng-show="isLogin">
 				<div class="nav">
 					<div class="nav_per accountInfo " ng-class=" {'active':accountInfo}" ng-click="accountchange()">
-						账户信息
+						{{'ACCOUNT_INFO' | translate}}
 					</div>
 					<div class="nav_per passwordInfo " ng-class=" {'active':passwordInfo}" ng-click="passwordchange()">
-						二级密码
+						{{'SECOND_PASSWORD' | translate}}
 					</div>
 					<div class="nav_exit" ng-click="quitout()">
-						退出系统
+						{{'QUIT' | translate}}
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -15,7 +15,7 @@
 				<div ng-show="accountInfo" class="accountInfo_cont ">
 					<div class="baseInfo">
 						<div class="_title">
-							基本信息
+							{{'BASIC_INFO' | translate}}
 						</div>
 						<div class="baseInfo_content">
 							<div class="baseInfo_tx"></div>
@@ -24,19 +24,21 @@
 									<!--<span class="greyFont">账户名 : </span> {{accountinfo.address}}-->
 								<!--</div>-->
 								<div class="sum_text text_row">
-									<span class="greyFont">总余额 : </span> <span class="orangeFont"> {{userService.balance  | xasFilter  }}</span> <span class="greyFont">XAS</span>
+									<span class="greyFont">{{'TOTAL' | translate}}{{'BALANCE' | translate}} : </span>
+									<span class="orangeFont"> {{userService.balance  | xasFilter  }}</span>
+									<span class="greyFont">XAS</span>
 								</div>
 								<!--<div class="dallor_text text_row">-->
 									<!--<span class="greyFont">美元折算 : </span><span class="orangeFont"> $0.28</span>-->
 								<!--</div>-->
 								<div class="summary_text text_row">
-									<span class="greyFont">地址 : </span> {{userService.address}}
+									<span class="greyFont">{{'ADDRESS' | translate}} : </span> {{userService.address}}
 								</div>
 								<div class="summary_text text_row">
-									<span class="greyFont">二级密码 : </span> {{userService.secondPublicKey ? '已设置' : '未设置'}}
+									<span class="greyFont">{{'SECOND_PASSWORD' | translate}} : </span> {{setStatus()}}
 								</div>
 								<div class="publickey_text text_row">
-									<span class="greyFont">公钥 : </span> {{userService.publicKey}}
+									<span class="greyFont">{{'PUBLIC_KEY' | translate}} : </span> {{userService.publicKey}}
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -50,22 +52,24 @@
 					<div class="finishSet" ng-show="userService.secondPublicKey||passwordsure">
 						<img src="/assets/personal/tip_passwordNo.png" class="finishSet_icon"/>
 						<div class="finishSet_text">
-							您已经设置过二级密码。
+							{{'ALREADY_SET_TPI' | translate}}
 						</div>
 					</div>
 					<div class="setPassword" ng-hide="userService.secondPublicKey || passwordsure">
 						<div class="_title">
-							设置二级密码
+							{{'SET_SECOND_PASSWORD' | translate}}
 						</div>
-						<div class="psw"><label>密码</label><input type="password" ng-trim="true" ng-model="secondpassword" maxlength="16" placeholder="输入8到16位数字和字母组合">
-							<!--<span>换一换</span>-->
+						<div class="psw">
+							<label>{{'PASSWORD' | translate}}</label>
+							<input type="password" ng-trim="true" ng-model="secondpassword" maxlength="16" placeholder="{{'PASSWORD_RULE_TIP' | translate}}">
 						</div>
-						<div class="psw"><label>确认</label><input type="password" ng-trim="true" ng-model="confirmPassword" maxlength="16" placeholder="再次输入">
-							<!--<span>换一换</span>-->
+						<div class="psw">
+							<label>{{'CONFIRM' | translate}}</label>
+							<input type="password" ng-trim="true" ng-model="confirmPassword" maxlength="16" placeholder="{{'INPUT_AGAIN' | translate}}">
 						</div>
-						<p class="pwd_tip">请确定您已经安全保存了二级密码，一旦丢失，您在Asch系统中的财产将无法找回</p>
+						<p class="pwd_tip">{{'SUBMIT_SECOND_PASSWORD_TIP' | translate}}</p>
 						<div class="pwd_btn">
-							<button class="accept_nxt" ng-click="setPassWord()">提交</button>
+							<button class="accept_nxt" ng-click="setPassWord()">{{'SUBMIT' | translate}}</button>
 						</div>
 
 					</div>

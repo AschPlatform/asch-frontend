@@ -1,33 +1,42 @@
 <div id="home" ng-controller="homeCtrl" ng-init="init()">
 	<div class="homeinfo">
 		<div class="account">
-			<span>余额</span>
+			<span>{{'BALANCE' | translate}}</span>
 			<i>{{ userService.balance | xasFilter }}</i>
 			<b>XAS</b>
 		</div>
 		<div class="account">
-			<span>最后区块高度</span><i>{{ latestBlock.height }}</i>
+			<span>{{'LATEST_BLOCK_HEIGHT' | translate}}</span><i>{{ latestBlock.height }}</i>
 			<b>{{latestBlock.timestamp | timestampFilter }}</b>
 		</div>
 		<div class="account">
-			<span>版本信息</span><i>{{ version.version }}</i>
+			<span>{{'VERSION_INFO' | translate}}</span><i>{{ version.version }}</i>
 			<b>{{version.build}} - {{version.net}}</b>
 		</div>
 	</div>
 	<div class="latest">
-		<div class="table_title">我的交易</div>
+		<div class="table_title">{{'MY_TRSACTIONS' | translate}}</div>
 	</div>
 	<div class="deal_table" >
 		<table class="table"ng-table="hometableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
 			   template-pagination="custom/pager" >
-
+			<thread>
+					<tr>
+						<td>ID</td>
+						<td>{{'TYPE' | translate}}</td>
+						<td>{{'SENDER' | translate}}</td>
+						<td>{{'RECIPIENT' | translate}}</td>
+						<td>{{'DATE' | translate}}</td>
+						<td>{{'AMOUNTS' | translate}}({{'FEES' | translate}})</td>
+					</tr>
+			</thread>
 			<tr ng-repeat="i in $data"  >
-				<td  data-title="'交易ID'"> {{i.id}}</td>
-				<td  data-title="'类型'">{{i.type | typeFilter}}</td>
-				<td  data-title="'发送者'"> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
-				<td  data-title="'接收者'" class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || '系统'}}</i></td>
-				<td  data-title="'日期'">{{i.timestamp | timestampFilter}}</td>
-				<td  data-title="'金额(手续费)'">{{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
+				<td> {{i.id}}</td>
+				<td>{{i.type | typeFilter}}</td>
+				<td> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
+				<td class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || 'SYSTEM' | translate}}</i></td>
+				<td>{{i.timestamp | timestampFilter}}</td>
+				<td>{{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
 			</tr>
 		</table>
 	</div>
@@ -35,7 +44,7 @@
 		<ul class="pagination ng-table-pagination">
 			<li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">
 				<a ng-switch-when="prev" ng-click="params.page(page.number)" href="">
-					<i class="mdi-hardware-keyboard-arrow-left">上一页</i>
+					<i class="mdi-hardware-keyboard-arrow-left">{{'PREV_PAGE' | translate}}</i>
 				</a>
 				<a ng-switch-when="first" ng-click="params.page(page.number)" href="">
 					<span ng-bind="page.number"></span>
@@ -48,7 +57,7 @@
 					<span ng-bind="page.number"></span>
 				</a>
 				<a ng-switch-when="next" ng-click="params.page(page.number)" href="">
-					<i class="mdi-hardware-keyboard-arrow-right">下一页</i>
+					<i class="mdi-hardware-keyboard-arrow-right">{{'NEXT_PAGE' | translate}}</i>
 				</a>
 			</li>
 		</ul>

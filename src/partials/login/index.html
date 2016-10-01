@@ -7,21 +7,21 @@
 					<!--<img src="/assets/common/user-anonymous.png" alt="">-->
 				<!--</div>-->
 				<div class="right">
-					<input ng-model="secret" type="password" placeholder="输入主密码">
+					<input ng-model="secret" type="password" placeholder="{{'INPUT_PASSWORD' | translate}}">
 					<div class="is-agree">
 						<input class="magic-checkbox" type="checkbox" ng-checked="saveLogin" ng-click="saveLoginChange()" name="layout" id="1">
-						<label  for="1">保持登录状态</label>
+						<label  for="1">{{'KEEP_SESSION' | translate}}</label>
 					</div>
 				</div>
 
 			</div>
-			<button class="register" ng-click="registerin()">登录</button>
-			<button class="newuser" ng-click="newuser()">新账户</button>
+			<button class="register" ng-click="registerin()">{{'LOGIN' | translate}}</button>
+			<button class="newuser" ng-click="newuser()">{{'NEW_ACCOUNT' | translate}}</button>
 		</div>
 	</div>
 	<div class="wrap2 " ng-show="creatpwd">
 		<div class="header">
-			<p>步骤 <i>1</i><b>/ 2</b><span>创建主要密码</span> </p>
+			<p>{{'STEP' | translate}} <i>1</i><b>/ 2</b><span>{{'CREATE_MASTER_PASSWORD' | translate}}</span> </p>
 			<!--<img src="/assets/common/close.png" class="close" ng-click="close()" alt="">-->
 		</div>
 		<div class="content">
@@ -30,20 +30,19 @@
 					<!--<img src="/assets/common/user-anonymous.png" alt="">-->
 				<!--</div>-->
 				<div class="right">
-					<label for="textarea">新的主密码</label>
+					<label for="textarea">{{'NEW_PASSWORD' | translate}}</label>
 					<textarea type="textarea" id="textarea" ng-model="newsecret" disabled></textarea>
-					<p>	系统为您生成了足够安全的新密码，下一步将会要求您重复输入以确认密码.</p>
+					<p>{{'NEW_PWD_TIP_1' | translate}}</p>
 				</div>
 
 			</div>
-			<button class="checkstep" ng-click="nextStep()">确认下一步</button>
-			<!--<button class="savepsw"><a ng-href="{{ fileUrl }}" download="账号.txt">保存主密码</a></button>-->
-			<button class="savepsw"><a ng-click="saveTxt('ASCH-secret')">保存主密码</a></button>
+			<button class="checkstep" ng-click="nextStep()">{{'NEXT_STEP' | translate}}</button>
+			<button class="savepsw"><a ng-click="saveTxt('ASCH-secret')">{{'SAVE_PASSWORD' | translate}}</a></button>
 		</div>
 	</div>
 	<div class="wrap3" ng-show="checkpwd">
 		<div class="header">
-			<p>步骤 <i>2</i><b>/ 2</b><span>确认主密码</span> </p>
+			<p>{{'STEP' | translate}}<i>2</i><b>/ 2</b><span>{{'CONFIRM_PASSWORD' | translate}}</span> </p>
 			<img src="/assets/common/close.png" ng-click="close()" class="close" alt="">
 		</div>
 		<div class="content">
@@ -52,14 +51,14 @@
 					<!--<img src="/assets/common/user-anonymous.png"  alt="">-->
 				<!--</div>-->
 				<div class="right">
-					<label for="textarea1">请重新输入您的主密码</label>
+					<label for="textarea1">{{'INPUT_PASSWORD_AGAIN' | translate}}</label>
 					<textarea type="textarea" id="textarea1"  ng-model="lastsecret"></textarea>
-					<p>	请确保您已安全保存主密码，如果您失去您的主密码，您的帐户将永远无法再打开，您将失去您所有的XAS</p>
+					<p>{{'NEW_PWD_TIP_2' | translate}}</p>
 				</div>
 
 			</div>
-			<button class="lastcheck" ng-click="lastcheck()">确认</button>
-			<button class="backto" ng-click="backto()">返回</button>
+			<button class="lastcheck" ng-click="lastcheck()">{{'CONFIRM' | translate}}</button>
+			<button class="backto" ng-click="backto()">{{'CANCEL' | translate}}</button>
 		</div>
 	</div>
 </div>

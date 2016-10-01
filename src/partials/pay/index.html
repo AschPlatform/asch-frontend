@@ -1,24 +1,24 @@
 <div id="pay" ng-controller="payCtrl" ng-init="init()">
     <div class="_item">
-        <label >发送者</label>
+        <label >{{'SENDER' | translate}}</label>
         <input type="text" ng-model="sent" id="pay_item1" disabled>
     </div>
     <div class="_item">
-        <label >接收者</label>
+        <label >{{'RECIPIENT' | translate}}</label>
         <input type="text" required ng-model="fromto" ng-trim="true"  id="pay_item2">
     </div>
     <div class="_item">
-        <label >输入金额</label>
+        <label >{{'AMOUNTS' | translate}}</label>
         <input type="number" required ng-model="amount" ng-trim="true" id="pay_item3">
     </div>
     <div class="_item" ng-show="userService.secondPublicKey">
-        <label >二级密码</label>
+        <label >{{'SECND_PASSWORD' | translate}}</label>
         <input type="password" ng-model="secondPassword" id="pay_item5">
     </div>
     <div class="_item">
-        <label >手续费</label>
+        <label >{{'FEES' | translate}}</label>
         <input type="text" ng-model="fee" id="pay_item4" disabled>
     </div>
-    <p>请确保您正在发送XAS给正确的地址，本操作无法撤消。</p>
-    <button class="sent" ng-click="sentMsg()">发送</button>
+    <p>{{'PAY_TIP' | translate}}</p>
+    <button class="sent" ng-click="sentMsg()">{{'SEND' | translate}}发送</button>
 </div>

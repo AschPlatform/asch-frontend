@@ -1,14 +1,14 @@
-angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams,userService) {
+angular.module('asch').controller('voteCtrl', function ($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService, $translate) {
     $rootScope.active = 'vote';
     $rootScope.userlogin = true;
-   $scope.letin = true;
-   $scope.hosting = false;
-   $scope.mgvotecord = false;
+    $scope.letin = true;
+    $scope.hosting = false;
+    $scope.mgvotecord = false;
     $rootScope.showaccountdetailInfo = function (i) {
         $rootScope.blockdetailinfo = false;
         $rootScope.dealdetailinfo = false;
-        $scope.i=i;
-        $rootScope.$broadcast('accountdetail',$scope.i)
+        $scope.i = i;
+        $rootScope.$broadcast('accountdetail', $scope.i)
     }
     $scope.letinchange = function () {
         $scope.letin = true;
@@ -21,28 +21,28 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 height: 'desc'
             }
         }, {
-            total: 0,
-            counts: [],
-            getData: function($defer,params) {
-                //console.log($defer)
-               // console.log(params)
-                apiService.delegates({
-                    address:userService.address,
-                    orderBy: 'rate:asc',
-                    limit: params.count(),
-                    offset: (params.page() - 1) * params.count()
-                }).success(function(res) {
-                    //  $scope.res =res;
-                    // params.data=res.delegates;
-                    params.total(res.totalCount);
-                    $scope.delegateCount = res.totalCount;
-                    // return res.delegates;
-                    $defer.resolve(res.delegates);
-                }).error(function(res) {
-                    toastError('服务器错误！');
-                });
-            }
-        });
+                total: 0,
+                counts: [],
+                getData: function ($defer, params) {
+                    //console.log($defer)
+                    // console.log(params)
+                    apiService.delegates({
+                        address: userService.address,
+                        orderBy: 'rate:asc',
+                        limit: params.count(),
+                        offset: (params.page() - 1) * params.count()
+                    }).success(function (res) {
+                        //  $scope.res =res;
+                        // params.data=res.delegates;
+                        params.total(res.totalCount);
+                        $scope.delegateCount = res.totalCount;
+                        // return res.delegates;
+                        $defer.resolve(res.delegates);
+                    }).error(function (res) {
+                        toastError('服务器错误！');
+                    });
+                }
+            });
     }
     $scope.hostingchange = function () {
         $scope.letin = false;
@@ -55,26 +55,26 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 height: 'desc'
             }
         }, {
-            total: 0,
-            counts: [],
-            getData: function($defer,params) {
-                apiService.votetome({
-                    publicKey:userService.publicKey,
-                    orderBy: 'rate:asc',
-                    limit: params.count(),
-                    offset: (params.page() - 1) * params.count()
-                }).success(function(res) {
-                    //  $scope.res =res;
-                    // params.data=res.delegates;
-                   // params.total(res.totalCount);
-                    // return res.delegates;
-                    $scope.totalVoter = res.accounts.length,
-                    $defer.resolve(res.accounts);
-                }).error(function(res) {
-                    toastError('服务器错误！');
-                });
-            }
-        });
+                total: 0,
+                counts: [],
+                getData: function ($defer, params) {
+                    apiService.votetome({
+                        publicKey: userService.publicKey,
+                        orderBy: 'rate:asc',
+                        limit: params.count(),
+                        offset: (params.page() - 1) * params.count()
+                    }).success(function (res) {
+                        //  $scope.res =res;
+                        // params.data=res.delegates;
+                        // params.total(res.totalCount);
+                        // return res.delegates;
+                        $scope.totalVoter = res.accounts.length,
+                            $defer.resolve(res.accounts);
+                    }).error(function (res) {
+                        toastError('服务器错误！');
+                    });
+                }
+            });
     }
     $scope.mgvotecordchange = function () {
         $scope.letin = false;
@@ -87,28 +87,28 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 height: 'desc'
             }
         }, {
-            total: 0,
-            counts: [],
-            getData: function($defer,params) {
-                apiService.myvotes({
-                    address:userService.address,
-                    orderBy: 'rate:asc',
-                    limit: params.count(),
-                    offset: (params.page() - 1) * params.count()
-                }).success(function(res) {
-                    //  $scope.res =res;
-                    // params.data=res.delegates;
-                    params.total(res.totalCount);
-                    $scope.myvoteCount = res.delegates.length;
-                    // return res.delegates;
-                    $defer.resolve(res.delegates);
-                }).error(function(res) {
-                    toastError('服务器错误！');
-                });
-            }
-        });
+                total: 0,
+                counts: [],
+                getData: function ($defer, params) {
+                    apiService.myvotes({
+                        address: userService.address,
+                        orderBy: 'rate:asc',
+                        limit: params.count(),
+                        offset: (params.page() - 1) * params.count()
+                    }).success(function (res) {
+                        //  $scope.res =res;
+                        // params.data=res.delegates;
+                        params.total(res.totalCount);
+                        $scope.myvoteCount = res.delegates.length;
+                        // return res.delegates;
+                        $defer.resolve(res.delegates);
+                    }).error(function (res) {
+                        toastError('服务器错误！');
+                    });
+                }
+            });
     };
-    if($scope.letin){
+    if ($scope.letin) {
         $scope.tableparams = new NgTableParams({
             page: 1,
             count: 20,
@@ -116,51 +116,51 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 height: 'desc'
             }
         }, {
-            total: 0,
-            counts: [],
-            getData: function($defer,params) {
-                apiService.delegates({
-                    address:userService.address,
-                    orderBy: 'rate:asc',
-                    limit: params.count(),
-                    offset: (params.page() - 1) * params.count()
-                }).success(function(res) {
-                    //  $scope.res =res;
-                    // params.data=res.delegates;
-                    params.total(res.totalCount);
-                    $scope.delegateCount = res.totalCount;
-                    // return res.delegates;
-                    $defer.resolve(res.delegates);
-                }).error(function(res) {
-                    toastError('服务器错误！');
-                });
-            }
-        });
+                total: 0,
+                counts: [],
+                getData: function ($defer, params) {
+                    apiService.delegates({
+                        address: userService.address,
+                        orderBy: 'rate:asc',
+                        limit: params.count(),
+                        offset: (params.page() - 1) * params.count()
+                    }).success(function (res) {
+                        //  $scope.res =res;
+                        // params.data=res.delegates;
+                        params.total(res.totalCount);
+                        $scope.delegateCount = res.totalCount;
+                        // return res.delegates;
+                        $defer.resolve(res.delegates);
+                    }).error(function (res) {
+                        toastError('服务器错误！');
+                    });
+                }
+            });
     }
     //$scope.tableparams.reload();
     //$scope.tableparams.settings().$scope = $scope;
     //$rootScope.checkobj = {};
     $scope.checkitem = function (i) {
-        if($scope.letin){
+        if ($scope.letin) {
             var key = i.username;
-            if(!$rootScope.checkobj[key]){
+            if (!$rootScope.checkobj[key]) {
                 $rootScope.checkobj[key] = i;
                 // console.log($rootScope.checkobj)
-            } else{
+            } else {
                 delete $rootScope.checkobj[key];
                 //  console.log($rootScope.checkobj)
             }
-        } ;
-       
-        
+        };
+
+
     }
     $scope.checkitem2 = function (i) {
-        if($scope.mgvotecord){
+        if ($scope.mgvotecord) {
             var key = i.username;
-            if(!$rootScope.coedobj[key]){
+            if (!$rootScope.coedobj[key]) {
                 $rootScope.coedobj[key] = i;
                 // console.log($rootScope.checkobj)
-            } else{
+            } else {
                 delete $rootScope.coedobj[key];
                 //  console.log($rootScope.checkobj)
             }
@@ -169,23 +169,23 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
 
     //投票的函数
     $scope.votetoShowInfo = function () {
-        if($scope.mgvotecord){
+        if ($scope.mgvotecord) {
             var deletevoteContent = [];
             var showdelusername = {};
 
-            angular.forEach($rootScope.coedobj, function(data,index,array){
-                deletevoteContent.push('-'+data.publicKey);
-                showdelusername[data.username]={
-                    "username":data.username,
-                    "address":data.address
+            angular.forEach($rootScope.coedobj, function (data, index, array) {
+                deletevoteContent.push('-' + data.publicKey);
+                showdelusername[data.username] = {
+                    "username": data.username,
+                    "address": data.address
                 }
             });
-            if(deletevoteContent.length==0){
+            if (deletevoteContent.length == 0) {
                 toastError('请选择一位受托人');
                 return;
-            } else if(deletevoteContent.length>33){
+            } else if (deletevoteContent.length > 33) {
                 toastError('一次删除至多33位候选人')
-            }  else {
+            } else {
                 $rootScope.deletevotetoinfo = true;
                 $rootScope.isBodyMask = true;
                 $rootScope.showdelusername = showdelusername;
@@ -193,23 +193,23 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
                 // console.log($rootScope.showdelusername)
             }
         }
-        if($scope.letin){
+        if ($scope.letin) {
             var voteContent = [];
             var showusername = {};
 
-            angular.forEach($rootScope.checkobj, function(data,index,array){
-                voteContent.push('+'+data.publicKey);
-                showusername[data.username]={
-                    "username":data.username,
-                    "address":data.address
+            angular.forEach($rootScope.checkobj, function (data, index, array) {
+                voteContent.push('+' + data.publicKey);
+                showusername[data.username] = {
+                    "username": data.username,
+                    "address": data.address
                 }
             });
-            if(voteContent.length==0){
+            if (voteContent.length == 0) {
                 toastError('请选择至少一位受托人');
                 return;
-            } else if(voteContent.length>33){
+            } else if (voteContent.length > 33) {
                 toastError('一次投票至多33位候选人')
-            }  else {
+            } else {
                 $rootScope.votetoinfo = true;
                 $rootScope.isBodyMask = true;
                 $rootScope.showusername = showusername;
@@ -218,14 +218,14 @@ angular.module('asch').controller('voteCtrl', function($scope, $rootScope, apiSe
             }
         }
     }
-    
+
     $rootScope.$on('upvoteSuccess', function () {
         // console.log('voteDone');
         if ($scope.tableparams) {
             $scope.tableparams.reload();
         }
     });
-    
+
     $rootScope.$on('downvoteSuccess', function () {
         // console.log('voteDone');
         if ($scope.tableparams2) {
