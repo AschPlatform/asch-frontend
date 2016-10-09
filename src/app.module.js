@@ -9,6 +9,6 @@ app.config(['$translateProvider', function($translateProvider) {
     for (var lang in window.Translations) {
         $translateProvider.translations(lang, window.Translations[lang]);
     }
-    $translateProvider.preferredLanguage('zh-cn');
+    $translateProvider.preferredLanguage('en-us');
     $translateProvider.useSanitizeValueStrategy(null);
 }]);

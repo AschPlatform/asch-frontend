@@ -10,8 +10,8 @@ window.Translations['en-us'] = {
   //DAPP_INSTALL_LIST: 'Installed',
   
   // common
-  PREV_PAGE: 'Previous Page',
-  NEXT_PAGE: 'Next Page',
+  PREV_PAGE: 'Prev',
+  NEXT_PAGE: 'Next',
 
   TOTAL: 'Total',
   HEIGHT: 'Height',
@@ -24,11 +24,11 @@ window.Translations['en-us'] = {
   TYPE: 'Type',
   SENDER: 'Sender',
   RECIPIENT: 'Recipient',
-  SECOND_PASSWORD: 'Second Password',
+  SECOND_PASSWORD: 'Second Secret',
 
   // transaction type filter
   TRS_TYPE_TRANSFER: 'Transfer',
-  TRS_TYPE_SECOND_PASSWORD: 'Second Password',
+  TRS_TYPE_SECOND_PASSWORD: 'Second Secret',
   TRS_TYPE_DELEGATE: 'Delegate',
   TRS_TYPE_VOTE: 'Vote',
   TRS_TYPE_MULTISIGNATURE: 'Multiple Signature',
@@ -43,8 +43,8 @@ window.Translations['en-us'] = {
   DAPP_CATEGORY: 'Type',
   DAPP_SOURCE_CODE: 'Source Code',
   DAPP_DOWNLOAD: 'Download',
-  DAPP_LIST: 'Application List',
-  DAPP_INSTALL_LIST: 'Installed Application List',
+  DAPP_LIST: 'Applications',
+  DAPP_INSTALL_LIST: 'Installed',
 
   // dapp category filter
   DAPP_CATEGORY_COMMON: 'General',
@@ -89,19 +89,19 @@ window.Translations['en-us'] = {
   MY_TRSACTIONS: 'My Transactions',
 
   // login
-  INPUT_PASSWORD: 'Type the master password',
+  INPUT_PASSWORD: 'Type the master secret',
   KEEP_SESSION: 'Keep Login',
   LOGIN: 'Login',
   NEW_ACCOUNT: 'New Account',
   STEP: 'Step',
-  CREATE_MASTER_PASSWORD: 'Create Master Password',
-  NEW_PASSWORD: 'New Master Password',
-  NEW_PWD_TIP_1: 'System has already generated a new secure password, you need to re-type this password in the next step to confirm.',
+  CREATE_MASTER_PASSWORD: 'Create Master Secret',
+  NEW_PASSWORD: 'New Master Secret',
+  NEW_PWD_TIP_1: 'System has already generated a new secure secret, you need to re-type this secret in the next step to confirm.',
   NEXT_STEP: 'Next Step',
-  SAVE_PASSWORD: 'Save Master Password',
-  CONFIRM_PASSWORD: 'Confirm master password',
-  INPUT_PASSWORD_AGAIN: 'Please re-type your master password',
-  NEW_PWD_TIP_2: 'Make sure you have saved your master password in a safe place. If you lost it or forget it, your account will not be available and you will lost all your XAS.',
+  SAVE_PASSWORD: 'Save Master Secret',
+  CONFIRM_PASSWORD: 'Confirm master secret',
+  INPUT_PASSWORD_AGAIN: 'Please re-type your master secret',
+  NEW_PWD_TIP_2: 'Make sure you have saved your master secret in a safe place. If you lost it or forget it, your account will not be available and you will lost all your XAS.',
   CONFIRM: 'Confirm',
   CANCEL: 'Cancel',
 
@@ -115,17 +115,17 @@ window.Translations['en-us'] = {
   VERSION: 'Version',
 
   // personal
-  ACCOUNT_INFO: 'Account Information',
+  ACCOUNT_INFO: 'Account Info',
   QUIT: 'Quit',
   BASIC_INFO: 'General Information',
   ADDRESS: 'Address',
   PUBLIC_KEY: 'Public Key',
-  ALREADY_SET_TPI: 'You have already set the second password.',
-  SET_SECOND_PASSWORD: 'Set the second password',
-  PASSWORD_RULE_TIP: 'Password must be from 8 to 16 alphanumeric characters',
+  ALREADY_SET_TPI: 'You have already set the second secret.',
+  SET_SECOND_PASSWORD: 'Set the second secret',
+  PASSWORD_RULE_TIP: 'Second secret must be from 8 to 16 alphanumeric characters',
   INPUT_AGAIN: 'Enter Again',
-  PASSWORD: 'Password',
-  SUBMIT_SECOND_PASSWORD_TIP: 'Make sure you have saved your second password in a safe place. If you lost it, you will not be able to recover your assets in Asch system. You will be charged in XAS when you reset the second password.',
+  PASSWORD: 'Secret',
+  SUBMIT_SECOND_PASSWORD_TIP: 'Make sure you have saved your second secret in a safe place. If you lost it, you will not be able to recover your assets in Asch system. You will be charged in XAS when you reset the second password.',
   SUBMIT: 'Submit',
   ALREADY_SET: 'Already Set',
   NOT_SET: 'Not set yet',
