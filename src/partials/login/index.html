@@ -12,8 +12,11 @@
 						<input class="magic-checkbox" type="checkbox" ng-checked="saveLogin" ng-click="saveLoginChange()" name="layout" id="1">
 						<label  for="1">{{'KEEP_SESSION' | translate}}</label>
 					</div>
+					<div class="language">
+						<img src="{{languageIcon}}" />
+						<select ng-model="selectedLanguage" ng-options="l.value for l in languages" ng-change="changeLanguage()"></select>
+					</div>
 				</div>
-
 			</div>
 			<button class="register" ng-click="registerin()">{{'LOGIN' | translate}}</button>
 			<button class="newuser" ng-click="newuser()">{{'NEW_ACCOUNT' | translate}}</button>
@@ -62,4 +65,3 @@
 		</div>
 	</div>
 </div>
-`

@@ -1,21 +1,32 @@
-// angular.module('asch').config(['$compileProvider', function ($compileProvider) {
-// 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
-// }]);
-
-angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiService, ipCookie, $window, $location,userService) {
+angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, apiService, ipCookie, $window, $location, userService, $translate) {
 	$rootScope.userlogin = false;
-	 $rootScope.register = true;
-	 $rootScope.creatpwd = false;
-	 $rootScope.checkpwd = false;
-	 $rootScope.homedata = {};
+	$rootScope.register = true;
+	$rootScope.creatpwd = false;
+	$rootScope.checkpwd = false;
+	$rootScope.homedata = {};
+
+	$scope.languages = [
+		{key: 'en-us', value: 'English'},
+		{key: 'zh-cn', value: '中文简体'}
+	];
+
+	$scope.changeLanguage = function () {
+		if (!$scope.selectedLanguage) {
+			$scope.selectedLanguage = $scope.languages[0];
+		}
+		$translate.use($scope.selectedLanguage.key);
+		$scope.languageIcon = '/assets/common/' + $scope.selectedLanguage.key + '.png';
+	}
+	$scope.changeLanguage();
+	
 	$scope.newuser = function () {
 		$rootScope.register = false;
 		$rootScope.creatpwd = true;
 		$rootScope.checkpwd = false;
 		var code = new Mnemonic(Mnemonic.Words.ENGLISH);
-		$scope.newsecret=code.toString();
+		$scope.newsecret = code.toString();
 		newpublicKey = AschJS.crypto.getKeys($scope.newsecret).publicKey;
-		$rootScope.newpublicKey=newpublicKey
+		$rootScope.newpublicKey = newpublicKey
 	};
 
 	// if(userService.setsecret){
@@ -24,7 +35,7 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	// 	$scope.secret = '';
 	// }
 	//默认保持登录
-	$scope.saveLogin =true;
+	$scope.saveLogin = true;
 	//读取cookie
 	// if(ipCookie('userSecret')){
 	// 	if($scope.saveLogin){
@@ -39,7 +50,7 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	// 	//}
 	// 	//console.log($scope.saveLogin)
 	// 	if(!$scope.saveLogin){
-    //
+	//
 	// 		$scope.secret =ipCookie('userSecret');
 	// 	}
 	// 	else {
@@ -59,18 +70,18 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	}
 	//确认
 	$scope.lastcheck = function () {
-		if($scope.newsecret == $scope.lastsecret){
+		if ($scope.newsecret == $scope.lastsecret) {
 			apiService.login({
 				publicKey: newpublicKey
-			}).success(function(res) {
+			}).success(function (res) {
 				$rootScope.homedata = res;
-				if(res.success==true){
-					userService.setData($scope.newsecret,res.account.address,newpublicKey,res.account.balance,res.account.secondPublicKey);
+				if (res.success == true) {
+					userService.setData($scope.newsecret, res.account.address, newpublicKey, res.account.balance, res.account.secondPublicKey);
 					// 是否登录的全局变量
 					$rootScope.isLogin = true;
 					$location.path('/home');
 				}
-			}).error(function(res) {
+			}).error(function (res) {
 				toastError(res.error);
 			});
 		} else {
@@ -80,16 +91,16 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 	$scope.saveTxt = function (filename) {
 		var text = $scope.newsecret.trim();
 		var address = AschJS.crypto.getAddress(newpublicKey);
-		txt = 'secret:'+'\r\n'+text + '\r\n\r\n' +'address:'+ '\r\n'+address+'\r\n';
+		txt = 'secret:' + '\r\n' + text + '\r\n\r\n' + 'address:' + '\r\n' + address + '\r\n';
 		var link = document.createElement("a");
-		link.setAttribute("target","_blank");
-		if(Blob !== undefined) {
-			var blob = new Blob([txt], {type: "text/plain"});
+		link.setAttribute("target", "_blank");
+		if (Blob !== undefined) {
+			var blob = new Blob([txt], { type: "text/plain" });
 			link.setAttribute("href", URL.createObjectURL(blob));
 		} else {
-			link.setAttribute("href","data:text/plain," + encodeURIComponent(txt));
+			link.setAttribute("href", "data:text/plain," + encodeURIComponent(txt));
 		}
-		link.setAttribute("download",filename);
+		link.setAttribute("download", filename);
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
@@ -108,22 +119,22 @@ angular.module('asch').controller('loginCtrl', function($scope, $rootScope, apiS
 			return toastError('密码格式不符合BIP39安全规范');
 		}
 		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
-		    $rootScope.publickey = publicKey;
-			apiService.login({
-				publicKey: publicKey
-			}).success(function(res) {
-				$rootScope.homedata = res;
-				if(res.success==true){
-					userService.setData($scope.secret,res.account.address,publicKey,res.account.balance,res.account.secondPublicKey)
-					// 是否登录的全局变量
-					$rootScope.isLogin = true;
-					$location.path('/home');
-				} else{
-					toastError('服务器错误!');
-				}
-			}).error(function(res) {
+		$rootScope.publickey = publicKey;
+		apiService.login({
+			publicKey: publicKey
+		}).success(function (res) {
+			$rootScope.homedata = res;
+			if (res.success == true) {
+				userService.setData($scope.secret, res.account.address, publicKey, res.account.balance, res.account.secondPublicKey)
+				// 是否登录的全局变量
+				$rootScope.isLogin = true;
+				$location.path('/home');
+			} else {
 				toastError('服务器错误!');
-			})
+			}
+		}).error(function (res) {
+			toastError('服务器错误!');
+		})
 	}
 	//下一步登录
 	$scope.nextStep = function () {
