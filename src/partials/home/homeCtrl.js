@@ -1,4 +1,4 @@
-angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiService, $http,ipCookie, $location, $interval,NgTableParams,$window,userService) {
+angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiService, $http,ipCookie, $location, $interval,NgTableParams,$window,userService, $translate) {
 	$rootScope.active = 'home';
 	$rootScope.userlogin = true;
 	$scope.acceptShowInfo = function (i) {
@@ -52,7 +52,7 @@ angular.module('asch').controller('homeCtrl',function($scope, $rootScope, apiSer
 					}
 
 				}).error(function(res) {
-					toastError('服务器错误！');
+					toastError($translate.instant('ERR_SERVER_ERROR'));
 				});
 			}
 		});

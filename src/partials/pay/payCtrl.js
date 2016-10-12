@@ -1,63 +1,63 @@
-angular.module('asch').controller('payCtrl', function($scope, $rootScope, $filter, apiService, ipCookie, $http,$window,userService,postSerivice) {
+angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filter, apiService, ipCookie, $http, $window, userService, postSerivice, $translate) {
     $rootScope.active = 'pay';
     $rootScope.userlogin = true;
-   
 
-   $scope.userService = userService;
-   $scope.sent = userService.address;
-   $scope.fee = '0.1';
-   // $scope.amount=;
-   $scope.calculateFee = function() {
-       if ($scope.amount && Number($scope.amount) > 0) {
+
+    $scope.userService = userService;
+    $scope.sent = userService.address;
+    $scope.fee = '0.1';
+    // $scope.amount=;
+    $scope.calculateFee = function () {
+        if ($scope.amount && Number($scope.amount) > 0) {
             var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
             var fee = AschJS.transaction.calculateFee(amount);
             $scope.fee = $filter('xasFilter')(fee);
-       }
-   }
+        }
+    }
     $scope.sentMsg = function () {
         var isAddress = /^[0-9]{1,21}$/g;
         if (!$scope.fromto) {
-            toastError('必须输入接收地址');
+            toastError($translate.instant('ERR_NO_RECIPIENT_ADDRESS'));
             return false;
         }
         if (!isAddress.test($scope.fromto)) {
-            toastError('接收地址格式不正确!');
+            toastError($translate.instant('ERR_RECIPIENT_ADDRESS_FORMAT'));
             return false;
         }
         if ($scope.fromto == userService.address) {
-            toastError('接受地址与发送地址不能相同');
+            toastError($translate.instant('ERR_RECIPIENT_EQUAL_SENDER'));
             return false;
         }
         if (!$scope.amount || Number($scope.amount) <= 0) {
-            toastError('发送金额输入不正确!');
+            toastError($translate.instant('ERR_AMOUNT_INVALID'));
             return false;
         }
         var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
         var fee = 10000000;
-        if(amount + fee > userService.balance) {
-            toastError('余额不足!');
+        if (amount + fee > userService.balance) {
+            toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
             return false;
         }
         if (userService.secondPublicKey && !$scope.secondPassword) {
-            toastError('必须输入二级密码!');
+            toastError($translate.instant('ERR_NO_SECND_PASSWORD'));
             return false;
         }
-        if(!userService.secondPublicKey){
+        if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret,  $scope.secondPassword);
-        postSerivice.post(transaction).success(function(res) {
-            if(res.success==true){
+        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
+        postSerivice.post(transaction).success(function (res) {
+            if (res.success == true) {
                 $scope.passwordsure = true;
                 $scope.fromto = '';
                 $scope.amount = '';
                 $scope.secondPassword = '';
-                toast('支付成功!')
+                toast($translate.instant('INF_TRANSFER_SUCCESS'));
             } else {
                 toastError(res.error)
             };
-        }).error( function(res) {
-            toastError('服务器错误!');
+        }).error(function (res) {
+            toastError($translate.instant('ERR_SERVER_ERROR'));
         });
     }
 });

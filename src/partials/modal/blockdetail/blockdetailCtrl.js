@@ -1,5 +1,5 @@
 
-angular.module('asch').controller('blockdetailCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('blockdetailCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $translate) {
 
     $rootScope.blockdetailinfo = false;
   
@@ -45,7 +45,7 @@ angular.module('asch').controller('blockdetailCtrl', function($scope, $rootScope
                 $scope.block = res.block;
             };
         }).error(function () {
-            toastError('服务器错误!');
+            toastErrtoastError($translate.instant('ERR_SERVER_ERROR'));
         })
 
     });

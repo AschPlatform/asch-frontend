@@ -1,4 +1,4 @@
-angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams,userService, $filter) {
+angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams,userService, $translate) {
 	$rootScope.active = 'blockforging';
 	$rootScope.userlogin = true;
 	//设置基本像素
@@ -9,7 +9,7 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 
 	$scope.forgingStatus = function () {
 		var label = $scope.forgingEnabled ? 'FORGING_ENABLE' : 'FORGING_DISABLE';
-		return $filter('translate')(label);
+		return $translate.instant(label);
 	}
 
 	$scope.assigneeShowInfo = function () {
@@ -57,7 +57,7 @@ angular.module('asch').controller('blockforgingCtrl', function($scope, $rootScop
 					params.total(res.count);
 					$defer.resolve(res.blocks);
 				}).error(function(res) {
-					toastError('服务器错误！');
+					toastError($translate.instant('ERR_SERVER_ERROR'));
 				});
 			}
 		});

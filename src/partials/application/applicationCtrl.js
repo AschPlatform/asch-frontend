@@ -1,4 +1,4 @@
-angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService) {
+angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService, $translate) {
 	$rootScope.active = 'application';
 	$rootScope.userlogin = true;
 	$scope.newapplication = true;
@@ -25,7 +25,7 @@ angular.module('asch').controller('applicationCtrl', function($scope, $rootScope
 					params.total(res.count);
 					$defer.resolve(res.dapps);
 				}).error(function(res) {
-					toastError('服务器错误！');
+					toastError($translate.instant('ERR_SERVER_ERROR'));
 				});
 			}
 		});
@@ -46,7 +46,7 @@ angular.module('asch').controller('applicationCtrl', function($scope, $rootScope
 				}).success(function(res) {
 					$defer.resolve(res.dapps);
 				}).error(function(res) {
-					toastError('服务器错误！');
+					toastError($translate.instant('ERR_SERVER_ERROR'));
 				});
 			}
 		});

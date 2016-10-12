@@ -1,4 +1,4 @@
-angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, apiService, checkloginservice, ipCookie, $window, $http, userService, postSerivice, $filter) {
+angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, apiService, checkloginservice, ipCookie, $window, $http, userService, postSerivice, $translate) {
 	$rootScope.active = 'personal';
 	$rootScope.userlogin = true;
 
@@ -37,7 +37,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 
 	$scope.setStatus = function () {
 		var label = userService.secondPublicKey ? 'ALREADY_SET' : 'NOT_SET';
-		return $filter('translate')(label);
+		return $translate.instant(label);
 	}
 
 	$scope.userService = userService;
@@ -45,25 +45,25 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	$scope.setPassWord = function () {
 		var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
 		if (!$scope.secondpassword || !$scope.confirmPassword) {
-			return toastError('请输入二级密码');
+			return toastError($translate.instant('ERR_NO_SECND_PASSWORD'));;
 		}
 		var secondPwd = $scope.secondpassword.trim();
 		var confirmPwd = $scope.confirmPassword.trim();
 		if (secondPwd != confirmPwd) {
-			toastError('两次输入不一致!');
+			toastError($translate.instant('ERR_TWO_INPUTS_NOT_EQUAL'));
 		} else if (!reg.test(secondPwd)) {
-			toastError('密码格式不正确!');
+			toastError($translate.instant('ERR_PASSWORD_INVALID_FORMAT'));
 		} else if (reg.test(secondPwd) && reg.test(confirmPwd) && secondPwd == confirmPwd) {
 			var transaction = AschJS.signature.createSignature(userService.secret, $scope.secondpassword);
 			postSerivice.post(transaction).success(function (res) {
 				if (res.success == true) {
 					$scope.passwordsure = true;
-					toast('二级密码设置成功!')
+					toast($translate.instant('INF_SECND_PASSWORD_SET_SUCCESS'));
 				} else {
 					toastError(res.error)
 				};
 			}).error(function (res) {
-				toastError('服务器错误!');
+				toastError($translate.instant('ERR_SERVER_ERROR'));
 			});
 		}
 

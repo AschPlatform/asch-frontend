@@ -171,5 +171,33 @@ window.Translations['en-us'] = {
 
   // model - vote
   VOTE_TITLE: 'Vote for delegate',
-  VOTE_TIP: 'Please confirm your vote. You can choose up to 33 people in one vote.',  
+  VOTE_TIP: 'Please confirm your vote. You can choose up to 33 people in one vote.',
+
+  // toast errors
+  ERR_INPUT_PASSWORD: 'Please input secret',
+  ERR_VIOLATE_BIP39: '密码格式不符合BIP39安全规范',
+  ERR_SERVER_ERROR: 'Server error !',
+  ERR_PASSWORD_NOT_EQUAL: '您输入的主密码不一致',
+  ERR_DELEGATE_NAME_EMPTY: 'Delegate name should not empty',
+  ERR_DELEGATE_NAME_ADDRESS: 'Delegate name should not be address',
+  ERR_DELEGATE_NAME_FORMAT: '受托人名称格式不正确',
+  ERR_SECOND_PASSWORD_FORMAT: '二级密码输入格式不正确',
+  ERR_NO_RECIPIENT_ADDRESS: '必须输入接收地址',
+  ERR_RECIPIENT_ADDRESS_FORMAT: '接收地址格式不正确',
+  ERR_RECIPIENT_EQUAL_SENDER: '接受地址与发送地址不能相同',
+  ERR_AMOUNT_INVALID: '发送金额输入不正确',
+  ERR_BALANCE_NOT_ENOUGH: '余额不足',
+  ERR_NO_SECND_PASSWORD: '必须输入二级密码',
+  ERR_TWO_INPUTS_NOT_EQUAL: '两次输入不一致',
+  ERR_PASSWORD_INVALID_FORMAT: '密码格式不正确',
+  ERR_AT_LEAST_SELECT_ONE_DELEGATE: 'Please select one at least',
+  ERR_DELETE_NO_MORE_THAN_33: '一次删除至多33位候选人',
+  ERR_VOTE_NO_MORE_THAN_33: '一次投票至多33位候选人',
+
+  // toast info
+  INF_REGISTER_SUCCESS: 'Register success !',
+  INF_DELETE_SUCCESS: 'Delete success !',
+  INF_TRANSFER_SUCCESS: 'Transfer success !',
+  INF_VOTE_SUCCESS: 'Vote success !',
+  INF_SECND_PASSWORD_SET_SUCCESS: 'Second secret set success !',
 };

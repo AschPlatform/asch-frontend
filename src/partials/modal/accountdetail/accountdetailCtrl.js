@@ -1,5 +1,5 @@
 
-angular.module('asch').controller('accountdetailCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('accountdetailCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $translate) {
 
     $rootScope.accountdetailinfo = false;
 
@@ -18,7 +18,7 @@ angular.module('asch').controller('accountdetailCtrl', function($scope, $rootSco
                 $scope.account = res.account;
             };
         }).error(function () {
-            toastError('服务器错误!');
+            toastError($translate.instant('ERR_SERVER_ERROR'));
         })
 
     });

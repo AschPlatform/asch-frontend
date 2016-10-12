@@ -1,5 +1,5 @@
 
-angular.module('asch').controller('dealinfoCtrl', function($scope, $rootScope, apiService, ipCookie, $location) {
+angular.module('asch').controller('dealinfoCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $translate) {
 
     $rootScope.dealdetailinfo = false;
     $scope.CloseDealinfo = function () {
@@ -43,7 +43,7 @@ angular.module('asch').controller('dealinfoCtrl', function($scope, $rootScope, a
                 
             };
         }).error(function () {
-            toastError('服务器错误!');
+            toastError($translate.instant('ERR_SERVER_ERROR'));
         })
 
     });

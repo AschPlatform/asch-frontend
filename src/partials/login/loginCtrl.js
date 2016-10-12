@@ -85,7 +85,7 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 				toastError(res.error);
 			});
 		} else {
-			toastError('您输入的主密码不一致')
+			toastError($translate.instant('ERR_PASSWORD_NOT_EQUAL'));
 		}
 	}
 	$scope.saveTxt = function (filename) {
@@ -112,11 +112,11 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 	//登录
 	$scope.registerin = function () {
 		if (!$scope.secret) {
-			toastError('请输入密码');
+			toastError($translate.instant('ERR_INPUT_PASSWORD'));
 			return;
 		}
 		if (!Mnemonic.isValid($scope.secret)) {
-			return toastError('密码格式不符合BIP39安全规范');
+			return toastError($translate.instant('ERR_VIOLATE_BIP39'));
 		}
 		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
 		$rootScope.publickey = publicKey;
@@ -130,10 +130,10 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 				$rootScope.isLogin = true;
 				$location.path('/home');
 			} else {
-				toastError('服务器错误!');
+				toastError($translate.instant('ERR_SERVER_ERROR'));
 			}
 		}).error(function (res) {
-			toastError('服务器错误!');
+			toastError($translate.instant('ERR_SERVER_ERROR'));
 		})
 	}
 	//下一步登录

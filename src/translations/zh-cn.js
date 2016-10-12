@@ -165,4 +165,32 @@ window.Translations['zh-cn'] = {
   // model - vote
   VOTE_TITLE: '投票给受托人',
   VOTE_TIP: '请确认您的选择与投票，每张票最多可以同时投33人',
+
+  // toast errors
+  ERR_INPUT_PASSWORD: '请输入密码',
+  ERR_VIOLATE_BIP39: '密码格式不符合BIP39安全规范',
+  ERR_SERVER_ERROR: '服务器错误',
+  ERR_PASSWORD_NOT_EQUAL: '您输入的主密码不一致',
+  ERR_DELEGATE_NAME_EMPTY: '受托人名称不能为空',
+  ERR_DELEGATE_NAME_ADDRESS: '受托人名称不能为账户地址',
+  ERR_DELEGATE_NAME_FORMAT: '受托人名称格式不正确',
+  ERR_SECOND_PASSWORD_FORMAT: '二级密码输入格式不正确',
+  ERR_NO_RECIPIENT_ADDRESS: '必须输入接收地址',
+  ERR_RECIPIENT_ADDRESS_FORMAT: '接收地址格式不正确',
+  ERR_RECIPIENT_EQUAL_SENDER: '接受地址与发送地址不能相同',
+  ERR_AMOUNT_INVALID: '发送金额输入不正确',
+  ERR_BALANCE_NOT_ENOUGH: '余额不足',
+  ERR_NO_SECND_PASSWORD: '必须输入二级密码',
+  ERR_TWO_INPUTS_NOT_EQUAL: '两次输入不一致',
+  ERR_PASSWORD_INVALID_FORMAT: '密码格式不正确',
+  ERR_AT_LEAST_SELECT_ONE_DELEGATE: '请选择一位受托人',
+  ERR_DELETE_NO_MORE_THAN_33: '一次删除至多33位候选人',
+  ERR_VOTE_NO_MORE_THAN_33: '一次投票至多33位候选人',
+
+  // toast info
+  INF_REGISTER_SUCCESS: '注册成功',
+  INF_DELETE_SUCCESS: '删除成功',
+  INF_TRANSFER_SUCCESS: '转账成功',
+  INF_VOTE_SUCCESS: '投票成功',
+  INF_SECND_PASSWORD_SET_SUCCESS: '二级密码设置成功',
 };

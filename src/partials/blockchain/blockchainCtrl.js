@@ -1,4 +1,4 @@
-angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams) {
+angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope, apiService, ipCookie, $location,$window,NgTableParams, $translate) {
 	$rootScope.active = 'blockchain';
 	$rootScope.userlogin = true;
 	$rootScope.showdealInfo = function (i) {
@@ -41,7 +41,7 @@ angular.module('asch').controller('blockchainCtrl', function($scope, $rootScope,
 					// return res.delegates;
 					$defer.resolve(res.blocks);
 				}).error(function(res) {
-					toastError('服务器错误！');
+					toastError($translate.instant('ERR_SERVER_ERROR'));
 				});
 			}
 		});

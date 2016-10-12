@@ -39,7 +39,7 @@ angular.module('asch').controller('voteCtrl', function ($scope, $rootScope, apiS
                         // return res.delegates;
                         $defer.resolve(res.delegates);
                     }).error(function (res) {
-                        toastError('服务器错误！');
+                        toastError($translate.instant('ERR_SERVER_ERROR'));
                     });
                 }
             });
@@ -71,7 +71,7 @@ angular.module('asch').controller('voteCtrl', function ($scope, $rootScope, apiS
                         $scope.totalVoter = res.accounts.length,
                             $defer.resolve(res.accounts);
                     }).error(function (res) {
-                        toastError('服务器错误！');
+                        toastError($translate.instant('ERR_SERVER_ERROR'));
                     });
                 }
             });
@@ -103,7 +103,7 @@ angular.module('asch').controller('voteCtrl', function ($scope, $rootScope, apiS
                         // return res.delegates;
                         $defer.resolve(res.delegates);
                     }).error(function (res) {
-                        toastError('服务器错误！');
+                        toastError($translate.instant('ERR_SERVER_ERROR'));
                     });
                 }
             });
@@ -132,7 +132,7 @@ angular.module('asch').controller('voteCtrl', function ($scope, $rootScope, apiS
                         // return res.delegates;
                         $defer.resolve(res.delegates);
                     }).error(function (res) {
-                        toastError('服务器错误！');
+                        toastError($translate.instant('ERR_SERVER_ERROR'));
                     });
                 }
             });
@@ -181,10 +181,10 @@ angular.module('asch').controller('voteCtrl', function ($scope, $rootScope, apiS
                 }
             });
             if (deletevoteContent.length == 0) {
-                toastError('请选择一位受托人');
+                toastError($translate.instant('ERR_AT_LEAST_SELECT_ONE_DELEGATE'));
                 return;
             } else if (deletevoteContent.length > 33) {
-                toastError('一次删除至多33位候选人')
+                toastError($translate.instant('ERR_NO_MORE_THAN_33'));
             } else {
                 $rootScope.deletevotetoinfo = true;
                 $rootScope.isBodyMask = true;
@@ -205,10 +205,10 @@ angular.module('asch').controller('voteCtrl', function ($scope, $rootScope, apiS
                 }
             });
             if (voteContent.length == 0) {
-                toastError('请选择至少一位受托人');
+                toastError($translate.instant('ERR_AT_LEAST_SELECT_ONE_DELEGATE'));
                 return;
             } else if (voteContent.length > 33) {
-                toastError('一次投票至多33位候选人')
+                toastError($translate.instant('ERR_VOTE_NO_MORE_THAN_33'));
             } else {
                 $rootScope.votetoinfo = true;
                 $rootScope.isBodyMask = true;
