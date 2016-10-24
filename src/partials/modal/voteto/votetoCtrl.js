@@ -63,7 +63,6 @@ angular.module('asch').controller('votetoCtrl', function ($scope, $rootScope, ap
                     $scope.Close()
                     $rootScope.$emit('upvoteSuccess');
                     toast('投票成功!')
-                    toastError($translate.instant('ERR_SECOND_PASSWORD_FORMAT'));
                 } else {
                     toastError(res.error)
                 };
