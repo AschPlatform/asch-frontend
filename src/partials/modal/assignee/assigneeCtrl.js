@@ -25,38 +25,21 @@ angular.module('asch').controller('assigneeCtrl', function ($scope, $rootScope, 
             toastError($translate.instant('ERR_DELEGATE_NAME_FORMAT'));
             return;
         }
-        $scope.secondpassword = $scope.secondpassword || undefined;
-        if (userService.secondPublicKey) {
-            if (reg.test($scope.secondpassword)) {
-
-                var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName, $scope.secondpassword)
-                postSerivice.post(transaction).success(function (res) {
-                    if (res.success == true) {
-                        $scope.Close()
-                        toast($translate.instant('INF_REGISTER_SUCCESS'));
-                        $scope.userName = '';
-                    } else {
-                        toastError(res.error)
-                    };
-                }).error(function (res) {
-                    toast($translate.instant('ERR_SERVER_ERROR'));
-                });
-            } else {
-                toast($translate.instant('ERR_SECOND_PASSWORD_FORMAT'));
-            }
-        } else {
-            var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName)
-            postSerivice.post(transaction).success(function (res) {
-                if (res.success == true) {
-                    $scope.Close()
-                    $scope.userName = '';
-                    toast($translate.instant('INF_REGISTER_SUCCESS'));
-                } else {
-                    toastError(res.error)
-                };
-            }).error(function (res) {
-                toast($translate.instant('ERR_SERVER_ERROR'));
-            });
+        if (userService.secondPublicKey && !reg.test($scope.secondpassword)) {
+            toast($translate.instant('ERR_SECOND_PASSWORD_FORMAT'));
+            return;
         }
+        var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName, $scope.secondpassword)
+        postSerivice.post(transaction).success(function (res) {
+            if (res.success == true) {
+                $scope.Close();
+                toast($translate.instant('INF_REGISTER_SUCCESS'));
+                $scope.userName = '';
+            } else {
+                toastError(res.error)
+            };
+        }).error(function (res) {
+            toast($translate.instant('ERR_SERVER_ERROR'));
+        });
     };
 });
