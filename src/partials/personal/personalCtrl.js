@@ -1,4 +1,4 @@
-angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, apiService, checkloginservice, ipCookie, $window, $http, userService, postSerivice, $translate) {
+angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, apiService, ipCookie, $window, $http, userService, postSerivice, $translate) {
 	$rootScope.active = 'personal';
 	$rootScope.userlogin = true;
 

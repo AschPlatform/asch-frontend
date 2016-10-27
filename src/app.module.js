@@ -1,11 +1,13 @@
-var app = angular.module('asch', ['ngRoute', 'ui.bootstrap','ngTable', 'ipCookie', 'pascalprecht.translate'], function($httpProvider) {
+var app = angular.module('asch', ['ngRoute', 'ui.bootstrap', 'ngTable', 'ipCookie', 'pascalprecht.translate']);
+
+app.config(function ($httpProvider) {
     // Use x-www-form-urlencoded Content-Type
-   // $httpProvider.defaults.headers.post['Origin'] = '*';
+    // $httpProvider.defaults.headers.post['Origin'] = '*';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/json';
 });
 
-app.config(['$translateProvider', function($translateProvider) {
+app.config(function ($translateProvider) {
     var browserLang = navigator.browserLanguage ? navigator.browserLanguage : navigator.language;
     var defaultLang = 'en-us';
     if (browserLang && browserLang.indexOf('zh') > -1) {
@@ -17,4 +19,4 @@ app.config(['$translateProvider', function($translateProvider) {
     }
     $translateProvider.preferredLanguage(defaultLang);
     $translateProvider.useSanitizeValueStrategy(null);
-}]);
+});

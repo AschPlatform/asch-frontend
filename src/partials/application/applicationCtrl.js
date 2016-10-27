@@ -1,4 +1,4 @@
-angular.module('asch').controller('applicationCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService, $translate) {
+angular.module('asch').controller('applicationCtrl', function ($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService, $translate) {
 	$rootScope.active = 'application';
 	$rootScope.userlogin = true;
 	$scope.newapplication = true;
@@ -14,21 +14,21 @@ angular.module('asch').controller('applicationCtrl', function($scope, $rootScope
 				height: 'desc'
 			}
 		}, {
-			total: 0,
-			counts: [],
-			getData: function($defer,params) {
-				apiService.appList({
-					limit: params.count(),
-					offset: (params.page() - 1) * params.count()
-				}).success(function(res) {
+				total: 0,
+				counts: [],
+				getData: function ($defer, params) {
+					apiService.appList({
+						limit: params.count(),
+						offset: (params.page() - 1) * params.count()
+					}).success(function (res) {
 
-					params.total(res.count);
-					$defer.resolve(res.dapps);
-				}).error(function(res) {
-					toastError($translate.instant('ERR_SERVER_ERROR'));
-				});
-			}
-		});
+						params.total(res.count);
+						$defer.resolve(res.dapps);
+					}).error(function (res) {
+						toastError($translate.instant('ERR_SERVER_ERROR'));
+					});
+				}
+			});
 	}
 	$scope.newapplicationchange();
 	$scope.installedchange = function () {
@@ -39,17 +39,17 @@ angular.module('asch').controller('applicationCtrl', function($scope, $rootScope
 			page: 1,
 			count: 20,
 		}, {
-			total: 0,
-			counts: [],
-			getData: function($defer) {
-				apiService.appInstalled({
-				}).success(function(res) {
-					$defer.resolve(res.dapps);
-				}).error(function(res) {
-					toastError($translate.instant('ERR_SERVER_ERROR'));
-				});
-			}
-		});
+				total: 0,
+				counts: [],
+				getData: function ($defer) {
+					apiService.appInstalled({
+					}).success(function (res) {
+						$defer.resolve(res.dapps);
+					}).error(function (res) {
+						toastError($translate.instant('ERR_SERVER_ERROR'));
+					});
+				}
+			});
 	};
 
 });

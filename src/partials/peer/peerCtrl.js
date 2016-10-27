@@ -35,7 +35,4 @@ angular.module('asch').controller('peerCtrl', function ($scope, $rootScope, apiS
                 }
             });
     };
-
-
-
 });
