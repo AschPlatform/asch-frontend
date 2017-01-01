@@ -4,11 +4,13 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
+    "postinstall":"npm run build",
+    "preinstall" : "bower install",
     "build": "browserify build.js -o bower_components/bitcore-mnemonic.js && cp node_modules/asch-js/browserify-asch.js bower_components/"
   },
   "dependencies": {
     "asch-js": "*",
-    "bitcore-mnemonic": "~1.0.1",
+    "bitcore-mnemonic": "1.0.1",
     "cjson": "^0.3.2",
     "colors": "^1.1.2",
     "date-format": "0.0.2",
