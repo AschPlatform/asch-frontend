@@ -35,6 +35,13 @@ window.Translations['en-us'] = {
   TRS_TYPE_DAPP: 'Register Application',
   TRS_TYPE_DEPOSIT: 'Deposit',
   TRS_TYPE_WITHDRAWAL: 'Withdraw',
+  TRS_TYPE_STORAGE: 'Storage',
+  TRS_TYPE_UIA_ISSUER: 'Register Issuer',
+  TRS_TYPE_UIA_ASSET: 'Register Asset',
+  TRS_TYPE_UIA_FLAGS: 'Asset Flags',
+  TRS_TYPE_UIA_ACL: 'Asset Acl',
+  TRS_TYPE_UIA_ISSUE: 'Asset Issue',
+  TRS_TYPE_UIA_TRANSFER: 'Asset Transfer',
 
   // application
   DAPP_ICON: 'Icon',
