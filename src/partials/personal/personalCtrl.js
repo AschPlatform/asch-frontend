@@ -11,7 +11,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 
 	$scope.init = function (params) {
 		apiService.account({
-			address: AschJS.crypto.getAddress(userService.publicKey)
+			address: userService.address
 		}).success(function (res) {
 			if (res.success == true) {
 				$scope.account = res.account;
