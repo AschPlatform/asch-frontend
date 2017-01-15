@@ -28,7 +28,7 @@ angular.module('asch').config(function ($routeProvider) {
 		templateUrl: 'partials/addACL/index.html'
 	});
 	$routeProvider.when('/reduce-acl', {
-		templateUrl: 'partials/addACL/index.html'
+		templateUrl: 'partials/reduceACL/index.html'
 	});
 	$routeProvider.when('/pay', {
 		templateUrl: 'partials/pay/index.html'
