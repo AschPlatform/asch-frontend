@@ -74,6 +74,7 @@ window.Translations['zh-cn'] = {
   VOTE: '投票',
   TRANSFER: '转账',
   PEERS: '节点',
+  ASSET: '资产',
 
   // home
   BALANCE: '余额',
@@ -106,7 +107,28 @@ window.Translations['zh-cn'] = {
   PEER_LIST: '节点列表',
   OPERATING_SYSTEM: '操作系统',
   VERSION: '版本',
-
+  // ASSET: '资产'
+  REGISTERED_PUBLISHER:'注册发行商',
+  REGISTERED_ASSETS:'注册资产',
+  VALUE:'值',
+  MY_ASSETS:'我的资产',
+  OPERATION_RECORD:'操作记录',
+  ISSUE_NUMBER:'本次发行量',
+  ASSET_NAME:'资产名称',
+  ACCESS_CONTROL:'权限控制',
+  ASSET_PROFILE:'资产概况',
+  MAXIMUM:'最大发行量',
+  PRECISION:'精度',
+  QUANTITY:'当前存量',
+  CANCELLATION:'注销',
+  OPERATION:'操作',
+  DESCRIBE:'描述',
+  TOPLIMIT: '上限',
+  ACCURACY: '精度',
+  STRATEGY: '策略',
+  CURRENT_MODE: '当前模式',
+  ADD_LIST: '新增名单',
+  CURRENT_LIST: '当前名单',
   // personal
   ACCOUNT_INFO: '账户信息',
   QUIT: '退出系统',

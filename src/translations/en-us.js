@@ -81,6 +81,7 @@ window.Translations['en-us'] = {
   VOTE: 'Vote',
   TRANSFER: 'Transfer',
   PEERS: 'Peers',
+  ASSET: 'Asset',
 
   // home
   BALANCE: 'Balance',
@@ -113,7 +114,28 @@ window.Translations['en-us'] = {
   PEER_LIST: 'Peer List',
   OPERATING_SYSTEM: 'OS',
   VERSION: 'Version',
-
+  // ASSET: '资产'
+  REGISTERED_PUBLISHER:'Registered Publisher',
+  REGISTERED_ASSETS:'Registered Assets',
+  MY_ASSETS:'My Assets',
+  VALUE:'Value',
+  ISSUE_NUMBER:'Issue Number',
+  OPERATION_RECORD:'Operation Record',
+  ASSET_NAME:'Asset Name',
+  ACCESS_CONTROL:'Access Control',
+  ASSET_PROFILE:'Asset Profile',
+  MAXIMUM:'Maximum',
+  CANCELLATION:'Cancellation',
+  PRECISION:'Precision',
+  QUANTITY:'Quantity',
+  OPERATION:'Operation',
+  DESCRIBE:'Describe',
+  TOPLIMIT:'Top Limit',
+  ACCURACY:'Accuracy',
+  STRATEGY:'Strategy',
+  CURRENT_MODE:'Current Mode',
+  ADD_LIST:'Add List',
+  CURRENT_LIST:'Current List',
   // personal
   ACCOUNT_INFO: 'Account Info',
   QUIT: 'Quit',
