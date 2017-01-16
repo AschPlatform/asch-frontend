@@ -11,10 +11,11 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	};
 	function fetch(url, data, method, headers) {
 		for (var k in data) {
-			url = url.replace(':' + k, data[k])
-			delete data[k]
+			if (url.indexOf(':' + k) != -1) {
+				url = url.replace(':' + k, data[k])
+				delete data[k]
+			}
 		}
-		console.log('url....', url, data)
 		method = method.toLowerCase();
 		if (method == 'get') {
 			var params = json2url(data);
