@@ -6,6 +6,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "preinstall": "bower install",
+    "start": "gulp",
     "build": "browserify build.js -o bower_components/bitcore-mnemonic.js && cp node_modules/asch-js/browserify-asch.js bower_components/"
   },
   "dependencies": {

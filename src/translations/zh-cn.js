@@ -28,6 +28,13 @@ window.Translations['zh-cn'] = {
   TRS_TYPE_DAPP: '注册应用',
   TRS_TYPE_DEPOSIT: '应用充值',
   TRS_TYPE_WITHDRAWAL: '应用提现',
+  TRS_TYPE_STORAGE: '存储',
+  TRS_TYPE_UIA_ISSUER: '注册发行商',
+  TRS_TYPE_UIA_ASSET: '注册资产',
+  TRS_TYPE_UIA_FLAGS: '资产设置',
+  TRS_TYPE_UIA_ACL: '资产访问控制',
+  TRS_TYPE_UIA_ISSUE: '资产发行',
+  TRS_TYPE_UIA_TRANSFER: '资产转账',
 
   // application
   DAPP_ICON: '图标',
