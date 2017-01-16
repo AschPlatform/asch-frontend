@@ -21,7 +21,7 @@
         <div class="titleitem installed"  ng-class=" {'active':operationRecord}" ng-click="operationRecordchange()">{{'OPERATION_RECORD' | translate}}</div>
     </div>
     <div class="content first deal_table" ng-show="assetprofile">
-        <table class="table" ng-table="blockchaintableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
+        <table class="table" ng-table="assetprofiletableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
                template-pagination="custom/pager" >
             <thread>
                 <tr>
@@ -41,7 +41,7 @@
                 <td>{{i.precision}}</td>
                 <td>{{i.quantity}}</td>
                 <td>{{i.writeoff  }}</td>
-                <td><a href='/pay'>{{'TRANSFER' | translate}}</a></td>
+                <td><a ng-href='#/pay'>{{'TRANSFER' | translate}}</a></td>
             </tr>
         </table>
 
@@ -49,39 +49,39 @@
     <div class="content first" ng-show="newapplication">
         <div class="_item">
             <label >{{'REGISTERED_PUBLISHER' | translate}}</label>
-            <input type="text"  id="pay_item1" >
+            <input type="text"  ng-model="monname" id="pay_item1" >
         </div>
         <div class="_item">
             <label >{{'DESCRIBE' | translate}}</label>
-            <textarea  required    id="pay_item2"></textarea>
+            <textarea  required  ng-model="mondesc" id="pay_item2"></textarea>
 
         </div>
-        <button class="sent" ng-click="sub()">{{'SUBMIT' | translate}}</button>
+        <button class="sent" ng-click="registerPublish()">{{'SUBMIT' | translate}}</button>
     </div>
     <div class="content third" ng-show="installed">
         <div class="_item">
             <label >{{'REGISTERED_PUBLISHER' | translate}}</label>
-            <input type="text"  id="pay_item3" >
+            <input type="text"  ng-model="publishName" id="pay_item3" >
         </div>
         <div class="_item">
             <label >{{'DESCRIBE' | translate}}</label>
-            <textarea  required   id="pay_item4"></textarea>
+            <textarea  required ng-model="publishDesc"  id="pay_item4"></textarea>
 
         </div>
         <div class="_item">
             <label >{{'TOPLIMIT' | translate}}</label>
-            <input type="text"  >
+            <input type="text" ng-model="topLimt" >
         </div>
         <div class="_item">
             <label >{{'ACCURACY' | translate}}</label>
-            <input type="text"   >
+            <input type="text"  ng-model="precision" >
         </div>
         <div class="_item">
             <label >{{'STRATEGY' | translate}}</label>
-            <textarea  required  ></textarea>
+            <textarea  required  ng-model="strategy" ></textarea>
 
         </div>
-        <button class="sent" ng-click="sub()">{{'SUBMIT' | translate}}</button>
+        <button class="sent" ng-click="registerAsset()">{{'SUBMIT' | translate}}</button>
     </div>
     <div class="content third myAssets" ng-show="myAssets">
         <table class="table" ng-table="myAss" border="0" width="100%" cellpadding="0" cellspacing="0"
@@ -110,7 +110,7 @@
                     <span class="settings" ng-click="mySettings(i)">设置</span>
                     <span class="add" ng-click="myAddPlus(i)">+ACL</span>
                     <span class="remove" ng-click="myreduceACL(i)">-ACL</span>
-                    <span class="transtion" ng-click="myTranstion(i)">转账</span>
+                    <span class="transtion" ><a ng-href="#/pay"></a>转账</span>
                 </td>
             </tr>
         </table>
@@ -213,5 +213,10 @@
             </li>
         </ul>
     </script>
-
+    <div id="comfirmDialog" ng-show="comfirmDialog">
+        <p ng-show="dialogNUM == 1">该操作需要消耗手续费{{ publishtrs.fee | feeFilter}} XAS</p>
+        <p ng-show="dialogNUM == 2">该操作需要消耗手续费{{ assetTrs.fee | feeFilter}} XAS</p>
+        <button class="sent" ng-click="comfirmDialogClose()">{{'CANCEL' | translate}}</button>
+        <button class="sent" ng-click="ccomfirmSub()">{{'CONFIRM' | translate}}</button>
+    </div>
 </div>
