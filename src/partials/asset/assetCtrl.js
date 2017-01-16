@@ -6,7 +6,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $rootScope.userlogin = true;
     $rootScope.isBodyMask = false;
     //comfirmDialog
-    $rootScope.comfirmDialog = false;
+    $scope.comfirmDialog = false;
     $scope.init = function () {
         $scope.assetprofilechange();
     };
@@ -67,8 +67,8 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         }
         $scope.publishtrs = AschJS.uia.createIssuer(name, desc, userService.secret, $scope.secondPassword);
 
-        $rootScope.comfirmDialog = true;
-        $rootScope.dialogNUM = 1;
+        $scope.comfirmDialog = true;
+        $scope.dialogNUM = 1;
         $rootScope.isBodyMask = true;
 
     };
@@ -93,8 +93,9 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         };
         console.log(name,desc,maximum,strategy)
         $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(maximum)  , +precision, strategy, userService.secret, $scope.secondPassword);
-        console.log(trs)
-        $rootScope.dialogNUM = 2;
+        $scope.dialogNUM = 2;
+        $scope.comfirmDialog = true;
+        $rootScope.isBodyMask = true;
     }
     $scope.myAssetschange = function () {
         $scope.assetprofile = false;
@@ -207,6 +208,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $scope.settings_submit = function () {
         $scope.myAss.set = false;
         $rootScope.isBodyMask = false;
+        console.log($scope.mymodel)
         var currency = $scope.moneyName;
         var flagType = 1;
         var flag = $scope.mymodel.value;
@@ -231,19 +233,19 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     //关闭确认
     $scope.comfirmDialogClose = function () {
         $rootScope.isBodyMask = false;
-        $rootScope.comfirmDialog = false;
+        $scope.comfirmDialog = false;
     };
-    $scope.ccomfirmSub = function () {
+    $scope.comfirmSub = function () {
         var trs ;
-        if($rootScope.dialogNUM == 1){
+        if($scope.dialogNUM == 1){
             trs = $scope.publishtrs;
-        } else if($rootScope.dialogNUM == 2){
-            rs = $scope.assetTrs;
+        } else if($scope.dialogNUM == 2){
+            trs = $scope.assetTrs;
         }
         postSerivice.post(trs).success(function (res) {
             if (res.success == true) {
                 toast($translate.instant('INF_REGISTER_SUCCESS'));
-                $scope.comfirmDialogClose()
+                $scope.comfirmDialogClose();
             } else {
                 toastError(res.error)
             };
