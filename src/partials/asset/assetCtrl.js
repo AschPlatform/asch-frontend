@@ -7,17 +7,37 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $rootScope.isBodyMask = false;
     //comfirmDialog
     $scope.comfirmDialog = false;
+    //没有注册发行商
+    $scope.issuerStatus = false;
     $scope.init = function () {
         $scope.assetprofilechange();
+        apiService.issuer({
+            address: userService.address
+        }).success(function (res) {
+            if (res.success == true) {
+                // 已经注册发行商
+                console.log(res.issuer)
+                $scope.monname = res.issuer.name;
+                $scope.mondesc = res.issuer.desc;
+
+                $scope.issuerStatus = true;
+            } else {
+                // 没有发行商
+                $scope.issuerStatus = false;
+                //  toastError($translate.instant('ERR_SERVER_ERROR'));
+            }
+        }).error(function (res) {
+            toastError($translate.instant('ERR_SERVER_ERROR'));
+        })
     };
     $scope.assetprofile = true;
-    $scope.newapplication = false;
+    $scope.registerpublish = false;
     $scope.installed = false;
     $scope.myAssets = false;
     $scope.operationRecord = false;
     $scope.assetprofilechange = function () {
         $scope.assetprofile = true;
-        $scope.newapplication = false;
+        $scope.registerpublish = false;
         $scope.installed = false;
         $scope.myAssets = false;
         $scope.operationRecord = false;
@@ -47,16 +67,21 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             }
         });
     }
-    $scope.newapplicationchange = function () {
-        $scope.newapplication = true;
+    $scope.registerpublishchange = function () {
+        $scope.registerpublish = true;
         $scope.assetprofile = false;
         $scope.installed = false;
         $scope.myAssets = false;
         $scope.operationRecord = false;
 
+
     }
     //注册发行商
     $scope.registerPublish = function () {
+        if($scope.issuerStatus){
+            toastError('你已经注册了发行商');
+            return false;
+        }
         var name = $scope.monname;
         var desc = $scope.mondesc;
         if(!$scope.monname || !$scope.mondesc){
@@ -73,9 +98,11 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
 
     };
 
-    $scope.installedchange = function () {
+    $scope.registerAssetchange = function () {
+        console.log('注册资产')
+
         $scope.assetprofile = false;
-        $scope.newapplication = false;
+        $scope.registerpublish = false;
         $scope.installed = true;
         $scope.myAssets = false;
         $scope.operationRecord = false;
@@ -83,7 +110,11 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     };
     //注册资产
     $scope.registerAsset = function () {
-        var name = $scope.publishName;
+        if(!$scope.issuerStatus){
+            toastError('你还没有注册发行商');
+            return false;
+        }
+        var name = $scope.monname +'.'+ $scope.publishName;
         var desc = $scope.publishDesc;
         var maximum = $scope.topLimt;
         var precision = $scope.precision;
@@ -98,20 +129,22 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $rootScope.isBodyMask = true;
     }
     $scope.myAssetschange = function () {
+        console.log('我的资产')
         $scope.assetprofile = false;
-        $scope.newapplication = false;
+        $scope.registerpublish = false;
         $scope.installed = false;
         $scope.myAssets = true;
         $scope.operationRecord = false;
         $scope.myAss = new NgTableParams({
             page: 1,
-            count: 20,
+            count: 10
         }, {
             total: 0,
             counts: [],
-            getData: function ($defer) {
+            getData: function ($defer,params) {
                 apiService.myAssets({
                 }).success(function (res) {
+                    params.total(res.count);
                     $defer.resolve(res.assets);
                 }).error(function (res) {
                     toastError($translate.instant('ERR_SERVER_ERROR'));
@@ -121,16 +154,36 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
 
     };
     $scope.operationRecordchange = function () {
+        console.log('操作记录')
+
         $scope.assetprofile = false;
-        $scope.newapplication = false;
+        $scope.registerpublish = false;
         $scope.installed = false;
         $scope.myAssets = false;
         $scope.operationRecord = true;
+        // $scope.myOp = new NgTableParams({
+        //     page: 1,
+        //     count: 20
+        // }, {
+        //     total: 0,
+        //     counts: [],
+        //     getData: function ($defer,params) {
+                apiService.myAssetTransactions({
+                    ownerPublicKey:userService.address
+                }).success(function (res) {
+                    console.log(res)
+                    // params.total(res.count);
+                    // $defer.resolve(res.assets);
+                }).error(function (res) {
+                    toastError($translate.instant('ERR_SERVER_ERROR'));
+                });
+           // }
+        // });
 
     };
-    $scope.sub = function () {
-
-    };
+    // $scope.sub = function () {
+    //
+    // };
     //myWriteOff
     $scope.myWriteOff = function (i) {
         $scope.moneyName = i.name

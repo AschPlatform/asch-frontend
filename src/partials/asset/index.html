@@ -15,8 +15,8 @@
 
     <div class="appheader">
         <div class="titleitem newapplication "  ng-class=" {'active':assetprofile}" ng-click="assetprofilechange()">{{'ASSET_PROFILE' | translate}}</div>
-        <div class="titleitem newapplication "  ng-class=" {'active':newapplication}" ng-click="newapplicationchange()">{{'REGISTERED_PUBLISHER' | translate}}</div>
-        <div class="titleitem installed"  ng-class=" {'active':installed}" ng-click="installedchange()">{{'REGISTERED_ASSETS' | translate}}</div>
+        <div class="titleitem newapplication "  ng-class=" {'active':registerpublish}" ng-click="registerpublishchange()">{{'REGISTERED_PUBLISHER' | translate}}</div>
+        <div class="titleitem installed"  ng-class=" {'active':installed}" ng-click="registerAssetchange()">{{'REGISTERED_ASSETS' | translate}}</div>
         <div class="titleitem installed"  ng-class=" {'active':myAssets}" ng-click="myAssetschange()">{{'MY_ASSETS' | translate}}</div>
         <div class="titleitem installed"  ng-class=" {'active':operationRecord}" ng-click="operationRecordchange()">{{'OPERATION_RECORD' | translate}}</div>
     </div>
@@ -46,21 +46,23 @@
         </table>
 
     </div>
-    <div class="content first" ng-show="newapplication">
+    <div class="content first" ng-show="registerpublish">
+        <p class="title" ng-show="issuerStatus">你已经注册了发行商</p>
+
         <div class="_item">
-            <label >{{'REGISTERED_PUBLISHER' | translate}}</label>
-            <input type="text"  ng-model="monname" id="pay_item1" >
+            <label >{{'DAPP_NAME' | translate}}</label>
+            <input type="text" ng-disabled="issuerStatus" ng-model="monname" id="pay_item1" >
         </div>
         <div class="_item">
             <label >{{'DESCRIBE' | translate}}</label>
-            <textarea  required  ng-model="mondesc" id="pay_item2"></textarea>
+            <textarea  required ng-disabled="issuerStatus"  ng-model="mondesc" id="pay_item2"></textarea>
 
         </div>
-        <button class="sent" ng-click="registerPublish()">{{'SUBMIT' | translate}}</button>
+        <button class="sent" ng-show="!issuerStatus" ng-click="registerPublish()">{{'SUBMIT' | translate}}</button>
     </div>
     <div class="content third" ng-show="installed">
         <div class="_item">
-            <label >{{'REGISTERED_PUBLISHER' | translate}}</label>
+            <label >{{'DAPP_NAME' | translate}}</label>
             <input type="text"  ng-model="publishName" id="pay_item3" >
         </div>
         <div class="_item">

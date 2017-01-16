@@ -82,7 +82,7 @@
 	// 查询发行商
 	"issuerApi": {
 		"mock": "/data/assets/issuer.json",
-		"url": "/api/uia/issuer/:address"
+		"url": "/api/uia/issuers/:address"
 	},
 	// 获取某个发行商的资产
 	"myAssetsApi": {
