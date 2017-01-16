@@ -37,6 +37,10 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	this.blocks = function (params) {
 		return fetch('{{blocksApi}}', params, 'get');
 	};
+	//获取全网所有资产
+	this.assets = function (params) {
+		return fetch('{{assetsApi}}', params, 'get');
+	};
 	//受托人模块
 	this.blockforging = function (params) {
 		return fetch('{{blockforgingApi}}', params, 'get');

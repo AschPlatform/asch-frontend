@@ -10,4 +10,15 @@ angular.module('asch').service('postSerivice', function ($http) {
         }
         return $http(req);
     }
+    this.writeoff = function (data) {
+        var req = {
+            method: 'post',
+            url: '{{postApi}}',
+            headers: { 'magic': '{{magic}}', 'version': '' },
+            data: {
+                transaction: data
+            }
+        }
+        return $http(req);
+    }
 });

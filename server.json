@@ -27,6 +27,11 @@
 		"mock": "/data/vote/delegates.json",
 		"url": "/api/accounts/delegates"
 	},
+	// 获取全网所有资产
+	"assetsApi": {
+		"mock": "/data/assets/assets.json",
+		"url": "/uia/assets?offset=0&limit=1"
+	},
 	// 获取我的投票列表借口
 	"blocksApi": {
 		"mock": "/data/blockchain/blocks.json",

@@ -11,28 +11,22 @@
         <span ng-show="$root.active == 'asset'">/{{'ASSET' | translate}}</span>
     </p>
 </div>
-<div id="pay" ng-controller="payCtrl" ng-init="init()">
-
+<div id="removeacl" ng-controller="addaclCtrl" ng-init="init()">
+    <p>你正在执行{{reduceACL.name}}资产设置操作，需要消耗0.1 XAS</p>
     <div class="_item">
-        <label >{{'SENDER' | translate}}</label>
-        <input type="text" ng-model="sent" id="pay_item1" disabled>
+        <label >{{'CURRENT_MODE' | translate}}</label>
+        <input ng-show="reduceACL.acl = 0" type="text" value="黑名单模式"  disabled>
+        <input ng-show="reduceACL.acl = 1" type="text" value="白名单模式"  disabled>
     </div>
     <div class="_item">
-        <label >{{'RECIPIENT' | translate}}</label>
-        <input type="text" required ng-model="fromto" ng-trim="true"  id="pay_item2">
-    </div>
-    <div class="_item">
-        <label >{{'AMOUNTS' | translate}}</label>
-        <input type="number" required ng-model="amount" ng-trim="true" id="pay_item3">
-    </div>
-    <div class="_item" ng-show="userService.secondPublicKey">
         <label >{{'SECOND_PASSWORD' | translate}}</label>
-        <input type="password" ng-model="secondPassword" id="pay_item5">
+        <input type="text"  >
     </div>
     <div class="_item">
-        <label >{{'FEES' | translate}}</label>
-        <input type="text" ng-model="fee" id="pay_item4" disabled>
+        <label >{{'CURRENT_LIST' | translate}}</label>
+        <textarea  required  ></textarea>
+
     </div>
-    <p>{{'PAY_TIP' | translate}}</p>
-    <button class="sent" ng-click="sentMsg()">{{'SEND' | translate}}</button>
+
+    <button class="sent" ng-click="sub()">{{'SUBMIT' | translate}}</button>
 </div>
