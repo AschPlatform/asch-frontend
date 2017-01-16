@@ -1,6 +1,7 @@
 {
 	"server": {
-		"dev": "http://121.42.194.216:4097"
+		"dev": "http://localhost:4096",
+		"int": "http://121.42.194.216:4097"
 	},
 	//登录接口
 	"loginApi": {
