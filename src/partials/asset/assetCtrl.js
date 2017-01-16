@@ -28,16 +28,16 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         }, {
             total: 0,
             getData: function ($defer, params) {
-                apiService.assets({
+                apiService.myBalances({
                     limit: params.count(),
-                    orderBy: 'height:desc',
-                    offset: (params.page() - 1) * params.count()
+                    offset: (params.page() - 1) * params.count(),
+                    address: userService.address
                 }).success(function (res) {
                     //  $scope.res =res;
                     // params.data=res.delegates;
                     params.total(res.count);
                     // return res.delegates;
-                    $defer.resolve(res.assets);
+                    $defer.resolve(res.balances);
 
                 }).error(function (res) {
                     toastError($translate.instant('ERR_SERVER_ERROR'));

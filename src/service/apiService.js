@@ -10,6 +10,11 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		return arr.join('&');
 	};
 	function fetch(url, data, method, headers) {
+		for (var k in data) {
+			url = url.replace(':' + k, data[k])
+			delete data[k]
+		}
+		console.log('url....', url, data)
 		method = method.toLowerCase();
 		if (method == 'get') {
 			var params = json2url(data);
@@ -36,10 +41,6 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	//获取最新区块
 	this.blocks = function (params) {
 		return fetch('{{blocksApi}}', params, 'get');
-	};
-	//获取全网所有资产
-	this.assets = function (params) {
-		return fetch('{{assetsApi}}', params, 'get');
 	};
 	//受托人模块
 	this.blockforging = function (params) {
@@ -76,4 +77,24 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	this.forgingStatus = function (params) {
 		return fetch('{{forgingStatusApi}}', params, 'get');
 	}
+	// 获取我的余额
+	this.myBalances = function (params) {
+		return fetch('{{myBalancesApi}}', params, 'get');
+	};
+	// 获取我的资产
+	this.myAssets = function (params) {
+		return fetch('{{myAssetsApi}}', params, 'get');
+	};
+	// 查询发行商
+	this.issuer = function (params) {
+		return fetch('{{issuerApi}}', params, 'get');
+	};
+	// 获取资产访问控制列表
+	this.assetAcl = function (params) {
+		return fetch('{{assetAclApi}}', params, 'get');
+	};
+	// 获取我的资产操作记录
+	this.myAssetTransactions = function (params) {
+		return fetch('{{myTransactionsApi}}', params, 'get');
+	};
 });

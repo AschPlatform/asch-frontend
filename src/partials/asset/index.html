@@ -35,13 +35,13 @@
                 </tr>
             </thread>
             <tr ng-repeat="i in $data"  >
-                <td> {{i.name}}</td>
-                <td>{{i.desc }}</td>
+                <td> {{i.currency}}</td>
+                <td>{{i.balance }}</td>
                 <td>{{i.maximum}}</td>
                 <td>{{i.precision}}</td>
                 <td>{{i.quantity}}</td>
                 <td>{{i.writeoff  }}</td>
-                <td>转账</td>
+                <td><a href='/pay'>{{'TRANSFER' | translate}}</a></td>
             </tr>
         </table>
 
