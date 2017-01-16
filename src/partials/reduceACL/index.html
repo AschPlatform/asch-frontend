@@ -12,20 +12,21 @@
     </p>
 </div>
 <div id="removeacl" ng-controller="addaclCtrl" ng-init="init()">
-    <p>你正在执行{{moneyName}}资产设置操作，需要消耗0.1 XAS</p>
+    <p>你正在执行{{reduceACL.name}}资产设置操作，需要消耗0.1 XAS</p>
     <div class="_item">
         <label >{{'CURRENT_MODE' | translate}}</label>
-        <input type="text" value="黑名单模式"  disabled>
+        <input ng-show="reduceACL.acl = 0" type="text" value="黑名单模式"  disabled>
+        <input ng-show="reduceACL.acl = 1" type="text" value="白名单模式"  disabled>
     </div>
     <div class="_item">
         <label >{{'SECOND_PASSWORD' | translate}}</label>
         <input type="text"  >
     </div>
-    <!--<div class="_item">-->
-        <!--<label >{{'CURRENT_LIST' | translate}}</label>-->
-        <!--<textarea  required  ></textarea>-->
+    <div class="_item">
+        <label >{{'CURRENT_LIST' | translate}}</label>
+        <textarea  required  ></textarea>
 
-    <!--</div>-->
+    </div>
 
     <button class="sent" ng-click="sub()">{{'SUBMIT' | translate}}</button>
 </div>

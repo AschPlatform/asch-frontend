@@ -2,9 +2,9 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
     $rootScope.userlogin = true;
         console.log($rootScope.addACL)
     $scope.sub = function () {
-        var currency = $rootScope.reduceACL.name;;
+        var currency = $rootScope.addACL.name;;
         var flagType = 1;
-        var flag = $rootScope.reduceACL.acl;
+        var flag = $rootScope.addACL.acl;
         var operator = '+'; // '+'表示增加， ‘-’表示删除
         var list = [];
 
