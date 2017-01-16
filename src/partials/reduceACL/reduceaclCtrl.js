@@ -12,6 +12,15 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
     };
+    $rootScope.checkdelitem = [];
+    $scope.checkitem = function (i) {
+            var key = i.address;
+            if (!$rootScope.checkdelitem[key]) {
+                $rootScope.checkdelitem[key] = i;
+            } else {
+                delete $rootScope.checkdelitem[key];
+            }
+    }
     $scope.comfirmDialogClose = function () {
         $rootScope.isBodyMask = false;
         $scope.comfirmDialog = false;
@@ -32,7 +41,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
     $scope.init= function () {
         $scope.listparams = new NgTableParams({
             page: 1,
-            count: 20,
+            count: 10,
             sorting: {
                 height: 'desc'
             }
@@ -48,7 +57,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
                 }).success(function (res) {
                     //  $scope.res =res;
                     // params.data=res.delegates;
-                    params.total(res.list);
+                    params.total(res.count);
 
                     // return res.delegates;
                     $defer.resolve(res.list);
