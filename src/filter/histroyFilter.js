@@ -2,7 +2,7 @@ angular.module('asch').filter('histroyFilter', function($filter) {
 	return function (i) {
 		var content = ''
 		if (i.type == 9) {
-			content='注册了发行商' + i.asset.issuer.name
+			content='注册了发行商' + i.asset.uiaIssuer.name
 		} else if(i.type == 10){
 			content = '注册了资产' + i.asset.uiaAsset.name
 		} else if(i.type == 11&& i.asset.uiaFlags.flagType == 1){
@@ -15,7 +15,7 @@ angular.module('asch').filter('histroyFilter', function($filter) {
 		} else if(i.type == 13){
 			content = '资产' + i.asset.uiaIssue.currency + '新发行' + i.asset.uiaIssue.amount
 		} else if(i.type == 14){
-			content = '资产' + i.asset.uiaTransfer.currency + '从'
+			content = '资产' + i.asset.uiaTransfer.currency + '从' + i.senderId+'转账' + i.asset.uiaTransfer.amount + '到' +i.recipientId
 		}
 		return content;
 	}

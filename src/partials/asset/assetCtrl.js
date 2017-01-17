@@ -159,7 +159,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 counts: [],
                 getData: function ($defer, params) {
                     apiService.myAssets({
-                        name: userService.publicKey,
+                        name: $scope.monname,
                         limit: params.count(),
                         offset: (params.page() - 1) * params.count()
                     }).success(function (res) {
