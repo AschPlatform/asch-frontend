@@ -58,7 +58,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()
                 }).success(function (res) {
-                    toast($translate.instant('INF_OPERATION_SUCCEEDED'));
+                    //toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                     params.total(res.count);
                     $defer.resolve(res.list);
                 }).error(function (res) {

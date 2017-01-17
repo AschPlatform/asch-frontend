@@ -59,9 +59,24 @@
       margin-right: 20px;
     }
   }
+  .item_input{
+    width: 20px!important;
+  }
   .tablewrap{
     width: 50%;
-    padding-left: 126px;
+    input{
+      height: 40px;
+      margin: 0;
+    }
+    tr{
+      height: 40px;
+    }
+    td{
+      vertical-align: middle;
+      box-sizing: border-box;
+      padding: 0;
+      height: 40px;
+    }
   }
 }
 #comfirmacl{

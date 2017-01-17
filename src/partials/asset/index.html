@@ -134,7 +134,8 @@
             </div>
             <div class="_item">
                 <label >{{'VALUE' | translate}}</label>
-                <select ng-model="mymodel" ng-options="i.name for i in models track by name"></select>
+                <input ng-show="acl == 0" type="text" value="黑名单模式"  disabled>
+                <input ng-show="acl == 1" type="text" value="白名单模式"  disabled>
             </div>
             <div class="_item">
                 <label >{{'SECOND_PASSWORD' | translate}}</label>

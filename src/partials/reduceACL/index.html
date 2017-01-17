@@ -2,20 +2,20 @@
 <div id="removeacl" ng-controller="reduceaclCtrl" ng-init="init()">
     <div class="_item">
         <label >{{'CURRENT_MODE' | translate}}</label>
-        <input ng-show="reduceACL.acl = 0" type="text" value="黑名单模式"  disabled>
-        <input ng-show="reduceACL.acl = 1" type="text" value="白名单模式"  disabled>
+        <input ng-show="reduceACL.acl == 0" type="text" value="黑名单模式"  disabled>
+        <input ng-show="reduceACL.acl == 1" type="text" value="白名单模式"  disabled>
     </div>
     <div class="_item">
         <label >{{'SECOND_PASSWORD' | translate}}</label>
         <input type="text"  >
     </div>
-    <div class="list">
+    <div class="_item">
         <label >{{'CURRENT_LIST' | translate}}</label>
         <div class="tablewrap">
             <table class="table"ng-table="listparams" border="0" width="100%" cellpadding="0" cellspacing="0"
                    template-pagination="custom/pager" >
-                <tr ng-repeat="i in $data"  >
-                    <td><input type="checkbox" ng-disabled="i.voted" ng-checked="i.voted || (i.address | savecheckpbulish)" ng-click="checkitem(i)"></td>
+                <tr class="table_wrap_tr" ng-repeat="i in $data"  >
+                    <td><input type="checkbox" class="item_input" ng-disabled="i.voted" ng-checked="i.voted || (i.address | savecheckpbulish)" ng-click="checkitem(i)"></td>
                     <td> {{i.address }}</td>
                 </tr>
             </table>

@@ -18,7 +18,8 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 // 已经注册发行商
                 $scope.monname = res.issuer.name;
                 $scope.mondesc = res.issuer.desc;
-                userService.isStatus(true)
+                userService.isStatus(true);
+                userService.isName(res.issuer.name);
                 $scope.issuerStatus = userService.issuerStatus;
 
             } else {
@@ -180,7 +181,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 counts: [],
                 getData: function ($defer, params) {
                     apiService.myAssets({
-                        name: $scope.monname,
+                        name: userService.name,
                         limit: params.count(),
                         offset: (params.page() - 1) * params.count()
                     }).success(function (res) {
@@ -296,6 +297,12 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     // 设置
     $scope.mySettings = function (i) {
         $scope.moneyName = i.name;
+        if(i.acl == 0){
+            $scope.acl = 1;
+        } else if (i.acl == 1){
+            $scope.acl = 0;
+        }
+
         $scope.myAss.set = true;
         $rootScope.isBodyMask = true;
     };
@@ -304,7 +311,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $rootScope.isBodyMask = false;
         var currency = $scope.moneyName;
         var flagType = 1;
-        var flag = $scope.mymodel.value;
+        var flag = $scope.acl;
         var trs = AschJS.uia.createFlags(currency, flagType, flag, userService.secret, $scope.secondPassword);
         postSerivice.writeoff(trs).success(function (res) {
             if (res.success == true) {
@@ -331,6 +338,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         var trs ;
         if($scope.dialogNUM == 1){
             trs = $scope.publishtrs;
+
         } else if($scope.dialogNUM == 2){
             trs = $scope.assetTrs;
         }
@@ -339,6 +347,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 if($scope.dialogNUM == 1){
                     $scope.monname = '';
                     $scope.mondesc = '';
+                    userService.isName($scope.monname);
                 } else if($scope.dialogNUM == 2){
                     $scope.publishName = '';
                     $scope.publishDesc = '';

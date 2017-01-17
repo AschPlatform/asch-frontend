@@ -17,4 +17,8 @@ angular.module('asch').service('userService', function () {
     this.isStatus = function (tab) {
         this.issuerStatus = tab;
     };
+    this.isName = function (name) {
+        this.name = name;
+    };
+
 });
