@@ -7,9 +7,7 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
         var flagType = 1;
         var flag = $rootScope.addACL.acl;
         var operator = '+'; // '+'表示增加， ‘-’表示删除
-        console.log($scope.addList)
         var list = $scope.addList.split('\n') || [];
-        console.log(list)
         $scope.addacltrs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword);
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
@@ -24,7 +22,7 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
         var trs = $scope.addacltrs;
         postSerivice.post(trs).success(function (res) {
             if (res.success == true) {
-                toast($translate.instant('INF_REGISTER_SUCCESS'));
+                toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                 $scope.comfirmDialogClose();
             } else {
                 toastError(res.error)

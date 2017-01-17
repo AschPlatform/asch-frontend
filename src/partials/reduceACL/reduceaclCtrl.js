@@ -7,15 +7,8 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
         var flag = $rootScope.reduceACL.acl;
         var operator = '-'; // '+'表示增加， ‘-’表示删除
         var list = [] ;
-        var voteContent = [];
-        var showusername = {};
-
         angular.forEach($rootScope.checkdelitem, function (data, index, array) {
-            console.log(data)
-            console.log( array)
-            console.log( index)
             list.push(index);
-
         });
         console.log(list)
         $scope.reduceacltrs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword);
@@ -39,7 +32,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
         var trs = $scope.reduceacltrs;
         postSerivice.post(trs).success(function (res) {
             if (res.success == true) {
-                toast($translate.instant('INF_REGISTER_SUCCESS'));
+                toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                 $scope.comfirmDialogClose();
             } else {
                 toastError(res.error)
@@ -65,6 +58,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()
                 }).success(function (res) {
+                    toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                     params.total(res.count);
                     $defer.resolve(res.list);
                 }).error(function (res) {
