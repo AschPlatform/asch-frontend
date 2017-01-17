@@ -46,6 +46,10 @@
             <textarea  required ng-disabled="issuerStatus"  ng-model="mondesc" id="pay_item2"></textarea>
 
         </div>
+        <div class="_item" ng-show="secpwd">
+            <label >{{'SECOND_PASSWORD' | translate}}</label>
+            <input type="text"  ng-model="rpsecondPassword" >
+        </div>
         <button class="sent" ng-show="!issuerStatus" ng-click="registerPublish()">{{'SUBMIT' | translate}}</button>
     </div>
     <div class="content third" ng-show="registerasset">
@@ -70,6 +74,10 @@
             <label >{{'STRATEGY' | translate}}</label>
             <textarea  required  ng-model="strategy" ></textarea>
 
+        </div>
+        <div class="_item" ng-show="secpwd">
+            <label >{{'SECOND_PASSWORD' | translate}}</label>
+            <input type="text"  ng-model="rasecondPassword" >
         </div>
         <button class="sent" ng-click="registerAsset()">{{'SUBMIT' | translate}}</button>
     </div>

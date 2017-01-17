@@ -123,7 +123,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         }
 
         if (!userService.secondPublicKey) {
-            $scope.secondPassword = '';
+            $scope.rpsecondPassword = '';
         }
         $scope.publishtrs = AschJS.uia.createIssuer(name, desc, userService.secret, $scope.rpsecondPassword);
         $scope.comfirmDialog = true;
@@ -165,10 +165,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             return toastError('您输入的资产精度不正确');
         }
         if (!userService.secondPublicKey) {
-            $scope.secondPassword = '';
+            $scope.rasecondPassword = '';
         };
         var realMaximum = parseInt(maximum) * Math.pow(10, precision)
-        $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(realMaximum), precision, strategy, userService.secret, $scope.secondPassword);
+        $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(realMaximum), precision, strategy, userService.secret, $scope.rasecondPassword);
         $scope.dialogNUM = 2;
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
@@ -261,7 +261,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         var flagType = 2;
         var flag =1;
         if (!userService.secondPublicKey) {
-            $scope.secondPassword = '';
+            $scope.wosecondPassword = '';
         }
         var transaction = AschJS.uia.createFlags(currency, flagType, flag,userService.secret, $scope.wosecondPassword);
         postSerivice.writeoff(transaction).success(function (res) {
@@ -344,7 +344,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         var flagType = 1;
         var flag = $scope.acl;
         if (!userService.secondPublicKey) {
-            $scope.secondPassword = '';
+            $scope.setsecondPassword = '';
         }
         var trs = AschJS.uia.createFlags(currency, flagType, flag, userService.secret, $scope.setsecondPassword);
         postSerivice.writeoff(trs).success(function (res) {
@@ -382,6 +382,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 if($scope.dialogNUM == 1){
                     $scope.monname = '';
                     $scope.mondesc = '';
+                    $scope.rpsecondPassword = '';
                     userService.isName($scope.monname);
                 } else if($scope.dialogNUM == 2){
                     $scope.publishName = '';
@@ -389,6 +390,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     $scope.topLimt = '';
                     $scope.precision = '';
                     $scope.strategy = '';
+                    $scope.rasecondPassword = '';
                 }
                 toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                 $scope.comfirmDialogClose();
