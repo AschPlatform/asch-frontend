@@ -26,6 +26,8 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
         var trs = $scope.addacltrs;
         postSerivice.post(trs).success(function (res) {
             if (res.success == true) {
+                $scope.secondPassword = '';
+                $scope.addList = '';
                 toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                 $scope.comfirmDialogClose();
             } else {

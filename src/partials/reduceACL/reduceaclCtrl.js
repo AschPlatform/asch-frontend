@@ -36,6 +36,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
         var trs = $scope.reduceacltrs;
         postSerivice.post(trs).success(function (res) {
             if (res.success == true) {
+                $scope.secondPassword = ''
                 toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                 $scope.comfirmDialogClose();
             } else {

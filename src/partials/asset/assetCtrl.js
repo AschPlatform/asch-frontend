@@ -125,7 +125,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        $scope.publishtrs = AschJS.uia.createIssuer(name, desc, userService.secret, $scope.secondPassword);
+        $scope.publishtrs = AschJS.uia.createIssuer(name, desc, userService.secret, $scope.rpsecondPassword);
         $scope.comfirmDialog = true;
         $scope.dialogNUM = 1;
         $rootScope.isBodyMask = true;
@@ -263,10 +263,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        var transaction = AschJS.uia.createFlags(currency, flagType, flag,userService.secret, $scope.secondPassword);
+        var transaction = AschJS.uia.createFlags(currency, flagType, flag,userService.secret, $scope.wosecondPassword);
         postSerivice.writeoff(transaction).success(function (res) {
             if (res.success == true) {
-                $scope.secondPassword = '';
+                $scope.wosecondPassword = '';
                 $scope.myAss.writeoff = false;
                 $rootScope.isBodyMask = false;
                 toast($translate.instant('INF_OPERATION_SUCCEEDED'));
@@ -301,10 +301,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             return toastError('您输入的发行数额不正确');
         }
         var realAmount = parseInt($scope.amount) * Math.pow(10, $scope.currentAsset.precision);
-        var trs = AschJS.uia.createIssue($scope.myPublishmoneyName, String(realAmount), userService.secret, $scope.secondPassword);
+        var trs = AschJS.uia.createIssue($scope.myPublishmoneyName, String(realAmount), userService.secret, $scope.pbsecondPassword);
         postSerivice.writeoff(trs).success(function (res) {
             if (res.success == true) {
-                $scope.secondPassword = '';
+                $scope.pbsecondPassword = '';
                 $scope.myAss.publish = false;
                 $rootScope.isBodyMask = false;
                 toast($translate.instant('INF_OPERATION_SUCCEEDED'));
@@ -346,9 +346,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        var trs = AschJS.uia.createFlags(currency, flagType, flag, userService.secret, $scope.secondPassword);
+        var trs = AschJS.uia.createFlags(currency, flagType, flag, userService.secret, $scope.setsecondPassword);
         postSerivice.writeoff(trs).success(function (res) {
             if (res.success == true) {
+                $scope.setsecondPassword = '';
                 $scope.myAss.set = false;
                 $rootScope.isBodyMask = false;
                 toast($translate.instant('INF_OPERATION_SUCCEEDED'));
