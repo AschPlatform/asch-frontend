@@ -35,12 +35,16 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $scope.installed = false;
     $scope.myAssets = false;
     $scope.operationRecord = false;
+    // 资产概况
     $scope.assetprofilechange = function () {
         $scope.assetprofile = true;
         $scope.registerpublish = false;
         $scope.installed = false;
         $scope.myAssets = false;
         $scope.operationRecord = false;
+        if($scope.assetprofiletableparams){
+            $scope.assetprofiletableparams.reload();
+        } else {
         $scope.assetprofiletableparams = new NgTableParams({
             page: 1,
             count: 20,
@@ -55,10 +59,9 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     offset: (params.page() - 1) * params.count(),
                     address: userService.address
                 }).success(function (res) {
-                    //  $scope.res =res;
-                    // params.data=res.delegates;
+
                     params.total(res.count);
-                    // return res.delegates;
+
                     $defer.resolve(res.balances);
 
                 }).error(function (res) {
@@ -66,7 +69,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 });
             }
         });
+        }
+
     }
+    //注册发行商tab
     $scope.registerpublishchange = function () {
         $scope.registerpublish = true;
         $scope.assetprofile = false;
@@ -97,7 +103,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $rootScope.isBodyMask = true;
 
     };
-
+    //注册资产tab
     $scope.registerAssetchange = function () {
         console.log('注册资产')
 
@@ -127,32 +133,47 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $scope.dialogNUM = 2;
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
-    }
+    };
+    //我的资产tab
     $scope.myAssetschange = function () {
-        console.log('我的资产')
+        console.log('我的资产');
         $scope.assetprofile = false;
         $scope.registerpublish = false;
         $scope.installed = false;
         $scope.myAssets = true;
         $scope.operationRecord = false;
-        $scope.myAss = new NgTableParams({
-            page: 1,
-            count: 10
-        }, {
-            total: 0,
-            counts: [],
-            getData: function ($defer,params) {
-                apiService.myAssets({
-                }).success(function (res) {
-                    params.total(res.count);
-                    $defer.resolve(res.assets);
-                }).error(function (res) {
-                    toastError($translate.instant('ERR_SERVER_ERROR'));
-                });
-            }
-        });
+        if(!$scope.issuerStatus){
+            toastError('没有资产相关记录');
+            return false;
+        }
+        if($scope.myAss){
+            $scope.myAss.reload();
+        } else {
+            $scope.myAss = new NgTableParams({
+                page: 1,
+                count: 10
+            }, {
+                total: 0,
+                page: 1,
+                count: 20,
+                counts: [],
+                getData: function ($defer, params) {
+                    apiService.myAssets({
+                        name: userService.publicKey,
+                        limit: params.count(),
+                        offset: (params.page() - 1) * params.count()
+                    }).success(function (res) {
+                        params.total(res.count);
+                        $defer.resolve(res.assets);
+                    }).error(function (res) {
+                        toastError($translate.instant('ERR_SERVER_ERROR'));
+                    });
+                }
+            });
+        }
 
     };
+    //操作记录
     $scope.operationRecordchange = function () {
         console.log('操作记录')
 
@@ -161,25 +182,30 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $scope.installed = false;
         $scope.myAssets = false;
         $scope.operationRecord = true;
-        // $scope.myOp = new NgTableParams({
-        //     page: 1,
-        //     count: 20
-        // }, {
-        //     total: 0,
-        //     counts: [],
-        //     getData: function ($defer,params) {
+        if($scope.operationRecordparams){
+            $scope.operationRecordparams.reload()
+        } else {
+        $scope.operationRecordparams = new NgTableParams({
+            page: 1,
+            count: 20
+        }, {
+            total: 0,
+            counts: [],
+            getData: function ($defer,params) {
                 apiService.myAssetTransactions({
-                    ownerPublicKey:userService.address
+                    ownerPublicKey:userService.publicKey,
+                    limit: params.count(),
+                    offset: (params.page() - 1) * params.count()
                 }).success(function (res) {
                     console.log(res)
-                    // params.total(res.count);
-                    // $defer.resolve(res.assets);
+                    params.total(res.count);
+                    $defer.resolve(res.transactions);
                 }).error(function (res) {
                     toastError($translate.instant('ERR_SERVER_ERROR'));
                 });
-           // }
-        // });
-
+           }
+        });
+        }
     };
     // $scope.sub = function () {
     //
@@ -297,6 +323,16 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         }
         postSerivice.post(trs).success(function (res) {
             if (res.success == true) {
+                if($scope.dialogNUM == 1){
+                    $scope.monname = '';
+                    $scope.mondesc = '';
+                } else if($scope.dialogNUM == 2){
+                    $scope.publishName = '';
+                    $scope.publishDesc = '';
+                    $scope.topLimt = '';
+                    $scope.precision = '';
+                    $scope.strategy = '';
+                }
                 toast($translate.instant('INF_REGISTER_SUCCESS'));
                 $scope.comfirmDialogClose();
             } else {

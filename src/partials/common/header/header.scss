@@ -51,8 +51,7 @@
                     color: #fff!important;
                     text-decoration: none;
                     img {
-                        width: auto;
-                        height: 24px;
+                        width: 24px;
                         margin-right: 12px;
                     }
                 }
@@ -94,42 +93,43 @@
             }
         }
     }
-    .asch_tip {
-        width: 100%;
-        p {
-            height: 39px;
+
+}
+.asch_tip {
+    width: 100%;
+    p {
+        height: 39px;
+        line-height: 39px;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        position: relative;
+        a {
+            font-size: 18px;
+            color: #777;
+            text-decoration: none;
+            img {
+                width: 21px;
+                margin-top: -1px;
+                margin-right: 20px;
+                border: 0;
+            }
+        }
+        span {
+            font-size: 18px;
+            color: #aaa!important;
+        }
+        .asch_tip_rights {
+            position: absolute;
+            right: 25px;
             line-height: 39px;
-            padding-left: 20px;
-            padding-right: 20px;
-            box-sizing: border-box;
-            position: relative;
+            font-size: 18px;
+            color:#777777;
             a {
-                font-size: 18px;
-                color: #777;
+                margin-left: 24px;
                 text-decoration: none;
-                img {
-                    width: 21px;
-                    margin-top: -1px;
-                    margin-right: 20px;
-                    border: 0;
-                }
-            }
-            span {
-                font-size: 18px;
-                color: #aaa!important;
-            }
-            .asch_tip_rights {
-                position: absolute;
-                right: 25px;
                 line-height: 39px;
-                font-size: 18px;
-                color:#777777;
-                a {
-                    margin-left: 24px;
-                    text-decoration: none;
-                    line-height: 39px;
-                    color: #3276c3;
-                }
+                color: #3276c3;
             }
         }
     }

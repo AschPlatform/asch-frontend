@@ -1,14 +1,14 @@
 <div class="asch_tip">
     <p>
         <a ng-href="#/home"> <img src="/assets/common/min_logo.png" alt="">{{'HOME' | translate}}</a>
-        <span ng-show="$root.active == 'personal'">/{{'PERSONAL' | translate}}</span>
-        <span ng-show="$root.active == 'application'">/{{'APPLICATIONS' | translate}}</span>
-        <span ng-show="$root.active == 'blockforging'">/{{'FORGING' | translate}}</span>
-        <span ng-show="$root.active == 'blockchain'">/{{'BLOCKS' | translate}}</span>
-        <span ng-show="$root.active == 'vote'">/{{'VOTE' | translate}}</span>
-        <span ng-show="$root.active == 'pay'">/{{'TRANSFER' | translate}}</span>
-        <span ng-show="$root.active == 'peer'">/{{'PEERS' | translate}}</span>
-        <span ng-show="$root.active == 'asset'">/{{'ASSET' | translate}}</span>
+        <span ng-show="$root.active == 'personal'">/ {{'PERSONAL' | translate}}</span>
+        <span ng-show="$root.active == 'application'">/ {{'APPLICATIONS' | translate}}</span>
+        <span ng-show="$root.active == 'blockforging'">/ {{'FORGING' | translate}}</span>
+        <span ng-show="$root.active == 'blockchain'">/ {{'BLOCKS' | translate}}</span>
+        <span ng-show="$root.active == 'vote'">/ {{'VOTE' | translate}}</span>
+        <span ng-show="$root.active == 'pay'">/ {{'TRANSFER' | translate}}</span>
+        <span ng-show="$root.active == 'peer'">/ {{'PEERS' | translate}}</span>
+        <span ng-show="$root.active == 'asset'">/ {{'ASSET' | translate}}</span>
     </p>
 </div>
 <div id="removeacl" ng-controller="reduceaclCtrl" ng-init="init()">
@@ -28,7 +28,7 @@
             <table class="table"ng-table="listparams" border="0" width="100%" cellpadding="0" cellspacing="0"
                    template-pagination="custom/pager" >
                 <tr ng-repeat="i in $data"  >
-                    <td><input type="checkbox" ng-disabled="i.voted" ng-checked="i.voted || (i.address | saveCheckfilter)" ng-click="checkitem(i)"></td>
+                    <td><input type="checkbox" ng-disabled="i.voted" ng-checked="i.voted || (i.address | savecheckpbulish)" ng-click="checkitem(i)"></td>
                     <td> {{i.address }}</td>
                 </tr>
             </table>

@@ -86,7 +86,8 @@
         <button class="sent" ng-click="registerAsset()">{{'SUBMIT' | translate}}</button>
     </div>
     <div class="content third myAssets" ng-show="myAssets">
-        <table class="table" ng-table="myAss" border="0" width="100%" cellpadding="0" cellspacing="0"
+        <p class="title" ng-show="!issuerStatus">没有资产相关信息</p>
+        <table ng-show="issuerStatus"class="table" ng-table="myAss" border="0" width="100%" cellpadding="0" cellspacing="0"
                template-pagination="custom/pager" >
             <thread>
                 <tr>
@@ -191,7 +192,14 @@
         </div>
     </div>
     <div class="content third" ng-show="operationRecord">
-    zichan
+        <div class="histroy-tablewrap">
+            <table class="table"ng-table="operationRecordparams" border="0" width="100%" cellpadding="0" cellspacing="0"
+                   template-pagination="custom/pager" >
+                <tr ng-repeat="i in $data"  >
+                    <td> {{i | histroyFilter }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
     <script type="text/ng-template" id="custom/pager">
         <ul class="pagination ng-table-pagination">
