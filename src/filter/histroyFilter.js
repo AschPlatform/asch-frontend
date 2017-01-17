@@ -15,8 +15,8 @@ angular.module('asch').filter('histroyFilter', function($filter) {
 		} else if(i.type == 13){
 			content = '资产' + i.asset.uiaIssue.currency + '新发行' + i.asset.uiaIssue.amount
 		} else if(i.type == 14){
-			content = '资产' + i.asset.uiaTransfer.currency + '从' + i.senderId+'转账' + i.asset.uiaTransfer.amount + '到' +i.recipientId
+			content = '资产' + i.asset.uiaTransfer.currency + '从' + i.senderId+'转账 ' + i.asset.uiaTransfer.amount + ' 到' +i.recipientId
 		}
-		return content;
+		return $filter('timestampFilter')(i.timestamp) + ' ' + content;
 	}
 });
