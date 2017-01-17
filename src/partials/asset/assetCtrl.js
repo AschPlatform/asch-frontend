@@ -7,6 +7,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $rootScope.isBodyMask = false;
     //comfirmDialog
     $scope.comfirmDialog = false;
+    $rootScope.secpwd = userService.secondPublicKey;
     //没有注册发行商
     $scope.init = function () {
 

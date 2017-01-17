@@ -2,6 +2,7 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
     $rootScope.userlogin = true;
     $rootScope.active = 'acl';
     $scope.comfirmDialog = false;
+    $rootScope.secpwd = userService.secondPublicKey;
     $scope.sub = function () {
         var currency = $rootScope.addACL.name;;
         var flagType = 1;

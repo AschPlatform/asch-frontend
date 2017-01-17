@@ -2,6 +2,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
     $rootScope.userlogin = true;
     $rootScope.active = 'acl';
     $scope.comfirmDialog = false;
+    $rootScope.secpwd = userService.secondPublicKey;
     $scope.updateAcl = function () {
         var currency = $rootScope.reduceACL.name;
         var flag = $rootScope.reduceACL.acl;
