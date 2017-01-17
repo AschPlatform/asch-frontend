@@ -3,16 +3,26 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
     $rootScope.active = 'acl';
     $scope.comfirmDialog = false;
     $scope.updateAcl = function () {
-        var currency = $scope.reduceACL.name;
+        var currency = $rootScope.reduceACL.name;
         var flag = $rootScope.reduceACL.acl;
         var operator = '-'; // '+'表示增加， ‘-’表示删除
-        var list = [];
+        var list = [] ;
+        var voteContent = [];
+        var showusername = {};
 
+        angular.forEach($rootScope.checkdelitem, function (data, index, array) {
+            console.log(data)
+            console.log( array)
+            console.log( index)
+            list.push(index);
+
+        });
+        console.log(list)
         $scope.reduceacltrs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword);
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
     };
-    $rootScope.checkdelitem = [];
+    $rootScope.checkdelitem = {};
     $scope.checkitem = function (i) {
             var key = i.address;
             if (!$rootScope.checkdelitem[key]) {
@@ -50,16 +60,12 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
             counts: [],
             getData: function ($defer, params) {
                 apiService.assetAcl({
-                    address: userService.address,
-                    orderBy: 'rate:asc',
+                    name: $rootScope.reduceACL.name,
+                    flag: $rootScope.reduceACL.acl,
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()
                 }).success(function (res) {
-                    //  $scope.res =res;
-                    // params.data=res.delegates;
                     params.total(res.count);
-
-                    // return res.delegates;
                     $defer.resolve(res.list);
                 }).error(function (res) {
                     toastError($translate.instant('ERR_SERVER_ERROR'));

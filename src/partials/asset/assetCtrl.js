@@ -16,7 +16,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         }).success(function (res) {
             if (res.success == true) {
                 // 已经注册发行商
-                console.log(res.issuer)
+                console.log(res.issuer);
                 $scope.monname = res.issuer.name;
                 $scope.mondesc = res.issuer.desc;
 
@@ -24,7 +24,6 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             } else {
                 // 没有发行商
                 $scope.issuerStatus = false;
-                //  toastError($translate.instant('ERR_SERVER_ERROR'));
             }
         }).error(function (res) {
             toastError($translate.instant('ERR_SERVER_ERROR'));
@@ -32,14 +31,14 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     };
     $scope.assetprofile = true;
     $scope.registerpublish = false;
-    $scope.installed = false;
+    $scope.registerasset = false;
     $scope.myAssets = false;
     $scope.operationRecord = false;
     // 资产概况
     $scope.assetprofilechange = function () {
         $scope.assetprofile = true;
         $scope.registerpublish = false;
-        $scope.installed = false;
+        $scope.registerasset = false;
         $scope.myAssets = false;
         $scope.operationRecord = false;
         if($scope.assetprofiletableparams){
@@ -59,29 +58,23 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     offset: (params.page() - 1) * params.count(),
                     address: userService.address
                 }).success(function (res) {
-
                     params.total(res.count);
-
                     $defer.resolve(res.balances);
-
                 }).error(function (res) {
                     toastError($translate.instant('ERR_SERVER_ERROR'));
                 });
             }
         });
         }
-
-    }
+    };
     //注册发行商tab
     $scope.registerpublishchange = function () {
         $scope.registerpublish = true;
         $scope.assetprofile = false;
-        $scope.installed = false;
+        $scope.registerasset = false;
         $scope.myAssets = false;
         $scope.operationRecord = false;
-
-
-    }
+    };
     //注册发行商
     $scope.registerPublish = function () {
         if($scope.issuerStatus){
@@ -91,33 +84,34 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         var name = $scope.monname;
         var desc = $scope.mondesc;
         if(!$scope.monname || !$scope.mondesc){
-            return
+            return false;
         }
+
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
         $scope.publishtrs = AschJS.uia.createIssuer(name, desc, userService.secret, $scope.secondPassword);
-
         $scope.comfirmDialog = true;
         $scope.dialogNUM = 1;
         $rootScope.isBodyMask = true;
-
     };
     //注册资产tab
     $scope.registerAssetchange = function () {
-        console.log('注册资产')
-
         $scope.assetprofile = false;
         $scope.registerpublish = false;
-        $scope.installed = true;
+        $scope.registerasset = true;
         $scope.myAssets = false;
         $scope.operationRecord = false;
-
     };
     //注册资产
     $scope.registerAsset = function () {
         if(!$scope.issuerStatus){
             toastError('你还没有注册发行商');
+            return false;
+        }
+        var reg = /^[A-Z]{3,6}$/;
+        if(!reg.test($scope.publishName)){
+            toastError('请输入3-6位大写字母');
             return false;
         }
         var name = $scope.monname +'.'+ $scope.publishName;
@@ -139,7 +133,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         console.log('我的资产');
         $scope.assetprofile = false;
         $scope.registerpublish = false;
-        $scope.installed = false;
+        $scope.registerasset = false;
         $scope.myAssets = true;
         $scope.operationRecord = false;
         if(!$scope.issuerStatus){
@@ -175,11 +169,9 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     };
     //操作记录
     $scope.operationRecordchange = function () {
-        console.log('操作记录')
-
         $scope.assetprofile = false;
         $scope.registerpublish = false;
-        $scope.installed = false;
+        $scope.registerasset = false;
         $scope.myAssets = false;
         $scope.operationRecord = true;
         if($scope.operationRecordparams){
@@ -207,9 +199,6 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         });
         }
     };
-    // $scope.sub = function () {
-    //
-    // };
     //myWriteOff
     $scope.myWriteOff = function (i) {
         $scope.moneyName = i.name
@@ -287,14 +276,12 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $scope.settings_submit = function () {
         $scope.myAss.set = false;
         $rootScope.isBodyMask = false;
-        console.log($scope.mymodel)
         var currency = $scope.moneyName;
         var flagType = 1;
         var flag = $scope.mymodel.value;
         var trs = AschJS.uia.createFlags(currency, flagType, flag, userService.secret, $scope.secondPassword);
         postSerivice.writeoff(trs).success(function (res) {
             if (res.success == true) {
-                $scope.secondPassword = '';
                 $scope.myAss.set = false;
                 $rootScope.isBodyMask = false;
                 toast($translate.instant('INF_TRANSFER_SUCCESS'));
@@ -337,72 +324,32 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 $scope.comfirmDialogClose();
             } else {
                 toastError(res.error)
-            };
+            }
         }).error(function (res) {
             toastError($translate.instant('ERR_SERVER_ERROR'));
         });
-    }
-    // $scope.publishClose = function () {
-    //     $rootScope.isBodyMask = false;
-    //     $scope.myAss.settings = false;
-    // };
-    // +ACL
+    };
+
     $scope.myAddPlus = function (i) {
 
         $rootScope.addACL = i;
         $location.path('/add-acl');
-
-    //     var currency = $scope.moneyName;
-    //     var flagType = 1;
-    //     var flag = $scope.mymodel.value;
-    //     var operator = '+'; // '+'表示增加， ‘-’表示删除
-    //     var list = [];
-    //
-    //     var trs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword)
-    //     postSerivice.writeoff(trs).success(function (res) {
-    //         if (res.success == true) {
-    //             $scope.secondPassword = '';
-    //             $scope.myAss.set = false;
-    //             $rootScope.isBodyMask = false;
-    //             toast($translate.instant('INF_TRANSFER_SUCCESS'));
-    //         } else {
-    //             toastError(res.error)
-    //         };
-    //     }).error(function (res) {
-    //         toastError($translate.instant('ERR_SERVER_ERROR'));
-    //     });
-    // };
-
-};
+    };
     // //-ACL
     $scope.myreduceACL = function (i) {
         $rootScope.reduceACL = i;
         $location.path('/reduce-acl');
-    //     $scope.myAss.remove = true;
-//     var currency = $scope.moneyName;
-//     var flagType = 1;
-//     var flag = $scope.mymodel.value;
-//     var operator = '-'; // '+'表示增加， ‘-’表示删除
-//     var list = [];
-//
-//     var trs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword)
-//     postSerivice.writeoff(trs).success(function (res) {
-//         if (res.success == true) {
-//             $scope.secondPassword = '';
-//             $scope.myAss.set = false;
-//             $rootScope.isBodyMask = false;
-//             toast($translate.instant('INF_TRANSFER_SUCCESS'));
-//         } else {
-//             toastError(res.error)
-//         };
-//     }).error(function (res) {
-//         toastError($translate.instant('ERR_SERVER_ERROR'));
-//     });
-};
+    };
+    $scope.transferView= function (i,num) {
+       var data ;
+        if(num == 1){
+            data = i.currency;
+        } else if(num == 2){
+            data = i.name;
+        }
+        $rootScope.currencyName = data;
+        $location.path('/pay');
+    };
 
-// };
-    // 转账
-    // $scope.myTranstion = function () {
-    //     $location.path('/pay');
-    // }
+
 });

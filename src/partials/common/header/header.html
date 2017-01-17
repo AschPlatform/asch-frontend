@@ -25,7 +25,7 @@
                 <a ng-href="#/vote"><img src="/assets/common/vote.png" alt="">{{'VOTE' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='pay'}">
-            <a  ng-href="#/pay"><img src="/assets/common/pay.png" alt="">{{'TRANSFER' | translate}}</a>
+            <a  ng-click="goPay()"><img src="/assets/common/pay.png" alt="">{{'TRANSFER' | translate}}</a>
            </li>
             <li ng-class="{'active':$root.active=='peer'}">
                 <a  ng-href="#/peer"><img src="/assets/common/per.png" alt="">{{'PEERS' | translate}}</a>

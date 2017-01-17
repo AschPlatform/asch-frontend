@@ -1,7 +1,7 @@
-angular.module('asch').filter('saveCodeFilter', function ($rootScope) {
+angular.module('asch').filter('savecheckpbulish', function ($rootScope) {
     return function (key) {
 
-        if( $rootScope.coedobj[key]){
+        if( $rootScope.checkdelitem[key]){
             // console.log(key)
             return true;
         } else {

@@ -16,14 +16,15 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
     }
     $scope.sentMsg = function () {
         var isAddress = /^[0-9]{1,21}$/g;
+        var transaction;
         if (!$scope.fromto) {
             toastError($translate.instant('ERR_NO_RECIPIENT_ADDRESS'));
             return false;
         }
-        if (!isAddress.test($scope.fromto)) {
-            toastError($translate.instant('ERR_RECIPIENT_ADDRESS_FORMAT'));
-            return false;
-        }
+        // if (!isAddress.test($scope.fromto)) {
+        //     toastError($translate.instant('ERR_RECIPIENT_ADDRESS_FORMAT'));
+        //     return false;
+        // }
         if ($scope.fromto == userService.address) {
             toastError($translate.instant('ERR_RECIPIENT_EQUAL_SENDER'));
             return false;
@@ -45,7 +46,11 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
+        if(!$rootScope.currencyName){
+            transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
+        } else {
+            transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), String(amount), String($scope.fromto), userService.secret, $scope.secondPassword)
+        }
         postSerivice.post(transaction).success(function (res) {
             if (res.success == true) {
                 $scope.passwordsure = true;

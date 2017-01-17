@@ -2,11 +2,11 @@
 <div id="asset" ng-controller="assetCtrl" ng-init="init()">
 
     <div class="appheader">
-        <div class="titleitem newapplication "  ng-class=" {'active':assetprofile}" ng-click="assetprofilechange()">{{'ASSET_PROFILE' | translate}}</div>
-        <div class="titleitem newapplication "  ng-class=" {'active':registerpublish}" ng-click="registerpublishchange()">{{'REGISTERED_PUBLISHER' | translate}}</div>
-        <div class="titleitem installed"  ng-class=" {'active':installed}" ng-click="registerAssetchange()">{{'REGISTERED_ASSETS' | translate}}</div>
-        <div class="titleitem installed"  ng-class=" {'active':myAssets}" ng-click="myAssetschange()">{{'MY_ASSETS' | translate}}</div>
-        <div class="titleitem installed"  ng-class=" {'active':operationRecord}" ng-click="operationRecordchange()">{{'OPERATION_RECORD' | translate}}</div>
+        <div class="titleitem"  ng-class=" {'active':assetprofile}" ng-click="assetprofilechange()">{{'ASSET_PROFILE' | translate}}</div>
+        <div class="titleitem"  ng-class=" {'active':registerpublish}" ng-click="registerpublishchange()">{{'REGISTERED_PUBLISHER' | translate}}</div>
+        <div class="titleitem"  ng-class=" {'active':registerasset}" ng-click="registerAssetchange()">{{'REGISTERED_ASSETS' | translate}}</div>
+        <div class="titleitem"  ng-class=" {'active':myAssets}" ng-click="myAssetschange()">{{'MY_ASSETS' | translate}}</div>
+        <div class="titleitem"  ng-class=" {'active':operationRecord}" ng-click="operationRecordchange()">{{'OPERATION_RECORD' | translate}}</div>
     </div>
     <div class="content first deal_table" ng-show="assetprofile">
         <table class="table" ng-table="assetprofiletableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
@@ -29,7 +29,7 @@
                 <td>{{i.precision}}</td>
                 <td>{{i.quantity}}</td>
                 <td>{{i.writeoff  }}</td>
-                <td><a ng-href='#/pay'>{{'TRANSFER' | translate}}</a></td>
+                <td><a ng-click="transferView(i,1)">{{'TRANSFER' | translate}}</a></td>
             </tr>
         </table>
 
@@ -39,7 +39,7 @@
 
         <div class="_item">
             <label >{{'DAPP_NAME' | translate}}</label>
-            <input type="text" ng-disabled="issuerStatus" ng-model="monname" id="pay_item1" >
+            <input type="text" ng-disabled="issuerStatus" maxlength="16" ng-model="monname" id="pay_item1" >
         </div>
         <div class="_item">
             <label >{{'DESCRIBE' | translate}}</label>
@@ -48,10 +48,10 @@
         </div>
         <button class="sent" ng-show="!issuerStatus" ng-click="registerPublish()">{{'SUBMIT' | translate}}</button>
     </div>
-    <div class="content third" ng-show="installed">
+    <div class="content third" ng-show="registerasset">
         <div class="_item">
             <label >{{'DAPP_NAME' | translate}}</label>
-            <input type="text"  ng-model="publishName" id="pay_item3" >
+            <input type="text"  ng-model="publishName" maxlength="6" id="pay_item3" >
         </div>
         <div class="_item">
             <label >{{'DESCRIBE' | translate}}</label>
@@ -101,7 +101,7 @@
                     <span class="settings" ng-click="mySettings(i)">设置</span>
                     <span class="add" ng-click="myAddPlus(i)">+ACL</span>
                     <span class="remove" ng-click="myreduceACL(i)">-ACL</span>
-                    <span class="transtion" ><a ng-href="#/pay"></a>转账</span>
+                    <span class="transtion" ><a ng-click="transferView(i,2)">转账</a></span>
                 </td>
             </tr>
         </table>
@@ -143,40 +143,6 @@
                 <input type="text"  >
             </div>
             <button class="sent" ng-click="settings_submit()">{{'SUBMIT' | translate}}</button>
-        </div>
-        <div id="add" ng-show="myAss.add">
-            <!--<p>你正在执行{{moneyName}}资产设置操作，需要消耗0.1 XAS</p>-->
-            <!--<div class="_item">-->
-                <!--<label >{{'CURRENT_MODE' | translate}}</label>-->
-                <!--<input type="text" value="黑名单模式"  disabled>-->
-            <!--</div>-->
-            <!--<div class="_item">-->
-                <!--<label >{{'ADD_LIST' | translate}}</label>-->
-                <!--<textarea  required  ></textarea>-->
-
-            <!--</div>-->
-            <!--<div class="_item">-->
-                <!--<label >{{'SECOND_PASSWORD' | translate}}</label>-->
-                <!--<input type="text"  >-->
-            <!--</div>-->
-            <!--<button class="sent" ng-click="sub()">{{'SUBMIT' | translate}}</button>-->
-        </div>
-        <div id="remove" ng-show="myAss.remove">
-            <!--<p>你正在执行{{moneyName}}资产设置操作，需要消耗0.1 XAS</p>
-    <div class="_item">
-        <label >{{'CURRENT_MODE' | translate}}</label>
-        <input type="text" value="黑名单模式"  disabled>
-    </div>
-    <div class="_item">
-        <label >{{'ADD_LIST' | translate}}</label>
-        <textarea  required  ></textarea>
-
-    </div>
-    <div class="_item">
-        <label >{{'SECOND_PASSWORD' | translate}}</label>
-        <input type="text"  >
-    </div>
-    <button class="sent" ng-click="sub()">{{'SUBMIT' | translate}}</button>-->
         </div>
     </div>
     <div class="content third" ng-show="operationRecord">

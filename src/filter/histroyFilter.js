@@ -7,7 +7,7 @@ angular.module('asch').filter('histroyFilter', function($filter) {
 			content = '注册了资产' + i.asset.uiaAsset.name
 		} else if(i.type == 11&& i.asset.uiaFlags.flagType == 1){
 			var arr = ['黑名单模式','白名单模式']
-			content = '资产' + i.asset.uiaFlags.currency + '访问控制设置为'+arr[asset.uiaFlags.flag]
+			content = '资产' + i.asset.uiaFlags.currency + '访问控制设置为'+ arr[i.asset.uiaFlags.flag]
 		} else if(i.type == 11&& i.asset.uiaFlags.flagType == 2){
 			content = '资产' + i.asset.uiaFlags.currency + '被注销'
 		} else if(i.type == 12){

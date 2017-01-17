@@ -2,4 +2,5 @@ angular.module('asch').controller('sideCtrl', function($scope, $rootScope, apiSe
     $scope.init = function () {
        
     }
+
 });
