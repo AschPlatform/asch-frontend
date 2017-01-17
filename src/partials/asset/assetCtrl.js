@@ -86,6 +86,12 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     address: userService.address
                 }).success(function (res) {
                     params.total(res.count);
+                    for (var i in res.balances) {
+                        var precision = res.balances[i].precision;
+                        res.balances[i].balance = parseInt(res.balances[i].balance) / Math.pow(10, precision);
+                        res.balances[i].maximum = parseInt(res.balances[i].maximum) / Math.pow(10, precision);
+                        res.balances[i].quantity = parseInt(res.balances[i].quantity) / Math.pow(10, precision);
+                    }
                     $defer.resolve(res.balances);
                 }).error(function (res) {
                     toastError($translate.instant('ERR_SERVER_ERROR'));
@@ -146,12 +152,22 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         var name = $scope.monname +'.'+ $scope.publishName;
         var desc = $scope.publishDesc;
         var maximum = $scope.topLimt;
-        var precision = $scope.precision;
+        var precision = Number($scope.precision);
         var strategy = $scope.strategy;
+        if (!desc) {
+            return toastError('请输入资产描述');
+        }
+        if (!parseInt(maximum)) {
+            return toastError('您输入的发行上限不正确');
+        }
+        if (!precision ||precision <=0 || precision > 16) {
+            return toastError('您输入的资产精度不正确');
+        }
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         };
-        $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(maximum)  , +precision, strategy, userService.secret, $scope.secondPassword);
+        var realMaximum = parseInt(maximum) * Math.pow(10, precision)
+        $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(realMaximum), precision, strategy, userService.secret, $scope.secondPassword);
         $scope.dialogNUM = 2;
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
@@ -187,6 +203,11 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     }).success(function (res) {
                         params.total(res.count);
                         $defer.resolve(res.assets);
+                        for (var i in res.assets) {
+                            var precision = res.assets[i].precision;
+                            res.assets[i].maximum = parseInt(res.assets[i].maximum) / Math.pow(10, precision);
+                            res.assets[i].quantity = parseInt(res.assets[i].quantity) / Math.pow(10, precision);
+                        }
                     }).error(function (res) {
                         toastError($translate.instant('ERR_SERVER_ERROR'));
                     });
@@ -263,6 +284,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $scope.myPublish = function (i) {
         $scope.myAss.publish = true;
         $scope.myPublishmoneyName = i.name;
+        $scope.currentAsset = i;
         $rootScope.isBodyMask = true;
     };
     $scope.publish_submit = function () {
@@ -271,7 +293,14 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         if(!$scope.myPublishmoneyName){
             return ;
         }
-        var trs = AschJS.uia.createIssue($scope.myPublishmoneyName, $scope.amount, userService.secret, $scope.secondPassword);
+        if (!$scope.amount) {
+            return toastError('必须输入发行数额');
+        }
+        if (!parseInt($scope.amount)) {
+            return toastError('您输入的发行数额不正确');
+        }
+        var realAmount = parseInt($scope.amount) * Math.pow(10, $scope.currentAsset.precision);
+        var trs = AschJS.uia.createIssue($scope.myPublishmoneyName, String(realAmount), userService.secret, $scope.secondPassword);
         postSerivice.writeoff(trs).success(function (res) {
             if (res.success == true) {
                 $scope.secondPassword = '';
