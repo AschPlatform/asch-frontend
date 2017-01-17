@@ -8,22 +8,24 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     //comfirmDialog
     $scope.comfirmDialog = false;
     //没有注册发行商
-    $scope.issuerStatus = false;
     $scope.init = function () {
-        $scope.assetprofilechange();
+
+        checkTab()
         apiService.issuer({
             address: userService.address
         }).success(function (res) {
             if (res.success == true) {
                 // 已经注册发行商
-                console.log(res.issuer);
                 $scope.monname = res.issuer.name;
                 $scope.mondesc = res.issuer.desc;
+                userService.isStatus(true)
+                $scope.issuerStatus = userService.issuerStatus;
 
-                $scope.issuerStatus = true;
             } else {
                 // 没有发行商
-                $scope.issuerStatus = false;
+                userService.isStatus(false);
+                $scope.issuerStatus = userService.issuerStatus;
+
             }
         }).error(function (res) {
             toastError($translate.instant('ERR_SERVER_ERROR'));
@@ -34,6 +36,29 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $scope.registerasset = false;
     $scope.myAssets = false;
     $scope.operationRecord = false;
+    function checkTab(){
+        switch(userService.tab)
+        {
+            case 1:
+                $scope.assetprofilechange();
+                break;
+            case 2:
+                $scope.registerpublishchange();
+                break;
+            case 3:
+                $scope.registerAssetchange();
+                break;
+            case 4:
+                $scope.myAssetschange();
+                break;
+            case 5:
+                $scope.operationRecordchange();
+                break;
+            default:
+                $scope.assetprofilechange();
+        }
+    }
+
     // 资产概况
     $scope.assetprofilechange = function () {
         $scope.assetprofile = true;
@@ -41,6 +66,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $scope.registerasset = false;
         $scope.myAssets = false;
         $scope.operationRecord = false;
+        userService.saveTab(1);
         if($scope.assetprofiletableparams){
             $scope.assetprofiletableparams.reload();
         } else {
@@ -74,10 +100,11 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $scope.registerasset = false;
         $scope.myAssets = false;
         $scope.operationRecord = false;
+        userService.saveTab(2);
     };
     //注册发行商
     $scope.registerPublish = function () {
-        if($scope.issuerStatus){
+        if(userService.issuerStatus){
             toastError('你已经注册了发行商');
             return false;
         }
@@ -102,10 +129,11 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $scope.registerasset = true;
         $scope.myAssets = false;
         $scope.operationRecord = false;
+        userService.saveTab(3);
     };
     //注册资产
     $scope.registerAsset = function () {
-        if(!$scope.issuerStatus){
+        if(!userService.issuerStatus){
             toastError('你还没有注册发行商');
             return false;
         }
@@ -122,7 +150,6 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         };
-        console.log(name,desc,maximum,strategy)
         $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(maximum)  , +precision, strategy, userService.secret, $scope.secondPassword);
         $scope.dialogNUM = 2;
         $scope.comfirmDialog = true;
@@ -130,13 +157,13 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     };
     //我的资产tab
     $scope.myAssetschange = function () {
-        console.log('我的资产');
         $scope.assetprofile = false;
         $scope.registerpublish = false;
         $scope.registerasset = false;
         $scope.myAssets = true;
         $scope.operationRecord = false;
-        if(!$scope.issuerStatus){
+        userService.saveTab(4);
+        if(!userService.issuerStatus){
             toastError('没有资产相关记录');
             return false;
         }
@@ -174,6 +201,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $scope.registerasset = false;
         $scope.myAssets = false;
         $scope.operationRecord = true;
+        userService.saveTab(5);
         if($scope.operationRecordparams){
             $scope.operationRecordparams.reload()
         } else {
@@ -189,7 +217,6 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()
                 }).success(function (res) {
-                    console.log(res)
                     params.total(res.count);
                     $defer.resolve(res.transactions);
                 }).error(function (res) {
@@ -212,14 +239,13 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        //console.log(currency, flagType, flag,userService.secret, $scope.secondPassword)
         var transaction = AschJS.uia.createFlags(currency, flagType, flag,userService.secret, $scope.secondPassword);
         postSerivice.writeoff(transaction).success(function (res) {
             if (res.success == true) {
                 $scope.secondPassword = '';
                 $scope.myAss.writeoff = false;
                 $rootScope.isBodyMask = false;
-                toast($translate.instant('INF_TRANSFER_SUCCESS'));
+                toast($translate.instant('INF_OPERATION_SUCCEEDED'));
             } else {
                 toastError(res.error)
             };
@@ -249,7 +275,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                 $scope.secondPassword = '';
                 $scope.myAss.publish = false;
                 $rootScope.isBodyMask = false;
-                toast($translate.instant('INF_TRANSFER_SUCCESS'));
+                toast($translate.instant('INF_OPERATION_SUCCEEDED'));
             } else {
                 toastError(res.error)
             };
@@ -269,7 +295,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
 
     // 设置
     $scope.mySettings = function (i) {
-        $scope.moneyName = i.name
+        $scope.moneyName = i.name;
         $scope.myAss.set = true;
         $rootScope.isBodyMask = true;
     };
@@ -284,7 +310,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             if (res.success == true) {
                 $scope.myAss.set = false;
                 $rootScope.isBodyMask = false;
-                toast($translate.instant('INF_TRANSFER_SUCCESS'));
+                toast($translate.instant('INF_OPERATION_SUCCEEDED'));
             } else {
                 toastError(res.error)
             };
@@ -320,7 +346,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     $scope.precision = '';
                     $scope.strategy = '';
                 }
-                toast($translate.instant('INF_REGISTER_SUCCESS'));
+                toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                 $scope.comfirmDialogClose();
             } else {
                 toastError(res.error)
@@ -348,6 +374,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             data = i.name;
         }
         $rootScope.currencyName = data;
+        $rootScope.precision = i.precision;
         $location.path('/pay');
     };
 

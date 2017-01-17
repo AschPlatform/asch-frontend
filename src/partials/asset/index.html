@@ -29,7 +29,7 @@
                 <td>{{i.precision}}</td>
                 <td>{{i.quantity}}</td>
                 <td>{{i.writeoff  }}</td>
-                <td><a ng-click="transferView(i,1)">{{'TRANSFER' | translate}}</a></td>
+                <td><a class="hand" ng-click="transferView(i,1)">{{'TRANSFER' | translate}}</a></td>
             </tr>
         </table>
 
@@ -80,7 +80,6 @@
             <thread>
                 <tr>
                     <td>{{'ASSET_NAME' | translate}}</td>
-                    <td>{{'BALANCE' | translate}}
                     <td>{{'MAXIMUM' | translate}}</td>
                     <td>{{'PRECISION' | translate}}</td>
                     <td>{{'QUANTITY' | translate}} </td>
@@ -90,7 +89,6 @@
             </thread>
             <tr ng-repeat="i in $data"  >
                 <td> {{i.name}}</td>
-                <td>{{i.desc }}</td>
                 <td>{{i.maximum}}</td>
                 <td>{{i.precision}}</td>
                 <td>{{i.quantity}}</td>
@@ -101,7 +99,7 @@
                     <span class="settings" ng-click="mySettings(i)">设置</span>
                     <span class="add" ng-click="myAddPlus(i)">+ACL</span>
                     <span class="remove" ng-click="myreduceACL(i)">-ACL</span>
-                    <span class="transtion" ><a ng-click="transferView(i,2)">转账</a></span>
+                    <span class="transtion" ><a class="hand" ng-click="transferView(i,2)">转账</a></span>
                 </td>
             </tr>
         </table>

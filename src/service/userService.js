@@ -11,7 +11,10 @@ angular.module('asch').service('userService', function () {
         this.balance = account.balance;
         this.secondPublicKey = account.secondPublicKey;
     }
-    // this.setflag = function (flag) {
-    //     this.flag = flag;
-    // };
+    this.saveTab = function (tab) {
+        this.tab = tab;
+    };
+    this.isStatus = function (tab) {
+        this.issuerStatus = tab;
+    };
 });

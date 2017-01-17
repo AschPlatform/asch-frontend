@@ -1,6 +1,5 @@
 <div  ng-include="'partials/common/crumb/crumb.html'"></div>
 <div id="removeacl" ng-controller="reduceaclCtrl" ng-init="init()">
-    <p>你正在执行{{reduceACL.name}}资产设置操作，需要消耗0.1 XAS</p>
     <div class="_item">
         <label >{{'CURRENT_MODE' | translate}}</label>
         <input ng-show="reduceACL.acl = 0" type="text" value="黑名单模式"  disabled>

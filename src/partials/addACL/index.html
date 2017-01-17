@@ -1,6 +1,5 @@
 <div  ng-include="'partials/common/crumb/crumb.html'"></div>
 <div id="addacl" ng-controller="addaclCtrl" ng-init="init()">
-    <p>你正在执行{{addACL.name}}资产设置操作</p>
     <div class="_item">
         <label >{{'CURRENT_MODE' | translate}}</label>
         <input ng-show="addACL.acl = 0" type="text" value="黑名单模式"  disabled>

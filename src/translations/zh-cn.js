@@ -221,6 +221,7 @@ window.Translations['zh-cn'] = {
   INF_REGISTER_SUCCESS: '注册成功',
   INF_DELETE_SUCCESS: '删除成功',
   INF_TRANSFER_SUCCESS: '转账成功',
+  INF_OPERATION_SUCCEEDED: '操作成功',
   INF_VOTE_SUCCESS: '投票成功',
   INF_SECND_PASSWORD_SET_SUCCESS: '二级密码设置成功',
 };

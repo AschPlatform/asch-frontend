@@ -2,6 +2,10 @@
   width: 100%;
   min-height: 508px;
   border: 1px solid #dddddd;
+  .hand{
+    cursor: pointer;
+    color: #4d61ff;
+  }
   td{
     text-align: center;
     line-height: 32px;
@@ -199,6 +203,11 @@
       tr>td span{
         color: #4d61ff;
         cursor: pointer;
+        padding-left:5px ;
+        a{
+          color: #4d61ff;
+          cursor: pointer;
+        }
       }
     }
     #writeoff,#publish,#settings{

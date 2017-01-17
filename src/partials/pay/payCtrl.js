@@ -49,6 +49,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         if(!$rootScope.currencyName){
             transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
         } else {
+            amount = $scope.amount*Math.pow(10, $rootScope.precision);
             transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), String(amount), String($scope.fromto), userService.secret, $scope.secondPassword)
         }
         postSerivice.post(transaction).success(function (res) {

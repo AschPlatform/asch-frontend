@@ -228,6 +228,7 @@ window.Translations['en-us'] = {
   INF_REGISTER_SUCCESS: 'Register success !',
   INF_DELETE_SUCCESS: 'Delete success !',
   INF_TRANSFER_SUCCESS: 'Transfer success !',
+  INF_OPERATION_SUCCEEDED: 'Operation succeeded!',
   INF_VOTE_SUCCESS: 'Vote success !',
   INF_SECND_PASSWORD_SET_SUCCESS: 'Second secret set success !',
 };

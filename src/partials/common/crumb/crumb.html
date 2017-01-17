@@ -9,6 +9,6 @@
         <span ng-show="$root.active == 'pay'">/ {{'TRANSFER' | translate}}</span>
         <span ng-show="$root.active == 'peer'">/ {{'PEERS' | translate}}</span>
         <span ng-show="$root.active == 'asset'">/ {{'ASSET' | translate}}</span>
-        <span ng-show="$root.active == 'acl'">/ {{'ASSET' | translate}}/ {{'UPDATE_ACL'|translate}}</span>
+        <span ng-show="$root.active == 'acl'">/ <a ng-href="#/asset">{{'ASSET' | translate}}</a> / {{'UPDATE_ACL'|translate}}</span>
     </p>
 </div>
