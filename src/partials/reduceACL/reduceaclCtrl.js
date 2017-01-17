@@ -1,6 +1,6 @@
 angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService,postSerivice, $translate) {
     $rootScope.userlogin = true;
-    console.log(1)
+    $rootScope.active = 'acl';
     $scope.comfirmDialog = false;
     $scope.updateAcl = function () {
         var currency = $scope.reduceACL.name;

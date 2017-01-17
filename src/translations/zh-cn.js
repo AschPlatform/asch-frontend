@@ -136,6 +136,7 @@ window.Translations['zh-cn'] = {
   CURRENT_MODE: '当前模式',
   ADD_LIST: '新增名单',
   CURRENT_LIST: '当前名单',
+  UPDATE_ACL: '更新ACL',
   // personal
   ACCOUNT_INFO: '账户信息',
   QUIT: '退出系统',

@@ -17,7 +17,7 @@
       "signatures": null,
       "confirmations": "391",
       "asset": {
-        "issuer": {
+        "uiaIssuer": {
           "transactionId": "260434858608363290",
           "name": "issuername",
           "desc": "issuer1_desc"

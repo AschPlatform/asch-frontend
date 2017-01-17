@@ -143,6 +143,7 @@ window.Translations['en-us'] = {
   CURRENT_MODE:'Current Mode',
   ADD_LIST:'Add List',
   CURRENT_LIST:'Current List',
+  UPDATE_ACL:'Update ACL',
   // personal
   ACCOUNT_INFO: 'Account Info',
   QUIT: 'Quit',
