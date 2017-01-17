@@ -11,6 +11,9 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
             list.push(index);
         });
         console.log(list)
+        if (!userService.secondPublicKey) {
+            $scope.secondPassword = '';
+        }
         $scope.reduceacltrs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword);
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;

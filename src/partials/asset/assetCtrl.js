@@ -312,6 +312,9 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         var currency = $scope.moneyName;
         var flagType = 1;
         var flag = $scope.acl;
+        if (!userService.secondPublicKey) {
+            $scope.secondPassword = '';
+        }
         var trs = AschJS.uia.createFlags(currency, flagType, flag, userService.secret, $scope.secondPassword);
         postSerivice.writeoff(trs).success(function (res) {
             if (res.success == true) {

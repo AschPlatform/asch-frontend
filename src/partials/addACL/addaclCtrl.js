@@ -8,6 +8,9 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
         var flag = $rootScope.addACL.acl;
         var operator = '+'; // '+'表示增加， ‘-’表示删除
         var list = $scope.addList.split('\n') || [];
+        if (!userService.secondPublicKey) {
+            $scope.secondPassword = '';
+        }
         $scope.addacltrs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword);
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
