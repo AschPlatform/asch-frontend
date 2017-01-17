@@ -163,10 +163,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         $scope.myAssets = true;
         $scope.operationRecord = false;
         userService.saveTab(4);
-        if(!userService.issuerStatus){
-            toastError('没有资产相关记录');
-            return false;
-        }
+        // if(!userService.issuerStatus){
+        //     toastError('没有资产相关记录');
+        //     return false;
+        // }
         if($scope.myAss){
             $scope.myAss.reload();
         } else {
