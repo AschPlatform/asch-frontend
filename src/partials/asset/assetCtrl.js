@@ -119,7 +119,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         var name = $scope.monname;
         var desc = $scope.mondesc;
         if(!$scope.monname || !$scope.mondesc){
-            return false;
+            return toastError('必须输入发行商名称以及描述');
         }
 
         if (!userService.secondPublicKey) {
@@ -161,8 +161,11 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
         if (!parseInt(maximum)) {
             return toastError('您输入的发行上限不正确');
         }
-        if (!precision ||precision <=0 || precision > 16) {
+        if (!precision ||precision < 0 || precision > 16) {
             return toastError('您输入的资产精度不正确');
+        }
+        if (String($scope.precision).indexOf('.') != -1) {
+            return toastError('精度必须为0-16的整数');
         }
         if (!userService.secondPublicKey) {
             $scope.rasecondPassword = '';
