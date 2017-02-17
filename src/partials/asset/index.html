@@ -48,7 +48,7 @@
         </div>
         <div class="_item" ng-show="secpwd">
             <label >{{'SECOND_PASSWORD' | translate}}</label>
-            <input type="text"  ng-model="rpsecondPassword" >
+            <input type="password"  ng-model="rpsecondPassword" >
         </div>
         <button class="sent" ng-show="!issuerStatus" ng-click="registerPublish()">{{'SUBMIT' | translate}}</button>
     </div>
@@ -77,7 +77,7 @@
         </div>
         <div class="_item" ng-show="secpwd">
             <label >{{'SECOND_PASSWORD' | translate}}</label>
-            <input type="text"  ng-model="rasecondPassword" >
+            <input type="password"  ng-model="rasecondPassword" >
         </div>
         <button class="sent" ng-click="registerAsset()">{{'SUBMIT' | translate}}</button>
     </div>
@@ -116,7 +116,7 @@
             <p>您正在注销{{moneyName}}资产，该操作不可逆，需要消耗手续费0.1 XAS</p>
             <div class="_item" ng-show="secpwd">
                 <label >{{'SECOND_PASSWORD' | translate}}</label>
-                <input type="text" ng-model="wosecondPassword" >
+                <input type="password" ng-model="wosecondPassword" >
             </div>
             <button class="sent" ng-click="writeoff_submit()">{{'SUBMIT' | translate}}</button>
         </div>
@@ -129,7 +129,7 @@
             </div>
             <div class="_item" ng-show="secpwd">
                 <label >{{'SECOND_PASSWORD' | translate}}</label>
-                <input type="text"  ng-model="pbsecondPassword" >
+                <input type="password"  ng-model="pbsecondPassword" >
             </div>
             <button class="sent" ng-click="publish_submit()">{{'SUBMIT' | translate}}</button>
         </div>
@@ -147,7 +147,7 @@
             </div>
             <div class="_item" ng-show="secpwd">
                 <label >{{'SECOND_PASSWORD' | translate}}</label>
-                <input type="text"  ng-model="setsecondPassword">
+                <input type="password"  ng-model="setsecondPassword">
             </div>
             <button class="sent" ng-click="settings_submit()">{{'SUBMIT' | translate}}</button>
         </div>
