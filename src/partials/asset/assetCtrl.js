@@ -239,7 +239,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             counts: [],
             getData: function ($defer,params) {
                 apiService.myAssetTransactions({
-                    ownerPublicKey:userService.publicKey,
+                    address:userService.address,
                     orderBy: 't_timestamp:desc',
                     limit: params.count(),
                     offset: (params.page() - 1) * params.count()

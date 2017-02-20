@@ -92,7 +92,7 @@
 	// 获取资产活动记录
 	"myTransactionsApi": {
 		"mock": "/data/assets/my-transactions.json",
-		"url": "/api/uia/transactions"
+		"url": "/api/uia/transactions/:address"
 	},
 	// 获取资产访问控制列表
 	"assetAclApi": {
