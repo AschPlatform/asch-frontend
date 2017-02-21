@@ -224,4 +224,11 @@ window.Translations['zh-cn'] = {
   INF_OPERATION_SUCCEEDED: '操作成功',
   INF_VOTE_SUCCESS: '投票成功',
   INF_SECND_PASSWORD_SET_SUCCESS: '二级密码设置成功',
+
+  ALLOW_WWB: '是否允许注销/白名单/黑名单',
+  ALLOW_WRITEOFF: '是否允许注销',
+  ALLOW_WHITELIST: '是否允许白名单',
+  ALLOW_BLACKLIST: '是否允许黑名单',
+  ALLOW: '允许',
+  NOT_ALLOW: '不允许',
 };

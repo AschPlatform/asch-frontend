@@ -19,6 +19,7 @@
                     <td>{{'PRECISION' | translate}}</td>
                     <td>{{'QUANTITY' | translate}} </td>
                     <td>{{'CANCELLATION' | translate}}</td>
+                    <td>{{'ALLOW_WWB' | translate}}</td>
                     <td>{{'OPERATION' | translate}}</td>
                 </tr>
             </thread>
@@ -29,6 +30,7 @@
                 <td>{{i.precision}}</td>
                 <td>{{i.quantity}}</td>
                 <td>{{i.writeoff  }}</td>
+                <td>{{i.allowWriteoff ? 'Y' : 'N'}}/{{i.allowWhitelist ? 'Y' : 'N'}}/{{i.allowBlacklist ? 'Y' : 'N'}}</td>
                 <td><a class="hand" ng-click="transferView(i,1)">{{'TRANSFER' | translate}}</a></td>
             </tr>
         </table>
@@ -75,6 +77,18 @@
             <textarea  required  ng-model="strategy" placeholder="如果不懂如何使用，不要随意设置该字段"></textarea>
 
         </div>
+        <div class="_item">
+            <label >{{'ALLOW_WRITEOFF' | translate}}</label>
+            <select ng-init="selectedAllowWriteoff = allowValueRange[0]" ng-model="selectedAllowWriteoff" ng-options="i.value for i in allowValueRange"></select>
+        </div>
+        <div class="_item">
+            <label >{{'ALLOW_WHITELIST' | translate}}</label>
+            <select ng-init="selectedAllowWhitelist = allowValueRange[0]" ng-model="selectedAllowWhitelist" ng-options="i.value for i in allowValueRange"></select>
+        </div>
+        <div class="_item">
+            <label >{{'ALLOW_BLACKLIST' | translate}}</label>
+            <select ng-init="selectedAllowBlacklist = allowValueRange[0]" ng-model="selectedAllowBlacklist" ng-options="i.value for i in allowValueRange"></select>
+        </div>
         <div class="_item" ng-show="secpwd">
             <label >{{'SECOND_PASSWORD' | translate}}</label>
             <input type="password"  ng-model="rasecondPassword" >
@@ -92,6 +106,7 @@
                     <td>{{'PRECISION' | translate}}</td>
                     <td>{{'QUANTITY' | translate}} </td>
                     <td>{{'CANCELLATION' | translate}}</td>
+                    <td>{{'ALLOW_WWB' | translate}}</td>
                     <td>{{'OPERATION' | translate}}</td>
                 </tr>
             </thread>
@@ -101,6 +116,7 @@
                 <td>{{i.precision}}</td>
                 <td>{{i.quantity}}</td>
                 <td>{{i.writeoff  }}</td>
+                <td>{{i.allowWriteoff ? 'Y' : 'N'}}/{{i.allowWhitelist ? 'Y' : 'N'}}/{{i.allowBlacklist ? 'Y' : 'N'}}</td>
                 <td>
                     <span class="writeoff" ng-click="myWriteOff(i)">注销</span>
                     <span class="span publish" ng-click="myPublish(i)">发行</span>

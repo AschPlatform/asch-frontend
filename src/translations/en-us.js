@@ -231,4 +231,11 @@ window.Translations['en-us'] = {
   INF_OPERATION_SUCCEEDED: 'Operation succeeded!',
   INF_VOTE_SUCCESS: 'Vote success !',
   INF_SECND_PASSWORD_SET_SUCCESS: 'Second secret set success !',
+
+  ALLOW_WWB: 'Allow Writeoff/Whitelist/Blacklist',
+  ALLOW_WRITEOFF: 'Allow Writeoff',
+  ALLOW_WHITELIST: 'Allow Whitelist',
+  ALLOW_BLACKLIST: 'Allow Blacklist',
+  ALLOW: 'Allow',
+  NOT_ALLOW: 'Not Allow',
 };

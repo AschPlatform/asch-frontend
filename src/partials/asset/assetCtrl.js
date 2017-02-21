@@ -38,6 +38,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
     $scope.registerasset = false;
     $scope.myAssets = false;
     $scope.operationRecord = false;
+    $scope.allowValueRange = [
+        {key: '0', value: $translate.instant('NOT_ALLOW')},
+        {key: '1', value: $translate.instant('ALLOW')}
+    ]
     function checkTab(){
         switch(userService.tab)
         {
@@ -171,7 +175,10 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             $scope.rasecondPassword = '';
         };
         var realMaximum = parseInt(maximum) * Math.pow(10, precision)
-        $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(realMaximum), precision, strategy, userService.secret, $scope.rasecondPassword);
+        var allowWriteoff = $scope.selectedAllowWriteoff ? Number($scope.selectedAllowWriteoff.key) : 0
+        var allowWhitelist = $scope.selectedAllowWhitelist ? Number($scope.selectedAllowWhitelist.key) : 0
+        var allowBlacklist = $scope.selectedAllowBlacklist ? Number($scope.selectedAllowBlacklist.key) : 0
+        $scope.assetTrs = AschJS.uia.createAsset(String(name), String(desc), String(realMaximum), precision, strategy, allowWriteoff, allowWhitelist, allowBlacklist, userService.secret, $scope.rasecondPassword);
         $scope.dialogNUM = 2;
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
