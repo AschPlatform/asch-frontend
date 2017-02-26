@@ -29,7 +29,7 @@ angular.module('asch').controller('assigneeCtrl', function ($scope, $rootScope, 
             toast($translate.instant('ERR_SECOND_PASSWORD_FORMAT'));
             return;
         }
-        var transaction = AschJS.delegate.createDelegate(userService.secret, $scope.userName, $scope.secondpassword)
+        var transaction = AschJS.delegate.createDelegate($scope.userName, userService.secret, $scope.secondpassword)
         postSerivice.post(transaction).success(function (res) {
             if (res.success == true) {
                 $scope.Close();

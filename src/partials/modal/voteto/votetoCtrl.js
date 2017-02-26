@@ -13,7 +13,7 @@ angular.module('asch').controller('votetoCtrl', function ($scope, $rootScope, ap
             toastError($translate.instant('ERR_SECOND_PASSWORD_FORMAT'));
             return;
         }
-        var transaction = AschJS.vote.createVote(userService.secret, $rootScope.voteContent, $scope.secondpassword);
+        var transaction = AschJS.vote.createVote($rootScope.voteContent, userService.secret, $scope.secondpassword);
         postSerivice.post(transaction).success(function (res) {
             if (res.success == true) {
                 $rootScope.checkobj = {}
