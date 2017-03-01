@@ -35,10 +35,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         }
         var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
         var fee = 10000000;
-        if (amount + fee > userService.balance) {
-            toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
-            return false;
-        }
+        
         if (userService.secondPublicKey && !$scope.secondPassword) {
             toastError($translate.instant('ERR_NO_SECND_PASSWORD'));
             return false;
@@ -47,6 +44,10 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
             $scope.secondPassword = '';
         }
         if(!$rootScope.currencyName){
+            if (amount + fee > userService.balance) {
+                toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
+                return false;
+            }
             transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
         } else {
             amount = $scope.amount*Math.pow(10, $rootScope.precision);
