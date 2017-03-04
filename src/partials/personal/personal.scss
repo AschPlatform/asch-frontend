@@ -66,7 +66,7 @@
 .baseInfo .baseInfo_tx{
 	width: 190px;
 	height: 350px;
-	background: url("/assets/personal/userlogo.png") no-repeat center center;
+	background: url("../assets/personal/userlogo.png") no-repeat center center;
 	background-size: 60% auto;
 	float: left;
 }
@@ -180,7 +180,7 @@
 				width: 20px;
 				height: 20px;
 				position: absolute;
-				background: #fff url('/assets/common/rerush.png') center center no-repeat;
+				//background: #fff url('../assets/common/rerush.png') center center no-repeat;
 				background-size: 100% auto;
 				left: -35px;
 				top: 0;

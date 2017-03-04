@@ -10,7 +10,15 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		return arr.join('&');
 	};
 	function fetch(url, data, method, headers) {
-		url = url.replace('mainnet.asch.so', $rootScope.selectedNode)
+		console.log('url', url)
+		if (url.indexOf('/api') == 0) {
+			url = $rootScope.selectedNode + url
+		} else {
+			url = url.replace('mainnet.asch.so', $rootScope.selectedNode)
+		}
+		if (url.indexOf('http://') == -1) {
+			url = 'http://' + url
+		}
 		for (var k in data) {
 			if (url.indexOf(':' + k) != -1) {
 				url = url.replace(':' + k, data[k])
