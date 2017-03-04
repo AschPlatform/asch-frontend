@@ -1,6 +1,11 @@
 <div id="login" ng-controller="loginCtrl" ng-init="init()" >
 	<div class="wrap1 " ng-show="register">
-		<div class="header"></div>
+		<div class="header">
+				<select ng-model="selectedNode" ng-options="i for i in nodes" ng-change="changeNode()"></select>
+				<input type="text" ng-model="inputNode"></input>
+				<button ng-click="addNode()">添加</button>
+				<button ng-click="clearNodes()">清空</button>
+		</div>
 		<div class="content">
 			<div class="content_top">
 				<!--<div class="left">-->

@@ -9,6 +9,52 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 		{key: 'en-us', value: 'English'},
 		{key: 'zh-cn', value: '中文简体'}
 	];
+	var DEFAULT_NODES = [
+		"mainnet.asch.so",
+		"122.139.66.196:9999"
+	]
+	$scope.nodes = DEFAULT_NODES.slice(0)
+	
+	function saveNode(node) {
+		if (!window.localStorage) {
+			alert('Local storage not supported')
+			return
+		}
+		var nodeIndex = Number(window.localStorage.getItem('node:index') || 0)
+		window.localStorage.setItem('node:index:' + nodeIndex, node)
+		window.localStorage.setItem('node:index', ++nodeIndex)
+	}
+
+	function loadNodes() {
+		$scope.nodes = DEFAULT_NODES.slice(0)
+		var nodeIndex = Number(window.localStorage.getItem('node:index') || 0)
+		console.log('node:index', nodeIndex)
+		for (var i = 0; i < nodeIndex; ++i) {
+			$scope.nodes.push(window.localStorage.getItem('node:index:' + i))
+		}
+	}
+
+	$scope.init = function () {
+		$scope.changeLanguage()
+
+		$rootScope.selectedNode = $scope.nodes[0]
+		loadNodes()
+	}
+
+	$scope.changeNode = function () {
+		$rootScope.selectedNode = $scope.selectedNode
+	}
+
+	$scope.clearNodes = function () {
+		window.localStorage && window.localStorage.clear()
+		loadNodes()
+	}
+
+	$scope.addNode = function () {
+		if (!scope.inputNode) return
+		$scope.nodes.push($scope.inputNode)
+		saveNode($scope.inputNode)
+	}
 
 	$scope.changeLanguage = function () {
 		console.log($translate.proposedLanguage());
@@ -24,7 +70,6 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 		$translate.use($scope.selectedLanguage.key);
 		$scope.languageIcon = '/assets/common/' + $scope.selectedLanguage.key + '.png';
 	}
-	$scope.changeLanguage();
 	
 	$scope.newuser = function () {
 		$rootScope.register = false;

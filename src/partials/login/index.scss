@@ -14,6 +14,19 @@
       background: #0e4764 ;
       background-size: 186px auto;
       position: relative;
+
+      * {
+        height: 60px;
+      }
+      select {
+        width: 30%;
+      }
+      input {
+        width: 30%;
+      }
+      button {
+        width: 127px;
+      }
     }
     .content{
       width:100%;

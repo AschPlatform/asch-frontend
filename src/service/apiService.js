@@ -10,6 +10,7 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		return arr.join('&');
 	};
 	function fetch(url, data, method, headers) {
+		url = url.replace('mainnet.asch.so', $rootScope.selectedNode)
 		for (var k in data) {
 			if (url.indexOf(':' + k) != -1) {
 				url = url.replace(':' + k, data[k])
