@@ -124,7 +124,7 @@ window.Translations['en-us'] = {
   // ASSET: '资产'
   REGISTERED_PUBLISHER:'Registered Publisher',
   REGISTERED_ASSETS:'Registered Assets',
-  MY_ASSETS:'My Assets',
+  MY_ASSETS:'My Issued Assets',
   VALUE:'Value',
   ISSUE_NUMBER:'Issue Number',
   OPERATION_RECORD:'Operation Record',
