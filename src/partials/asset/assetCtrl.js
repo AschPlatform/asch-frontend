@@ -274,7 +274,7 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
             $scope.wosecondPassword = '';
         }
         var transaction = AschJS.uia.createFlags(currency, flagType, flag,userService.secret, $scope.wosecondPassword);
-        postSerivice.writeoff(transaction).success(function (res) {
+        postSerivice.post(transaction).success(function (res) {
             if (res.success == true) {
                 $scope.wosecondPassword = '';
                 $scope.myAss.writeoff = false;

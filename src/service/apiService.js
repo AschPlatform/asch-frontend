@@ -10,7 +10,6 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		return arr.join('&');
 	};
 	function fetch(url, data, method, headers) {
-		console.log('url', url)
 		if (url.indexOf('/api') == 0) {
 			url = $rootScope.selectedNode + url
 		} else {
