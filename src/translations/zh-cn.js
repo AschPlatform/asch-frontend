@@ -118,7 +118,7 @@ window.Translations['zh-cn'] = {
   REGISTERED_PUBLISHER:'注册发行商',
   REGISTERED_ASSETS:'注册资产',
   VALUE:'值',
-  MY_ASSETS:'我的资产',
+  MY_ASSETS:'我发行的资产',
   OPERATION_RECORD:'操作记录',
   ISSUE_NUMBER:'本次发行量',
   ASSET_NAME:'资产名称',
