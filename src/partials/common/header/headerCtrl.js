@@ -3,4 +3,8 @@ angular.module('asch').controller('headerCtrl', function($scope, $rootScope, api
     $scope.init = function () {
 
    }
+   $rootScope.goPay = function () {
+       $rootScope.currencyName = '';
+       $location.path('/pay');
+   }
 });

@@ -16,14 +16,15 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
     }
     $scope.sentMsg = function () {
         var isAddress = /^[0-9]{1,21}$/g;
+        var transaction;
         if (!$scope.fromto) {
             toastError($translate.instant('ERR_NO_RECIPIENT_ADDRESS'));
             return false;
         }
-        if (!isAddress.test($scope.fromto)) {
-            toastError($translate.instant('ERR_RECIPIENT_ADDRESS_FORMAT'));
-            return false;
-        }
+        // if (!isAddress.test($scope.fromto)) {
+        //     toastError($translate.instant('ERR_RECIPIENT_ADDRESS_FORMAT'));
+        //     return false;
+        // }
         if ($scope.fromto == userService.address) {
             toastError($translate.instant('ERR_RECIPIENT_EQUAL_SENDER'));
             return false;
@@ -34,10 +35,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         }
         var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
         var fee = 10000000;
-        if (amount + fee > userService.balance) {
-            toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
-            return false;
-        }
+        
         if (userService.secondPublicKey && !$scope.secondPassword) {
             toastError($translate.instant('ERR_NO_SECND_PASSWORD'));
             return false;
@@ -45,7 +43,16 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        var transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
+        if(!$rootScope.currencyName){
+            if (amount + fee > userService.balance) {
+                toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
+                return false;
+            }
+            transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
+        } else {
+            amount = $scope.amount*Math.pow(10, $rootScope.precision);
+            transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), String(amount), String($scope.fromto), userService.secret, $scope.secondPassword)
+        }
         postSerivice.post(transaction).success(function (res) {
             if (res.success == true) {
                 $scope.passwordsure = true;

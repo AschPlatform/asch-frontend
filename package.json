@@ -1,12 +1,13 @@
 {
   "name": "asch-frontend",
   "description": "asch frontend",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
-      "postinstall":"npm run build",
-      "preinstall" : "bower install",
-      "build": "browserify build.js -o bower_components/bitcore-mnemonic.js && cp node_modules/asch-js/browserify-asch.js bower_components/"
+    "postinstall": "npm run build",
+    "preinstall": "bower install",
+    "start": "gulp",
+    "build": "browserify build.js -o bower_components/bitcore-mnemonic.js && cp node_modules/asch-js/browserify-asch.js bower_components/"
   },
   "dependencies": {
     "asch-js": "*",
@@ -44,5 +45,8 @@
     "json-beautify": "^1.0.1",
     "node-sass": "^3.4.2",
     "run-sequence": "^1.1.4"
+  },
+  "devDependencies": {
+    "asch-js": "^1.2.1"
   }
 }

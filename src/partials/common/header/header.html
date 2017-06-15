@@ -5,6 +5,9 @@
             <li ng-class="{'active':$root.active=='home'}">
                 <a  ng-href="#/home"><img src="/assets/common/home.png" alt="">{{'HOME' | translate}}</a>
             </li>
+            <li ng-class="{'active':$root.active=='asset'}">
+                <a  ng-href="#/asset"><img src="/assets/common/asset.png" alt="">{{'ASSET' | translate}}</a>
+            </li>
             <li ng-class="{'active':$root.active=='personal'}" >
                 <a ng-href="#/personal"><img src="/assets/common/personal.png" alt="">{{'PERSONAL' | translate}}</a>
             </li>
@@ -22,23 +25,13 @@
                 <a ng-href="#/vote"><img src="/assets/common/vote.png" alt="">{{'VOTE' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='pay'}">
-            <a  ng-href="#/pay"><img src="/assets/common/pay.png" alt="">{{'TRANSFER' | translate}}</a>
+            <a  ng-click="goPay()"><img src="/assets/common/pay.png" alt="">{{'TRANSFER' | translate}}</a>
            </li>
             <li ng-class="{'active':$root.active=='peer'}">
                 <a  ng-href="#/peer"><img src="/assets/common/per.png" alt="">{{'PEERS' | translate}}</a>
             </li>
+
         </ul>
     </div>
 </div>
-<div class="asch_tip">
-    <p>
-        <a ng-href="#/home"> <img src="/assets/common/min_logo.png" alt="">{{'HOME' | translate}}</a>
-        <span ng-show="$root.active=='personal'">{{'PERSONAL' | translate}}</span>
-        <span ng-show="$root.active=='application'">{{'APPLICATIONS' | translate}}</span>
-        <span ng-show="$root.active=='blockforging'">{{'FORGING' | translate}}</span>
-        <span ng-show="$root.active=='blockchain'">{{'BLOCKS' | translate}}</span>
-        <span ng-show="$root.active=='vote'">{{'VOTE' | translate}}</span>
-        <span ng-show="$root.active=='pay'">{{'TRANSFER' | translate}}</span>
-        <span ng-show="$root.active=='peer'">{{'PEERS' | translate}}</span>
-    </p>
-</div>
+

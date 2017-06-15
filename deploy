@@ -1,3 +1,0 @@
-dev,gulp dev,dist
-beta,gulp build,dist
-prod,gulp build,dist

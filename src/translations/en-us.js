@@ -35,6 +35,13 @@ window.Translations['en-us'] = {
   TRS_TYPE_DAPP: 'Register Application',
   TRS_TYPE_DEPOSIT: 'Deposit',
   TRS_TYPE_WITHDRAWAL: 'Withdraw',
+  TRS_TYPE_STORAGE: 'Storage',
+  TRS_TYPE_UIA_ISSUER: 'Register Issuer',
+  TRS_TYPE_UIA_ASSET: 'Register Asset',
+  TRS_TYPE_UIA_FLAGS: 'Asset Flags',
+  TRS_TYPE_UIA_ACL: 'Asset Acl',
+  TRS_TYPE_UIA_ISSUE: 'Asset Issue',
+  TRS_TYPE_UIA_TRANSFER: 'Asset Transfer',
 
   // application
   DAPP_ICON: 'Icon',
@@ -81,6 +88,7 @@ window.Translations['en-us'] = {
   VOTE: 'Vote',
   TRANSFER: 'Transfer',
   PEERS: 'Peers',
+  ASSET: 'Asset',
 
   // home
   BALANCE: 'Balance',
@@ -113,7 +121,29 @@ window.Translations['en-us'] = {
   PEER_LIST: 'Peer List',
   OPERATING_SYSTEM: 'OS',
   VERSION: 'Version',
-
+  // ASSET: '资产'
+  REGISTERED_PUBLISHER:'Registered Publisher',
+  REGISTERED_ASSETS:'Registered Assets',
+  MY_ASSETS:'My Issued Assets',
+  VALUE:'Value',
+  ISSUE_NUMBER:'Issue Number',
+  OPERATION_RECORD:'Operation Record',
+  ASSET_NAME:'Asset Name',
+  ACCESS_CONTROL:'Access Control',
+  ASSET_PROFILE:'Asset Profile',
+  MAXIMUM:'Maximum',
+  CANCELLATION:'Cancellation',
+  PRECISION:'Precision',
+  QUANTITY:'Quantity',
+  OPERATION:'Operation',
+  DESCRIBE:'Describe',
+  TOPLIMIT:'Top Limit',
+  ACCURACY:'Accuracy',
+  STRATEGY:'Strategy',
+  CURRENT_MODE:'Current Mode',
+  ADD_LIST:'Add List',
+  CURRENT_LIST:'Current List',
+  UPDATE_ACL:'Update ACL',
   // personal
   ACCOUNT_INFO: 'Account Info',
   QUIT: 'Quit',
@@ -198,6 +228,14 @@ window.Translations['en-us'] = {
   INF_REGISTER_SUCCESS: 'Register success !',
   INF_DELETE_SUCCESS: 'Delete success !',
   INF_TRANSFER_SUCCESS: 'Transfer success !',
+  INF_OPERATION_SUCCEEDED: 'Operation succeeded!',
   INF_VOTE_SUCCESS: 'Vote success !',
   INF_SECND_PASSWORD_SET_SUCCESS: 'Second secret set success !',
+
+  ALLOW_WWB: 'Allow Writeoff/Whitelist/Blacklist',
+  ALLOW_WRITEOFF: 'Allow Writeoff',
+  ALLOW_WHITELIST: 'Allow Whitelist',
+  ALLOW_BLACKLIST: 'Allow Blacklist',
+  ALLOW: 'Allow',
+  NOT_ALLOW: 'Not Allow',
 };

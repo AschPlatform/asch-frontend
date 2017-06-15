@@ -1,4 +1,6 @@
+<div  ng-include="'partials/common/crumb/crumb.html'"></div>
 <div id="personal" ng-controller="personalCtrl" ng-init="init()" ng-show="isLogin">
+
 				<div class="nav">
 					<div class="nav_per accountInfo " ng-class=" {'active':accountInfo}" ng-click="accountchange()">
 						{{'ACCOUNT_INFO' | translate}}

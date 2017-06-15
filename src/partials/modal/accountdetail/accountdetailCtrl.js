@@ -1,5 +1,5 @@
 
-angular.module('asch').controller('accountdetailCtrl', function($scope, $rootScope, apiService, ipCookie, $location, $translate) {
+angular.module('asch').controller('accountdetailCtrl', function ($scope, $rootScope, apiService, ipCookie, $location, $translate) {
 
     $rootScope.accountdetailinfo = false;
 
@@ -7,12 +7,12 @@ angular.module('asch').controller('accountdetailCtrl', function($scope, $rootSco
         $rootScope.isBodyMask = false;
         $rootScope.accountdetailinfo = false;
     };
-    $rootScope.$on('accountdetail', function(d,data) {
+    $rootScope.$on('accountdetail', function (d, data) {
         $scope.address = data;
         apiService.accountdetail({
-            address:$scope.address
+            address: $scope.address
         }).success(function (res) {
-            if(res.success==true){
+            if (res.success == true) {
                 $rootScope.accountdetailinfo = true;
                 $rootScope.isBodyMask = true;
                 $scope.account = res.account;

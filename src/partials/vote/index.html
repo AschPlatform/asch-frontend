@@ -1,4 +1,6 @@
+<div  ng-include="'partials/common/crumb/crumb.html'"></div>
 <div id="vote" ng-controller="voteCtrl" ng-init="init()">
+
 <div class="voteheader">
     <div class="titleitem letin "  ng-class=" {'active':letin}" ng-click="letinchange()">{{'DELEGATE_LIST' | translate}}</div>
     <div class="titleitem mgvotecord"  ng-class=" {'active':mgvotecord}" ng-click="mgvotecordchange()">{{'VOTE_RECORD' | translate}}</div>

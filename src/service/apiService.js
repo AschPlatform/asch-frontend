@@ -1,4 +1,4 @@
-angular.module('asch').service('apiService', function($http, $rootScope,$location) {
+angular.module('asch').service('apiService', function ($http, $rootScope, $location) {
 
 	function json2url(json) {
 		var arr = [];
@@ -9,76 +9,49 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 		}
 		return arr.join('&');
 	};
-	function fetch(url, data, method,headers) {
-		var cb = function(res) {
-			// if (res.error.returnCode == '10007') {
-			// 	window.setTimeout( function(){
-			// 		toastError('您没有权限访问,请重新登录');
-			// 		window.location.href = '#/login';
-			// 		return;
-			// 	}, 200 );
-			// }
-		};
-		// if (data) {
-		// 	data.from = 'asch';
-		//
-		// }
+	function fetch(url, data, method, headers) {
+		for (var k in data) {
+			if (url.indexOf(':' + k) != -1) {
+				url = url.replace(':' + k, data[k])
+				delete data[k]
+			}
+		}
 		method = method.toLowerCase();
 		if (method == 'get') {
 			var params = json2url(data);
-			return $http.get(url + '?' + params).success(function(res) {
-				cb(res);
-			});
+			return $http.get(url + '?' + params);
 		} else {
-			//console.log(url,data)
-			if(headers){
-				var req = {
-					method: 'POST',
-					url: url,
-					headers: {'magic': '43194d2b','version':''},
-					data: {
-						transaction:data
-					}
-				}
-				return $http(req).success(function(res) {
-					cb(res);
-				});
-			}  else{
-				return $http.post(url, data).success(function(res) {
-					cb(res);
-				});
-			}
-
+			return $http.post(url, data);
 		}
 	}
-	this.login = function(params) {
+	this.login = function (params) {
 		return fetch('{{loginApi}}', params, 'post');
 	};
 	//账户请求
-	this.account = function(params) {
+	this.account = function (params) {
 		return fetch('{{accountApi}}', params, 'get');
 	};
 	//交易请求
-	this.transactions = function(params) {
+	this.transactions = function (params) {
 		return fetch('{{transactionsApi}}', params, 'get');
 	};
 	//获取投票列表
-	this.myvotes = function(params) {
+	this.myvotes = function (params) {
 		return fetch('{{myvotesApi}}', params, 'get');
 	};
 	//获取最新区块
-	this.blocks = function(params) {
+	this.blocks = function (params) {
 		return fetch('{{blocksApi}}', params, 'get');
 	};
 	//受托人模块
-	this.blockforging = function(params) {
+	this.blockforging = function (params) {
 		return fetch('{{blockforgingApi}}', params, 'get');
 	};
 	// 入围候选人
-   this.delegates = function (params) {
+	this.delegates = function (params) {
 	   return fetch('{{delegatesApi}}', params, 'get');
-   }
-   // 投我的票
+	}
+	// 投我的票
 	this.votetome = function (params) {
 		return fetch('{{votetomeApi}}', params, 'get');
 	}
@@ -105,4 +78,24 @@ angular.module('asch').service('apiService', function($http, $rootScope,$locatio
 	this.forgingStatus = function (params) {
 		return fetch('{{forgingStatusApi}}', params, 'get');
 	}
+	// 获取我的余额
+	this.myBalances = function (params) {
+		return fetch('{{myBalancesApi}}', params, 'get');
+	};
+	// 获取我的资产
+	this.myAssets = function (params) {
+		return fetch('{{myAssetsApi}}', params, 'get');
+	};
+	// 查询发行商
+	this.issuer = function (params) {
+		return fetch('{{issuerApi}}', params, 'get');
+	};
+	// 获取资产访问控制列表
+	this.assetAcl = function (params) {
+		return fetch('{{assetAclApi}}', params, 'get');
+	};
+	// 获取我的资产操作记录
+	this.myAssetTransactions = function (params) {
+		return fetch('{{myTransactionsApi}}', params, 'get');
+	};
 });
