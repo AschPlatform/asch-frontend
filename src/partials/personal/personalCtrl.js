@@ -103,11 +103,11 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		if (!$scope.block_number) {
 			return toastError($translate.instant('ERR_POSITIONLOCK_EMPTY'));;
 		}
-		var reg = /^(?!0)(?:[0-9]{1,7}|10000000)$/;
-		var numStr = $scope.block_number.trim().replace(/\s/g, "");
-
-		if (!reg.test(numStr)) {
-			return toastError($translate.instant('ERR_POSITIONLOCK_NOT_NUM'));;
+		var lockHeight = Number($scope.block_number)
+		var diffHeight = lockHeight - userService.latestBlockHeight
+		console.log(lockHeight, diffHeight, userService.latestBlockHeight)
+		if (diffHeight <= 0 || diffHeight >= 10000000) {
+			return toastError('Invalid lock height')
 		}
 
 		if (userService.secondPublicKey && !$scope.secondpassword) {
@@ -119,7 +119,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
             $scope.secondPassword = '';
         }
 
-		var transaction = AschJS.transaction.createLock(numStr, userService.secret, $scope.secondpassword);
+		var transaction = AschJS.transaction.createLock(diffHeight, userService.secret, $scope.secondpassword);
 		postSerivice.post(transaction).success(function (res) {
 			if (res.success == true) {
 				//$scope.passwordsure = true;
@@ -134,10 +134,11 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	
 	// 计算解锁时间
 	$scope.calTimeLeft = function () {
-		var reg = /^(?!0)(?:[0-9]{1,7}|10000000)$/;
-		var oriNumStr = $scope.block_number.trim().replace(/\s/g, "");
-		if (reg.test(oriNumStr)) {
-			var sec = (parseInt(oriNumStr) - parseInt(userService.latestBlockHeight)) * 10;
+		if (!$scope.block_number) return
+		var lockHeight = Number($scope.block_number)
+		var diffHeight = lockHeight - userService.latestBlockHeight
+		if (diffHeight > 0 && diffHeight < 10000000) {
+			var sec = diffHeight * 10;
 			var min = 0;
 			var hou = 0;
 			var day = 0;
@@ -149,7 +150,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 			var i = $translate.instant('FRAGIL_INPUT');
 			var r = $translate.instant('FRAGIL_RANGE');
 			var u = $translate.instant('FRAGIL_UNLOCK');
-			if (parseInt(oriNumStr) - parseInt(userService.latestBlockHeight) > 100 && parseInt(oriNumStr) - parseInt(userService.latestBlockHeight) < 10000000) {
+			if (diffHeight > 100 && diffHeight < 10000000) {
 				if (sec > 60) {
 					min = sec / 60;
 					sec = sec % 60;

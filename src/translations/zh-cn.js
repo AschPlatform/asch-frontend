@@ -19,7 +19,7 @@ window.Translations['zh-cn'] = {
   RECIPIENT: '接受者',
   SECOND_PASSWORD: '二级密码',
   REMARK: '备注',
-  REMARK_TIP: '数字范围：',
+  REMARK_TIP: '长度范围：',
 
   // transaction type filter
   TRS_TYPE_TRANSFER: '转账',

@@ -26,7 +26,7 @@ window.Translations['en-us'] = {
   RECIPIENT: 'Recipient',
   SECOND_PASSWORD: 'Second Secret',
   REMARK: 'Remark',
-  REMARK_TIP: 'Number range from:',
+  REMARK_TIP: 'Size range from:',
 
   // transaction type filter
   TRS_TYPE_TRANSFER: 'Transfer',
