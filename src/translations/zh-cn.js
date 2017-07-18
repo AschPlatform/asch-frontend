@@ -18,6 +18,8 @@ window.Translations['zh-cn'] = {
   SENDER: '发送者',
   RECIPIENT: '接受者',
   SECOND_PASSWORD: '二级密码',
+  REMARK: '备注',
+  REMARK_TIP: '数字范围：',
 
   // transaction type filter
   TRS_TYPE_TRANSFER: '转账',
@@ -35,6 +37,7 @@ window.Translations['zh-cn'] = {
   TRS_TYPE_UIA_ACL: '资产访问控制',
   TRS_TYPE_UIA_ISSUE: '资产发行',
   TRS_TYPE_UIA_TRANSFER: '资产转账',
+  TRS_TYPE_LOCK: '锁仓',
 
   // application
   DAPP_ICON: '图标',
@@ -139,11 +142,17 @@ window.Translations['zh-cn'] = {
   UPDATE_ACL: '更新ACL',
   // personal
   ACCOUNT_INFO: '账户信息',
+  ACCOUNT_LOCK_TIP: '在到达此高度后解锁',
+  LOCK_POSITION: '锁仓',
+  ACCOUNT_TYPE_HINT: '请输入高度',
+  ACCOUNT_TYPE2_HINT: '请输入二级密码',
+  LOCK_POSITION_TITLE: '设置锁仓信息',
   QUIT: '退出系统',
   BASIC_INFO: '基本信息',
   ADDRESS: '地址',
   PUBLIC_KEY: '公钥',
   ALREADY_SET_TPI: '您已经设置过二级密码',
+  ALREADY_SET_POSITIONLOCK: '您已经进行过锁仓设置',
   SET_SECOND_PASSWORD: '设置二级密码',
   PASSWORD_RULE_TIP: '输入8到16位数字和字母组合',
   INPUT_AGAIN: '再次输入',
@@ -152,6 +161,9 @@ window.Translations['zh-cn'] = {
   SUBMIT: '提交',
   ALREADY_SET: '已设置',
   NOT_SET: '未设置',
+  NOT_SET_BLOCKHEIGHT: '未锁仓',
+  NOT_SET_ALREADYUNBLOCK: '已解锁',
+  POSITIONLOCK_INFO: '锁仓状态',
 
   // vote
   DELETE: '删除',
@@ -216,6 +228,9 @@ window.Translations['zh-cn'] = {
   ERR_AT_LEAST_SELECT_ONE_DELEGATE: '请选择一位受托人',
   ERR_DELETE_NO_MORE_THAN_33: '一次删除至多33位候选人',
   ERR_VOTE_NO_MORE_THAN_33: '一次投票至多33位候选人',
+  ERR_POSITIONLOCK_EMPTY: '请输入内容',
+  ERR_POSITIONLOCK_NOT_NUM: '请确认输入的是否为数字，并且范围在(1~ 10 000 000)之间',
+  ERR_INVALID_REMARK: '备注输入内容不正确',
 
   // toast info
   INF_REGISTER_SUCCESS: '注册成功',
@@ -224,6 +239,7 @@ window.Translations['zh-cn'] = {
   INF_OPERATION_SUCCEEDED: '操作成功',
   INF_VOTE_SUCCESS: '投票成功',
   INF_SECND_PASSWORD_SET_SUCCESS: '二级密码设置成功',
+  INF_POSITIONLOCK_SET_SUCCESS: '锁仓成功',
 
   ALLOW_WWB: '是否允许注销/白名单/黑名单',
   ALLOW_WRITEOFF: '是否允许注销',
@@ -231,4 +247,16 @@ window.Translations['zh-cn'] = {
   ALLOW_BLACKLIST: '是否允许黑名单',
   ALLOW: '允许',
   NOT_ALLOW: '不允许',
+
+  // FRAGIL SET
+  FRAGIL_PRE: '区块将在高于 ',
+  FRAGIL_LAT: ' 高度后解锁',
+  FRAGIL_ABOUT: '大约在',
+  FRAGIL_DAY: '天',
+  FRAGIL_HOUR: '时',
+  FRAGIL_MIN: '分',
+  FRAGIL_SEC: '秒',
+  FRAGIL_INPUT: '输入的高度不应低于大于最新高度100的数值，请仔细查看',
+  FRAGIL_RANGE: '请输入范围在(1~10 000 000)的数字',
+  FRAGIL_UNLOCK: '后解锁',
 };

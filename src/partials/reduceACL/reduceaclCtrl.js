@@ -11,7 +11,7 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
         angular.forEach($rootScope.checkdelitem, function (data, index, array) {
             list.push(index);
         });
-        console.log(list)
+/*        console.log(list)*/
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }

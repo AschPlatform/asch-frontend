@@ -30,6 +30,7 @@
 						<td>{{'RECIPIENT' | translate}}</td>
 						<td>{{'DATE' | translate}}</td>
 						<td>{{'AMOUNTS' | translate}}({{'FEES' | translate}})</td>
+						<td>{{'REMARK' | translate}}</td>
 					</tr>
 			</thread>
 			<tr ng-repeat="i in $data"  >
@@ -39,6 +40,7 @@
 				<td class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || 'SYSTEM' | translate}}</i></td>
 				<td>{{i.timestamp | timestampFilter}}</td>
 				<td>{{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
+				<td>{{i.message}}</td>
 			</tr>
 		</table>
 	</div>

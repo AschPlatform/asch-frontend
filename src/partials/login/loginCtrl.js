@@ -11,7 +11,7 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 	];
 
 	$scope.changeLanguage = function () {
-		console.log($translate.proposedLanguage());
+		/*console.log($translate.proposedLanguage());*/
 		if (!$scope.selectedLanguage) {
 			var key = $translate.proposedLanguage();
 			for (var i = 0; i < $scope.languages.length; ++i) {
@@ -83,7 +83,7 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 			}).success(function (res) {
 				$rootScope.homedata = res;
 				if (res.success == true) {
-					userService.setData($scope.newsecret, res.account.address, newpublicKey, res.account.balance, res.account.secondPublicKey);
+					userService.setData($scope.newsecret, newpublicKey, res.account, res.latestBlock);
 					// 是否登录的全局变量
 					$rootScope.isLogin = true;
 					$location.path('/home');
@@ -132,7 +132,7 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 		}).success(function (res) {
 			$rootScope.homedata = res;
 			if (res.success == true) {
-				userService.setData($scope.secret, res.account.address, publicKey, res.account.balance, res.account.secondPublicKey)
+				userService.setData($scope.secret, publicKey, res.account, res.latestBlock)
 				// 是否登录的全局变量
 				$rootScope.isLogin = true;
 				$location.path('/home');

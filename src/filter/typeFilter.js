@@ -17,6 +17,9 @@ angular.module('asch').filter('typeFilter', function ($filter) {
         'TRS_TYPE_UIA_TRANSFER'
     ]
     return function (value) {
+        if (value === 100) {
+            return $filter('translate')('TRS_TYPE_LOCK');
+        }
         return $filter('translate')(TYPE_LABEL[value]);
     }
 });

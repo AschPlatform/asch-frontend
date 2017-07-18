@@ -7,3 +7,4 @@ dist
 .sass-cache
 .tmp
 .gulp
+package-lock.json
