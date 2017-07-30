@@ -119,7 +119,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
             $scope.secondPassword = '';
         }
 
-		var transaction = AschJS.transaction.createLock(diffHeight, userService.secret, $scope.secondpassword);
+		var transaction = AschJS.transaction.createLock(lockHeight, userService.secret, $scope.secondpassword);
 		postSerivice.post(transaction).success(function (res) {
 			if (res.success == true) {
 				//$scope.passwordsure = true;
