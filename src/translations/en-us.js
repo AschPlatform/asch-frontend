@@ -27,6 +27,7 @@ window.Translations['en-us'] = {
   SECOND_PASSWORD: 'Second Secret',
   REMARK: 'Remark',
   REMARK_TIP: 'Size range from:',
+  
 
   // transaction type filter
   TRS_TYPE_TRANSFER: 'Transfer',
@@ -56,7 +57,10 @@ window.Translations['en-us'] = {
   DAPP_DOWNLOAD: 'Download',
   DAPP_LIST: 'Applications',
   DAPP_INSTALL_LIST: 'Installed',
-
+  DAPP_TRANSACTION_RECORD: 'Transaction Record',
+  DAPP_DEPOSIT: 'Deposit',
+  DAPP_BANLANCE_DETAIL: 'Balance Detail',
+  DAPP_DETAIL: 'Detail',
   // dapp category filter
   DAPP_CATEGORY_COMMON: 'General',
   DAPP_CATEGORY_BUSINESS: 'Business',
@@ -239,6 +243,7 @@ window.Translations['en-us'] = {
   ERR_POSITIONLOCK_EMPTY: 'Please type in',
   ERR_POSITIONLOCK_NOT_NUM: 'Please confirm the number you typed',
   ERR_INVALID_REMARK: 'Ensure your remark is right',
+  ERR_NO_BALANCE: 'No balance, Please Deposit',
 
   // toast info
   INF_REGISTER_SUCCESS: 'Register success !',
@@ -267,4 +272,15 @@ window.Translations['en-us'] = {
   FRAGIL_INPUT: 'The number input should at least 100 higher than the latest height',
   FRAGIL_RANGE: 'The number should range from 1 to 10 000 000',
   FRAGIL_UNLOCK: '',
+
+  //deposit
+  DEPOSIT_COIN_TYPE: 'Choose Coin Type',
+  DEPOSIT_AMOUNT: 'Deposit Amount',
+  DEPOSIT_FEES: 'Deposit Fees',
+
+  DAPP_SUPPORT_COIN: 'Support Coin',
+  DAPP_COIN_TOTAL_AMOUNT: 'Total Amount',
+  DAPP_COIN_CURRENT_QUANTITY: 'Current Quantity',
+  DAPP_COIN_BALANCE: 'DAPP Balance',
+  DAPP_COIN_FEE: 'Fee: 0.1 xas',
 };
