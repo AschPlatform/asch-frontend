@@ -244,6 +244,7 @@ window.Translations['en-us'] = {
   ERR_POSITIONLOCK_NOT_NUM: 'Please confirm the number you typed',
   ERR_INVALID_REMARK: 'Ensure your remark is right',
   ERR_NO_BALANCE: 'No balance, Please Deposit',
+  ERR_NO_DEPOSIT_COIN: 'No choose coin, Please Choose',
 
   // toast info
   INF_REGISTER_SUCCESS: 'Register success !',

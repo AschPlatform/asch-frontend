@@ -4,9 +4,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 	$scope.newapplication = true;
 	$scope.installed = false;
   $scope.isShowBalance = false;
-	$scope.currencys = [
-    { key: '0', value: 'XAS' }
-  ]
 
   // 由于设置二级密码的bug 导致这里要刷新一下userService
   $scope.init = function (params) {
@@ -20,6 +17,25 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
     }).error(function (res) {
       toastError(res.error);
     });
+
+    apiService.uiaAssetListApi().success(function (assetsRes) {
+      const assets = assetsRes.assets
+      if(!assets) {
+        $scope.currencys = [ { key: '0', value: 'XAS' } ]
+        return;
+      }
+      var uiaAssets = []
+      for (var i = 0; i < assets.length; i++) {
+        var assetName = assets[i].name.split('.').length > 1 ? assets[i].name.split('.')[1] : assets[i].name
+        uiaAssets.push({
+          key: i + 1 + '',
+          value: assetName
+        })
+      }
+      $scope.currencys = [ { key: '0', value: 'XAS' } ].concat(uiaAssets)
+    }).error(function(res){
+      toastError($translate.instant('ERR_SERVER_ERROR'));
+    })
   };
 	// gossip beauty morning churn jaguar wine skull poem economy final increase prepare
 	$scope.newapplicationchange = function () {
@@ -72,12 +88,10 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 		$scope.depositedDapp = dapp;
 	};
 	$scope.showBalance = function(dapp){
-    console.log('show balance')
 		apiService.appBalance({
 			appId: dapp.transactionId,
 			address: userService.address
 		}).success(function (balancesRes) {
-      console.log('balancesRes', balancesRes)
 			if (!balancesRes.balances) {
 				$scope.showBalances = balancesRes.balances;
 				return;
@@ -92,8 +106,8 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 				if (balance.currency == 'XAS') {
 					balance.quantityShow = 100000000;
 				}	else {
-					apiService.assetApi({
-						name: 'asch.' + balance.currency
+					apiService.uiaAssetApi({
+						name: balance.currency
 					}).success(function (assetsRes) {
 						balance.quantityShow = assetsRes.asset.quantityShow;
 					}).error(function(res){
@@ -144,16 +158,24 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
         toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
         return false;
     }
-  
     
     if (userService.secondPublicKey && !$scope.secondPassword) {
         toastError($translate.instant('ERR_NO_SECND_PASSWORD'));
         return false;
     }
+
+    if (!$scope.currency || !$scope.currency.value) {
+      toastError($translate.instant('ERR_NO_DEPOSIT_COIN'));
+      return false
+    }
     if (!userService.secondPublicKey) {
         $scope.secondPassword = '';
     }
-    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
+    var currency = $scope.currency.value
+    if ($scope.currency.value != 'XAS') {
+      currency = 'asch.' + $scope.currency.value
+    }
+    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, currency, amount, userService.secret, $scope.secondPassword);
     postSerivice.post(transaction).success(function (res) {
        if (res.success == true) {
             $scope.passwordsure = true;
@@ -162,9 +184,14 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
             $scope.depositedDapp = null;
             toast($translate.instant('INF_TRANSFER_SUCCESS'));
         } else {
-            toastError(res.error)
+            if(res.error.indexOf('Old address') != -1 || res.error.indexOf('old address') != -1 || res.error.indexOf('老地址') != -1 || res.error.indexOf('数字地址') != -1) {
+              toastError('dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）')
+            } else {
+              toastError(res.error)  
+            }
         };
     }).error(function (res) {
+      // dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）
         toastError($translate.instant('ERR_SERVER_ERROR'));
     });
    }

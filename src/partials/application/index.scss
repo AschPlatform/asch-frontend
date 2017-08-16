@@ -177,7 +177,7 @@
       font-size: 16px;
       font-weight: bold;
       height:50px;
-
+      border-bottom: 1px solid #ddd;
       td {
         line-height: 50px;  
       }
@@ -209,8 +209,8 @@
         margin-left: 10%;
         height: 40px;
         border-radius: 0px;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
         background-color: #EAEAEA;
         font-size: 20px;
       }

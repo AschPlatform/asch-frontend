@@ -236,6 +236,7 @@ window.Translations['zh-cn'] = {
   ERR_POSITIONLOCK_NOT_NUM: '请确认输入的是否为数字，并且范围在(1~ 10 000 000)之间',
   ERR_INVALID_REMARK: '备注输入内容不正确',
   ERR_NO_BALANCE: '余额不足，请先充值',
+  ERR_NO_DEPOSIT_COIN: '请选择充值的币种',
 
   // toast info
   INF_REGISTER_SUCCESS: '注册成功',

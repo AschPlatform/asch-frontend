@@ -103,7 +103,10 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		return fetch('{{appBalanceApi}}', params, 'get')
 	}
 	// 获取资产
-	this.assetApi = function (params) {
-		return fetch('{{assetApi}}', params, 'get')
+	this.uiaAssetApi = function (params) {
+		return fetch('{{uiaAssetApi}}', params, 'get')
+	},
+	this.uiaAssetListApi = function (params) {
+		return fetch('{{uiaAssetListApi}}', params, 'get')
 	}
 });
