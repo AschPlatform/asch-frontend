@@ -48,7 +48,10 @@ window.Translations['zh-cn'] = {
   DAPP_DOWNLOAD: '点击下载',
   DAPP_LIST: '应用列表',
   DAPP_INSTALL_LIST: '已安装应用列表',
-
+  DAPP_TRANSACTION_RECORD: '交易记录',
+  DAPP_DEPOSIT: '充值',
+  DAPP_BANLANCE_DETAIL: '余额详情',
+  DAPP_DETAIL: '详情',
   // dapp category filter
   DAPP_CATEGORY_COMMON: '通用',
   DAPP_CATEGORY_BUSINESS: '商业',
@@ -59,6 +62,7 @@ window.Translations['zh-cn'] = {
   DAPP_CATEGORY_LIFE: '生活',
   DAPP_CATEGORY_UTILITIES: '工具',
   DAPP_CATEGORY_GAMES: '游戏',
+ 
 
   // blockchain browser
   LATEST_BLOCK: '最新区块',
@@ -231,6 +235,7 @@ window.Translations['zh-cn'] = {
   ERR_POSITIONLOCK_EMPTY: '请输入内容',
   ERR_POSITIONLOCK_NOT_NUM: '请确认输入的是否为数字，并且范围在(1~ 10 000 000)之间',
   ERR_INVALID_REMARK: '备注输入内容不正确',
+  ERR_NO_BALANCE: '余额不足，请先充值',
 
   // toast info
   INF_REGISTER_SUCCESS: '注册成功',
@@ -259,4 +264,14 @@ window.Translations['zh-cn'] = {
   FRAGIL_INPUT: '输入的高度不应低于大于最新高度100的数值，请仔细查看',
   FRAGIL_RANGE: '请输入范围在(1~10 000 000)的数字',
   FRAGIL_UNLOCK: '后解锁',
+
+  //deposit
+  DEPOSIT_COIN_TYPE: '选择充值所使用的币种',
+  DEPOSIT_AMOUNT: '填写充值数量',
+  
+  DAPP_SUPPORT_COIN: '支持的币种',
+  DAPP_COIN_TOTAL_AMOUNT: '总量',
+  DAPP_COIN_CURRENT_QUANTITY: '当前流通量',
+  DAPP_COIN_BALANCE: 'DAPP余额',
+  DAPP_COIN_FEE: '本次充值手续费: 0.1 xas',
 };
