@@ -105,9 +105,14 @@
 		"mock": "",
 		"url": "/api/dapps/:appId/balances/:address"
 	},
-	// 获取资产访问控制列表
-	"assetApi": {
+	// 获取特定资产
+	"uiaAssetApi": {
 		"mock": "",
 		"url": "/api/uia/assets/:name"
+	},
+	// 获取所有资产
+	"uiaAssetListApi": {
+		"mock": "",
+		"url": "/api/uia/assets"
 	}
 }
