@@ -26,10 +26,10 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
       }
       var uiaAssets = []
       for (var i = 0; i < assets.length; i++) {
-        var assetName = assets[i].name.split('.').length > 1 ? assets[i].name.split('.')[1] : assets[i].name
+        // var assetName = assets[i].name.split('.').length > 1 ? assets[i].name.split('.')[1] : assets[i].name
         uiaAssets.push({
           key: i + 1 + '',
-          value: assetName
+          value: assets[i].name
         })
       }
       $scope.currencys = [ { key: '0', value: 'XAS' } ].concat(uiaAssets)
@@ -171,11 +171,12 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
     if (!userService.secondPublicKey) {
         $scope.secondPassword = '';
     }
-    var currency = $scope.currency.value
-    if ($scope.currency.value != 'XAS') {
-      currency = 'asch.' + $scope.currency.value
-    }
-    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, currency, amount, userService.secret, $scope.secondPassword);
+    // var currency = 'owenco.OWN'
+    // var currency = $scope.currency.value
+    // if ($scope.currency.value != 'XAS') {
+    //   currency = 'asch.' + $scope.currency.value
+    // }
+    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
     postSerivice.post(transaction).success(function (res) {
        if (res.success == true) {
             $scope.passwordsure = true;
