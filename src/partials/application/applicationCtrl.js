@@ -20,6 +20,10 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 
     apiService.uiaAssetListApi().success(function (assetsRes) {
       const assets = assetsRes.assets
+      if(!assets) {
+        $scope.currencys = [ { key: '0', value: 'XAS' } ]
+        return;
+      }
       var uiaAssets = []
       for (var i = 0; i < assets.length; i++) {
         var assetName = assets[i].name.split('.').length > 1 ? assets[i].name.split('.')[1] : assets[i].name
@@ -28,10 +32,7 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
           value: assetName
         })
       }
-      $scope.currencys = [
-        { key: '0', value: 'XAS' }
-      ].concat(uiaAssets)
-
+      $scope.currencys = [ { key: '0', value: 'XAS' } ].concat(uiaAssets)
     }).error(function(res){
       toastError($translate.instant('ERR_SERVER_ERROR'));
     })
@@ -106,7 +107,7 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 					balance.quantityShow = 100000000;
 				}	else {
 					apiService.uiaAssetApi({
-						name: 'asch.' + balance.currency
+						name: balance.currency
 					}).success(function (assetsRes) {
 						balance.quantityShow = assetsRes.asset.quantityShow;
 					}).error(function(res){
@@ -170,7 +171,11 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
     if (!userService.secondPublicKey) {
         $scope.secondPassword = '';
     }
-    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
+    var currency = $scope.currency.value
+    if ($scope.currency.value != 'XAS') {
+      currency = 'asch.' + $scope.currency.value
+    }
+    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, currency, amount, userService.secret, $scope.secondPassword);
     postSerivice.post(transaction).success(function (res) {
        if (res.success == true) {
             $scope.passwordsure = true;
