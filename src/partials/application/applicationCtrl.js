@@ -152,13 +152,16 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
         toastError($translate.instant('ERR_AMOUNT_INVALID'));
         return false;
     }
+
     var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
-    var fee = 10000000;
-    if (amount + fee > userService.balance) {
+    if ($scope.currency.value == 'XAS') {
+       var fee = 10000000;
+       if (amount + fee > userService.balance) {
         toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
         return false;
+      }
     }
-    
+   
     if (userService.secondPublicKey && !$scope.secondPassword) {
         toastError($translate.instant('ERR_NO_SECND_PASSWORD'));
         return false;
@@ -171,11 +174,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
     if (!userService.secondPublicKey) {
         $scope.secondPassword = '';
     }
-    // var currency = 'owenco.OWN'
-    // var currency = $scope.currency.value
-    // if ($scope.currency.value != 'XAS') {
-    //   currency = 'asch.' + $scope.currency.value
-    // }
     var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
     postSerivice.post(transaction).success(function (res) {
        if (res.success == true) {

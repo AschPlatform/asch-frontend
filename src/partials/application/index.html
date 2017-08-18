@@ -15,18 +15,18 @@
 					<td>{{'DAPP_NAME' | translate}}</td>
 					<td>{{'DAPP_DESCRIPTION' | translate}}</td>
 					<td>ID</td>
-					<td>{{'DAPP_CATEGORY' | translate}}</td>
-					<td>{{'DAPP_SOURCE_CODE' | translate}}</td>
+					<td><div class = "category">{{'DAPP_CATEGORY' | translate}}</div></td>
+					<td><div class = "download">{{'DAPP_SOURCE_CODE' | translate}}</div></td>
 				</tr>
 			</thread>
 			<tr ng-repeat="i in $data"  >
 				<td><a ><img class="ico-img" src="{{i.icon}}" onerror="this.src='favicon.ico'"></a></td>
 				<td><a >{{i.name}}</a></td>
 				<td class="wop">{{i.description}}</td>
-				<td ><div class = "id-container">{{i.transactionId}}</div></td>
+				<td >{{i.transactionId}}</td>
 				<!--<td  data-title="'标签'" >{{i.tags}}</td>-->
-				<td>{{i.category | catalogsFilter}}</td>
-				<td><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</a></td>
+				<td><div class = "category">{{i.category | catalogsFilter}}</div></td>
+				<td><div class = "download"><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</div></a></td>
 			</tr>
 		</table>
 
@@ -40,22 +40,22 @@
 					<td>{{'DAPP_NAME' | translate}}</td>
 					<td>{{'DAPP_DESCRIPTION' | translate}}</td>
 					<td>ID</td>
-					<td>{{'DAPP_CATEGORY' | translate}}</td>
+					<td><div class = "category">{{'DAPP_CATEGORY' | translate}}</div></td>
 					<td>{{'DAPP_DEPOSIT' | translate}}</td>
-					<td>{{'DAPP_BANLANCE_DETAIL' | translate}}</td>
-					<td>{{'DAPP_SOURCE_CODE' | translate}}</td>
+					<td><div class = "balance">{{'DAPP_BANLANCE_DETAIL' | translate}}</div></td>
+					<td><div class = "download">{{'DAPP_SOURCE_CODE' | translate}}</div></td>
 				</tr>
 			</thread>
 			<tr ng-repeat="i in $data"  >
 				<td><a target="_blank" ng-href="/dapps/{{i.transactionId }}"><img class="ico-img" src="{{i.icon}}"></a></td>
 				<td><a target="_blank" ng-href="/dapps/{{i.transactionId }}">{{i.name}}</a></td>
 				<td class="wop">{{i.description}}</td>
-				<td><div class = "id-container">{{i.transactionId}}</div></td>
+				<td>{{i.transactionId}}</td>
 				<!--<td  data-title="'标签'" >{{i.tags}}</td>-->
-				<td>{{i.category | catalogsFilter}}</td>
+				<td><div class = "category">{{i.category | catalogsFilter}}</div></td>
 				<td><button class="deposit-btn" ng-click="depositDapp(i)">{{'DAPP_DEPOSIT' | translate }}</button></td>
-				<td ng-click="showBalance(i)" style = "color: rgb(63,123,217); cursor: pointer">{{'DAPP_DETAIL' | translate}}</td>
-				<td><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</a></td>
+				<td ng-click="showBalance(i)" style = "color: rgb(63,123,217); cursor: pointer"><div class = "balance">{{'DAPP_DETAIL' | translate}}</div></td>
+				<td><div class = "download"><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</div></a></td>
 			</tr>
 		</table>
 		
@@ -68,10 +68,10 @@
 			</div>
 			<table class = "table">
 				<thread>
-					<tr class = "header">
-						<td>{{'DAPP_SUPPORT_COIN' | translate}}</td>
-						<td>{{'DAPP_COIN_CURRENT_QUANTITY' | translate}}</td>
-						<td>{{'DAPP_COIN_BALANCE' | translate}}</td>
+					<tr class = "header" >
+						<td style = "border-top:1px solid #fff;">{{'DAPP_SUPPORT_COIN' | translate}}</td>
+						<td style = "border-top:1px solid #fff;">{{'DAPP_COIN_CURRENT_QUANTITY' | translate}}</td>
+						<td style = "border-top:1px solid #fff;">{{'DAPP_COIN_BALANCE' | translate}}</td>
 					</tr>
 				</thread>
 				<tr ng-repeat="i in showBalances"  >
