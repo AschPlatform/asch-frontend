@@ -100,11 +100,6 @@
 		"mock": "/data/assets/acl.json",
 		"url": "/api/uia/assets/:name/acl/:flag"
 	},
-	// 获取节点地址
-	"peersApi": {
-		"mock": "/data/peer/peers.json",
-		"url": "/api/peers"
-	},
 	// 获取应用余额
 	"appBalanceApi": {
 		"mock": "",
