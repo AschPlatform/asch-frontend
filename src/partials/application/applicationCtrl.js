@@ -1,9 +1,43 @@
-angular.module('asch').controller('applicationCtrl', function ($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService, $translate) {
+angular.module('asch').controller('applicationCtrl', function ($scope, $rootScope, apiService, ipCookie, $location, $window, NgTableParams, userService, $translate, postSerivice) {
 	$rootScope.active = 'application';
 	$rootScope.userlogin = true;
 	$scope.newapplication = true;
 	$scope.installed = false;
+  $scope.isShowBalance = false;
 
+  // 由于设置二级密码的bug 导致这里要刷新一下userService
+  $scope.init = function (params) {
+    apiService.account({
+      address: userService.address
+    }).success(function (res) {
+      if (res.success == true) {
+        userService.update(res.account, res.latestBlock);
+        $scope.userService = userService;
+      };
+    }).error(function (res) {
+      toastError(res.error);
+    });
+
+    apiService.uiaAssetListApi().success(function (assetsRes) {
+      const assets = assetsRes.assets
+      if(!assets) {
+        $scope.currencys = [ { key: '0', value: 'XAS' } ]
+        return;
+      }
+      var uiaAssets = []
+      for (var i = 0; i < assets.length; i++) {
+        // var assetName = assets[i].name.split('.').length > 1 ? assets[i].name.split('.')[1] : assets[i].name
+        uiaAssets.push({
+          key: i + 1 + '',
+          value: assets[i].name
+        })
+      }
+      $scope.currencys = [ { key: '0', value: 'XAS' } ].concat(uiaAssets)
+    }).error(function(res){
+      toastError($translate.instant('ERR_SERVER_ERROR'));
+    })
+  };
+	// gossip beauty morning churn jaguar wine skull poem economy final increase prepare
 	$scope.newapplicationchange = function () {
 		$scope.newapplication = true;
 		$scope.installed = false;
@@ -21,7 +55,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 						limit: params.count(),
 						offset: (params.page() - 1) * params.count()
 					}).success(function (res) {
-
 						params.total(res.count);
 						$defer.resolve(res.dapps);
 					}).error(function (res) {
@@ -51,5 +84,114 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 				}
 			});
 	};
+	$scope.depositDapp = function(dapp) {
+		$scope.depositedDapp = dapp;
+	};
+	$scope.showBalance = function(dapp){
+		apiService.appBalance({
+			appId: dapp.transactionId,
+			address: userService.address
+		}).success(function (balancesRes) {
+			if (!balancesRes.balances) {
+				$scope.showBalances = balancesRes.balances;
+				return;
+			}
+      if (balancesRes.balances.length == 0) {
+        toastError($translate.instant('ERR_NO_BALANCE'));
+        return;
+      }
+     
+			for (var i = 0; i < balancesRes.balances.length; i ++){
+				var balance = balancesRes.balances[i]
+				if (balance.currency == 'XAS') {
+					balance.quantityShow = 100000000;
+				}	else {
+					apiService.uiaAssetApi({
+						name: balance.currency
+					}).success(function (assetsRes) {
+						balance.quantityShow = assetsRes.asset.quantityShow;
+					}).error(function(res){
+						toastError($translate.instant('ERR_SERVER_ERROR'));
+					})
+				}
+			}
+			$scope.showBalances = balancesRes.balances;
+      var tableHeight = $scope.showBalances.length > 4 ? 370 : ($scope.showBalances.length + 1 ) * 70 + 20
+      $scope.tableStyle = {
+        height: tableHeight + 'px',
+        top: 'calc(50% - ' + tableHeight / 2  + 'px)'
+      }
+      if ($scope.showBalances.length > 4) {
+        $scope.tableStyle['overflow-y'] = 'scroll';
+      }
+      $scope.isShowBalance = true;
+		}).error(function (res) {
+			toastError($translate.instant('ERR_SERVER_ERROR'));
+		})
+	};
+	$scope.closeShowBalance = function() {
+    $scope.isShowBalance = false;
+		$scope.showBalances = [];
+	};
+	$scope.closeDeposit = function() {
+		$scope.depositedDapp = null;
+		$scope.amount = 0;
+		$scope.secondPassword = '';
+	};
+	$scope.sentMsg = function () {
+    var transaction;
+    if (!$scope.depositedDapp) {
+        toastError($translate.instant('ERR_NO_RECIPIENT_ADDRESS'));
+        return false;
+    }
+    if ($scope.depositedDapp.transactionId == userService.address) {
+        toastError($translate.instant('ERR_RECIPIENT_EQUAL_SENDER'));
+        return false;
+    }
+    if (!$scope.amount || Number($scope.amount) <= 0) {
+        toastError($translate.instant('ERR_AMOUNT_INVALID'));
+        return false;
+    }
 
+    var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
+    if ($scope.currency.value == 'XAS') {
+       var fee = 10000000;
+       if (amount + fee > userService.balance) {
+        toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
+        return false;
+      }
+    }
+   
+    if (userService.secondPublicKey && !$scope.secondPassword) {
+        toastError($translate.instant('ERR_NO_SECND_PASSWORD'));
+        return false;
+    }
+
+    if (!$scope.currency || !$scope.currency.value) {
+      toastError($translate.instant('ERR_NO_DEPOSIT_COIN'));
+      return false
+    }
+    if (!userService.secondPublicKey) {
+        $scope.secondPassword = '';
+    }
+    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
+    postSerivice.post(transaction).success(function (res) {
+       if (res.success == true) {
+            $scope.passwordsure = true;
+            $scope.amount = '';
+            $scope.secondPassword = '';
+            $scope.depositedDapp = null;
+            toast($translate.instant('INF_TRANSFER_SUCCESS'));
+        } else {
+            if(res.error.indexOf('Old address') != -1 || res.error.indexOf('old address') != -1 || res.error.indexOf('老地址') != -1 || res.error.indexOf('数字地址') != -1) {
+              toastError('dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）')
+            } else {
+              toastError(res.error)  
+            }
+        };
+    }).error(function (res) {
+      // dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）
+        toastError($translate.instant('ERR_SERVER_ERROR'));
+    });
+   }
 });

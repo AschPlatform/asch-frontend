@@ -43,15 +43,19 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
+        var message = $scope.message
+        if (message && message.length > 256) {
+            return toastError($translate.instant('ERR_INVALID_REMARK'));
+        }
         if(!$rootScope.currencyName){
             if (amount + fee > userService.balance) {
                 toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
                 return false;
             }
-            transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, userService.secret, $scope.secondPassword);
+            transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, message, userService.secret, $scope.secondPassword);
         } else {
             amount = $scope.amount*Math.pow(10, $rootScope.precision);
-            transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), String(amount), String($scope.fromto), userService.secret, $scope.secondPassword)
+            transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), String(amount), String($scope.fromto), message, userService.secret, $scope.secondPassword)
         }
         postSerivice.post(transaction).success(function (res) {
             if (res.success == true) {

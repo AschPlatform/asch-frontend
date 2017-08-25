@@ -25,6 +25,9 @@ window.Translations['en-us'] = {
   SENDER: 'Sender',
   RECIPIENT: 'Recipient',
   SECOND_PASSWORD: 'Second Secret',
+  REMARK: 'Remark',
+  REMARK_TIP: 'Size range from:',
+  
 
   // transaction type filter
   TRS_TYPE_TRANSFER: 'Transfer',
@@ -42,6 +45,8 @@ window.Translations['en-us'] = {
   TRS_TYPE_UIA_ACL: 'Asset Acl',
   TRS_TYPE_UIA_ISSUE: 'Asset Issue',
   TRS_TYPE_UIA_TRANSFER: 'Asset Transfer',
+  TRS_TYPE_LOCK: 'Position Lock',
+ 
 
   // application
   DAPP_ICON: 'Icon',
@@ -52,7 +57,10 @@ window.Translations['en-us'] = {
   DAPP_DOWNLOAD: 'Download',
   DAPP_LIST: 'Applications',
   DAPP_INSTALL_LIST: 'Installed',
-
+  DAPP_TRANSACTION_RECORD: 'Transaction Record',
+  DAPP_DEPOSIT: 'Deposit',
+  DAPP_BANLANCE_DETAIL: 'Balance Detail',
+  DAPP_DETAIL: 'Detail',
   // dapp category filter
   DAPP_CATEGORY_COMMON: 'General',
   DAPP_CATEGORY_BUSINESS: 'Business',
@@ -146,11 +154,17 @@ window.Translations['en-us'] = {
   UPDATE_ACL:'Update ACL',
   // personal
   ACCOUNT_INFO: 'Account Info',
+  ACCOUNT_LOCK_TIP: 'Unlock after the blockheight reach this number',
+  LOCK_POSITION: 'Lock Position',
+  ACCOUNT_TYPE_HINT: 'How many blocks?',
+  ACCOUNT_TYPE2_HINT: 'Type your second password',
+  LOCK_POSITION_TITLE: 'Set Position Lock',
   QUIT: 'Quit',
   BASIC_INFO: 'General Information',
   ADDRESS: 'Address',
   PUBLIC_KEY: 'Public Key',
   ALREADY_SET_TPI: 'You have already set the second secret.',
+  ALREADY_SET_POSITIONLOCK: 'You have already set the block height.',
   SET_SECOND_PASSWORD: 'Set the second secret',
   PASSWORD_RULE_TIP: 'Second secret must be from 8 to 16 alphanumeric characters',
   INPUT_AGAIN: 'Enter Again',
@@ -159,6 +173,9 @@ window.Translations['en-us'] = {
   SUBMIT: 'Submit',
   ALREADY_SET: 'Already Set',
   NOT_SET: 'Not set yet',
+  NOT_SET_BLOCKHEIGHT: 'Not lock your height yet',
+  NOT_SET_ALREADYUNBLOCK: 'Already unblock',
+  POSITIONLOCK_INFO: 'Lock status',
 
   // vote
   DELETE: 'Delete',
@@ -223,6 +240,11 @@ window.Translations['en-us'] = {
   ERR_AT_LEAST_SELECT_ONE_DELEGATE: 'Please select one at least',
   ERR_DELETE_NO_MORE_THAN_33: '一次删除至多33位候选人',
   ERR_VOTE_NO_MORE_THAN_33: '一次投票至多33位候选人',
+  ERR_POSITIONLOCK_EMPTY: 'Please type in',
+  ERR_POSITIONLOCK_NOT_NUM: 'Please confirm the number you typed',
+  ERR_INVALID_REMARK: 'Ensure your remark is right',
+  ERR_NO_BALANCE: 'No balance, Please Deposit',
+  ERR_NO_DEPOSIT_COIN: 'No choose coin, Please Choose',
 
   // toast info
   INF_REGISTER_SUCCESS: 'Register success !',
@@ -231,6 +253,7 @@ window.Translations['en-us'] = {
   INF_OPERATION_SUCCEEDED: 'Operation succeeded!',
   INF_VOTE_SUCCESS: 'Vote success !',
   INF_SECND_PASSWORD_SET_SUCCESS: 'Second secret set success !',
+  INF_POSITIONLOCK_SET_SUCCESS: 'Set the position lock successfully !',
 
   ALLOW_WWB: 'Allow Writeoff/Whitelist/Blacklist',
   ALLOW_WRITEOFF: 'Allow Writeoff',
@@ -238,4 +261,27 @@ window.Translations['en-us'] = {
   ALLOW_BLACKLIST: 'Allow Blacklist',
   ALLOW: 'Allow',
   NOT_ALLOW: 'Not Allow',
+
+  // Fragil set
+  FRAGIL_PRE: 'Unlock when the number ',
+  FRAGIL_LAT: ' has reached',
+  FRAGIL_ABOUT: 'In about ',
+  FRAGIL_DAY: ' Day ',
+  FRAGIL_HOUR: ' Hour ',
+  FRAGIL_MIN: ' Minute ',
+  FRAGIL_SEC: ' Second to unlock',
+  FRAGIL_INPUT: 'The number input should at least 100 higher than the latest height',
+  FRAGIL_RANGE: 'The number should range from 1 to 10 000 000',
+  FRAGIL_UNLOCK: '',
+
+  //deposit
+  DEPOSIT_COIN_TYPE: 'Choose Coin Type',
+  DEPOSIT_AMOUNT: 'Deposit Amount',
+  DEPOSIT_FEES: 'Deposit Fees',
+
+  DAPP_SUPPORT_COIN: 'Support Coin',
+  DAPP_COIN_TOTAL_AMOUNT: 'Total Amount',
+  DAPP_COIN_CURRENT_QUANTITY: 'Current Quantity',
+  DAPP_COIN_BALANCE: 'DAPP Balance',
+  DAPP_COIN_FEE: 'Fee: 0.1 xas',
 };

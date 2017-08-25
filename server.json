@@ -1,7 +1,8 @@
 {
 	"server": {
 		"dev": "http://localhost:4096",
-		"dev2": "http://121.42.194.216:4097"
+		"dev2": "http://121.42.194.216:4097",
+		"dev3": "http://101.200.123.124:4097"
 	},
 	//登录接口
 	"loginApi": {
@@ -103,5 +104,20 @@
 	"peersApi": {
 		"mock": "/data/peer/peers.json",
 		"url": "/api/peers"
+	},
+	// 获取应用余额
+	"appBalanceApi": {
+		"mock": "",
+		"url": "/api/dapps/:appId/balances/:address"
+	},
+	// 获取特定资产
+	"uiaAssetApi": {
+		"mock": "",
+		"url": "/api/uia/assets/:name"
+	},
+	// 获取所有资产
+	"uiaAssetListApi": {
+		"mock": "",
+		"url": "/api/uia/assets"
 	}
 }

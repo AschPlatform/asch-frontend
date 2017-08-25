@@ -8,6 +8,9 @@
 					<div class="nav_per passwordInfo " ng-class=" {'active':passwordInfo}" ng-click="passwordchange()">
 						{{'SECOND_PASSWORD' | translate}}
 					</div>
+					<div class="nav_per positionInfo " ng-class=" {'active':positionInfo}" ng-click="positionchange()">
+						{{'LOCK_POSITION' | translate}}
+					</div>
 					<div class="nav_exit" ng-click="quitout()">
 						{{'QUIT' | translate}}
 					</div>
@@ -39,8 +42,11 @@
 								<div class="summary_text text_row">
 									<span class="greyFont">{{'SECOND_PASSWORD' | translate}} : </span> {{setStatus()}}
 								</div>
+								<div class="summary_text text_row">
+									<span class="greyFont">{{'POSITIONLOCK_INFO' | translate}} : </span> {{positionLockStatus()}}
+								</div>
 								<div class="publickey_text text_row">
-									<span class="greyFont">{{'PUBLIC_KEY' | translate}} : </span> {{userService.publicKey}}
+									<span class="greyFont">{{'PUBLIC_KEY' | translate}} : </span><p>{{userService.publicKey}}</p>
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -78,5 +84,28 @@
 
 				</div>
 				<!--支付信息 end-->
+				<!--锁仓信息 start-->
+				<div ng-show="positionInfo" class="positionInfo_cont">
+					<div class="finishSet" ng-show="isLock()">
+						<img src="/assets/personal/tip_passwordNo.png" class="finishSet_icon"/>
+						<div class="finishSet_text">
+							{{'ALREADY_SET_POSITIONLOCK' | translate}}
+						</div>
+					</div>
+					<div class="_title" ng-hide="isLock()">
+							{{'LOCK_POSITION_TITLE' | translate}}
+					</div>
+					<div class="position_input_set" ng-hide="isLock()">
+						<div class="input_box">
+							<input type="text" class="block_type_in orangeFont" ng-keyup="calTimeLeft()" ng-model="block_number" placeholder="{{'ACCOUNT_TYPE_HINT' | translate}}"><p>{{'ACCOUNT_LOCK_TIP' | translate}}</p>
+							<input type="password" class="block_type_in orangeFont" ng-model="secondpassword" placeholder="{{'ACCOUNT_TYPE2_HINT' | translate}}" ng-hide="!userService.secondPublicKey">
+						</div>
+						<span>{{timeLeft}}</span>
+						<div class="pwd_btn">
+							<button class="accept_nxt" ng-click="setPositionLock()">{{'SUBMIT' | translate}}</button>
+						</div>
+					</div>
+				</div>
+				<!--锁仓信息 end-->
 				
 			</div>

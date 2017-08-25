@@ -1,6 +1,6 @@
 #asset{
   width: 100%;
-  min-height: 508px;
+  //min-height: 508px;
   border: 1px solid #dddddd;
   .hand{
     cursor: pointer;
@@ -71,7 +71,7 @@
     background: #efefef;
     position: relative;
     .titleitem{
-      width: 162px;
+      width: 202px;
       height: 65px;
       display: inline-block;
       text-align: center;
@@ -144,8 +144,8 @@
   }
   .content{
     width: 100%;
-    min-height: 458px;
-
+    height: 458px;
+    overflow-y: auto;
     box-sizing: border-box;
     padding: 20px;
     ._item{
@@ -255,9 +255,21 @@
 
 }
 #comfirmDialog{
+  //position: absolute;
+  //left: 30vw;
+  //top: 50vh;
+  //min-height:200px;
+  //margin-top:430px;
+  //background: #fff;
+  //border: 1px solid #f0f0f0;
+  //padding: 60px;
+  //z-index: 10;
   position: absolute;
-  left: 30%;
+  left: 50%;
   top: 50%;
+  margin-left: -221px;
+  min-height: 200px;
+  margin-top: -100px;
   background: #fff;
   border: 1px solid #f0f0f0;
   padding: 60px;

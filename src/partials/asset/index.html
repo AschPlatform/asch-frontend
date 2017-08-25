@@ -25,10 +25,10 @@
             </thread>
             <tr ng-repeat="i in $data"  >
                 <td> {{i.currency}}</td>
-                <td>{{i.balance }}</td>
-                <td>{{i.maximum}}</td>
+                <td>{{i.balanceShow }}</td>
+                <td>{{i.maximumShow}}</td>
                 <td>{{i.precision}}</td>
-                <td>{{i.quantity}}</td>
+                <td>{{i.quantityShow}}</td>
                 <td>{{i.writeoff  }}</td>
                 <td>{{i.allowWriteoff ? 'Y' : 'N'}}/{{i.allowWhitelist ? 'Y' : 'N'}}/{{i.allowBlacklist ? 'Y' : 'N'}}</td>
                 <td><a class="hand" ng-click="transferView(i,1)">{{'TRANSFER' | translate}}</a></td>
@@ -112,9 +112,9 @@
             </thread>
             <tr ng-repeat="i in $data"  >
                 <td> {{i.name}}</td>
-                <td>{{i.maximum}}</td>
+                <td>{{i.maximumShow}}</td>
                 <td>{{i.precision}}</td>
-                <td>{{i.quantity}}</td>
+                <td>{{i.quantityShow}}</td>
                 <td>{{i.writeoff  }}</td>
                 <td>{{i.allowWriteoff ? 'Y' : 'N'}}/{{i.allowWhitelist ? 'Y' : 'N'}}/{{i.allowBlacklist ? 'Y' : 'N'}}</td>
                 <td>

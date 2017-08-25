@@ -18,7 +18,7 @@ angular.module('asch').controller('votetoCtrl', function ($scope, $rootScope, ap
             if (res.success == true) {
                 $rootScope.checkobj = {}
                 $rootScope.coedobj = {}
-                console.log($rootScope.checkobj);
+                /*console.log($rootScope.checkobj);*/
                 $scope.Close();
                 $rootScope.$emit('upvoteSuccess');
                 toast($translate.instant('INF_VOTE_SUCCESS'));

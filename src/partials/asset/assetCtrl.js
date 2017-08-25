@@ -91,12 +91,6 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     address: userService.address
                 }).success(function (res) {
                     params.total(res.count);
-                    for (var i in res.balances) {
-                        var precision = res.balances[i].precision;
-                        res.balances[i].balance = parseInt(res.balances[i].balance) / Math.pow(10, precision);
-                        res.balances[i].maximum = parseInt(res.balances[i].maximum) / Math.pow(10, precision);
-                        res.balances[i].quantity = parseInt(res.balances[i].quantity) / Math.pow(10, precision);
-                    }
                     $defer.resolve(res.balances);
                 }).error(function (res) {
                     toastError($translate.instant('ERR_SERVER_ERROR'));
@@ -214,11 +208,6 @@ angular.module('asch').controller('assetCtrl', function ($scope, $rootScope, api
                     }).success(function (res) {
                         params.total(res.count);
                         $defer.resolve(res.assets);
-                        for (var i in res.assets) {
-                            var precision = res.assets[i].precision;
-                            res.assets[i].maximum = parseInt(res.assets[i].maximum) / Math.pow(10, precision);
-                            res.assets[i].quantity = parseInt(res.assets[i].quantity) / Math.pow(10, precision);
-                        }
                     }).error(function (res) {
                         toastError($translate.instant('ERR_SERVER_ERROR'));
                     });

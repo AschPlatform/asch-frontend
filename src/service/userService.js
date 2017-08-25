@@ -1,15 +1,20 @@
 angular.module('asch').service('userService', function () {
-    this.setData = function (secret, address, publicKey, balance, secondPublicKey) {
+    this.setData = function (secret, publicKey, account, latestBlock) {
         this.secret = secret;
-        this.address = address;
+        this.address = account.address;
         this.publicKey = publicKey;
-        this.balance = balance;
-        this.secondPublicKey = secondPublicKey;
-
-    }
-    this.update = function (account) {
         this.balance = account.balance;
         this.secondPublicKey = account.secondPublicKey;
+        this.lockHeight = account.lockHeight
+
+        this.latestBlockHeight = latestBlock.height
+    }
+    this.update = function (account, latestBlock) {
+        this.balance = account.balance;
+        this.secondPublicKey = account.secondPublicKey;
+        this.lockHeight = account.lockHeight
+
+        this.latestBlockHeight = latestBlock.height
     }
     this.saveTab = function (tab) {
         this.tab = tab;

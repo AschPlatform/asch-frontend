@@ -1,4 +1,4 @@
-<div  ng-include="'partials/common/crumb/crumb.html'"></div>
+<div ng-include="'partials/common/crumb/crumb.html'"></div>
 <div id="application" ng-controller="applicationCtrl" ng-init="init()">
 
 	<div class="appheader">
@@ -15,8 +15,8 @@
 					<td>{{'DAPP_NAME' | translate}}</td>
 					<td>{{'DAPP_DESCRIPTION' | translate}}</td>
 					<td>ID</td>
-					<td>{{'DAPP_CATEGORY' | translate}}</td>
-					<td>{{'DAPP_SOURCE_CODE' | translate}}</td>
+					<td><div class = "category">{{'DAPP_CATEGORY' | translate}}</div></td>
+					<td><div class = "download">{{'DAPP_SOURCE_CODE' | translate}}</div></td>
 				</tr>
 			</thread>
 			<tr ng-repeat="i in $data"  >
@@ -25,8 +25,8 @@
 				<td class="wop">{{i.description}}</td>
 				<td >{{i.transactionId}}</td>
 				<!--<td  data-title="'标签'" >{{i.tags}}</td>-->
-				<td>{{i.category | catalogsFilter}}</td>
-				<td><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</a></td>
+				<td><div class = "category">{{i.category | catalogsFilter}}</div></td>
+				<td><div class = "download"><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</div></a></td>
 			</tr>
 		</table>
 
@@ -40,8 +40,10 @@
 					<td>{{'DAPP_NAME' | translate}}</td>
 					<td>{{'DAPP_DESCRIPTION' | translate}}</td>
 					<td>ID</td>
-					<td>{{'DAPP_CATEGORY' | translate}}</td>
-					<td>{{'DAPP_SOURCE_CODE' | translate}}</td>
+					<td><div class = "category">{{'DAPP_CATEGORY' | translate}}</div></td>
+					<td>{{'DAPP_DEPOSIT' | translate}}</td>
+					<td><div class = "balance">{{'DAPP_BANLANCE_DETAIL' | translate}}</div></td>
+					<td><div class = "download">{{'DAPP_SOURCE_CODE' | translate}}</div></td>
 				</tr>
 			</thread>
 			<tr ng-repeat="i in $data"  >
@@ -50,12 +52,62 @@
 				<td class="wop">{{i.description}}</td>
 				<td>{{i.transactionId}}</td>
 				<!--<td  data-title="'标签'" >{{i.tags}}</td>-->
-				<td>{{i.category | catalogsFilter}}</td>
-				<td><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</a></td>
+				<td><div class = "category">{{i.category | catalogsFilter}}</div></td>
+				<td><button class="deposit-btn" ng-click="depositDapp(i)">{{'DAPP_DEPOSIT' | translate }}</button></td>
+				<td ng-click="showBalance(i)" style = "color: rgb(63,123,217); cursor: pointer"><div class = "balance">{{'DAPP_DETAIL' | translate}}</div></td>
+				<td><div class = "download"><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</div></a></td>
 			</tr>
 		</table>
-
+		
 	</div>
+	<!-- 余额详情的弹窗 -->
+	<div class="balance-dialog" ng-show = "isShowBalance">
+		<div class="balance-detail"  ng-style = "tableStyle" >
+			<div class="close-btn">
+				<img src="../../assets/common/close.png" alt="" width = "20px" ng-click = "closeShowBalance()">
+			</div>
+			<table class = "table">
+				<thread>
+					<tr class = "header" >
+						<td style = "border-top:1px solid #fff;">{{'DAPP_SUPPORT_COIN' | translate}}</td>
+						<td style = "border-top:1px solid #fff;">{{'DAPP_COIN_CURRENT_QUANTITY' | translate}}</td>
+						<td style = "border-top:1px solid #fff;">{{'DAPP_COIN_BALANCE' | translate}}</td>
+					</tr>
+				</thread>
+				<tr ng-repeat="i in showBalances"  >
+					<td class="wop">{{i.currency}}</td>
+					<td class="wop">{{i.quantityShow | unitFilter }}</td>
+					<td class="wop">{{i.balance | xasFilter}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class = "deposit-dialog"  ng-show = "depositedDapp">
+		<div class = "deposit-detail" ng-class="{'deposit-dialog-nosecondpassword': !userService.secondPublicKey, 'deposit-dialog-secondpassword': userService.secondPublicKey }">
+			<div class="close-btn">
+				<img src="../../assets/common/close.png" alt="" width = "20px" ng-click = "closeDeposit()">
+			</div>
+			<div>
+				<select ng-model="currency" ng-options="i.value for i in currencys" id="deposit_item1">
+						<option value=''>{{ 'DEPOSIT_COIN_TYPE' | translate }}</option>
+				</select>
+				<div class="">
+					<input type="number" required ng-model="amount" ng-trim="true" placeholder="{{'DEPOSIT_AMOUNT' | translate}}" id="deposit_item3">
+				</div>
+				<div class="" ng-show="userService.secondPublicKey">
+					<input type="password" ng-model="secondPassword" id="deposit_item4" placeholder="{{'TRS_TYPE_SECOND_PASSWORD' | translate}}">
+				</div>
+				<p style = "font-size:15px">{{'DAPP_COIN_FEE' | translate}}</p>
+				<div class="buttons">
+					<button class="sent" ng-click="sentMsg()" class = "confirm-btn" style = "margin-right: 30px">{{'CONFIRM' | translate}}</button>
+					<button class="sent" ng-click="closeDeposit()">{{'CANCEL' | translate}}</button>	
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
 	<script type="text/ng-template" id="custom/pager">
 		<ul class="pagination ng-table-pagination">
 			<li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in pages" ng-switch="page.type">

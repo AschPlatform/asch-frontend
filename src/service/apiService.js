@@ -106,4 +106,15 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	this.myAssetTransactions = function (params) {
 		return fetch('{{myTransactionsApi}}', params, 'get');
 	};
+	// 获取应用余额
+	this.appBalance = function (params) {
+		return fetch('{{appBalanceApi}}', params, 'get')
+	}
+	// 获取资产
+	this.uiaAssetApi = function (params) {
+		return fetch('{{uiaAssetApi}}', params, 'get')
+	},
+	this.uiaAssetListApi = function (params) {
+		return fetch('{{uiaAssetListApi}}', params, 'get')
+	}
 });
