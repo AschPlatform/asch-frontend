@@ -46,7 +46,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		return $translate.instant(label);
 	}
 	$scope.positionLockStatus = function () {
-	if (userService.lockHeight != 0) {
+		if (userService.lockHeight != 0) {
 			var a = $translate.instant('FRAGIL_PRE');
 			var b = $translate.instant('FRAGIL_LAT');
 			/*console.log(userService.lockHeight);*/
@@ -116,8 +116,8 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		}
 
 		if (!userService.secondPublicKey) {
-            $scope.secondPassword = '';
-        }
+			$scope.secondPassword = '';
+		}
 
 		var transaction = AschJS.transaction.createLock(lockHeight, userService.secret, $scope.secondpassword);
 		postSerivice.post(transaction).success(function (res) {
@@ -131,42 +131,37 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 			toastError($translate.instant('ERR_SERVER_ERROR'));
 		});
 	}
-	
+
 	// 计算解锁时间
 	$scope.calTimeLeft = function () {
 		if (!$scope.block_number) return
 		var lockHeight = Number($scope.block_number)
 		var diffHeight = lockHeight - userService.latestBlockHeight
+		var sec = diffHeight * 10;
+		var min = 0;
+		var hou = 0;
+		var day = 0;
+		var ab = $translate.instant('FRAGIL_ABOUT');
+		var d = $translate.instant('FRAGIL_DAY');
+		var h = $translate.instant('FRAGIL_HOUR');
+		var m = $translate.instant('FRAGIL_MIN');
+		var s = $translate.instant('FRAGIL_SEC');
+		var r = $translate.instant('FRAGIL_RANGE');
+		var u = $translate.instant('FRAGIL_UNLOCK');
 		if (diffHeight > 0 && diffHeight < 10000000) {
-			var sec = diffHeight * 10;
-			var min = 0;
-			var hou = 0;
-			var day = 0;
-			var ab = $translate.instant('FRAGIL_ABOUT');
-			var d = $translate.instant('FRAGIL_DAY');
-			var h = $translate.instant('FRAGIL_HOUR');
-			var m = $translate.instant('FRAGIL_MIN');
-			var s = $translate.instant('FRAGIL_SEC');
-			var i = $translate.instant('FRAGIL_INPUT');
-			var r = $translate.instant('FRAGIL_RANGE');
-			var u = $translate.instant('FRAGIL_UNLOCK');
-			if (diffHeight > 100 && diffHeight < 10000000) {
-				if (sec > 60) {
-					min = sec / 60;
-					sec = sec % 60;
-					if (min > 60) {
-						hou = min / 60;
-						min = min % 60;
-						if (hou > 24) {
-							day = hou / 24;
-							hou = hou % 24;
-						}
+			if (sec > 60) {
+				min = sec / 60;
+				sec = sec % 60;
+				if (min > 60) {
+					hou = min / 60;
+					min = min % 60;
+					if (hou > 24) {
+						day = hou / 24;
+						hou = hou % 24;
 					}
 				}
-				$scope.timeLeft = ab + parseInt(day) + d + parseInt(hou) + h + parseInt(min) + m + parseInt(sec) + u;
-			} else {
-				$scope.timeLeft = i;
 			}
+			$scope.timeLeft = ab + parseInt(day) + d + parseInt(hou) + h + parseInt(min) + m + parseInt(sec) + u;
 		} else {
 			$scope.timeLeft = r;
 		}
