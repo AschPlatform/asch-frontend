@@ -542,8 +542,81 @@ body {
     height: 100vh;
     width: 100vw;
     position: relative;
-    background: url('/assets/common/asch_bg.jpg') top center no-repeat #06283c;
+    background-color: rgb(27, 27, 38);
     background-size: 100% auto;
 }
+/* 设置各个页面的特殊背景 */
+@media screen and (max-width: 2000px){
+    .heart{
+        background: url('/assets/login/wrap2_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 70% 60%;
+        background-size: 84% 136%;
+        transition: all .5s linear .1s;
+    }
+    .earth{
+        background: url('/assets/login/wrap1_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 90% 129%;
+        background-size: 47% 90%;
+        transition: all .5s linear .1s;
+    }
+    .egg{
+        background: url('/assets/login/wrap3_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 100% -69%;
+        background-size: 62% 108%;
+        transition: all .5s linear .1s;
+    }
+}
+@media screen and (max-width: 1400px){
+    .heart{
+        background: url('/assets/login/wrap2_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 70% 60%;
+        background-size: 63% 136%;
+        transition: all .5s linear .1s;
+    }
+    .earth{
+        background: url('/assets/login/wrap1_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 90% 129%;
+        background-size: 41% 90%;
+        transition: all .5s linear .1s;
+    }
+    .egg{
+        background: url('/assets/login/wrap3_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 102% -63%;
+        background-size: 56% 111%;
+        transition: all .5s linear .1s;
+    }
+}
+@media screen and (min-width: 2000px){
+    .heart{
+        background: url('/assets/login/wrap2_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 70% 60%;
+        background-size: 63% 136%;
+        transition: all .5s linear .1s;
+    }
+    .earth{
+        background: url('/assets/login/wrap1_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 90% 129%;
+        background-size: 38% 90%;
+        transition: all .5s linear .1s;
+    }
+    .egg{
+        background: url('/assets/login/wrap3_bg.png') no-repeat rgb(27, 27, 38);
+        background-position: 101% -44%;
+        background-size: 50% 115%;
+        transition: all .5s linear .1s;
+    }
+}
+/* .earth{
+    background: url('/assets/login/wrap1_bg.png') no-repeat rgb(27, 27, 38);
+    background-position: 90% 129%;
+    background-size: 40% 90%;
+    transition: all .5s linear .1s;
+}
+.heart{
+    background: url('/assets/login/wrap2_bg.png') no-repeat rgb(27, 27, 38);
+    background-position: 70% 60%;
+    background-size: 53% 136%;
+    transition: all .5s linear .1s;
+} */
 
 
