@@ -7,7 +7,7 @@
       //display: flex;
       //display: -webkit-box;
       //padding: 0 auto;
-      width: 826px;
+      width: 872px;
       height: 330px;
       hr {
         height: 0;
@@ -29,7 +29,7 @@
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #c1c1c1;
+          background-color: #2d3039;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
@@ -115,7 +115,7 @@
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #c1c1c1;
+          background-color: #2d3039;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
@@ -178,7 +178,7 @@
       .table_title {
         margin: 70px 0 20px 0;
         font-size: 25px;
-        color: #333;
+        color: #b8b9bd;
       }
     }
     .deal_table {
@@ -205,8 +205,10 @@
         }
 
         .font_table{
+          background: #1e2126;
           td{
             font-size: 20px;
+            color: #939498;
             text-align: center;
             padding-top: 0px;
           }
@@ -228,13 +230,22 @@
         }
         tr:nth-child(odd) {
           width: 100%;
-          background: #ccc;
+          background: #121117;
           border: 0;
           color: #fff;
         }
+        .font_table{
+          background: #1e2126;
+          td{
+            font-size: 20px;
+            color: #939498;
+            text-align: center;
+            padding-top: 0px;
+            background: #1e2126;
+          }
+        }
         tr:hover {
-          background: blue;
-          color: red;
+
         }
       }
       thead{
@@ -248,7 +259,11 @@
             height: 20px;
             width: 100%;
             border-bottom:none;
-            background: linear-gradient(to bottom, #000000 0%,#ccc 100%);
+            background: -moz-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            background: -webkit-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            background: -o-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            background: -ms-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            background: linear-gradient(to bottom, #000000 0%,#1e2126 100%);
           }
         }
       }
