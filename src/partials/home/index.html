@@ -45,7 +45,7 @@
 						<td>{{'AMOUNTS' | translate}}({{'FEES' | translate}})</td>
 					</tr>
 			</thread>
-			<tr ng-repeat="i in $data">
+			<tr ng-repeat="i in $data" class="">
 				<td> {{i.id}}</td>
 				<td>{{i.type | typeFilter}}</td>
 				<td> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
