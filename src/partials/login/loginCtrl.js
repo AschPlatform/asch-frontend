@@ -1,5 +1,10 @@
 angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, apiService, ipCookie, $window, $location, userService, $translate) {
+	$rootScope.bgimg = 'earth';
 	$rootScope.userlogin = false;
+	// bgchange
+	$rootScope.isEarth = true;
+	$rootScope.isHeart = false;
+	$rootScope.isEgg = false;
 	$rootScope.register = true;
 	$rootScope.creatpwd = false;
 	$rootScope.checkpwd = false;
@@ -27,6 +32,9 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 	$scope.changeLanguage();
 	
 	$scope.newuser = function () {
+		$rootScope.isEarth = false;
+		$rootScope.isHeart = true;
+		$rootScope.isEgg = false;
 		$rootScope.register = false;
 		$rootScope.creatpwd = true;
 		$rootScope.checkpwd = false;
@@ -69,11 +77,19 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 		$rootScope.register = true;
 		$rootScope.creatpwd = false;
 		$rootScope.checkpwd = false;
+		// bgimg
+		$rootScope.isEgg = false;
+		$rootScope.isHeart = false;
+		$rootScope.isEarth = true;
 	};
 	$scope.close = function () {
 		$rootScope.register = true;
 		$rootScope.creatpwd = false;
 		$rootScope.checkpwd = false;
+		// bgimg
+		$rootScope.isEgg = false;
+		$rootScope.isHeart = false;
+		$rootScope.isEarth = true;
 	}
 	//确认
 	$scope.lastcheck = function () {
@@ -96,21 +112,36 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 		}
 	}
 	$scope.saveTxt = function (filename) {
+		console.log("save actived!")
 		var text = $scope.newsecret.trim();
+		console.log("save actived 1")
 		var address = AschJS.crypto.getAddress(newpublicKey);
+		console.log("save actived 2")
 		txt = 'secret:' + '\r\n' + text + '\r\n\r\n' + 'address:' + '\r\n' + address + '\r\n';
+		console.log("save actived 3" + txt)
 		var link = document.createElement("a");
+		console.log("save actived 4" + link)
 		link.setAttribute("target", "_blank");
+		console.log("save actived 5")
 		if (Blob !== undefined) {
+			console.log("save actived if 1")
 			var blob = new Blob([txt], { type: "text/plain" });
+			console.log("save actived if 1 2")
 			link.setAttribute("href", URL.createObjectURL(blob));
+			console.log("save actived if 1 3" + link)
 		} else {
+			console.log("save actived if 2")
 			link.setAttribute("href", "data:text/plain," + encodeURIComponent(txt));
 		}
+		console.log("save actived after if 1")
 		link.setAttribute("download", filename);
+		console.log("save actived after if 2")
 		document.body.appendChild(link);
+		console.log("save actived after if 3")
 		link.click();
+		console.log("save actived after click 4")
 		document.body.removeChild(link);
+		console.log("save actived after end")
 	}
 	// $scope.saveCookie = function () {
 	// 	ipCookie('userSecret',$scope.secret);
@@ -148,5 +179,9 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 		$rootScope.register = false;
 		$rootScope.creatpwd = false;
 		$rootScope.checkpwd = true;
+		// bgimg
+		$rootScope.isEarth = false;
+		$rootScope.isHeart = false;
+		$rootScope.isEgg = true;
 	}
 });
