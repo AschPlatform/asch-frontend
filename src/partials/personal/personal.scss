@@ -1,6 +1,15 @@
 #personal{
+	width: 826px;
+	//border: 1px solid #dddddd;
+	margin-left: 50px;
+}
+hr {
+	height: 0;
 	width: 100%;
-	border: 1px solid #dddddd;
+	border: none;
+	border-top: 4px groove #040508;
+	border-top: 1px solid #191c24;
+	border-top: 4px groove #40485a;
 }
 .clear{
 	clear: both;
@@ -18,7 +27,9 @@
 .nav .nav_per{
 	width: 185px;
 	font-size: 24px;
-	border-right: 1px solid #dddddd;
+	//border-right: 1px solid #dddddd;
+	border-radius: 6px;
+	border-bottom-left-radius: unset;
 	line-height: 62px;
 	float: left;
 	text-align:center;
@@ -47,7 +58,7 @@
 }
 .nav .active{
 	background: #ffffff;
-	border-bottom: 5px solid #3989de;
+	//border-bottom: 5px solid #3989de;
 	color: #3989de;
 	height: 62px;
 }
@@ -58,23 +69,27 @@
 .baseInfo{
 	padding: 0 20px;
 	height: 440px;
+	border: 1px solid red;
 }
 ._title{
 	height: 89px;
 	font-size: 30px;
 	line-height: 89px;
-	border-bottom: 5px solid #bcbcbc;
+	//border-bottom: 5px solid #bcbcbc;
 }
 
 .baseInfo .baseInfo_tx{
-	width: 190px;
-	height: 350px;
-	background: url("/assets/personal/userlogo.png") no-repeat center center;
-	background-size: 60% auto;
+	margin: 82px 50px 0 15px;
+	border-radius: 25px;
+	border: 1px solid #ccc;
+	width: 160px;
+	height: 150px;
+	background: url(/assets/personal/userlogo.png) no-repeat center bottom;
+	background-size: 63% auto;
 	float: left;
 }
 .baseInfo .baseInfo_text{
-	width: 75%;
+	width: 70%;
 	height: 350px;
 	float: left;
 	margin-top: 40px;

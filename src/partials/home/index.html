@@ -2,45 +2,56 @@
 <div id="home" ng-controller="homeCtrl" ng-init="init()">
 
 	<div class="homeinfo">
-		<div class="account">
-			<span>{{'BALANCE' | translate}}</span>
-			<i>{{ userService.balance | xasFilter }}</i>
-			<b>XAS</b>
+		<hr/>
+		<div class="account_top">
+			<div class="account">
+				<span>{{'LATEST_BLOCK_HEIGHT' | translate}}</span>
+				<i>{{ latestBlock.height }}</i>
+				<b>{{latestBlock.timestamp | timestampFilter }}</b>
+			</div>
+			<div class="account">
+				<span>{{'VERSION_INFO' | translate}}</span>
+				<i class="account_i">{{ version.version }}</i>
+				<p class="account_p">{{latestBlock.timestamp | timestampFilter }}</p>
+				<b class="account_b">{{version.build}} - {{version.net}}</b>
+			</div>
 		</div>
-		<div class="account">
-			<span>{{'LATEST_BLOCK_HEIGHT' | translate}}</span><i>{{ latestBlock.height }}</i>
-			<b>{{latestBlock.timestamp | timestampFilter }}</b>
+		<hr/>
+		<div class="account_bottom">
+			<div class="account">
+				<span>ABC余额</span>
+				<i>999999999</i>
+			</div>
+			<div class="account">
+				<span>XAS余额</span>
+				<i>999999999</i>
+			</div>
 		</div>
-		<div class="account">
-			<span>{{'VERSION_INFO' | translate}}</span><i>{{ version.version }}</i>
-			<b>{{version.build}} - {{version.net}}</b>
-		</div>
+		<hr/>
 	</div>
 	<div class="latest">
 		<div class="table_title">{{'MY_TRSACTIONS' | translate}}</div>
 	</div>
 	<div class="deal_table" >
-		<table class="table"ng-table="hometableparams" border="0" width="100%" cellpadding="0" cellspacing="0"
+		<table class="table" ng-table="hometableparams"
 			   template-pagination="custom/pager" >
 			<thread>
-					<tr>
+					<tr class="font_table">
 						<td>ID</td>
 						<td>{{'TYPE' | translate}}</td>
 						<td>{{'SENDER' | translate}}</td>
 						<td>{{'RECIPIENT' | translate}}</td>
 						<td>{{'DATE' | translate}}</td>
 						<td>{{'AMOUNTS' | translate}}({{'FEES' | translate}})</td>
-						<td>{{'REMARK' | translate}}</td>
 					</tr>
 			</thread>
-			<tr ng-repeat="i in $data"  >
+			<tr ng-repeat="i in $data">
 				<td> {{i.id}}</td>
 				<td>{{i.type | typeFilter}}</td>
 				<td> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
 				<td class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || 'SYSTEM' | translate}}</i></td>
 				<td>{{i.timestamp | timestampFilter}}</td>
-				<td>{{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
-				<td>{{i.message}}</td>
+				<td>$ {{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
 			</tr>
 		</table>
 	</div>
@@ -66,5 +77,4 @@
 			</li>
 		</ul>
 	</script>
-
 </div>

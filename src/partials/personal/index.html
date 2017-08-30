@@ -1,6 +1,6 @@
 <div  ng-include="'partials/common/crumb/crumb.html'"></div>
 <div id="personal" ng-controller="personalCtrl" ng-init="init()" ng-show="isLogin">
-
+	<hr/>
 				<div class="nav">
 					<div class="nav_per accountInfo " ng-class=" {'active':accountInfo}" ng-click="accountchange()">
 						{{'ACCOUNT_INFO' | translate}}
@@ -19,9 +19,7 @@
 				<!---账户信息 start-->
 				<div ng-show="accountInfo" class="accountInfo_cont ">
 					<div class="baseInfo">
-						<div class="_title">
-							{{'BASIC_INFO' | translate}}
-						</div>
+
 						<div class="baseInfo_content">
 							<div class="baseInfo_tx"></div>
 							<div class="baseInfo_text">
@@ -29,7 +27,7 @@
 									<!--<span class="greyFont">账户名 : </span> {{accountinfo.address}}-->
 								<!--</div>-->
 								<div class="sum_text text_row">
-									<span class="greyFont">{{'TOTAL' | translate}} {{'BALANCE' | translate}} : </span>
+									<!--<span class="greyFont">{{'TOTAL' | translate}} {{'BALANCE' | translate}} : </span>-->
 									<span class="orangeFont"> {{userService.balance  | xasFilter  }}</span>
 									<span class="greyFont">XAS</span>
 								</div>
