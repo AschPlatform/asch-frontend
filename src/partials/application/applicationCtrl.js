@@ -89,31 +89,19 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 	};
 	$scope.showBalance = function(dapp){
 		apiService.appBalance({
-			appId: dapp.transactionId,
-			address: userService.address
+			appId: dapp.transactionId
 		}).success(function (balancesRes) {
+      // console.log('balancesRes', balancesRes)
 			if (!balancesRes.balances) {
 				$scope.showBalances = balancesRes.balances;
 				return;
 			}
-      if (balancesRes.balances.length == 0) {
-        toastError($translate.instant('ERR_NO_BALANCE'));
-        return;
-      }
      
 			for (var i = 0; i < balancesRes.balances.length; i ++){
 				var balance = balancesRes.balances[i]
 				if (balance.currency == 'XAS') {
 					balance.quantityShow = 100000000;
-				}	else {
-					apiService.uiaAssetApi({
-						name: balance.currency
-					}).success(function (assetsRes) {
-						balance.quantityShow = assetsRes.asset.quantityShow;
-					}).error(function(res){
-						toastError($translate.instant('ERR_SERVER_ERROR'));
-					})
-				}
+				}	
 			}
 			$scope.showBalances = balancesRes.balances;
       var tableHeight = $scope.showBalances.length > 4 ? 370 : ($scope.showBalances.length + 1 ) * 70 + 20
@@ -181,7 +169,7 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
             $scope.amount = '';
             $scope.secondPassword = '';
             $scope.depositedDapp = null;
-            toast($translate.instant('INF_TRANSFER_SUCCESS'));
+            toast($translate.instant('DEPOSIT_SUCCESS'));
         } else {
             if(res.error.indexOf('Old address') != -1 || res.error.indexOf('old address') != -1 || res.error.indexOf('老地址') != -1 || res.error.indexOf('数字地址') != -1) {
               toastError('dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）')

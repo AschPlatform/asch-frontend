@@ -268,6 +268,7 @@ window.Translations['zh-cn'] = {
   //deposit
   DEPOSIT_COIN_TYPE: '选择充值所使用的币种',
   DEPOSIT_AMOUNT: '填写充值数量',
+  DEPOSIT_SUCCESS: '充值成功',
   
   DAPP_SUPPORT_COIN: '支持的币种',
   DAPP_COIN_TOTAL_AMOUNT: '总量',
