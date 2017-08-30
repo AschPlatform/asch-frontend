@@ -103,7 +103,7 @@
 	// 获取应用余额
 	"appBalanceApi": {
 		"mock": "",
-		"url": "/api/dapps/:appId/balances/:address"
+		"url": "/api/dapps/balances/:appId"
 	},
 	// 获取特定资产
 	"uiaAssetApi": {

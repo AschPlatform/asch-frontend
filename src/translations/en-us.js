@@ -278,6 +278,7 @@ window.Translations['en-us'] = {
   DEPOSIT_COIN_TYPE: 'Choose Coin Type',
   DEPOSIT_AMOUNT: 'Deposit Amount',
   DEPOSIT_FEES: 'Deposit Fees',
+  DEPOSIT_SUCCESS: 'Deposit Success',
 
   DAPP_SUPPORT_COIN: 'Support Coin',
   DAPP_COIN_TOTAL_AMOUNT: 'Total Amount',
