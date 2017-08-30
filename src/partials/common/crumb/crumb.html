@@ -1,5 +1,5 @@
 <div class="asch_tip">
-    <p>
+    <!-- <p>
         <a ng-href="#/home"> <img src="/assets/common/min_logo.png" alt="">{{'HOME' | translate}}</a>
         <span ng-show="$root.active == 'personal'">/ {{'PERSONAL' | translate}}</span>
         <span ng-show="$root.active == 'application'">/ {{'APPLICATIONS' | translate}}</span>
@@ -10,5 +10,11 @@
         <span ng-show="$root.active == 'peer'">/ {{'PEERS' | translate}}</span>
         <span ng-show="$root.active == 'asset'">/ {{'ASSET' | translate}}</span>
         <span ng-show="$root.active == 'acl'">/ <a ng-href="#/asset">{{'ASSET' | translate}}</a> / {{'UPDATE_ACL'|translate}}</span>
+    </p> -->
+    <p>
+        <a ng-href="#/home" ng-show="$root.active == 'home'"> <img src="/assets/common/min_logo.png" alt="">{{'HOME' | translate}}</a>
+        <a ng-href="#/personal" ng-show="$root.active == 'personal'"> <img src="/assets/common/min_logo.png" alt="">{{'PERSONAL' | translate}}</a>
+        <a ng-href="#/personal" ng-show="$root.active == 'application'"> <img src="/assets/common/min_logo.png" alt="">{{'APPLICATIONS' | translate}}</a>
+        <a ng-href="#/personal" ng-show="$root.active == 'pay'"> <img src="/assets/common/min_logo.png" alt="">{{'TRANSFER' | translate}}</a>
     </p>
 </div>
