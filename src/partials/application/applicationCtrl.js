@@ -91,7 +91,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 		apiService.appBalance({
 			appId: dapp.transactionId
 		}).success(function (balancesRes) {
-      // console.log('balancesRes', balancesRes)
 			if (!balancesRes.balances) {
 				$scope.showBalances = balancesRes.balances;
 				return;
@@ -100,7 +99,15 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 			for (var i = 0; i < balancesRes.balances.length; i ++){
 				var balance = balancesRes.balances[i]
 				if (balance.currency == 'XAS') {
-					balance.quantityShow = 100000000;
+          apiService.supplyApi({}).success(function (supplyRes) {
+            if (supplyRes.success) {
+              balance.quantityShow = supplyRes.supply / 100000000
+            } else {
+              balance.quantityShow = 100000000;
+            }
+          }).error(function (res) {
+            toastError($translate.instant('ERR_SERVER_ERROR'));
+          })
 				}	
 			}
 			$scope.showBalances = balancesRes.balances;
