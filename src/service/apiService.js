@@ -19,7 +19,6 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		method = method.toLowerCase();
 		if (method == 'get') {
 			var params = json2url(data);
-			console.log('url', url)
 			return $http.get(url + '?' + params);
 		} else {
 			return $http.post(url, data);
@@ -111,7 +110,6 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		return fetch('{{uiaAssetListApi}}', params, 'get')
 	}
 	this.supplyApi = function (params) {
-		console.log('{{supplyApi}}')
 		return fetch('{{supplyApi}}', params, 'get')
 	}
 });
