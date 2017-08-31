@@ -1,272 +1,345 @@
-#personal{
-	width: 826px;
-	//border: 1px solid #dddddd;
-	margin-left: 50px;
-}
-hr {
-	height: 0;
-	width: 100%;
-	border: none;
-	border-top: 4px groove #040508;
-	border-top: 1px solid #191c24;
-	border-top: 4px groove #40485a;
-}
-.clear{
-	clear: both;
-}
-.none{
-	display: none;
-}
-
-/*.nav 开始*/
-
-.nav{
-	height: 62px;
-	background: #efefef;
-}
-.nav .nav_per{
-	width: 185px;
-	font-size: 24px;
-	//border-right: 1px solid #dddddd;
-	border-radius: 6px;
-	border-bottom-left-radius: unset;
-	line-height: 62px;
-	float: left;
-	text-align:center;
-	color: #777777;
-}
-.accountInfo{
-	cursor: pointer;
-}
-.passwordInfo{
-	cursor: pointer;
-}
-.positionInfo{
-	cursor: pointer;
-}
-.nav .nav_exit{
-	margin-top: 11px;
-	width: 140px;
-	height: 40px;
-	background: #3989de;
-	color: #fff;
-	float: right;
-	text-align: center;
-	line-height: 40px;
-	margin-right: 20px;
-	cursor: pointer;
-}
-.nav .active{
-	background: #ffffff;
-	//border-bottom: 5px solid #3989de;
-	color: #3989de;
-	height: 62px;
-}
-/*.nav 结束*/
-
-
-/*.baseInfo 开始*/
-.baseInfo{
-	padding: 0 20px;
-	height: 440px;
-	border: 1px solid red;
-}
-._title{
-	height: 89px;
-	font-size: 30px;
-	line-height: 89px;
-	//border-bottom: 5px solid #bcbcbc;
-}
-
-.baseInfo .baseInfo_tx{
-	margin: 82px 50px 0 15px;
-	border-radius: 25px;
-	border: 1px solid #ccc;
-	width: 160px;
-	height: 150px;
-	background: url(/assets/personal/userlogo.png) no-repeat center bottom;
-	background-size: 63% auto;
-	float: left;
-}
-.baseInfo .baseInfo_text{
-	width: 70%;
-	height: 350px;
-	float: left;
-	margin-top: 40px;
-}
-.baseInfo_text .publickey_text p{
-	display: inline-block;
-	font-size: 16px;
-}
-.baseInfo .baseInfo_text .text_row{
-	height: 60px;
-	border-bottom: 1px solid #dddddd;
-	line-height:60px;
-	font-size: 22px;
-}
-
-.greyFont{
-	font-size: 24px;
-	color: #aaaaaa;
-}
-
-.orangeFont{
-	font-size: 30px;
-	color: #3989de;
-}
-/*.baseInfo 结束*/
-
-
-/*.businessInfo 开始*/
-.businessInfo{
-	padding: 0 20px;
-	/*height: 440px;*/
-}
-.greyFont_size{
-	font-size: 20px;
-	color: #aaaaaa;
-}
-
-.more{
-	width: 100%;
-	height: 46px;
-	text-align: center;
-	line-height: 46px;
-	border: 1px solid #dddddd;
-	margin-top:4px ;
-	margin-bottom:34px ;
-}
-
-/*.businessInfo 结束*/
-
-
-.passwordInfo_cont{
-	margin-bottom: 110px;
-}
-
-.finishSet{
-	width: 100%;
-	height: 460px;
-	text-align: center;
-}
-.finishSet .finishSet_icon{
-	width: 156px;
-	height: 156px;
-	margin-top: 102px;
-}
-.finishSet .finishSet_text{
-	margin-top: 36px;
-	color: #aaaaaa;
-	font-size: 18px;
-}
-
-
-.setPassword{
-	padding: 0 30px;
-	.pwd_tip{
-		font-size:14px;
-		color:#aaa;
-		text-align: center;
-		margin-top: 26px;
-		margin-bottom: 32px;
+@media screen and (max-width: 1920px){
+	#personal{
+		width: 850px;
+		//border: 1px solid #dddddd;
+		margin-left: 50px;
+		margin-top: 100px;
 	}
-	.psw{
-		display: inline-block;
+
+	hr {
+		height: 0;
 		width: 100%;
+		border: none;
+		border-top: 4px groove #040508;
+		border-top: 1px solid #191c24;
+		border-top: 4px groove #40485a;
+	}
+	.clear{
+		clear: both;
+	}
+	.none{
+		display: none;
+	}
+
+	/*.nav 开始*/
+
+	.nav{
+		height: 62px;
+		//background: #efefef;
+		position: relative;
+	}
+	.nav .nav_per{
+		width: 185px;
+		font-size: 24px;
+		background: #9f9f9f;
+		margin-right: 10px;
+		//border-right: 1px solid #dddddd;
+		border-radius: 6px;
+		border-bottom-left-radius: unset;
+		border-bottom-right-radius: unset;
+		line-height: 62px;
+		float: left;
+		text-align:center;
+		color: #777777;
+	}
+	.accountInfo{
+		cursor: pointer;
+	}
+	.passwordInfo{
+		cursor: pointer;
+	}
+	.positionInfo{
+		cursor: pointer;
+	}
+	.nav .nav_exit{
+		position: absolute;
+		top: -90px;
+		right: 0;
+		//background: red;
+		border-radius: 5px;
+		//margin-top: 11px;
+		width: 180px;
+		height: 40px;
+		background: #171b26;
+		color: #0093c9;
+		float: right;
 		text-align: center;
-		font-size: 20px;
-		margin-top: 88px;
-		&:last-child{
-			margin-top: 26px;
-		}
-		label{
-			color:#777;
-			margin-right: 20px;
-		}
-		input{
-			height: 50px;
-			width: 60%;
-			line-height: 50px;
-			font-size: 20px;
-			color: #777777;
-			padding: 13px 16px;
-			border: 1px solid #ddd;
+		line-height: 40px;
+		margin-right: 20px;
+		cursor: pointer;
+	}
+	.nav .btn_exit{
+		position: relative;
+		background-image: linear-gradient(rgb(24, 25, 30),rgb(0, 1, 5));
+		display: inline-block;
+		line-height: 45px;
+		height: 45px;
+		width: 22%;
+		border-radius: 6px;
+		box-shadow: 3px 3px 10px rgb(16, 20, 29);
+		cursor: pointer;
+		@media screen and (max-width: 1400px) {
+			line-height: 35px;
+			height: 35px;
 		}
 		span{
-			color:#3276c3;
-			margin-left: 55px;
-			position: relative;
-			&:before{
-				content: '';
-				width: 20px;
-				height: 20px;
-				position: absolute;
-				background: #fff url('/assets/common/rerush.png') center center no-repeat;
-				background-size: 100% auto;
-				left: -35px;
-				top: 0;
-			}
-		}
-	}
-	.pwd_btn{
-		margin: 0 auto;
-		text-align: center;
-		.accept_nxt{
+			position: absolute;
+			top: 4px;
+			margin-left: 15px;
 			display: inline-block;
-			width: 160px;
-			height: 40px;
-			line-height: 40px;
-			font-size:20px;
-			color:#fff;
-			background-color: #3989de;
-			border: 0;
-			outline: 0;
+			height: 35px;
+			width: 35px;
+			background: url("/assets/login/blue_circle.png") no-repeat;
+			background-size: 200% 200%;
+			background-position: 45% 45%;
+			@media screen and (max-width: 1400px) {
+				top: 5px;
+				height: 25px;
+				width: 25px;
+			}
 		}
 	}
+	.nav .active{
+		background: #2d3039;
+		border-bottom: 1px solid #2d3039;
+		color: #3989de;
+		height: 62px;
+	}
+	/*.nav 结束*/
 
-}
-.setPassword_tip{
-	font-size: 20px;
-	color: #777777;
-	text-align: center;
-	margin-top: 40px;
-}
 
-// 锁仓页面
-.positionInfo_cont{
-	margin: 0 20px;
-	height: 480px;
-	.position_input_set{
+	/*.baseInfo 开始*/
+	.baseInfo{
+		padding: 0 20px;
+		height: 400px;
+		-webkit-box-shadow: 3px 3px 3px #000;
+		-moz-box-shadow: 3px 3px 3px #000;
+		box-shadow:3px 3px 3px #000;
+		background: #2d3039;
+		border-radius: 10px;
+		border-top-left-radius: unset;
+	}
+	._title{
+		//background: -moz-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: -webkit-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: -o-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: -ms-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		padding: 5px 20px 0 20px;
+		//margin-top: 10px;
 		width: 100%;
-		height: 550px;
-		text-align: center;
-		padding: 90px 0 0 0;
-		.input_box{
-			height: 120px;
-			width: 100%;
-			/*margin: 30px 0;*/
-			text-align: left;
-			.block_type_in{
-				display: inline-block;
-				width: 60%;
-				font-size: 22px;
-				border: 1px solid #ddd;
-			}
-			p{
-				display: inline-block;
-				margin-left: 15px;
-				font-size: 22px; 
-				color: #aaaaaa;
-			}
+		height: 75px;
+		font-size: 30px;
+		line-height: 89px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		p{
+			color: #fff;
 		}
 		span{
 			display: block;
-			font-size: 22px;
-			margin: 30px 0 0 0;
-			color: #aaaaaa;
+			border: 1px solid #000;
+			box-shadow: 1px -1px 1px #000;
+			width: 50px;
+			height: 40px;
+			background: url(../../assets/personal/exit.png) no-repeat center center;
+			background-size: auto;
+		}
+	}
+
+	.baseInfo .baseInfo_tx{
+		span{
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: url(../../assets/personal/userlogo.png) no-repeat center 47px;
+			background-size: 70% auto;
+		}
+		margin: 120px 50px 0 10px;
+		border-radius: 30px;
+		border: 1px solid #ccc;
+		width: 150px;
+		height: 150px;
+		background: #ccc;
+		float: left;
+	}
+	.baseInfo .baseInfo_text{
+		width: 70%;
+		height: 350px;
+		float: left;
+		margin-top: 125px;
+	}
+	.baseInfo_text .publickey_text p{
+		display: inline-block;
+		font-size: 16px;
+	}
+	.baseInfo .baseInfo_text .text_row{
+		height: 60px;
+		//border-bottom: 1px solid #dddddd;
+		//margin-top: 30px;
+		line-height:60px;
+		font-size: 20px;
+		color: #9ea1a6;
+		input{
+			width: 100%;
+			height: 50px;
+			background: #6f737c;
+			font-size: 20px;
+			border: none;
+			padding-left: 10px;
+		}
+		input::-moz-placeholder {
+			color: #c1c2c7;
+		}
+		input:-ms-input-placeholder{
+			color: #c1c2c7;
+		}
+		input::-webkit-input-placeholder{
+			color: #c1c2c7;
+		}
+		.publickey_row{
+			display: block;
+		}
+		span{
+			margin-right: 10px;
+		}
+		p{
+			display: inline-block;
+			word-wrap: break-word;
+			word-break: normal;
+			margin-left: 77px;
+			margin-top: -60px;
+			width: 400px;
+			font-size: 20px;
+		}
+	}
+
+	.greyFont{
+		font-size: 24px;
+		margin-right: 20px;
+		color: #aaaaaa;
+	}
+
+	.orangeFont{
+		font-size: 30px;
+		color: #3989de;
+	}
+	/*.baseInfo 结束*/
+
+
+	/*.businessInfo 开始*/
+	.businessInfo{
+		padding: 0 20px;
+		/*height: 440px;*/
+	}
+	.greyFont_size{
+		font-size: 20px;
+		color: #aaaaaa;
+	}
+
+	.more{
+		width: 100%;
+		height: 46px;
+		text-align: center;
+		line-height: 46px;
+		border: 1px solid #dddddd;
+		margin-top:4px ;
+		margin-bottom:34px ;
+	}
+
+	/*.businessInfo 结束*/
+
+
+	.passwordInfo_cont{
+		margin-bottom: 110px;
+		background-color: #2d3039;
+	}
+
+	.finishSet{
+		width: 100%;
+		height: 460px;
+		text-align: center;
+	}
+	.finishSet .finishSet_icon{
+		width: 156px;
+		height: 156px;
+		margin-top: 102px;
+	}
+	.finishSet .finishSet_text{
+		margin-top: 36px;
+		color: #aaaaaa;
+		font-size: 18px;
+	}
+
+
+	.setPassword{
+		//padding: 0 30px;
+		height: 400px;
+		-webkit-box-shadow: 3px 3px 3px #000;
+		-moz-box-shadow: 3px 3px 3px #000;
+		box-shadow: 3px 3px 3px #000;
+		background: #2d3039;
+		padding: 145px;
+		border-radius: 10px;
+		border-top-left-radius: unset;
+		.psw{
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			font-size: 20px;
+			margin-top: 45px;
+
+			&:last-child{
+				margin-top: 26px;
+			}
+			label{
+				color:#777;
+				margin-right: 20px;
+			}
+			input{
+				height: 50px;
+				width: 60%;
+				line-height: 50px;
+				font-size: 20px;
+				color: #777777;
+				padding: 13px 16px;
+				border: 1px solid #ddd;
+				border-radius: 6px;
+			}
+			span{
+				color:#3276c3;
+				margin-left: 55px;
+				position: relative;
+				&:before{
+					content: '';
+					width: 20px;
+					height: 20px;
+					position: absolute;
+					background: #fff url('/assets/common/rerush.png') center center no-repeat;
+					background-size: 100% auto;
+					left: -35px;
+					top: 0;
+				}
+			}
+		}
+		.pwd_tip{
+			font-size:14px;
+			color:#aaa;
+			text-align: center;
+			margin: auto;
+			width: 505px;
+			height: 65px;
+			padding: 13px;
+			white-space: pre-wrap;
+			background: -moz-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: -webkit-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: -o-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: -ms-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
 		}
 		.pwd_btn{
-			margin: 30px auto;
+			margin: 0 auto;
 			text-align: center;
 			.accept_nxt{
 				display: inline-block;
@@ -280,4 +353,525 @@ hr {
 				outline: 0;
 			}
 		}
-	}}
+
+	}
+	.setPassword_tip{
+		font-size: 20px;
+		color: #777777;
+		text-align: center;
+		margin-top: 40px;
+	}
+
+	// 锁仓页面
+	.positionInfo_cont{
+		//margin: 0 20px;
+		//height: 480px;
+		//background: #2d3039;
+		.position_input_set{
+			//width: 100%;
+			//height: 550px;
+			//text-align: center;
+			//padding: 90px 0 0 0;
+			height: 400px;
+			-webkit-box-shadow: 3px 3px 3px #000;
+			-moz-box-shadow:3px 3px 3px #000;
+			box-shadow: 3px 3px 3px #000;
+			background: #2d3039;
+			padding: 145px;
+			border-radius: 10px;
+			border-top-left-radius: unset;
+			.input_box{
+				height: 120px;
+				width: 100%;
+				/*margin: 30px 0;*/
+				text-align: left;
+				.block_type_in{
+					display: inline-block;
+					width: 60%;
+					font-size: 22px;
+					border: 1px solid #ddd;
+				}
+				p{
+					display: inline-block;
+					margin-left: 15px;
+					font-size: 22px;
+					color: #aaaaaa;
+				}
+			}
+			span{
+				display: block;
+				font-size: 22px;
+				margin: auto;
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				color: #aaaaaa;
+				background: -moz-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: -webkit-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: -o-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: -ms-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			}
+			.pwd_btn{
+				margin: 30px auto;
+				text-align: center;
+				.accept_nxt{
+					display: inline-block;
+					width: 160px;
+					height: 40px;
+					line-height: 40px;
+					font-size:20px;
+					color:#fff;
+					background-color: #3989de;
+					border: 0;
+					outline: 0;
+				}
+			}
+		}}
+
+}
+@media screen and (max-width: 1400px){
+	#personal{
+		width: 700px;
+		//border: 1px solid #dddddd;
+		margin-left: 50px;
+		margin-top: 80px;
+	}
+	hr {
+		height: 0;
+		width: 100%;
+		border: none;
+		border-top: 4px groove #040508;
+		border-top: 1px solid #191c24;
+		border-top: 4px groove #40485a;
+	}
+	.clear{
+		clear: both;
+	}
+	.none{
+		display: none;
+	}
+
+	/*.nav 开始*/
+
+	.nav{
+		height: 50px;
+		//background: #efefef;
+		position: relative;
+	}
+	.nav .nav_per{
+		width: 160px;
+		height: 50px;
+		font-size: 24px;
+		background: #9f9f9f;
+		margin-right: 5px;
+		//border-right: 1px solid #dddddd;
+		border-radius: 6px;
+		border-bottom-left-radius: unset;
+		border-bottom-right-radius: unset;
+		line-height: 62px;
+		float: left;
+		text-align:center;
+		color: #777777;
+	}
+	.accountInfo{
+		cursor: pointer;
+	}
+	.passwordInfo{
+		cursor: pointer;
+	}
+	.positionInfo{
+		cursor: pointer;
+	}
+	.nav .nav_exit{
+		position: absolute;
+		top: -90px;
+		right: 0;
+		//background: red;
+		border-radius: 5px;
+		//margin-top: 11px;
+		width: 180px;
+		height: 40px;
+		background: #171b26;
+		color: #0093c9;
+		float: right;
+		text-align: center;
+		line-height: 40px;
+		margin-right: 20px;
+		cursor: pointer;
+	}
+	.nav .btn_exit{
+		position: relative;
+		background-image: linear-gradient(rgb(24, 25, 30),rgb(0, 1, 5));
+		display: inline-block;
+		margin-top: 20px;
+		line-height: 45px;
+		height: 45px;
+		width: 22%;
+		border-radius: 6px;
+		box-shadow: 3px 3px 10px rgb(16, 20, 29);
+		cursor: pointer;
+		@media screen and (max-width: 1400px) {
+			line-height: 35px;
+			height: 35px;
+		}
+		span{
+			position: absolute;
+			top: 4px;
+			margin-left: 15px;
+			display: inline-block;
+			height: 35px;
+			width: 35px;
+			background: url("/assets/login/blue_circle.png") no-repeat;
+			background-size: 200% 200%;
+			background-position: 45% 45%;
+			@media screen and (max-width: 1400px) {
+				top: 5px;
+				height: 25px;
+				width: 25px;
+			}
+		}
+	}
+	.nav .active{
+		background: #2d3039;
+		border-bottom: 1px solid #2d3039;
+		color: #3989de;
+		height: 50px;
+	}
+	/*.nav 结束*/
+
+
+	/*.baseInfo 开始*/
+	.baseInfo{
+		padding: 0 20px;
+		height: 380px;
+		-webkit-box-shadow: 3px 3px 3px #000;
+		-moz-box-shadow: 3px 3px 3px #000;
+		box-shadow:3px 3px 3px #000;
+		background: #2d3039;
+		border-radius: 10px;
+		border-top-left-radius: unset;
+	}
+	._title{
+		//background: -moz-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: -webkit-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: -o-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: -ms-linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		//background: linear-gradient(to bottom, #2c2f36 0%,#000000 100%);
+		padding: 5px 20px 0 20px;
+		//margin-top: 10px;
+		width: 100%;
+		height: 75px;
+		font-size: 30px;
+		line-height: 89px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		p{
+			color: #fff;
+		}
+		span{
+			display: block;
+			border: 1px solid #000;
+			box-shadow: 1px -1px 1px #000;
+			width: 50px;
+			height: 40px;
+			background: url(../../assets/personal/exit.png) no-repeat center center;
+			background-size: auto;
+		}
+	}
+
+	.baseInfo .baseInfo_tx{
+		span{
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: url(../../assets/personal/userlogo.png) no-repeat center 47px;
+			background-size: 70% auto;
+		}
+		margin: 120px 50px 0 10px;
+		border-radius: 30px;
+		border: 1px solid #9f9f9f;
+		width: 130px;
+		height: 130px;
+		background: #9f9f9f;
+		float: left;
+	}
+	.baseInfo .baseInfo_text{
+		width: 70%;
+		height: 350px;
+		float: left;
+		margin-top: 125px;
+	}
+	.baseInfo_text .publickey_text p{
+		display: inline-block;
+		font-size: 16px;
+	}
+	.baseInfo .baseInfo_text .text_row{
+		height: 60px;
+		//border-bottom: 1px solid #dddddd;
+		//margin-top: 30px;
+		line-height:60px;
+		font-size: 18px;
+		color: #9ea1a6;
+		input{
+			width: 100%;
+			height: 50px;
+			background: #6f737c;
+			font-size: 20px;
+			border: none;
+			padding-left: 10px;
+		}
+		input::-moz-placeholder {
+			color: #c1c2c7;
+		}
+		input:-ms-input-placeholder{
+			color: #c1c2c7;
+		}
+		input::-webkit-input-placeholder{
+			color: #c1c2c7;
+		}
+		.publickey_row{
+			display: block;
+		}
+		span{
+			margin-right: 10px;
+			font-size: 20px;
+		}
+		p{
+			display: inline-block;
+			word-wrap: break-word;
+			word-break: normal;
+			margin-left: 66px;
+			margin-top: -60px;
+			width: 360px;
+			font-size: 20px;
+		}
+	}
+
+	.greyFont{
+		font-size: 24px;
+		margin-right: 20px;
+		color: #aaaaaa;
+	}
+
+	.orangeFont{
+		font-size: 30px;
+		color: #3989de;
+	}
+	/*.baseInfo 结束*/
+
+
+	/*.businessInfo 开始*/
+	.businessInfo{
+		padding: 0 20px;
+		/*height: 440px;*/
+	}
+	.greyFont_size{
+		font-size: 20px;
+		color: #aaaaaa;
+	}
+
+	.more{
+		width: 100%;
+		height: 46px;
+		text-align: center;
+		line-height: 46px;
+		border: 1px solid #dddddd;
+		margin-top:4px ;
+		margin-bottom:34px ;
+	}
+
+	/*.businessInfo 结束*/
+
+
+	.passwordInfo_cont{
+		margin-bottom: 110px;
+		//background-color: #2d3039;
+		border-radius: 10px
+	}
+
+	.finishSet{
+		width: 100%;
+		height: 460px;
+		text-align: center;
+	}
+	.finishSet .finishSet_icon{
+		width: 156px;
+		height: 156px;
+		margin-top: 102px;
+	}
+	.finishSet .finishSet_text{
+		margin-top: 36px;
+		color: #aaaaaa;
+		font-size: 18px;
+	}
+
+
+	.setPassword{
+		//padding: 0 30px;
+		height: 380px;
+		-webkit-box-shadow: 3px 3px 3px #000;
+		-moz-box-shadow: 3px 3px 3px #000;
+		box-shadow: 3px 3px 3px #000;
+		background: #2d3039;
+		padding-left: 110px;
+		border-radius: 5px;
+		border-top-left-radius: unset;
+		.psw{
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+			font-size: 20px;
+			margin-top: 45px;
+
+			&:last-child{
+				margin-top: 26px;
+			}
+			label{
+				color:#777;
+				margin-right: 20px;
+			}
+			input{
+				height: 50px;
+				width: 60%;
+				line-height: 50px;
+				font-size: 20px;
+				color: #777777;
+				padding: 13px 16px;
+				border: 1px solid #ddd;
+				border-radius: 6px;
+			}
+			span{
+				color:#3276c3;
+				margin-left: 55px;
+				position: relative;
+				&:before{
+					content: '';
+					width: 20px;
+					height: 20px;
+					position: absolute;
+					background: #fff url('/assets/common/rerush.png') center center no-repeat;
+					background-size: 100% auto;
+					left: -35px;
+					top: 0;
+				}
+			}
+		}
+		.pwd_tip{
+			font-size:14px;
+			color:#aaa;
+			text-align: center;
+			margin: auto;
+			width: 505px;
+			height: 65px;
+			padding: 13px;
+			white-space: pre-wrap;
+			background: -moz-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: -webkit-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: -o-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: -ms-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			background: linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+		}
+		.pwd_btn{
+			margin: 0 auto;
+			text-align: center;
+			.accept_nxt{
+				display: inline-block;
+				width: 160px;
+				height: 40px;
+				line-height: 40px;
+				font-size:20px;
+				color:#fff;
+				background-color: #3989de;
+				border: 0;
+				outline: 0;
+			}
+		}
+
+	}
+	.setPassword_tip{
+		font-size: 20px;
+		color: #777777;
+		text-align: center;
+		margin-top: 40px;
+	}
+
+	// 锁仓页面
+	.positionInfo_cont{
+		//margin: 0 20px;
+		//height: 480px;
+		//background: #2d3039;
+		.position_input_set{
+			//width: 100%;
+			//height: 550px;
+			//text-align: center;
+			//padding: 90px 0 0 0;
+			height: 380px;
+			-webkit-box-shadow: 3px 3px 3px #000;
+			-moz-box-shadow:3px 3px 3px #000;
+			box-shadow: 3px 3px 3px #000;
+			background: #2d3039;
+			padding-top: 150px;
+			border-radius: 10px;
+			border-top-left-radius: unset;
+			.input_box{
+				height: 120px;
+				width: 100%;
+				/*margin: 30px 0;*/
+				text-align: left;
+				.block_type_in{
+					display: inline-block;
+					width: 60%;
+					font-size: 22px;
+					border: 1px solid #ddd;
+				}
+				p{
+					display: inline-block;
+					margin-left: 15px;
+					font-size: 22px;
+					color: #aaaaaa;
+				}
+			}
+			span{
+				display: block;
+				font-size: 22px;
+				margin: auto;
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				color: #aaaaaa;
+				background: -moz-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: -webkit-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: -o-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: -ms-linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+				background: linear-gradient(to right, rgba(255,0,0,0),#373f52,rgba(255,0,0,0));
+			}
+			.pwd_btn{
+				margin: 30px auto;
+				text-align: center;
+				.accept_nxt{
+					display: inline-block;
+					width: 160px;
+					height: 40px;
+					line-height: 40px;
+					font-size:20px;
+					color:#fff;
+					background-color: #3989de;
+					border: 0;
+					outline: 0;
+				}
+			}
+		}}
+
+}
+
+
+
+
+
+
+
+
