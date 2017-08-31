@@ -21,9 +21,16 @@
         //border: 1px solid red;
         width: 100%;
         height: 145px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display:-webkit-flex;
+        display:flex;
+        display:-webkit-box;
+        display:-moz-box;
+        display:-ms-flexbox;
+        -webkit-justify-content:space-between;
+        justify-content:space-between;
+        -webkit-box-align:center;
+        -webkit-align-items:center;
+        align-items:center;
         .account{
           width: 350px;
           height: 140px;
@@ -107,9 +114,16 @@
         //border: 1px solid red;
         width: 100%;
         height: 145px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display:-webkit-flex;
+        display:flex;
+        display:-webkit-box;
+        display:-moz-box;
+        display:-ms-flexbox;
+        -webkit-justify-content:space-between;
+        justify-content:space-between;
+        -webkit-box-align:center;
+        -webkit-align-items:center;
+        align-items:center;
         .account{
           width: 350px;
           height: 140px;
@@ -294,9 +308,16 @@
         //border: 1px solid red;
         width: 100%;
         height: 145px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display:-webkit-flex;
+        display:flex;
+        display:-webkit-box;
+        display:-moz-box;
+        display:-ms-flexbox;
+        -webkit-justify-content:space-between;
+        justify-content:space-between;
+        -webkit-box-align:center;
+        -webkit-align-items:center;
+        align-items:center;
         .account{
           width: 325px;
           height: 140px;
@@ -380,9 +401,16 @@
         //border: 1px solid red;
         width: 100%;
         height: 145px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display:-webkit-flex;
+        display:flex;
+        display:-webkit-box;
+        display:-moz-box;
+        display:-ms-flexbox;
+        -webkit-justify-content:space-between;
+        justify-content:space-between;
+        -webkit-box-align:center;
+        -webkit-align-items:center;
+        align-items:center;
         .account{
           width: 325px;
           height: 140px;
@@ -516,7 +544,6 @@
           td{
             font-size: 20px;
             color: #939498;
-
             text-align: center;
             padding-top: 0px;
             background: #1e2126;
