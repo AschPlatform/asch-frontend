@@ -32,13 +32,33 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		$scope.accountInfo = true;
 		$scope.positionInfo = $scope.passwordInfo = !$scope.accountInfo;
 	}
+	// 二级密码点击判断
 	$scope.passwordchange = function () {
-		$scope.passwordInfo = true;
-		$scope.accountInfo = $scope.positionInfo = !$scope.passwordInfo;
+		// 已设置二级密码
+		if (userService.secondPublicKey) {
+			$scope.passwordInfo = true;
+		} else {
+			$rootScope.setpsd = true;
+			$rootScope.isBodyMask = true;
+			// 暂且背景先显示首页
+			$scope.accountInfo = true;
+		}
+		// $scope.passwordInfo = true;
+		// $scope.accountInfo = $scope.positionInfo = !$scope.passwordInfo;
 	}
+	// 锁仓点击事件
 	$scope.positionchange = function () {
-		$scope.positionInfo = true;
-		$scope.accountInfo = $scope.passwordInfo = !$scope.positionInfo;
+		if ($scope.isLock == true) {
+			//已经锁仓
+			$scope.positionInfo = true;
+		} else {
+			$rootScope.lockblock = true;
+			$rootScope.isBodyMask = true;
+			// $scope.positionInfo = true;
+			// $scope.accountInfo = $scope.passwordInfo = !$scope.positionInfo;
+			// 暂且背景先显示首页
+			$scope.accountInfo = true;
+		}
 	}
 
 	$scope.setStatus = function () {
@@ -94,8 +114,6 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				toastError($translate.instant('ERR_SERVER_ERROR'));
 			});
 		}
-
-
 	}
 
 	// 设置仓锁

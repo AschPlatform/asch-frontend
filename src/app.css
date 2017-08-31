@@ -514,6 +514,14 @@ body {
     padding: 30px 48px 30px 48px;
     box-sizing: border-box;
 }
+@media screen and (max-width: 2000px){
+    .bodycontent{
+        background: url(/assets/home/bg_cheetah.png) no-repeat rgb(27, 27, 38);
+        background-position: 117% 190%;
+        background-size: 54% 78%;
+        transition: all .5s linear .1s;
+    }
+}
 
 
 /*----------------*/

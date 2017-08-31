@@ -1,0 +1,155 @@
+.setpsd{
+    z-index: 1000;
+    display: block;
+    width: 720px;
+    height: 400px;
+    position: absolute;
+    left: 33%;
+    top: 26%;
+    font-size: 18px;
+    box-shadow: 3px 3px 10px rgb(16, 20, 29);
+    @media screen and (max-width: 1400px){
+        left: 20%;
+        top: 20%;
+        width: 640px;
+        height: 400px;
+    }
+    .modal_header{
+        top: 0;
+        color: rgb(177, 178, 182);
+        padding-left: 20px;
+        font-size: 25px;
+        width: 100%;
+        line-height: 70px;
+        height: 70px;
+        background-image: linear-gradient(rgb(44, 47, 54),rgb(0, 0, 0));
+        @media screen and (max-width: 1400px){
+            line-height: 50px;
+            height: 50px;
+        }
+        a{
+            float: right;
+        }
+    }
+    .modal_content{
+        background-color: rgb(23, 27, 38);
+        width:100%;
+        height: 100%;
+        .form_group{
+            width: 65%;
+            margin: auto;
+            padding-top: 60px;
+            .psd_input{
+                background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
+                display: inline-block;
+                width: 85%;
+                height: 60px;
+                border-radius: 6px;
+                @media screen and (max-width: 1400px) {
+                  position: relative;
+                  height: 43px;
+                }
+                .psd_img{
+                  background: url("/assets/login/key.png") no-repeat;
+                  background-position: 52% 28%;
+                  background-size: 266% 240%;
+                  display: inline-block;
+                  width: 40px;
+                  height: 50px;
+                  @media screen and (max-width: 1400px) {
+                    background-position: 52% 28%;
+                    background-size: 266% 240%;
+                    width: 41px;
+                    height: 40px;
+                  }
+                }
+                input{
+                  float: right;
+                  display: inline-block;
+                  width: 85%;
+                  background: transparent;
+                  border: none;
+                  height: 60px;
+                  border-radius: 6px;
+                  @media screen and (max-width: 1400px) {
+                    height: 43px;
+                  }
+                  .psd_confirm{
+                      margin-top: 20px;
+                  }
+                }
+            }
+            input{
+                width: 85%;
+                background: transparent;
+                border: none;
+                height: 60px;
+                border-radius: 6px;
+                background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
+                @media screen and (max-width: 1400px) {
+                    height: 43px;
+                }
+            }
+            span{
+                margin-top: -10px;
+                color: rgb(177, 178, 182);
+                display: inline-block;
+                height: 43px;
+            }
+        }
+        .linear-bar{
+            margin-top: 20px;
+            font-size: 16px;
+            color: #999;
+            text-align: center;
+            font-weight: 300;
+            height: 50px;
+            padding: 5px 0 5px 0;
+            background: linear-gradient(to right, rgba(255,0,0,0) 20%, rgba(56, 64, 83, 1) 50%, rgba(255,0,0,0) 80%);
+            width: 100%;
+            @media screen and (max-width: 1400px) {
+                line-height: 20px;
+                font-size: 14px;
+            }
+        }
+        .pay_confirm{
+            margin-top: 60px;
+            color: rgb(6, 127, 172);
+            text-align: center;
+            font-size: 24px;
+            position: relative;
+            background-image: linear-gradient(rgb(24, 25, 30),rgb(0, 1, 5));
+            display: inline-block;
+            line-height: 60px;
+            height: 60px;
+            width: 35%;
+            left: 35%;
+            border-radius: 6px;
+            padding-right: 36px;
+            box-shadow: 3px 3px 10px rgb(16, 20, 29);
+            cursor: pointer;
+            @media screen and (max-width: 1400px){
+              font-size: 18px;
+              height: 45px;
+              line-height: 45px;
+              margin-right: 10px;
+            }
+            span{
+              position: absolute;
+              top: 12px;
+              margin-left: 20px;
+              display: inline-block;
+              height: 33px;
+              width: 33px;
+              background: url("/assets/login/blue_circle.png") no-repeat;
+              background-size: 200% 200%;
+              background-position: 45% 45%;
+              @media screen and (max-width: 1400px){
+                height: 30px;
+                width: 30px;
+                top: 6px;
+              }
+            }
+        }
+    }
+}

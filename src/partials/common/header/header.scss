@@ -95,11 +95,13 @@
 
 }
 .asch_tip {
+    @media screen and (max-width: 2000px){
+        margin-top: 5%;
+    }
     width: 100%;
     p {
         height: 39px;
         line-height: 39px;
-        padding-left: 20px;
         padding-right: 20px;
         box-sizing: border-box;
         position: relative;
@@ -107,7 +109,6 @@
             font-size: 18px;
             color: #777;
             text-decoration: none;
-            margin-left: 28px;
             img {
                 width: 35px;
                 height: 35px;

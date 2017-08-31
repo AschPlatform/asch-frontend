@@ -15,6 +15,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         }
     }
     $scope.sentMsg = function () {
+        console.log($scope.currencyName);
         var isAddress = /^[0-9]{1,21}$/g;
         var transaction;
         if (!$scope.fromto) {
@@ -54,8 +55,8 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
             }
             transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, message, userService.secret, $scope.secondPassword);
         } else {
-            amount = $scope.amount*Math.pow(10, $rootScope.precision);
-            transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), String(amount), String($scope.fromto), message, userService.secret, $scope.secondPassword)
+            amount = $scope.amount*Math.pow(10, 8);
+            transaction = AschJS.uia.createTransfer(String($scope.currencyName), String(amount), String($scope.fromto), message, userService.secret, $scope.secondPassword)
         }
         postSerivice.post(transaction).success(function (res) {
             if (res.success == true) {

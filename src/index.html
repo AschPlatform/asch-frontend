@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="/partials/modal/blockdetail/index.scss">
     <link rel="stylesheet" href="/partials/modal/accountdetail/index.scss">
     <link rel="stylesheet" href="/partials/modal/voteto/index.scss">
+    <link rel="stylesheet" href="/partials/modal/lockblock/index.scss">
+    <link rel="stylesheet" href="/partials/modal/setpsd/index.scss">
     <link rel="stylesheet" href="/partials/blockchain/index.scss">
     <link rel="stylesheet" href="/partials/common/toast/toast.scss">
     <link rel="stylesheet" href="/partials/blockforging/index.scss">
@@ -46,6 +48,8 @@
     <div id="accountdetail" ng-show="accountdetailinfo" ng-include="'partials/modal/accountdetail/index.html'"></div>
     <div id="voteto" ng-show="votetoinfo" ng-include="'partials/modal/voteto/index.html'"></div>
     <div id="deletevoteto" ng-show="deletevotetoinfo" ng-include="'partials/modal/deletevote/index.html'"></div>
+    <div id="lockblock" ng-show="lockblock" ng-include="'partials/modal/lockblock/index.html'"></div>
+    <div id="setpsd" ng-show="setpsd" ng-include="'partials/modal/setpsd/index.html'"></div>
     <div ng-class="{'bodycontent':userlogin}"  ng-view></div>
 </div>
 <!-- build:js [jsBuildPath] -->
@@ -89,6 +93,8 @@
 <script type="text/javascript" src="/partials/modal/dealinfo/dealinfoCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/deletevote/deletevoteCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/voteto/votetoCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/lockblock/lockblockCtrl.js"></script>
+<script type="text/javascript" src="/partials/modal/setpsd/setpsdCtrl.js"></script>
 <script type="text/javascript" src="/filter/timestampFilter.js"></script>
 <script type="text/javascript" src="/filter/catalogsFilter.js"></script>
 <script type="text/javascript" src="/filter/saveCheckfilter.js"></script>

@@ -1,5 +1,5 @@
 <div  ng-include="'partials/common/crumb/crumb.html'"></div>
-<div id="pay" ng-controller="payCtrl" ng-init="init()">
+<!-- <div id="pay" ng-controller="payCtrl" ng-init="init()">
 
     <div class="_item">
         <label >{{'SENDER' | translate}}</label>
@@ -31,11 +31,37 @@
     </div>
     <p>{{'PAY_TIP' | translate}}</p>
     <button class="sent" ng-click="sentMsg()">{{'SEND' | translate}}</button>
-</div>
-<div class="pay">
+</div> -->
+<div class="pay" ng-controller="payCtrl" ng-init="init()">
+    <div class="border_box"></div>
     <div class="pay_upper">
         <div class="pay_upper_left">
-            
+            <ul>
+                <li>
+                    {{'ASSET_NAME' | translate}}
+                    <select ng-model="currencyName">
+                        <option value="XAS">XAS</option>
+                        <option value="absorb.YLB">YLB</option>
+                    </select>
+                </li>
+                <li>{{'SENDER' | translate}} <textarea type="text" ng-model="sent" disabled></textarea></li>
+                <li>{{'SECOND_PASSWORD' | translate}} <input type="password" ng-model="secondPassword" ng-disabled="!userService.secondPublicKey"></li>
+            </ul>
         </div>
+        <div class="pay_upper_right">
+            <ul>
+                <li>{{'AMOUNTS' | translate}} <input type="text" required ng-model="amount" ng-trim="true"></li>
+                <li>{{'RECIPIENT' | translate}} <input type="text" required ng-model="fromto" ng-trim="true"></li>
+                <li>{{'FEES' | translate}} <input type="text" ng-model="fee" disabled></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pay_down">
+        <span>{{'REMARK' | translate}}</span>
+        <textarea ng-model="message" placeholder="{{'REMARK_TIP' | translate}} 0~255"></textarea>
+    </div>
+    <div class="pay_confirm" ng-click="sentMsg()">
+        {{'SEND' | translate}}
+        <span></span>
     </div>
 </div>
