@@ -48,7 +48,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         if (message && message.length > 256) {
             return toastError($translate.instant('ERR_INVALID_REMARK'));
         }
-        if(!$rootScope.currencyName){
+        if($scope.currencyName === 'XAS'){
             if (amount + fee > userService.balance) {
                 toastError($translate.instant('ERR_BALANCE_NOT_ENOUGH'));
                 return false;
@@ -64,6 +64,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
                 $scope.fromto = '';
                 $scope.amount = '';
                 $scope.secondPassword = '';
+                $scope.message = '';
                 toast($translate.instant('INF_TRANSFER_SUCCESS'));
             } else {
                 toastError(res.error)

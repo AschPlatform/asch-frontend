@@ -19,12 +19,12 @@
 		<hr/>
 		<div class="account_bottom">
 			<div class="account">
-				<span>ABC余额</span>
-				<i>999999999</i>
+				<span>YLB&nbsp;{{'BALANCE' | translate}}</span>
+				<i>{{ ylbAsset.balanceShow }}</i>
 			</div>
 			<div class="account">
-				<span>XAS余额</span>
-				<i>999999999</i>
+				<span>XAS&nbsp;{{'BALANCE' | translate}}</span>
+				<i>{{ xasAsset.balance | xasFilter }}</i>
 			</div>
 		</div>
 		<hr/>
@@ -48,8 +48,10 @@
 			<tr ng-repeat="i in $data" class="">
 				<td> {{i.id}}</td>
 				<td>{{i.type | typeFilter}}</td>
-				<td> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
-				<td class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || 'SYSTEM' | translate}}</i></td>
+				<td> <i class="">{{i.senderId}}</i></td>
+				<td class="item_accept"> <i class="">{{i.recipientId || 'SYSTEM' | translate}}</i></td>
+				<!-- <td> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
+				<td class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || 'SYSTEM' | translate}}</i></td> -->
 				<td>{{i.timestamp | timestampFilter}}</td>
 				<td>$ {{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
 			</tr>

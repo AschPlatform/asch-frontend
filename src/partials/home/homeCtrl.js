@@ -17,10 +17,26 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 				userService.update(res.account, res.latestBlock);
 				$scope.userService = userService;
 				jiaoyi(userService.address, userService.publicKey)
+				console.log($scope.userService);
+				console.log($rootScope.homedata);
 			};
 
 		}).error(function (res) {
 			toastError(res.error);
+		});
+		apiService.uiaBalanceApi(userService.address,'absorb.YLB').success(function (res) {
+			$scope.ylbAsset = res.balance;
+			$scope.ylbAsset.balanceShow = Number($scope.ylbAsset.balanceShow);
+			// console.log('1');
+			// console.log($scope.ylbAsset);
+		}).error(function (res) {
+			
+		});
+		apiService.myBalances({
+			address: userService.address
+		}).success(function (res) {
+			$scope.xasAsset = res;
+			console.log($scope.xasAsset);
 		});
 	};
 	// 交易ngtable版

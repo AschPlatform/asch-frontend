@@ -39,6 +39,8 @@ angular.module('asch').controller('setpsdCtrl', function ($scope, $rootScope, ap
 				if (res.success == true) {
 					$scope.passwordsure = true;
 					toast($translate.instant('INF_SECND_PASSWORD_SET_SUCCESS'));
+					$rootScope.setpsd = false;
+					$rootScope.isBodyMask = false;
 				} else {
 					toastError(res.error)
 				};

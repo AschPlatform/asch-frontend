@@ -2,7 +2,8 @@
 	"server": {
 		"dev": "http://localhost:4096",
 		"dev2": "http://121.42.194.216:4097",
-		"dev3": "http://101.200.123.124:4097"
+		"dev3": "http://101.200.123.124:4097",
+		"dev4": "http://101.200.84.232:4096"
 	},
 	//登录接口
 	"loginApi": {
@@ -75,10 +76,10 @@
 		"mock": "/data/blockforging/status.json",
 		"url": "/api/delegates/forging/status"
 	},
-	// 获取我的余额
+	// 获取我的余额?address=dadqawxaw adwxawxqax
 	"myBalancesApi": {
 		"mock": "/data/assets/my-balances.json",
-		"url": "/api/uia/balances/:address"
+		"url": "/api/accounts/getBalance"
 	},
 	// 查询发行商
 	"issuerApi": {
@@ -108,7 +109,12 @@
 	// 获取特定资产
 	"uiaAssetApi": {
 		"mock": "",
-		"url": "/api/uia/assets/:name"
+		"url": "/api/uia/assets"
+	},
+	// 获取特定余额
+	"uiaBalanceApi": {
+		"mock": "",
+		"url": "/api/uia/balances"
 	},
 	// 获取所有资产
 	"uiaAssetListApi": {

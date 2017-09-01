@@ -37,6 +37,8 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		// 已设置二级密码
 		if (userService.secondPublicKey) {
 			$scope.passwordInfo = true;
+			$scope.positionInfo = false;
+			$scope.accountInfo = false;
 		} else {
 			$rootScope.setpsd = true;
 			$rootScope.isBodyMask = true;
@@ -48,8 +50,14 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	}
 	// 锁仓点击事件
 	$scope.positionchange = function () {
-		if ($scope.isLock == true) {
+		console.log($scope.isLock);
+		console.log("↑ is is lock func");
+		console.log($scope.isLock() == true);
+		console.log("↑ is the judgement");
+		if ($scope.isLock() == true) {
 			//已经锁仓
+			$scope.passwordInfo = false;
+			$scope.accountInfo = false;
 			$scope.positionInfo = true;
 		} else {
 			$rootScope.lockblock = true;
@@ -58,6 +66,8 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 			// $scope.accountInfo = $scope.passwordInfo = !$scope.positionInfo;
 			// 暂且背景先显示首页
 			$scope.accountInfo = true;
+			$scope.positionInfo = false;
+			$scope.passwordInfo = false;
 		}
 	}
 

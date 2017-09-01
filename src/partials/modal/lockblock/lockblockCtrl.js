@@ -47,6 +47,9 @@ angular.module('asch').controller('lockblockCtrl', function ($scope, $rootScope,
 			if (res.success == true) {
 				//$scope.passwordsure = true;
 				toast($translate.instant('INF_POSITIONLOCK_SET_SUCCESS'));
+				$rootScope.lockblock = false;
+				$rootScope.isBodyMask = false;
+				$location.path('/home');
 			} else {
 				toastError(res.error)
 			};

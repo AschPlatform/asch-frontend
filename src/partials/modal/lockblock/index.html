@@ -1,18 +1,18 @@
 <div class="lockblock" ng-controller="lockblockCtrl" ng-init="init()">
     <div class="modal_header">
-      设置锁仓
+            {{'LOCK_POSITION_TITLE' | translate}}
       <a class="modal_close" href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a>
     </div>
     <div class="modal_content">
         <div class="form_group">
-            <input class="psd_confirm" type="text" placeholder="&nbsp;&nbsp;输入锁仓高度" ng-model="block_number">
-            <input class="psd_confirm" type="password" placeholder="&nbsp;&nbsp;输入二级密码" ng-model="secondpassword" ng-show="!userService.secondPublicKey">
+            <input class="psd_confirm" type="text" placeholder="&nbsp;&nbsp;{{'ACCOUNT_TYPE_HINT' | translate}}" ng-model="block_number">
+            <input class="psd_confirm" type="password" placeholder="&nbsp;&nbsp;{{'ACCOUNT_TYPE2_HINT' | translate}}" ng-model="secondpassword" ng-show="!userService.secondPublicKey">
         </div>
         <div class="linear-bar">
-            <span>在到达此高度后解锁</span><br />
+            <span>{{'ACCOUNT_LOCK_TIP' | translate}}</span><br />
         </div>
         <div class="pay_confirm" ng-click="setPositionLock()">
-            提交
+                {{'SUBMIT' | translate}}
             <span></span>
         </div>
     </div>

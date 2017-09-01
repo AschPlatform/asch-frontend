@@ -12,9 +12,10 @@
         <span ng-show="$root.active == 'acl'">/ <a ng-href="#/asset">{{'ASSET' | translate}}</a> / {{'UPDATE_ACL'|translate}}</span>
     </p> -->
     <p>
-        <a ng-href="#/home" ng-show="$root.active == 'home'"> <img src="/assets/common/min_logo.png" alt="">{{'HOME' | translate}}</a>
-        <a ng-href="#/personal" ng-show="$root.active == 'personal'"> <img src="/assets/common/min_logo.png" alt="">{{'PERSONAL' | translate}}</a>
-        <a ng-href="#/personal" ng-show="$root.active == 'application'"> <img src="/assets/common/min_logo.png" alt="">{{'APPLICATIONS' | translate}}</a>
-        <a ng-href="#/personal" ng-show="$root.active == 'pay'"> <img src="/assets/common/min_logo.png" alt="">{{'TRANSFER' | translate}}</a>
+        <a ng-href="#/home" ng-show="$root.active == 'home'"> <img src="/assets/common/home_active.png" alt="">{{'HOME' | translate}}</a>
+        <a ng-href="#/personal" ng-show="$root.active == 'personal'"> <img src="/assets/common/personal_active.png" alt="">{{'PERSONAL' | translate}}</a>
+        <!-- <a ng-href="#/personal" ng-show="$root.active == 'personal'"><span></span>{{'PERSONAL' | translate}}</a> -->
+        <a ng-href="#/application" ng-show="$root.active == 'application'"> <img src="/assets/common/app.png" alt="">{{'APPLICATIONS' | translate}}</a>
+        <a ng-href="#/pay" ng-show="$root.active == 'pay'"> <img src="/assets/common/transfer_active.png" alt="">{{'TRANSFER' | translate}}</a>
     </p>
 </div>

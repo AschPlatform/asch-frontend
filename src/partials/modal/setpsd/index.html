@@ -1,24 +1,24 @@
 <div class="setpsd" ng-controller="setpsdCtrl" ng-init="init()">
     <div class="modal_header">
-        设置二级密码
+            {{'SET_SECOND_PASSWORD' | translate}}
         <a class="modal_close" href="" ng-click="Close()"><img src="/assets/common/close.png" alt=""></a>
     </div>
     <div class="modal_content">
         <div class="form_group">
-            <span>密码：</span>
+            <span>{{'PASSWORD' | translate}}：</span>
             <div class="psd_input">
                 <span class="psd_img"></span>
-                <input type="password" ng-trim="true" placeholder="输入8-16位数字和字母组合" ng-model="secondpassword">
+                <input type="password" ng-trim="true" placeholder="{{'PASSWORD_RULE_TIP' | translate}}" ng-model="secondpassword">
             </div>
-            <span>确认：</span>
-            <input class="psd_confirm" ng-trim="true" type="password" placeholder="&nbsp;&nbsp;再次输入" ng-model="confirmPassword">
+            <span>{{'CONFIRM' | translate}}：</span>
+            <input class="psd_confirm" ng-trim="true" type="password" placeholder="&nbsp;&nbsp;{{'INPUT_AGAIN' | translate}}" ng-model="confirmPassword">
         </div>
         <div class="linear-bar">
-            <span>提示:请您确定您已经保存了二级密码，一但丢失</span><br />
-            <i>您的虚拟财务将无法找回，设置二级密码需要5手续费</i>
+            <span>{{'SUBMIT_SECOND_PASSWORD_TIP1' | translate}}</span><br />
+            <i>{{'SUBMIT_SECOND_PASSWORD_TIP2' | translate}}</i>
         </div>
         <div class="pay_confirm" ng-click="setPassWord()">
-            确认发送
+                {{'SUBMIT' | translate}}
             <span></span>
         </div>
     </div>

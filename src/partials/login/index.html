@@ -23,8 +23,8 @@
 					<input type="text">
 				</div>
 				<div class="right">
-					<button class="right_btn1">添加</button>
-					<button class="right_btn1">清空</button>
+					<button class="right_btn1">{{'LOGIN_ADD_ADDRESS' | translate}}</button>
+					<button class="right_btn1">{{'LOGIN_REMOVE_ADDRESS' | translate}}</button>
 					<!-- <input ng-model="secret" type="password" placeholder="{{'INPUT_PASSWORD' | translate}}"> -->
 					<!-- <div class="is-agree">
 						<input class="magic-checkbox" type="checkbox" ng-checked="saveLogin" ng-click="saveLoginChange()" name="layout" id="1">
@@ -39,22 +39,23 @@
 			<div class="content_bottom">
 				<div class="psd_input">
 					<span class="psd_img"></span>
-					<input type="password" placeholder="输入主密码" ng-model="secret">
+					<input type="password" placeholder="{{'INPUT_PASSWORD' | translate}}" ng-model="secret">
 				</div>
 				<div class="maintain_status">
 					<!-- <img src="/assets/login/confirmed.png"> -->
-					<span class="status_img"></span>
-					<p>保持登陆状态</p>
+					<!-- <span class="status_img"></span> -->
+					<input type="checkbox" id="" class="" style="height: 20px;width: 20px;display: inline-block;" checked>
+					<p>{{'KEEP_SESSION' | translate}}</p>
 				</div>
 				<select ng-model="selectedLanguage" ng-options="l.value for l in languages" ng-change="changeLanguage()"></select>
 			</div>
 			<div class="btn_group">
 				<div class="btn_login" ng-click="registerin()">
-					登&nbsp;陆
+					{{'LOGIN' | translate}}
 					<span></span>
 				</div>
 				<div class="btn_new" ng-click="newuser()">
-					新账户
+						{{'NEW_ACCOUNT' | translate}}
 					<span></span>
 				</div>
 			</div>
@@ -69,8 +70,8 @@
 			<!-- 本来就是废的↓ -->
 			<!--<img src="/assets/common/close.png" class="close" ng-click="close()" alt="">-->
 			<div class="linear-bar">
-				<span>步骤1/2&nbsp;创建主密码</span><br />
-				<i>新的主密码</i>
+				<span>{{'STEP' | translate}}1/2&nbsp;{{'CREATE_MASTER_PASSWORD' | translate}}</span><br />
+				<i>{{'NEW_PWD_TIP_1' | translate}}</i>
 			</div>
 		</div>
 		<div class="content">
@@ -83,17 +84,17 @@
 					<!-- <p>{{'NEW_PWD_TIP_1' | translate}}</p> -->
 				</div>
 				<div class="linear-bar">
-					<span>系统为您生成了足够安全的新密码</span><br />
-					<i>下一步将会要求您重复输入以确认密码</i>
+					<span>{{'LOGIN_TIP_LINE1' | translate}}</span><br />
+					<i>{{'LOGIN_TIP_LINE2' | translate}}</i>
 				</div>
 			</div>
 			<div class="btn_group">
 				<div class="btn_login" ng-click="nextStep()">
-					下一步
+						{{'NEXT_STEP' | translate}}
 					<span></span>
 				</div>
 				<div class="btn_new" ng-click="saveTxt('ASCH-secret')">
-					保存主密码
+						{{'SAVE_PASSWORD' | translate}}
 					<span></span>
 				</div>
 			</div>
@@ -106,8 +107,8 @@
 			<!-- <p>{{'STEP' | translate}}<i>2</i><b>/ 2</b><span>{{'CONFIRM_PASSWORD' | translate}}</span> </p>
 			<img src="/assets/common/close.png" ng-click="close()" class="close" alt=""> -->
 			<div class="linear-bar">
-				<span>步骤2/2&nbsp;确认主密码</span><br />
-				<i>请重新输入您的主密码</i>
+				<span>{{'STEP' | translate}}2/2&nbsp;{{'CONFIRM_PASSWORD' | translate}}</span><br />
+				<i>{{'LOGIN_TIP_LINE3' | translate}}</i>
 			</div>
 		</div>
 		<div class="content">
@@ -121,16 +122,16 @@
 					<!-- <p>{{'NEW_PWD_TIP_2' | translate}}</p> -->
 				</div>
 				<div class="linear-bar">
-					<span>请确认您已安全保存主密码，如果您是去您的主密码</span><br />
-					<i>您的账户将永远无法再打开，您将失去失去所有的虚拟币</i>
+					<span>{{'LOGIN_TIP_LINE4' | translate}}</span><br />
+					<i>{{'LOGIN_TIP_LINE5' | translate}}</i>
 				</div>
 				<div class="btn_group" ng-click="lastcheck()">
 						<div class="btn_login">
-							确&nbsp;&nbsp;认
+								{{'CONFIRM' | translate}}
 							<span></span>
 						</div>
 						<div class="btn_new" ng-click="backto()">
-							返&nbsp;&nbsp;回
+								{{'CANCEL' | translate}}
 							<span></span>
 						</div>
 					</div>

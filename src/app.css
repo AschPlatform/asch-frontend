@@ -507,12 +507,13 @@ body {
 .bodycontent {
     position: absolute;
     top: 0px;
-    left: 200px;
+    left: 20%;
     right: 0;
     height: 100%;
     overflow-y: scroll;
     padding: 30px 48px 30px 48px;
     box-sizing: border-box;
+    margin-left: 40px;
 }
 @media screen and (max-width: 2000px){
     .bodycontent{

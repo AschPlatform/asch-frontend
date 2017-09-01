@@ -112,6 +112,13 @@ window.Translations['zh-cn'] = {
   NEW_PWD_TIP_2: '请确保您已安全保存主密码，如果您失去您的主密码，您的帐户将永远无法再打开，您将失去您所有的XAS',
   CONFIRM: '确认',
   CANCEL: '返回',
+  LOGIN_TIP_LINE1: '系统为您生成了足够安全的新密码',
+  LOGIN_TIP_LINE2: '下一步将会要求您重复输入以确认密码',
+  LOGIN_TIP_LINE3: '请重新输入您的主密码',
+  LOGIN_TIP_LINE4: '请确认您已安全保存主密码，如果您忘记您的主密码',
+  LOGIN_TIP_LINE5: '您的账户将永远无法再打开，您将失去失去所有的虚拟币',
+  LOGIN_ADD_ADDRESS: '添加',
+  LOGIN_REMOVE_ADDRESS: '移除',
 
   // transfer/pay
   SEND: '发送',
@@ -161,7 +168,8 @@ window.Translations['zh-cn'] = {
   PASSWORD_RULE_TIP: '输入8到16位数字和字母组合',
   INPUT_AGAIN: '再次输入',
   PASSWORD: '密码',
-  SUBMIT_SECOND_PASSWORD_TIP: '请确定您已经安全保存了二级密码，一旦丢失，您在Asch系统中的财产将无法找回，设置二级密码需要5XAS手续费',
+  SUBMIT_SECOND_PASSWORD_TIP1: '请确定您已经安全保存了二级密码，一旦丢失，您在Asch系统中的财产将无法找回,',
+  SUBMIT_SECOND_PASSWORD_TIP2: '设置二级密码需要5XAS手续费',
   SUBMIT: '提交',
   ALREADY_SET: '已设置',
   NOT_SET: '未设置',
