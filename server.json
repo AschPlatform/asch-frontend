@@ -111,6 +111,11 @@
 		"mock": "",
 		"url": "/api/uia/assets"
 	},
+	// 获取特定资产交易记录
+	"uiaTransferApi": {
+		"mock": "",
+		"url": "/api/uia/transfers"
+	},
 	// 获取特定余额
 	"uiaBalanceApi": {
 		"mock": "",

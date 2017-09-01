@@ -102,7 +102,8 @@ window.Translations['en-us'] = {
   BALANCE: 'Balance',
   LATEST_BLOCK_HEIGHT: 'Latest Block Height',
   VERSION_INFO: 'Version',
-  MY_TRSACTIONS: 'My Transactions',
+  MY_TRSACTIONS: 'My Transactions in XAS',
+  MY_TRSACTIONS_YLB: 'My Transactions in YLB',
 
   // login
   INPUT_PASSWORD: 'Type the master secret',

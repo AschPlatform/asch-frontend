@@ -94,7 +94,8 @@ window.Translations['zh-cn'] = {
   BALANCE: '余额',
   LATEST_BLOCK_HEIGHT: '最后区块高度',
   VERSION_INFO: '版本信息',
-  MY_TRSACTIONS: '我的交易',
+  MY_TRSACTIONS: '我的交易(XAS)',
+  MY_TRSACTIONS_YLB: '我的交易(YLB)',
 
   // login
   INPUT_PASSWORD: '输入主密码',

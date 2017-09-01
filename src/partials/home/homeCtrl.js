@@ -16,7 +16,8 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 				$scope.version = res.version;
 				userService.update(res.account, res.latestBlock);
 				$scope.userService = userService;
-				jiaoyi(userService.address, userService.publicKey)
+				jiaoyi(userService.address, userService.publicKey);
+				jiaoyiylb(userService.address);
 				console.log($scope.userService);
 				console.log($rootScope.homedata);
 			};
@@ -53,6 +54,7 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 				total: 0,
 				counts: [],
 				getData: function ($defer, params) {
+					console.log("jiaoyi?")
 					apiService.transactions({
 						recipientId: recipientId,
 						senderPublicKey: userService.publicKey,
@@ -60,6 +62,7 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 						limit: params.count(),
 						offset: (params.page() - 1) * params.count()
 					}).success(function (res) {
+						console.log(res);
 						if (res.success == true) {
 							params.total(res.count);
 							$defer.resolve(res.transactions);
@@ -73,4 +76,34 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 				}
 			});
 	}
+
+	// 引力波交易获取
+	function jiaoyiylb(address) {
+		
+				$scope.ylbtable = new NgTableParams({
+					page: 1,
+					count: 20,
+					sorting: {
+						height: 'desc'
+					}
+				}, {
+						total: 0,
+						counts: [],
+						getData: function ($defer, params) {
+							console.log("jiaoyi?")
+							apiService.uiaTransferApi(address).success(function (res) {
+								console.log(res);
+								if (res.success == true) {
+									params.total(res.count);
+									$defer.resolve(res.transactions);
+								} else {
+									toastError(res.error);
+								}
+		
+							}).error(function (res) {
+								toastError($translate.instant('ERR_SERVER_ERROR'));
+							});
+						}
+					});
+			}
 });

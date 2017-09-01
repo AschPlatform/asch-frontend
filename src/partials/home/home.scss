@@ -223,7 +223,8 @@
           width: 100%;
           border: 0;
           //font-size: 25px;
-          max-width: 200px;
+          max-width: 150px;
+          min-width: 100px;
           overflow-x: auto;
           white-space: nowrap;
         }
@@ -467,6 +468,7 @@
     }
     .deal_table {
       width: 826px;
+      }
       .table {
         width: 100%;
         height: auto;
@@ -502,7 +504,8 @@
           width: 100%;
           border: 0;
           //font-size: 25px;
-          max-width: 200px;
+          max-width: 150px;
+          min-width: 100px;
           overflow-x: auto;
           white-space: nowrap;
         }
@@ -746,6 +749,12 @@
     }
     .deal_table {
       width: 700px;
+      .ylb_table{
+        td{
+          max-width: 150px;
+          min-width: 100px;
+          font-size: 10px;
+        }
       .table {
         width: 100%;
         height: auto;
