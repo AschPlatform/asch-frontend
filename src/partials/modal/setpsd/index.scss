@@ -29,6 +29,13 @@
         }
         a{
             float: right;
+            position: relative;
+            height: 100%;
+            img{
+                height: inherit;
+                position: absolute;
+                right: 0;
+            }
         }
     }
     .modal_content{

@@ -17,24 +17,12 @@
     <link rel="stylesheet" href="/partials/common/header/header.scss">
     <link rel="stylesheet" href="/partials/login/index.scss">
     <link rel="stylesheet" href="/partials/pay/index.scss">
-    <link rel="stylesheet" href="/partials/peer/index.scss">
     <link rel="stylesheet" href="/partials/home/home.scss">
     <link rel="stylesheet" href="/partials/application/index.scss">
     <link rel="stylesheet" href="/partials/personal/personal.scss">
-    <link rel="stylesheet" href="/partials/modal/assignee/index.scss">
-    <link rel="stylesheet" href="/partials/modal/dealinfo/index.scss">
-    <link rel="stylesheet" href="/partials/modal/blockdetail/index.scss">
-    <link rel="stylesheet" href="/partials/modal/accountdetail/index.scss">
-    <link rel="stylesheet" href="/partials/modal/voteto/index.scss">
     <link rel="stylesheet" href="/partials/modal/lockblock/index.scss">
     <link rel="stylesheet" href="/partials/modal/setpsd/index.scss">
-    <link rel="stylesheet" href="/partials/blockchain/index.scss">
     <link rel="stylesheet" href="/partials/common/toast/toast.scss">
-    <link rel="stylesheet" href="/partials/blockforging/index.scss">
-    <link rel="stylesheet" href="/partials/vote/index.scss">
-    <link rel="stylesheet" href="/partials/asset/index.scss">
-    <link rel="stylesheet" href="/partials/addACL/index.scss">
-    <link rel="stylesheet" href="/partials/reduceACL/index.scss">
 	<!-- endbuild -->
 </head>
 <body ng-class="{'isbg':!userlogin, 'earth': isEarth, 'heart': isHeart, 'egg': isEgg, 'cheetah': isCheetah}">
@@ -42,12 +30,6 @@
 <div id="bd">
     <!--<div id="footer"  ng-show="userlogin" ng-include="'partials/common/footer/index.html'"></div>-->
     <div id="header" ng-show="userlogin" ng-include="'partials/common/header/header.html'"></div>
-    <div id="assignee" ng-show="assigneeinfo" ng-include="'partials/modal/assignee/index.html'"></div>
-    <div id="dealinfo" ng-show="dealdetailinfo" ng-include="'partials/modal/dealinfo/index.html'"></div>
-    <div id="blockdetail" ng-show="blockdetailinfo" ng-include="'partials/modal/blockdetail/index.html'"></div>
-    <div id="accountdetail" ng-show="accountdetailinfo" ng-include="'partials/modal/accountdetail/index.html'"></div>
-    <div id="voteto" ng-show="votetoinfo" ng-include="'partials/modal/voteto/index.html'"></div>
-    <div id="deletevoteto" ng-show="deletevotetoinfo" ng-include="'partials/modal/deletevote/index.html'"></div>
     <div id="lockblock" ng-show="lockblock" ng-include="'partials/modal/lockblock/index.html'"></div>
     <div id="setpsd" ng-show="setpsd" ng-include="'partials/modal/setpsd/index.html'"></div>
     <div ng-class="{'bodycontent':userlogin}"  ng-view></div>
@@ -75,24 +57,11 @@
 <script type="text/javascript" src="/service/postSerivice.js"></script>
 <script type="text/javascript" src="/service/userService.js"></script>
 <script type="text/javascript" src="/partials/home/homeCtrl.js"></script>
-<script type="text/javascript" src="/partials/vote/voteCtrl.js"></script>
 <script type="text/javascript" src="/partials/login/loginCtrl.js"></script>
 <script type="text/javascript" src="/partials/pay/payCtrl.js"></script>
-<script type="text/javascript" src="/partials/peer/peerCtrl.js"></script>
-<script type="text/javascript" src="/partials/asset/assetCtrl.js"></script>
-<script type="text/javascript" src="/partials/addACL/addaclCtrl.js"></script>
-<script type="text/javascript" src="/partials/reduceACL/reduceaclCtrl.js"></script>
 <script type="text/javascript" src="/partials/application/applicationCtrl.js"></script>
-<script type="text/javascript" src="/partials/blockforging/blockforgingCtrl.js"></script>
-<script type="text/javascript" src="/partials/blockchain/blockchainCtrl.js"></script>
 <script type="text/javascript" src="/partials/personal/personalCtrl.js"></script>
 <script type="text/javascript" src="/partials/common/header/headerCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/assignee/assigneeCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/blockdetail/blockdetailCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/accountdetail/accountdetailCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/dealinfo/dealinfoCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/deletevote/deletevoteCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/voteto/votetoCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/lockblock/lockblockCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/setpsd/setpsdCtrl.js"></script>
 <script type="text/javascript" src="/filter/timestampFilter.js"></script>
