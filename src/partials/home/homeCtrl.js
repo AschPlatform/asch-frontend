@@ -29,7 +29,7 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 			$scope.ylbAsset = res.balance;
 			$scope.ylbAsset.balanceShow = Number($scope.ylbAsset.balanceShow);
 			// console.log('1');
-			// console.log($scope.ylbAsset);
+			console.log(res);
 		}).error(function (res) {
 			
 		});
