@@ -57,7 +57,7 @@
                   height: 43px;
                 }
                 .psd_img{
-                  background: url("/assets/login/key.png") no-repeat;
+                  background: url("../assets/login/key.png") no-repeat;
                   background-position: 52% 28%;
                   background-size: 266% 240%;
                   display: inline-block;
@@ -152,7 +152,7 @@
               display: inline-block;
               height: 33px;
               width: 33px;
-              background: url("/assets/login/blue_circle.png") no-repeat;
+              background: url("../assets/login/blue_circle.png") no-repeat;
               background-size: 200% 200%;
               background-position: 45% 45%;
               @media screen and (max-width: 1400px){

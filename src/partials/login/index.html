@@ -1,8 +1,8 @@
 <div id="login" ng-controller="loginCtrl" ng-init="init()" >‘
 	<!-- 新增 logo&字样 -->
 	<div class="logo_bar">
-		<img class="logo_logo" src="/assets/common/logo_absorb.png">
-		<img class="logo_title" src="/assets/common/absorb_title.png">
+		<img class="logo_logo" src="assets/common/logo_absorb.png">
+		<img class="logo_title" src="assets/common/absorb_title.png">
 	</div>
 	<div class="border_box"></div>
 	<!-- 登陆区域 仅在首页显示-->
@@ -15,7 +15,7 @@
 					<input type="password" placeholder="{{'INPUT_PASSWORD' | translate}}" ng-model="secret">
 				</div>
 				<div class="maintain_status">
-					<!-- <img src="/assets/login/confirmed.png"> -->
+					<!-- <img src="assets/login/confirmed.png"> -->
 					<!-- <span class="status_img"></span> -->
 					<input type="checkbox" id="" class="" style="height: 20px;width: 20px;display: inline-block;" checked>
 					<p>{{'KEEP_SESSION' | translate}}</p>
@@ -41,7 +41,7 @@
 		<div class="header">
 			<!-- <p>{{'STEP' | translate}} <i>1</i><b>/ 2</b><span>{{'CREATE_MASTER_PASSWORD' | translate}}</span></p> -->
 			<!-- 本来就是废的↓ -->
-			<!--<img src="/assets/common/close.png" class="close" ng-click="close()" alt="">-->
+			<!--<img src="assets/common/close.png" class="close" ng-click="close()" alt="">-->
 			<div class="linear-bar">
 				<span>{{'STEP' | translate}}1/2&nbsp;{{'CREATE_MASTER_PASSWORD' | translate}}</span><br />
 				<i>{{'NEW_PWD_TIP_1' | translate}}</i>
@@ -50,7 +50,7 @@
 		<div class="content">
 			<div class="content_top">
 				<!--<div class="left">-->
-					<!--<img src="/assets/common/user-anonymous.png" alt="">-->
+					<!--<img src="assets/common/user-anonymous.png" alt="">-->
 				<!--</div>-->
 				<div class="right">
 					<textarea type="textarea" id="textarea" ng-model="newsecret" disabled></textarea>
@@ -78,7 +78,7 @@
 	<div class="wrap3" ng-show="checkpwd">
 		<div class="header">
 			<!-- <p>{{'STEP' | translate}}<i>2</i><b>/ 2</b><span>{{'CONFIRM_PASSWORD' | translate}}</span> </p>
-			<img src="/assets/common/close.png" ng-click="close()" class="close" alt=""> -->
+			<img src="assets/common/close.png" ng-click="close()" class="close" alt=""> -->
 			<div class="linear-bar">
 				<span>{{'STEP' | translate}}2/2&nbsp;{{'CONFIRM_PASSWORD' | translate}}</span><br />
 				<i>{{'LOGIN_TIP_LINE3' | translate}}</i>
@@ -87,7 +87,7 @@
 		<div class="content">
 			<div class="content_top">
 				<!--<div class="left">-->
-					<!--<img src="/assets/common/user-anonymous.png"  alt="">-->
+					<!--<img src="assets/common/user-anonymous.png"  alt="">-->
 				<!--</div>-->
 				<div class="right">
 					<!-- <label for="textarea1">{{'INPUT_PASSWORD_AGAIN' | translate}}</label> -->

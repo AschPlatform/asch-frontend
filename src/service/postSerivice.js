@@ -1,4 +1,4 @@
-angular.module('asch').service('postSerivice', function ($http) {
+angular.module('asch').service('postSerivice', function ($http, $rootScope) {
     this.post = function (data) {
         var url = '{{postApi}}'
         if (url.indexOf('/') == 0) {

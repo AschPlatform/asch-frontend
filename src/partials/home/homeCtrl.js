@@ -25,7 +25,7 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 		}).error(function (res) {
 			toastError(res.error);
 		});
-		apiService.uiaBalanceApi(userService.address,'absorb.YLB').success(function (res) {
+		apiService.uiaBalanceApi(userService.address,'ABSORB.YLB').success(function (res) {
 			$scope.ylbAsset = res.balance || {};
 			$scope.ylbAsset.balanceShow = Number($scope.ylbAsset.balanceShow || 0);
 			// console.log('1');

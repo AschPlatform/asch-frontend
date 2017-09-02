@@ -28,7 +28,7 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 			}
 		}
 		$translate.use($scope.selectedLanguage.key);
-		$scope.languageIcon = '/assets/common/' + $scope.selectedLanguage.key + '.png';
+		$scope.languageIcon = 'assets/common/' + $scope.selectedLanguage.key + '.png';
 	}
 	$scope.changeLanguage();
 	

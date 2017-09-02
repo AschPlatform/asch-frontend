@@ -116,7 +116,7 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	},
 	// 获取YLB特定资产交易记录
 	this.uiaTransferApi = function (address) {
-		return fetch('{{uiaTransferApi}}' + '/' + address + '/' + 'absorb.YLB', null, 'get')
+		return fetch('{{uiaTransferApi}}' + '/' + address + '/' + 'ABSORB.YLB', null, 'get')
 	},
 	// 获取余额
 	this.uiaBalanceApi = function (address, assetName) {
