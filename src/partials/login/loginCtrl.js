@@ -9,6 +9,7 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 	$rootScope.creatpwd = false;
 	$rootScope.checkpwd = false;
 	$rootScope.homedata = {};
+	$rootScope.selectedNode = 'mainnet.asch.so'
 
 	$scope.languages = [
 		{key: 'en-us', value: 'English'},

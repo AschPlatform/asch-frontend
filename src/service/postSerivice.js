@@ -1,19 +1,17 @@
 angular.module('asch').service('postSerivice', function ($http) {
     this.post = function (data) {
-        var req = {
-            method: 'post',
-            url: '{{postApi}}',
-            headers: { 'magic': '{{magic}}', 'version': '' },
-            data: {
-                transaction: data
-            }
+        var url = '{{postApi}}'
+        if (url.indexOf('/') == 0) {
+            url = $rootScope.selectedNode + url
+        } else {
+            url = url.replace('mainnet.asch.so', $rootScope.selectedNode)
         }
-        return $http(req);
-    }
-    this.writeoff = function (data) {
+        if (url.indexOf('http://') == -1) {
+            url = 'http://' + url
+        }
         var req = {
             method: 'post',
-            url: '{{postApi}}',
+            url: url,
             headers: { 'magic': '{{magic}}', 'version': '' },
             data: {
                 transaction: data
