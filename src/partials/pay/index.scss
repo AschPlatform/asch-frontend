@@ -136,9 +136,10 @@
     }
   }
   .pay_down{
+    text-align: right;
     clear: both;
     font-size: 20px;
-    @media screen and (max-width: 1400px){;
+    @media screen and (max-width: 1400px){
       font-size: 14px;
     }
     span{
@@ -146,14 +147,19 @@
     }
     textarea{
       float: right;
-      width: 90%;
+      margin-left: 13px;
+      width: 90.5%;
       height: 110px;
       resize: none;
       border: none;
       box-shadow: 4px 4px rgb(14, 17, 24);
       background-color: rgb(45, 48, 57);
+      @media screen and (max-width: 1400px){
+        margin-left: 7px;
+      }
     }
   }
+
   .pay_confirm{
     margin-top: 60px;
     color: rgb(6, 127, 172);
