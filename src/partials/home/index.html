@@ -88,7 +88,7 @@
 				<!-- <td> <i class="level" ng-click="showaccountdetailInfo(i.senderId)">{{i.senderId}}</i></td>
 				<td class="item_accept"> <i class="level" ng-click="showaccountdetailInfo(i.recipientId)">{{i.recipientId || 'SYSTEM' | translate}}</i></td> -->
 				<td>{{i.timestamp | timestampFilter}}</td>
-				<td>$ {{i.amount | xasFilter}}({{i.fee | xasFilter}})</td>
+				<td>$ {{i.asset.uiaTransfer.amountShow}}({{i.fee | xasFilter}})</td>
 			</tr>
 		</table>
 	</div>
