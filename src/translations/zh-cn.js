@@ -255,20 +255,20 @@ window.Translations['zh-cn'] = {
   NOT_ALLOW: '不允许',
 
   // FRAGIL SET
-  FRAGIL_PRE: '区块将在高于 ',
-  FRAGIL_LAT: ' 高度后解锁',
+  FRAGIL_PRE: '账户将在区块高度大于 ',
+  FRAGIL_LAT: ' 后解锁',
   FRAGIL_ABOUT: '大约在',
   FRAGIL_DAY: '天',
   FRAGIL_HOUR: '时',
   FRAGIL_MIN: '分',
   FRAGIL_SEC: '秒',
-  FRAGIL_INPUT: '输入的高度不应低于大于最新高度100的数值，请仔细查看',
-  FRAGIL_RANGE: '请输入范围在(1~10 000 000)的数字',
+  FRAGIL_RANGE: '锁仓高度应大于当前区块高度，并且锁仓周期少于10000000个区块间隔',
   FRAGIL_UNLOCK: '后解锁',
 
   //deposit
   DEPOSIT_COIN_TYPE: '选择充值所使用的币种',
   DEPOSIT_AMOUNT: '填写充值数量',
+  DEPOSIT_SUCCESS: '充值成功',
   
   DAPP_SUPPORT_COIN: '支持的币种',
   DAPP_COIN_TOTAL_AMOUNT: '总量',

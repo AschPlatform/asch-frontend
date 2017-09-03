@@ -16,6 +16,7 @@
 					<td>{{'DAPP_DESCRIPTION' | translate}}</td>
 					<td>ID</td>
 					<td><div class = "category">{{'DAPP_CATEGORY' | translate}}</div></td>
+					<td><div class = "balance">{{'DAPP_BANLANCE_DETAIL' | translate}}</div></td>
 					<td><div class = "download">{{'DAPP_SOURCE_CODE' | translate}}</div></td>
 				</tr>
 			</thread>
@@ -26,6 +27,7 @@
 				<td >{{i.transactionId}}</td>
 				<!--<td  data-title="'标签'" >{{i.tags}}</td>-->
 				<td><div class = "category">{{i.category | catalogsFilter}}</div></td>
+				<td ng-click="showBalance(i)" style = "color: rgb(63,123,217); cursor: pointer"><div class = "balance">{{'DAPP_DETAIL' | translate}}</div></td>
 				<td><div class = "download"><a target="_blank" ng-href="{{i.link }}">{{'DAPP_DOWNLOAD' | translate}}</div></a></td>
 			</tr>
 		</table>
