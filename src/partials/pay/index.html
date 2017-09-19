@@ -30,5 +30,5 @@
         <input type="text" ng-model="message" id="pay_item4" placeholder="{{'REMARK_TIP' | translate}} 0~255">
     </div>
     <p>{{'PAY_TIP' | translate}}</p>
-    <button class="sent" ng-click="sentMsg()" ng-disabled="!isSendSuccess">{{'SEND' | translate}}</button>
+    <button class="sent" ng-click="sentMsg()" ng-disabled="!isSendSuccess" ng-class="{'invalidBtn':!isSendSuccess}">{{'SEND' | translate}}</button>
 </div>
