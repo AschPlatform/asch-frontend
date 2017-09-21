@@ -4,6 +4,12 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
     $scope.comfirmDialog = false;
     $rootScope.secpwd = userService.secondPublicKey;
     $scope.updateAcl = function () {
+        $scope.createTransaction();
+        $scope.comfirmDialog = true;
+        $rootScope.isBodyMask = true;
+    };
+    // 重制create
+    $scope.createTransaction = function() {
         var currency = $rootScope.reduceACL.name;
         var flag = $rootScope.reduceACL.acl;
         var operator = '-'; // '+'表示增加， ‘-’表示删除
@@ -11,14 +17,11 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
         angular.forEach($rootScope.checkdelitem, function (data, index, array) {
             list.push(index);
         });
-/*        console.log(list)*/
         if (!userService.secondPublicKey) {
             $scope.secondPassword = '';
         }
-        $scope.reduceacltrs = AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword);
-        $scope.comfirmDialog = true;
-        $rootScope.isBodyMask = true;
-    };
+        return AschJS.uia.createAcl(currency, operator, flag, list, userService.secret, $scope.secondPassword);
+    }
     $rootScope.checkdelitem = {};
     $scope.checkitem = function (i) {
             var key = i.address;
@@ -33,18 +36,19 @@ angular.module('asch').controller('reduceaclCtrl', function ($scope, $rootScope,
         $scope.comfirmDialog = false;
     };
     $scope.comfirmSub = function () {
-        var trs = $scope.reduceacltrs;
-        postSerivice.post(trs).success(function (res) {
-            if (res.success == true) {
-                $scope.secondPassword = ''
-                toast($translate.instant('INF_OPERATION_SUCCEEDED'));
-                $scope.comfirmDialogClose();
+        postSerivice.retryPost($scope.createTransaction, function(err, res) {
+            if (err === null) {
+                if (res.success == true) {
+                    $scope.secondPassword = ''
+                    toast($translate.instant('INF_OPERATION_SUCCEEDED'));
+                    $scope.comfirmDialogClose();
+                } else {
+                    toastError(res.error)
+                }
             } else {
-                toastError(res.error)
-            };
-        }).error(function (res) {
-            toastError($translate.instant('ERR_SERVER_ERROR'));
-        });
+                toastError($translate.instant('ERR_SERVER_ERROR'));
+            }
+        })
     }
     $scope.init= function () {
         $scope.listparams = new NgTableParams({

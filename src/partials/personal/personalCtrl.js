@@ -70,6 +70,16 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 
 	$scope.userService = userService;
 
+	// 两方重制create
+	$scope.createTrsPsd = function() {
+		return AschJS.signature.createSignature(userService.secret, $scope.secondpassword);
+	}
+
+	$scope.createTrsLok = function() {
+		var lockHeight = Number($scope.block_number);
+		return AschJS.transaction.createLock(lockHeight, userService.secret, $scope.secondpassword);
+	}
+
 	$scope.setPassWord = function () {
 		var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
 		if (!$scope.secondpassword || !$scope.confirmPassword) {
@@ -82,20 +92,19 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		} else if (!reg.test(secondPwd)) {
 			toastError($translate.instant('ERR_PASSWORD_INVALID_FORMAT'));
 		} else if (reg.test(secondPwd) && reg.test(confirmPwd) && secondPwd == confirmPwd) {
-			var transaction = AschJS.signature.createSignature(userService.secret, $scope.secondpassword);
-			postSerivice.post(transaction).success(function (res) {
-				if (res.success == true) {
-					$scope.passwordsure = true;
-					toast($translate.instant('INF_SECND_PASSWORD_SET_SUCCESS'));
+			postSerivice.retryPost($scope.createTrsPsd, function(err, res) {
+				if (err === null) {
+					if (res.success == true) {
+						$scope.passwordsure = true;
+						toast($translate.instant('INF_SECND_PASSWORD_SET_SUCCESS'));
+					} else {
+						toastError(res.error);
+					}
 				} else {
-					toastError(res.error)
-				};
-			}).error(function (res) {
-				toastError($translate.instant('ERR_SERVER_ERROR'));
-			});
+					toastError($translate.instant('ERR_SERVER_ERROR'));
+				}
+			})
 		}
-
-
 	}
 
 	// 设置仓锁
@@ -119,17 +128,17 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 			$scope.secondPassword = '';
 		}
 
-		var transaction = AschJS.transaction.createLock(lockHeight, userService.secret, $scope.secondpassword);
-		postSerivice.post(transaction).success(function (res) {
-			if (res.success == true) {
-				//$scope.passwordsure = true;
-				toast($translate.instant('INF_POSITIONLOCK_SET_SUCCESS'));
+		postSerivice.retryPost($scope.createTrsLok, function(err, res) {
+			if (err === null) {
+				if (res.success == true) {
+					toast($translate.instant('INF_POSITIONLOCK_SET_SUCCESS'));
+				} else {
+					toastError(res.error)
+				}
 			} else {
-				toastError(res.error)
-			};
-		}).error(function (res) {
-			toastError($translate.instant('ERR_SERVER_ERROR'));
-		});
+				toastError($translate.instant('ERR_SERVER_ERROR'));
+			}
+		})
 	}
 
 	// 计算解锁时间

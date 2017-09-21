@@ -15,6 +15,18 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
             $scope.fee = $filter('xasFilter')(fee);
         }
     }
+    // 重制create
+    $scope.createTransaction = function() {
+        var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
+        var message = $scope.message;
+
+        if(!$rootScope.currencyName){
+            transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, message, userService.secret, $scope.secondPassword);
+        } else {
+            amount = ($scope.amount*Math.pow(10, $rootScope.precision)).toFixed(0);
+            transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), amount, String($scope.fromto), message, userService.secret, $scope.secondPassword)
+        }
+    }
     $scope.sentMsg = function () {
         $scope.isSendSuccess = false;
         var isAddress = /^[0-9]{1,21}$/g;
@@ -65,21 +77,22 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
             amount = ($scope.amount*Math.pow(10, $rootScope.precision)).toFixed(0);
             transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), amount, String($scope.fromto), message, userService.secret, $scope.secondPassword)
         }
-        postSerivice.post(transaction).success(function (res) {
-            if (res.success == true) {
-                $scope.isSendSuccess = true;
-                $scope.passwordsure = true;
-                $scope.fromto = '';
-                $scope.amount = '';
-                $scope.secondPassword = '';
-                toast($translate.instant('INF_TRANSFER_SUCCESS'));
+        postSerivice.retryPost($scope.createTransaction, function(err, res) {
+            if (err === null) {
+                if (res.success == true) {
+                    $scope.isSendSuccess = true;
+                    $scope.passwordsure = true;
+                    $scope.fromto = '';
+                    $scope.amount = '';
+                    $scope.secondPassword = '';
+                    toast($translate.instant('INF_TRANSFER_SUCCESS'));
+                } else {
+                    $scope.isSendSuccess = true;
+                    toastError(res.error);
+                }
             } else {
-                $scope.isSendSuccess = true;
-                toastError(res.error)
-            };
-        }).error(function (res) {
-            $scope.isSendSuccess = true;
-            toastError($translate.instant('ERR_SERVER_ERROR'));
-        });
+                toastError($translate.instant('ERR_SERVER_ERROR'));
+            }
+        })
     }
 });

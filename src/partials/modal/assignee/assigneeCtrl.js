@@ -9,6 +9,10 @@ angular.module('asch').controller('assigneeCtrl', function ($scope, $rootScope, 
         $rootScope.isBodyMask = false;
         $rootScope.assigneeinfo = false;
     };
+    // 重制create
+    $scope.createTransaction = function () {
+        return AschJS.delegate.createDelegate($scope.userName, userService.secret, $scope.secondpassword)
+    }
     $scope.nextstep = function () {
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
         var usernamereg = /^[a-z0-9!@$&_.]{2,}$/;
@@ -29,17 +33,18 @@ angular.module('asch').controller('assigneeCtrl', function ($scope, $rootScope, 
             toast($translate.instant('ERR_SECOND_PASSWORD_FORMAT'));
             return;
         }
-        var transaction = AschJS.delegate.createDelegate($scope.userName, userService.secret, $scope.secondpassword)
-        postSerivice.post(transaction).success(function (res) {
-            if (res.success == true) {
-                $scope.Close();
-                toast($translate.instant('INF_REGISTER_SUCCESS'));
-                $scope.userName = '';
+        postSerivice.retryPost($scope.createTransaction, function(err, res){
+            if (err === null) {
+                if (res.success == true) {
+                    $scope.Close();
+                    toast($translate.instant('INF_REGISTER_SUCCESS'));
+                    $scope.userName = '';
+                } else {
+                    toastError(res.error);
+                }
             } else {
-                toastError(res.error)
-            };
-        }).error(function (res) {
-            toast($translate.instant('ERR_SERVER_ERROR'));
-        });
+                toastError($translate.instant('ERR_SERVER_ERROR'));
+            }
+        })
     };
 });

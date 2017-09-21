@@ -125,7 +125,12 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 		$scope.depositedDapp = null;
 		$scope.amount = 0;
 		$scope.secondPassword = '';
-	};
+  };
+  // 重制create
+  $scope.createTransaction = function () {
+    var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
+    return AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
+  }
 	$scope.sentMsg = function () {
     var transaction;
     if (!$scope.depositedDapp) {
@@ -141,7 +146,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
         return false;
     }
 
-    var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
     if ($scope.currency.value == 'XAS') {
        var fee = 10000000;
        if (amount + fee > userService.balance) {
@@ -162,24 +166,22 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
     if (!userService.secondPublicKey) {
         $scope.secondPassword = '';
     }
-    var transaction = AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
-    postSerivice.post(transaction).success(function (res) {
-       if (res.success == true) {
-            $scope.passwordsure = true;
-            $scope.amount = '';
-            $scope.secondPassword = '';
-            $scope.depositedDapp = null;
-            toast($translate.instant('DEPOSIT_SUCCESS'));
+    postSerivice.retryPost($scope.createTransaction, function (err, res) {
+      if (err === null) {
+        if (res.success == true) {
+          $scope.passwordsure = true;
+          $scope.amount = '';
+          $scope.secondPassword = '';
+          $scope.depositedDapp = null;
+          toast($translate.instant('DEPOSIT_SUCCESS'));
+        } else if(res.error.indexOf('Old address') != -1 || res.error.indexOf('old address') != -1 || res.error.indexOf('老地址') != -1 || res.error.indexOf('数字地址') != -1) {
+          toastError('dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）');
         } else {
-            if(res.error.indexOf('Old address') != -1 || res.error.indexOf('old address') != -1 || res.error.indexOf('老地址') != -1 || res.error.indexOf('数字地址') != -1) {
-              toastError('dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）')
-            } else {
-              toastError(res.error)  
-            }
-        };
-    }).error(function (res) {
-      // dapp不支持老地址（数字地址），请用最新的字母地址（base58格式）
+          toastError(res.error);
+        }
+      } else {
         toastError($translate.instant('ERR_SERVER_ERROR'));
-    });
+      }
+    })
    }
 });
