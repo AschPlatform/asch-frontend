@@ -25,5 +25,4 @@ angular.module('asch').service('userService', function () {
     this.isName = function (name) {
         this.name = name;
     };
-
 });

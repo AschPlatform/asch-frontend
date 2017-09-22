@@ -1,7 +1,7 @@
 angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, apiService, ipCookie, $window, $http, userService, postSerivice, $translate) {
 	$rootScope.active = 'personal';
 	$rootScope.userlogin = true;
-
+	$scope.lockStatus = ''
 	//下拉菜单隐藏
 	// 账单默认显示
 	$scope.accountInfo = true;
@@ -21,6 +21,14 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				$scope.version = res.version;
 				userService.update(res.account, res.latestBlock);
 				$scope.userService = userService;
+				$scope.positionLockStatus();
+				if (userService.latestBlockHeight > userService.lockHeight) {
+					$scope.isLocksure = false
+					console.log('init判定为非锁仓')
+				} else {
+					$scope.isLocksure = true
+					console.log('init判定为已锁仓')
+				}
 			};
 		}).error(function (res) {
 			toastError(res.error);
@@ -49,12 +57,12 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 			var a = $translate.instant('FRAGIL_PRE');
 			var b = $translate.instant('FRAGIL_LAT');
 			if (Number(userService.lockHeight) > Number(userService.latestBlockHeight)) {
-				return a + userService.lockHeight + b;
+				return $scope.lockStatus = a + userService.lockHeight + b;
 			} else {
-				return $translate.instant('NOT_SET_ALREADYUNBLOCK');
+				return $scope.lockStatus = $translate.instant('NOT_SET_ALREADYUNBLOCK');
 			}
 		} else {
-			return $translate.instant('NOT_SET_BLOCKHEIGHT');
+			return $scope.lockStatus = $translate.instant('NOT_SET_BLOCKHEIGHT');
 		}
 	}
 	// 解锁 / 上锁判断
@@ -131,8 +139,10 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 			if (err === null) {
 				if (res.success == true) {
 					toast($translate.instant('INF_POSITIONLOCK_SET_SUCCESS'));
+					$scope.positionLockStatus();
+					$scope.isLocksure = true;
 				} else {
-					toastError(res.error)
+					toastError(res.error);
 				}
 			} else {
 				toastError($translate.instant('ERR_SERVER_ERROR'));
