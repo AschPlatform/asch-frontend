@@ -35,6 +35,7 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
                     $scope.addList = '';
                     toast($translate.instant('INF_OPERATION_SUCCEEDED'));
                     $scope.comfirmDialogClose();
+                    console.log('完成')
                 } else {
                     toastError(res.error);
                 }

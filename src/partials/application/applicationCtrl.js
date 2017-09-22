@@ -145,7 +145,7 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
         toastError($translate.instant('ERR_AMOUNT_INVALID'));
         return false;
     }
-
+    var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
     if ($scope.currency.value == 'XAS') {
        var fee = 10000000;
        if (amount + fee > userService.balance) {

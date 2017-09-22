@@ -61,6 +61,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	}
 	// 解锁 / 上锁判断
 	$scope.isLock = function () {
+		console.log(userService.lockHeight, userService.latestBlockHeight);
 		if (Number(userService.lockHeight) > Number(userService.latestBlockHeight)) {
 			return true;
 		} else {
@@ -139,6 +140,8 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				toastError($translate.instant('ERR_SERVER_ERROR'));
 			}
 		})
+
+		console.log(userService, userService.latestBlockHeight);
 	}
 
 	// 计算解锁时间

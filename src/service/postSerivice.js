@@ -14,8 +14,10 @@ angular.module('asch').service('postSerivice', function ($http) {
         let trs = funcCreate()
         this.post(trs).success(function(res){
             if (/Invalid transaction timestamps/.test(res.error)) {
+                console.log('检测到需要被调教时间', timeAdjust)
                 this.retryPostImp(funcCreate, timeAdjust + 5, cb);
             } else {
+                console.log('正常过')
                 cb(null, res);
             }
         }).error(function(res){

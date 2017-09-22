@@ -3,7 +3,7 @@
  */
 angular.module('asch').controller('assigneeCtrl', function ($scope, $rootScope, apiService, ipCookie, $location, $http, userService, postSerivice, $translate) {
 
-    $rootScope.assigneeinfo = false;
+    // $rootScope.assigneeinfo = false;
     $scope.userService = userService;
     $scope.Close = function () {
         $rootScope.isBodyMask = false;

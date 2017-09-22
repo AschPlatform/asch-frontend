@@ -79,23 +79,22 @@
 						<div class="pwd_btn">
 							<button class="accept_nxt" ng-click="setPassWord()">{{'SUBMIT' | translate}}</button>
 						</div>
-
 					</div>
 
 				</div>
 				<!--支付信息 end-->
 				<!--锁仓信息 start-->
 				<div ng-show="positionInfo" class="positionInfo_cont">
-					<div class="finishSet" ng-show="isLock()">
+					<div class="finishSet" ng-show="Number(userService.lockHeight) > Number(userService.latestBlockHeight)">
 						<img src="/assets/personal/tip_passwordNo.png" class="finishSet_icon"/>
 						<div class="finishSet_text">
 							{{'ALREADY_SET_POSITIONLOCK' | translate}}
 						</div>
 					</div>
-					<div class="_title" ng-hide="isLock()">
+					<div class="_title" ng-hide="Number(userService.lockHeight) > Number(userService.latestBlockHeight)">
 							{{'LOCK_POSITION_TITLE' | translate}}
 					</div>
-					<div class="position_input_set" ng-hide="isLock()">
+					<div class="position_input_set" ng-hide="Number(userService.lockHeight) > Number(userService.latestBlockHeight)">
 						<div class="input_box">
 							<input type="text" class="block_type_in orangeFont" ng-keyup="calTimeLeft()" ng-model="block_number" placeholder="{{'ACCOUNT_TYPE_HINT' | translate}}"><p>{{'ACCOUNT_LOCK_TIP' | translate}}</p>
 							<input type="password" class="block_type_in orangeFont" ng-model="secondpassword" placeholder="{{'ACCOUNT_TYPE2_HINT' | translate}}" ng-hide="!userService.secondPublicKey">
