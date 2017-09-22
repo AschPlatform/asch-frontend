@@ -4,7 +4,6 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
     $scope.comfirmDialog = false;
     $rootScope.secpwd = userService.secondPublicKey;
     $scope.sub = function () {
-        $scope.createTransaction();
         $scope.comfirmDialog = true;
         $rootScope.isBodyMask = true;
 
@@ -38,9 +37,12 @@ angular.module('asch').controller('addaclCtrl', function ($scope, $rootScope, ap
                 } else {
                     toastError(res.error);
                 }
+            } else if(err === 'adjust'){
+                toastError($translate.instant('ADJUST_TIME_YOURSELF'));
             } else {
+                $scope.isSendSuccess = true;
                 toastError($translate.instant('ERR_SERVER_ERROR'));
-            } 
+            }
         })
     }
 });

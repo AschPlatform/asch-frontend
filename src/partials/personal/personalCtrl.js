@@ -107,7 +107,10 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 					} else {
 						toastError(res.error);
 					}
+				} else if(err === 'adjust'){
+					toastError($translate.instant('ADJUST_TIME_YOURSELF'));
 				} else {
+					$scope.isSendSuccess = true;
 					toastError($translate.instant('ERR_SERVER_ERROR'));
 				}
 			})
@@ -144,9 +147,12 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				} else {
 					toastError(res.error);
 				}
-			} else {
-				toastError($translate.instant('ERR_SERVER_ERROR'));
-			}
+			} else if(err === 'adjust'){
+                toastError($translate.instant('ADJUST_TIME_YOURSELF'));
+            } else {
+                $scope.isSendSuccess = true;
+                toastError($translate.instant('ERR_SERVER_ERROR'));
+            }
 		})
 	}
 
