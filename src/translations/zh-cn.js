@@ -275,4 +275,8 @@ window.Translations['zh-cn'] = {
   DAPP_COIN_CURRENT_QUANTITY: '当前流通量',
   DAPP_COIN_BALANCE: 'DAPP余额',
   DAPP_COIN_FEE: '本次充值手续费: 0.1 xas',
+
+  // 调教时间
+  ADJUST_TIME_YOURSELF: '您本地时间与系统时间差别过大，请手动调校时间',
+  ADJUST_TIME: '正在调校时间，请勿进行其他操作'
 };

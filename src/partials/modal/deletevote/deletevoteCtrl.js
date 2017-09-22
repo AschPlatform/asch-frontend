@@ -22,7 +22,6 @@ angular.module('asch').controller('deletevoteCtrl', function ($scope, $rootScope
                 if (res.success == true) {
                     $rootScope.coedobj = {}
                     $rootScope.checkobj = {}
-                    // console.log($rootScope.checkobj);
                     $scope.Close();
                     $rootScope.$emit('downvoteSuccess');
                     toast($translate.instant('INF_DELETE_SUCCESS'));

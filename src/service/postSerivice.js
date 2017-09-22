@@ -1,4 +1,6 @@
-angular.module('asch').service('postSerivice', function ($http) {
+angular.module('asch').service('postSerivice', function ($http, $translate) {
+    let that = this;
+    let countNum = 0;
     this.post = function (data) {
         var req = {
             method: 'post',
@@ -12,12 +14,20 @@ angular.module('asch').service('postSerivice', function ($http) {
     }
     this.retryPostImp = function(funcCreate, timeAdjust, cb) {
         let trs = funcCreate()
-        this.post(trs).success(function(res){
-            if (/Invalid transaction timestamps/.test(res.error)) {
-                console.log('检测到需要被调教时间', timeAdjust)
-                this.retryPostImp(funcCreate, timeAdjust + 5, cb);
+        that.post(trs).success(function(res){
+            if (/timestamp/.test(res.error)) {
+                countNum = countNum + 1;
+                if (countNum > 3) {
+                    countNum = 0;
+                    toastError($translate.instant('ADJUST_TIME_YOURSELF'));
+                    return
+                } else {
+                    toastError($translate.instant('ADJUST_TIME'));
+                    that.retryPostImp(funcCreate, timeAdjust + 5, cb);
+                }
+            } else if(/processed/.test(res.error)) {
+                that.retryPostImp(funcCreate, timeAdjust, cb);
             } else {
-                console.log('正常过')
                 cb(null, res);
             }
         }).error(function(res){

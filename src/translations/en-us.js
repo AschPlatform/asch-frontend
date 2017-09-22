@@ -285,4 +285,9 @@ window.Translations['en-us'] = {
   DAPP_COIN_CURRENT_QUANTITY: 'Current Quantity',
   DAPP_COIN_BALANCE: 'DAPP Balance',
   DAPP_COIN_FEE: 'Fee: 0.1 xas',
+
+
+  // adjusting time
+  ADJUST_TIME_YOURSELF: 'You should adjust system time by hand',
+  ADJUST_TIME: 'We are adjusting time'
 };

@@ -22,7 +22,6 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				userService.update(res.account, res.latestBlock);
 				$scope.userService = userService;
 			};
-
 		}).error(function (res) {
 			toastError(res.error);
 		});
@@ -49,7 +48,6 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		if (userService.lockHeight != 0) {
 			var a = $translate.instant('FRAGIL_PRE');
 			var b = $translate.instant('FRAGIL_LAT');
-			/*console.log(userService.lockHeight);*/
 			if (Number(userService.lockHeight) > Number(userService.latestBlockHeight)) {
 				return a + userService.lockHeight + b;
 			} else {
@@ -140,8 +138,6 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				toastError($translate.instant('ERR_SERVER_ERROR'));
 			}
 		})
-
-		console.log(userService, userService.latestBlockHeight);
 	}
 
 	// 计算解锁时间

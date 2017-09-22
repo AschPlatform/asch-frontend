@@ -91,7 +91,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 		apiService.appBalance({
 			appId: dapp.transactionId
 		}).success(function (balancesRes) {
-      // console.log('balancesRes', balancesRes)
 			if (!balancesRes.balances) {
 				$scope.showBalances = balancesRes.balances;
 				return;

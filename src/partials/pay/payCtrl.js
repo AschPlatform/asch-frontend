@@ -21,10 +21,10 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         var message = $scope.message;
 
         if(!$rootScope.currencyName){
-            transaction = AschJS.transaction.createTransaction(String($scope.fromto), amount, message, userService.secret, $scope.secondPassword);
+            return AschJS.transaction.createTransaction(String($scope.fromto), amount, message, userService.secret, $scope.secondPassword);
         } else {
             amount = ($scope.amount*Math.pow(10, $rootScope.precision)).toFixed(0);
-            transaction = AschJS.uia.createTransfer(String($rootScope.currencyName), amount, String($scope.fromto), message, userService.secret, $scope.secondPassword)
+            return AschJS.uia.createTransfer(String($rootScope.currencyName), amount, String($scope.fromto), message, userService.secret, $scope.secondPassword)
         }
     }
     $scope.sentMsg = function () {
@@ -91,6 +91,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
                     toastError(res.error);
                 }
             } else {
+                $scope.isSendSuccess = true;
                 toastError($translate.instant('ERR_SERVER_ERROR'));
             }
         })
