@@ -1,5 +1,5 @@
 angular.module('asch').service('postSerivice', function ($http, $translate) {
-    let that = this;
+    var that = this;
     this.post = function (data) {
         var req = {
             method: 'post',
@@ -12,7 +12,7 @@ angular.module('asch').service('postSerivice', function ($http, $translate) {
         return $http(req);
     }
     this.retryPostImp = function(funcCreate, timeAdjust, countNum, cb) {
-        let trs = funcCreate()
+        var trs = funcCreate()
         that.post(trs).success(function(res){
             if (/timestamp/.test(res.error)) {
                 if (countNum > 3) {
