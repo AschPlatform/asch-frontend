@@ -195,6 +195,7 @@
       outline: 0;
       border: 0;
       font-size: 20px;
+      border-radius: 4px;
     }
   }
   .myAssets{
@@ -249,6 +250,7 @@
       }
       .sent{
         margin-top: 0;
+        border-radius: 4px;
       }
     }
   }
@@ -291,7 +293,7 @@
       line-height: 50px;
       font-size: 20px;
       color: #777;
-      text-align: right;
+      text-align: center;
       margin-right: 20px;
     }
     input{
@@ -304,7 +306,20 @@
       padding: 6px;
     }
   }
-  .sent{
+  .sent1{
+    width: 140px;
+    height: 40px;
+    border: 0;
+    background: #3989de;
+    color: #fff;
+    float: left;
+    text-align: center;
+    margin-right: 20px;
+    line-height: 40px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .sent2{
     width: 140px;
     height: 40px;
     border: 0;
@@ -313,7 +328,7 @@
     float: right;
     text-align: center;
     line-height: 40px;
-    margin-right: 20px;
     cursor: pointer;
+    border-radius: 4px;
   }
 }
