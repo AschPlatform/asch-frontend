@@ -5,6 +5,8 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 		$rootScope.acceptinfo = true;
 		$rootScope.isBodyMask = true;
 	}
+	$scope.latestBlock.height = "请稍等(Plz wait)"
+	$scope.latestBlock.timestamp = "年/月/日(Y/M/D)"
 
 	$scope.init = function (params) {
 		apiService.account({
