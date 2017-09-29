@@ -126,6 +126,8 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 			return toastError($translate.instant('ERR_VIOLATE_BIP39'));
 		}
 		var publicKey = AschJS.crypto.getKeys($scope.secret).publicKey;
+		// 增加root qrstr属性
+		$rootScope.qrstr = $scope.secret;
 		$rootScope.publickey = publicKey;
 		apiService.login({
 			publicKey: publicKey

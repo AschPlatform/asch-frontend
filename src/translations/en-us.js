@@ -289,5 +289,9 @@ window.Translations['en-us'] = {
 
   // adjusting time
   ADJUST_TIME_YOURSELF: 'You should adjust system time by hand',
-  ADJUST_TIME: 'We are adjusting time'
+  ADJUST_TIME: 'We are adjusting time',
+
+  // qrcode
+  QRCODE: 'QRCode',
+  CLICK_TO_SHOW: 'Click to show'
 };

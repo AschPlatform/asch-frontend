@@ -58,7 +58,7 @@
 /*.baseInfo 开始*/
 .baseInfo{
 	padding: 0 20px;
-	height: 440px;
+	height: 490px;
 }
 ._title{
 	height: 89px;
@@ -89,6 +89,19 @@
 	border-bottom: 1px solid #dddddd;
 	line-height:60px;
 	font-size: 22px;
+}
+
+.baseInfo .baseInfo_text .text_row_last{
+	height: 60px;
+	line-height:60px;
+	font-size: 22px;
+}
+
+.baseInfo_text .text_row_last button{
+	font-size: 0.6em;
+    height: 40px;
+    line-height: 40px;
+    color: darkslategray;
 }
 
 .greyFont{

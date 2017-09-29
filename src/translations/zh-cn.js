@@ -278,5 +278,9 @@ window.Translations['zh-cn'] = {
 
   // 调教时间
   ADJUST_TIME_YOURSELF: '您本地时间与系统时间差别过大，请手动调校时间',
-  ADJUST_TIME: '正在调校时间，请勿进行其他操作'
+  ADJUST_TIME: '正在调校时间，请勿进行其他操作',
+
+  // qrcode
+  QRCODE: '二维码',
+  CLICK_TO_SHOW: '点击获取'
 };

@@ -65,6 +65,13 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 			return $scope.lockStatus = $translate.instant('NOT_SET_BLOCKHEIGHT');
 		}
 	}
+
+	// 显示二维码
+	$scope.showQrcode = function() {
+		$rootScope.isBodyMask = true;
+		$rootScope.qrcode = true;
+	}
+	
 	// 解锁 / 上锁判断
 	$scope.isLock = function () {
 		console.log(userService.lockHeight, userService.latestBlockHeight);
