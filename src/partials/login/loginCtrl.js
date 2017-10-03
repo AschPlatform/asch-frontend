@@ -4,6 +4,7 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 	$rootScope.creatpwd = false;
 	$rootScope.checkpwd = false;
 	$rootScope.homedata = {};
+	$rootScope.qrcode = undefined;
 
 	$scope.languages = [
 		{key: 'en-us', value: 'English'},
@@ -78,6 +79,8 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 	//确认
 	$scope.lastcheck = function () {
 		if ($scope.newsecret == $scope.lastsecret) {
+			// qr赋值
+			$rootScope.qrcode = $scope.newsecret;
 			apiService.login({
 				publicKey: newpublicKey
 			}).success(function (res) {
@@ -122,6 +125,8 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 			toastError($translate.instant('ERR_INPUT_PASSWORD'));
 			return;
 		}
+		// qr赋值
+		$rootScope.qrcode = $scope.secret;
 		if (!Mnemonic.isValid($scope.secret)) {
 			return toastError($translate.instant('ERR_VIOLATE_BIP39'));
 		}

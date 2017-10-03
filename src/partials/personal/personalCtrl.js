@@ -8,6 +8,8 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	$scope.passwordInfo = false;
 	$scope.positionInfo = false;
 	$scope.timeLeft = '';
+	$scope.qrcode = false;
+	$scope.string = $rootScope.qrcode;
 
 	// 二级密码 $scope.secondpassword
 
@@ -21,6 +23,8 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				$scope.version = res.version;
 				userService.update(res.account, res.latestBlock);
 				$scope.userService = userService;
+				$scope.string = $rootScope.qrcode;
+				console.log($scope.string);
 				$scope.positionLockStatus();
 				if (userService.latestBlockHeight > userService.lockHeight) {
 					$scope.isLocksure = false
@@ -69,8 +73,13 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	// 显示二维码
 	$scope.showQrcode = function() {
 		$rootScope.isBodyMask = true;
-		$rootScope.qrcode = true;
+		$scope.qrcode = true;
 	}
+
+	$scope.Close = function () {
+        $rootScope.isBodyMask = false;
+        $scope.qrcode = false;
+    };
 	
 	// 解锁 / 上锁判断
 	$scope.isLock = function () {

@@ -51,6 +51,9 @@
 								<!-- 二维码行 -->
 								<div class="publickey_text text_row_last">
 									<span class="greyFont">{{'QRCODE' | translate}} : <button ng-click="showQrcode()">{{'CLICK_TO_SHOW' | translate}}</button></span>
+									<div class="qr_contain" ng-show="qrcode == true">
+										<qr type-number="8" correction-level="'M'" size="400" input-mode="" text="string" image="false" ng-click="Close()"></qr>
+									</div>
 								</div>
 							</div>
 							<div class="clear"></div>

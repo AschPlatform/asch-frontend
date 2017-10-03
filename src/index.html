@@ -46,7 +46,6 @@
     <div id="accountdetail" ng-show="accountdetailinfo" ng-include="'partials/modal/accountdetail/index.html'"></div>
     <div id="voteto" ng-show="votetoinfo" ng-include="'partials/modal/voteto/index.html'"></div>
     <div id="deletevoteto" ng-show="deletevotetoinfo" ng-include="'partials/modal/deletevote/index.html'"></div>
-    <div id="deletevoteto" ng-show="qrcode" ng-include="'partials/modal/qrcode/qr.html'"></div>
     <div ng-class="{'bodycontent':userlogin}"  ng-view></div>
 </div>
 <!-- build:js [jsBuildPath] -->
@@ -59,6 +58,7 @@
 <script type="text/javascript" src="/partials/common/toast/toast.js"></script>
 <script type="text/javascript" src="/angular-route/angular-route.js"></script>
 <script type="text/javascript" src="/angular-cookie/angular-cookie.min.js"></script>
+<script type="text/javascript" src="/qrcode/lib/qrcode.min.js"></script>
 <script type="text/javascript" src="/angular-qr/angular-qr.min.js"></script>
 <script type="text/javascript" src="/angular-translate/angular-translate.js"></script>
 <script type="text/javascript" src="/browserify-asch.js"></script>
@@ -90,7 +90,6 @@
 <script type="text/javascript" src="/partials/modal/dealinfo/dealinfoCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/deletevote/deletevoteCtrl.js"></script>
 <script type="text/javascript" src="/partials/modal/voteto/votetoCtrl.js"></script>
-<script type="text/javascript" src="/partials/modal/qrcode/qrCtrl.js"></script>
 <script type="text/javascript" src="/filter/timestampFilter.js"></script>
 <script type="text/javascript" src="/filter/catalogsFilter.js"></script>
 <script type="text/javascript" src="/filter/saveCheckfilter.js"></script>
