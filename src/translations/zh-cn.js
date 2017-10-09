@@ -281,6 +281,6 @@ window.Translations['zh-cn'] = {
   ADJUST_TIME: '正在调校时间，请勿进行其他操作',
 
   // qrcode
-  QRCODE: '二维码',
+  QRCODE: '主密钥二维码',
   CLICK_TO_SHOW: '点击获取'
 };

@@ -292,6 +292,6 @@ window.Translations['en-us'] = {
   ADJUST_TIME: 'We are adjusting time',
 
   // qrcode
-  QRCODE: 'QRCode',
+  QRCODE: 'QRCode for secret',
   CLICK_TO_SHOW: 'Click to show'
 };
