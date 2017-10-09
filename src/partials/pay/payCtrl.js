@@ -95,4 +95,7 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
             }
         })
     }
+    $scope.resetSent = function () {
+        $scope.isSendSuccess = true;
+    }
 });

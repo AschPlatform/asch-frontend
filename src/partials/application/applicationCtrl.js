@@ -92,7 +92,8 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 			appId: dapp.transactionId
 		}).success(function (balancesRes) {
 			if (!balancesRes.balances) {
-				$scope.showBalances = balancesRes.balances;
+        $scope.showBalances = balancesRes.balances;
+        console.log($scope.showBalances);
 				return;
 			}
      
@@ -102,7 +103,8 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 					balance.quantityShow = 100000000;
 				}	
 			}
-			$scope.showBalances = balancesRes.balances;
+      $scope.showBalances = balancesRes.balances;
+      console.log($scope.showBalances);
       var tableHeight = $scope.showBalances.length > 4 ? 370 : ($scope.showBalances.length + 1 ) * 70 + 20
       $scope.tableStyle = {
         height: tableHeight + 'px',
@@ -118,7 +120,8 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 	};
 	$scope.closeShowBalance = function() {
     $scope.isShowBalance = false;
-		$scope.showBalances = [];
+    $scope.showBalances = [];
+    console.log($scope.showBalances);
 	};
 	$scope.closeDeposit = function() {
 		$scope.depositedDapp = null;

@@ -3,7 +3,7 @@
 		"dev": "http://localhost:4096",
 		"dev2": "http://121.42.194.216:4097",
 		"dev3": "http://101.200.123.124:4097",
-		"dev4": "http://testnet.asch.so:4096"
+		"dev4": "http://192.168.2.179:4096"
 	},
 	//登录接口
 	"loginApi": {

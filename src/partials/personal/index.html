@@ -52,6 +52,7 @@
 								<div class="publickey_text text_row_last">
 									<span class="greyFont">{{'QRCODE' | translate}} : <button ng-click="showQrcode()">{{'CLICK_TO_SHOW' | translate}}</button></span>
 									<div class="qr_contain" ng-show="qrcode == true">
+										<p>{{'QRCODE_CLOSE' | translate}}</p>
 										<qr type-number="8" correction-level="'M'" size="400" input-mode="" text="string" image="false" ng-click="Close()"></qr>
 									</div>
 								</div>

@@ -7,11 +7,11 @@
     </div>
     <div class="_item">
         <label >{{'RECIPIENT' | translate}}</label>
-        <input type="text" required ng-model="fromto" ng-trim="true"  id="pay_item2">
+        <input type="text" required ng-model="fromto" ng-trim="true"  id="pay_item2" ng-change="resetSent()">
     </div>
     <div class="_item">
         <label >{{'AMOUNTS' | translate}}</label>
-        <input type="number" required ng-model="amount" ng-trim="true" id="pay_item3">
+        <input type="number" required ng-model="amount" ng-change="resetSent()" ng-trim="true" id="pay_item3">
     </div>
     <div class="_item" ng-show="currencyName">
         <label >{{'ASSET_NAME' | translate}}</label>
@@ -19,7 +19,7 @@
     </div>
     <div class="_item" ng-show="userService.secondPublicKey">
         <label >{{'SECOND_PASSWORD' | translate}}</label>
-        <input type="password" ng-model="secondPassword" id="pay_item5">
+        <input type="password" ng-model="secondPassword" id="pay_item5" ng-change="resetSent()">
     </div>
     <div class="_item">
         <label >{{'FEES' | translate}}</label>

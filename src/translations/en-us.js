@@ -293,5 +293,6 @@ window.Translations['en-us'] = {
 
   // qrcode
   QRCODE: 'QRCode for secret',
-  CLICK_TO_SHOW: 'Click to show'
+  CLICK_TO_SHOW: 'Click to show',
+  QRCODE_CLOSE: 'Click to close'
 };

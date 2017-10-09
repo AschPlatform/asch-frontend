@@ -76,6 +76,9 @@
 						<td style = "border-top:1px solid #fff;">{{'DAPP_COIN_BALANCE' | translate}}</td>
 					</tr>
 				</thread>
+				<!-- <tr ng-show="showBalances === []">
+					<td>尚未拥有数据</td>
+				</tr> -->
 				<tr ng-repeat="i in showBalances"  >
 					<td class="wop">{{i.currency}}</td>
 					<td class="wop">{{i.quantityShow | unitFilter }}</td>

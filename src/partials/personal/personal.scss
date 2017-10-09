@@ -137,13 +137,19 @@
 }
 
 .qr_contain {
-	width: 200px;
-	height: 200px;
+	width: 400px;
+	height: 400px;
 	z-index: 1000;
-	background-color: #fff;
+	background-color: transparent;
 	position: absolute;
 	left: 23%;
 	top: 21%;
+	p{
+		text-align: center;
+		display: block !important;
+		font-size: 1.2em !important;
+		color: #fff;
+	}
 }
 
 /*.businessInfo 结束*/

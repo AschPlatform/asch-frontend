@@ -23,7 +23,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				$scope.version = res.version;
 				userService.update(res.account, res.latestBlock);
 				$scope.userService = userService;
-				$scope.string = $rootScope.qrcode;
+				$scope.string = "/asch/secret/raw/" + $rootScope.qrcode;
 				console.log($scope.string);
 				$scope.positionLockStatus();
 				if (userService.latestBlockHeight > userService.lockHeight) {
