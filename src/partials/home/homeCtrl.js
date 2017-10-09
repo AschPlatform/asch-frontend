@@ -5,7 +5,7 @@ angular.module('asch').controller('homeCtrl', function ($scope, $rootScope, apiS
 		$rootScope.acceptinfo = true;
 		$rootScope.isBodyMask = true;
 	}
-	// $scope.latestBlock.emptyHeight = "请稍等(Plz wait)"
+	// $scope.latestBlock.emptyHeight = "请稍等(Loading)"
 	// $scope.latestBlock.emptyDate = "年/月/日(Y/M/D)"
 
 	$scope.init = function (params) {
