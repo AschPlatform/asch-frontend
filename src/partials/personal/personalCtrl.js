@@ -9,7 +9,7 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	$scope.positionInfo = false;
 	$scope.timeLeft = '';
 	$scope.qrcode = false;
-	$scope.string = $rootScope.qrcode;
+	$scope.string = "/asch/secret/raw/" + $rootScope.qrcode;
 
 	// 二级密码 $scope.secondpassword
 
