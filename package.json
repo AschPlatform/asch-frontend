@@ -10,7 +10,7 @@
     "build": "browserify build.js -o bower_components/bitcore-mnemonic.js && cp node_modules/asch-js/browserify-asch.js bower_components/"
   },
   "dependencies": {
-    "asch-js": "^1.3.8",
+    "asch-js": "^1.3.9",
     "bitcore-mnemonic": "1.0.1",
     "browserify": "^14.4.0",
     "cjson": "^0.3.2",

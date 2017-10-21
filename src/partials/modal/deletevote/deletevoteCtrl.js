@@ -30,8 +30,7 @@ angular.module('asch').controller('deletevoteCtrl', function ($scope, $rootScope
                 }
             } else if(err === 'adjust'){
                 toastError($translate.instant('ADJUST_TIME_YOURSELF'));
-            } else {
-                $scope.isSendSuccess = true;
+            } else {;
                 toastError($translate.instant('ERR_SERVER_ERROR'));
             }
         })

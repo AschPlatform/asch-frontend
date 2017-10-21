@@ -11,29 +11,30 @@ angular.module('asch').service('postSerivice', function ($http, $translate) {
         }
         return $http(req);
     }
-    this.retryPostImp = function(funcCreate, timeAdjust, countNum, cb) {
+    this.retryPostImp = function (funcCreate, timeAdjust, countNum, cb) {
+        AschJS.options.set('clientDriftSeconds', timeAdjust)
         var trs = funcCreate()
-        that.post(trs).success(function(res){
+        that.post(trs).success(function (res) {
             if (/timestamp/.test(res.error)) {
                 if (countNum > 3) {
                     var err = 'adjust';
                     return cb(err, res);
                 } else {
                     toastError($translate.instant('ADJUST_TIME'));
-                    that.retryPostImp(funcCreate, timeAdjust + 5, countNum + 1,cb);
+                    setTimeout(function () {
+                        that.retryPostImp(funcCreate, timeAdjust + 5, countNum + 1, cb);
+                    }, 2000)
                 }
-            } else if(/processed/.test(res.error)) {
-                that.retryPostImp(funcCreate, timeAdjust, countNum, cb);
             } else {
                 cb(null, res);
             }
-        }).error(function(res){
+        }).error(function (res) {
             var err = 1;
             cb(err, res);
         })
     }
     this.retryPost = function (funcCreate, cb) {
-        this.retryPostImp(funcCreate, 5, 0,cb)
+        this.retryPostImp(funcCreate, 5, 1, cb)
     }
     this.writeoff = function (data) {
         var req = {

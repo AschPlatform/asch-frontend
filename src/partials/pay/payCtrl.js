@@ -28,12 +28,10 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         }
     }
     $scope.sentMsg = function () {
-        $scope.isSendSuccess = false;
         var isAddress = /^[0-9]{1,21}$/g;
         var transaction;
         if (!$scope.fromto) {
             toastError($translate.instant('ERR_NO_RECIPIENT_ADDRESS'));
-            $scope.isSendSuccess = true;
             return false;
         }
         // if (!isAddress.test($scope.fromto)) {
@@ -74,23 +72,19 @@ angular.module('asch').controller('payCtrl', function ($scope, $rootScope, $filt
         }
         $scope.isSendSuccess = false;
         postSerivice.retryPost($scope.createTransaction, function(err, res) {
+            $scope.isSendSuccess = true;
             if (err === null) {
                 if (res.success == true) {
-                    $scope.isSendSuccess = true;
-                    $scope.passwordsure = true;
                     $scope.fromto = '';
                     $scope.amount = '';
                     $scope.secondPassword = '';
                     toast($translate.instant('INF_TRANSFER_SUCCESS'));
                 } else {
-                    $scope.isSendSuccess = true;
                     toastError(res.error);
                 }
             } else if(err === 'adjust'){
-                $scope.isSendSuccess = true;
                 toastError($translate.instant('ADJUST_TIME_YOURSELF'));
             } else {
-                $scope.isSendSuccess = true;
                 toastError($translate.instant('ERR_SERVER_ERROR'));
             }
         })

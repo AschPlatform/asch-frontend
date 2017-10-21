@@ -171,7 +171,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
     postSerivice.retryPost($scope.createTransaction, function (err, res) {
       if (err === null) {
         if (res.success == true) {
-          $scope.passwordsure = true;
           $scope.amount = '';
           $scope.secondPassword = '';
           $scope.depositedDapp = null;
@@ -184,7 +183,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
       } else if(err === 'adjust'){
         toastError($translate.instant('ADJUST_TIME_YOURSELF'));
       } else {
-        $scope.isSendSuccess = true;
         toastError($translate.instant('ERR_SERVER_ERROR'));
       }
     })
