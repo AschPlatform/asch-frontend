@@ -1,6 +1,6 @@
 {
 	"server": {
-		"dev": "http://localhost:4096",
+		"dev": "http://mainnet.asch.so",
 		"dev2": "http://121.42.194.216:4097",
 		"dev3": "http://101.200.123.124:4097",
 		"dev4": "http://101.200.84.232:4096"
@@ -114,7 +114,7 @@
 	// 获取特定资产交易记录
 	"uiaTransferApi": {
 		"mock": "",
-		"url": "/api/uia/transfers"
+		"url": "/api/uia/transactions/my"
 	},
 	// 获取特定余额
 	"uiaBalanceApi": {

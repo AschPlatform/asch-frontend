@@ -22,7 +22,9 @@
         width: 100%;
         line-height: 70px;
         height: 70px;
-        background-image: linear-gradient(rgb(44, 47, 54),rgb(0, 0, 0));
+        background: #141e31;
+        //background-image: linear-gradient(rgb(44, 47, 54),rgb(0, 0, 0));
+        border-bottom: 2px solid #af9159;
         @media screen and (max-width: 1400px){
             line-height: 50px;
             height: 50px;
@@ -39,15 +41,15 @@
         }
     }
     .modal_content{
-        background-color: rgb(23, 27, 38);
+        background-color: #141e31;
         width:100%;
-        height: 100%;
+        height: 90%;
         .form_group{
             width: 65%;
             margin: auto;
             padding-top: 60px;
             .psd_input{
-                background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
+                //background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
                 display: inline-block;
                 width: 100%;
                 height: 60px;
@@ -74,7 +76,7 @@
                   float: right;
                   display: inline-block;
                   width: 85%;
-                  background: transparent;
+                  background:#212b3d;
                   border: none;
                   height: 60px;
                   border-radius: 6px;
@@ -89,11 +91,11 @@
             input{
                 width: 85%;
                 margin-top: 10px;
-                background: transparent;
+                background:#212b3d;
                 border: none;
                 height: 60px;
                 border-radius: 6px;
-                background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
+                //background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
                 @media screen and (max-width: 1400px) {
                     height: 43px;
                     margin-top:20px;
@@ -115,7 +117,7 @@
             line-height: 50px;
             height: 50px;
             padding: 5px 0 5px 0;
-            background: linear-gradient(to right, rgba(255,0,0,0) 20%, rgba(56, 64, 83, 1) 50%, rgba(255,0,0,0) 80%);
+            //background: linear-gradient(to right, rgba(255,0,0,0) 20%, rgba(56, 64, 83, 1) 50%, rgba(255,0,0,0) 80%);
             width: 100%;
             @media screen and (max-width: 1400px) {
                 height: 40px;
@@ -124,21 +126,23 @@
             }
         }
         .pay_confirm{
-            margin-top: 60px;
-            color: rgb(6, 127, 172);
-            text-align: center;
-            font-size: 24px;
-            position: relative;
-            background-image: linear-gradient(rgb(24, 25, 30),rgb(0, 1, 5));
-            display: inline-block;
-            line-height: 60px;
-            height: 60px;
-            width: 35%;
-            left: 35%;
-            border-radius: 6px;
-            padding-right: 36px;
-            box-shadow: 3px 3px 10px rgb(16, 20, 29);
-            cursor: pointer;
+          margin-top: 30px;
+          color: #fff;
+          text-align: center;
+          font-size: 24px;
+          position: relative;
+          /* background-image: linear-gradient(#18191e, #000105); */
+          background: #af9159;
+          padding-left: 30px;
+          display: inline-block;
+          line-height: 60px;
+          height: 60px;
+          width: 35%;
+          left: 35%;
+          border-radius: 20px;
+          padding-right: 36px;
+          /* box-shadow: 3px 3px 10px #10141d; */
+          cursor: pointer;
             @media screen and (max-width: 1400px){
               font-size: 18px;
               height: 45px;

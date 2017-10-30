@@ -6,18 +6,21 @@
         </div>
         <ul ng-controller="headerCtrl" ng-init="init()">
             <li ng-class="{'active':$root.active=='home'}">
-                <a ng-href="#/home"><img src="assets/common/home.png" alt="">{{'HOME' | translate}}</a>
+                <a ng-href="#/home">
+                    <img class="img_normal" src="assets/common/home3.png" alt=""><img class="img_active" src="assets/common/home2.png" alt="">{{'HOME' | translate}}</a>
             </li>
-            <li ng-class="{'active':$root.active=='personal'}" >
-                <a  ng-href="#/personal"><img src="assets/common/personal.png" alt="">{{'PERSONAL' | translate}}</a>
+            <li  ng-class="{'active':$root.active=='personal'}" >
+                <a  ng-href="#/personal"><img class="img_normal" src="assets/common/personal3.png" alt=""><img class="img_active" src="assets/common/personal2.png" alt="">{{'PERSONAL' | translate}}</a>
             </li>
             <li ng-class="{'active':$root.active=='pay'}">
-                <a ng-click="goPay()"><img src="assets/common/transfer.png" alt="">{{'TRANSFER' | translate}}</a>
+                <a ng-click="goPay()"><img class="img_normal" src="assets/common/transfer3.png" alt=""><img class="img_active" src="assets/common/transfer2.png" alt="">{{'TRANSFER' | translate}}</a>
             </li>
             <li ng-disabled>
-                <a ng-href=""><img src="assets/common/app.png" alt="">{{'APPLICATIONS' | translate}}</a>
+                <a ng-href=""><img src="assets/common/app1.png" alt="">{{'APPLICATIONS' | translate}}</a>
             </li>
+            <li  class="exitSystem" ng-class="{'signOut':$root.active=='personal'}" ng-click="quitout()">{{'QUIT' | translate}}</li>
         </ul>
+        <!--<div class="exitSystem" ng-click="quitout()">退出</div>-->
     </div>
 </div>
 

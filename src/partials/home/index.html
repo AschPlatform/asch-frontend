@@ -7,16 +7,15 @@
 			<div class="account">
 				<span>{{'LATEST_BLOCK_HEIGHT' | translate}}</span>
 				<i>{{ latestBlock.height }}</i>
-				<b>{{latestBlock.timestamp | timestampFilter }}</b>
+				<p>{{latestBlock.timestamp | timestampFilter }}</p>
 			</div>
 			<div class="account">
 				<span>{{'VERSION_INFO' | translate}}</span>
 				<i class="account_i">{{ version.version }}</i>
-				<p class="account_p">{{latestBlock.timestamp | timestampFilter }}</p>
-				<b class="account_b">{{version.build}} - {{version.net}}</b>
+				<!--<p class="account_p">{{latestBlock.timestamp | timestampFilter }}</p>-->
+				<p class="account_b">{{version.build}}</p>
 			</div>
 		</div>
-		<hr/>
 		<div class="account_bottom">
 			<div class="account">
 				<span>YLB&nbsp;{{'BALANCE' | translate}}</span>
@@ -27,7 +26,6 @@
 				<i>{{ xasAsset.balance | xasFilter }}</i>
 			</div>
 		</div>
-		<hr/>
 	</div>
 	<div class="latest">
 		<div class="table_title">{{'MY_TRSACTIONS' | translate}}</div>

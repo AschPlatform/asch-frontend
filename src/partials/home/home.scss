@@ -1,20 +1,22 @@
 #home {
   //background-color: #150826;
+  //width: 60%;
   @media screen and (max-width: 1920px) {
     .homeinfo {
       //display: box;
       //display: flex;
       //display: -webkit-box;
       //padding: 0 auto;
-      width: 872px;
+      width: 710px;
       height: 330px;
+      margin-left: 100px;
       hr {
         height: 0;
         width: 100%;
         border: none;
-        border-top: 4px groove #040508;
-        border-top: 1px solid #191c24;
-        border-top: 4px groove #40485a;
+        border-top: 2px solid #ab884e;
+        //border-top: 1px solid #191c24;
+        //border-top: 4px groove #40485a;
       }
       .account_top{
         //border: 1px solid red;
@@ -31,31 +33,33 @@
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #2d3039;
+          background-color: #efebe8;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
+          color: #76777c;
           span {
-            //margin-left: 30px;
-            //margin-right: 30px;
-            //display: block;
+            display: block;
             height: 30px;
-            margin-bottom: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
             font-size: 20px;
-            color: #fff;
-             //line-height: 30px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
+            color: #b2914e;
+            font-weight: 500;
           }
           i {
             font-size: 20px;
-            color: #fff;
-            font-style: normal;
-            position: absolute;
-            margin-bottom: 30px;
-            left: 20px;
-            top: 68px;
+            //color: #fff;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+            //margin-top: 20px;
+            //top: 68px;
             strong {
               font-weight: normal;
               font-size: 20px;
@@ -63,32 +67,34 @@
             }
           }
           p {
-            font-style: normal;
+            display: block;
+            height: 30px;
+            width: 100%;
+            line-height: 30px;
+            text-align: center;
             font-size: 14px;
-            color: #fff;
-            position: absolute;
-            left: 20px;
-            top: 94px;
           }
           b {
             font-style: normal;
             font-size: 14px;
-            color: #fff;
-            position: absolute;
-            left: 20px;
-            bottom: 15px;
+            //color: #fff;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: block;
           }
           .account_i{
-            left: 152px;
-            top: 50px;
+            //left: 152px;
+            //top: 50px;
           }
           .account_p{
-            left: 109px;
-            top: 83px;
+            //left: 109px;
+            //top: 83px;
           }
           .account_b{
-            left: 97px;
-            bottom: 15px;
+            //left: 97px;
+            //bottom: 15px;
           }
           &:nth-child(1) {
             //background: #7f9ebf;
@@ -120,34 +126,31 @@
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #2d3039;
+          background-color: #efebe8;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
+          color: #76777c;
           span {
-            //margin-left: 30px;
-            //margin-right: 30px;
-            margin-bottom: 30px;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
             font-size: 20px;
-            color: #fff;
-            // line-height: 140px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
+            color: #b2914e;
+            font-weight: 500;
           }
           i {
             font-size: 30px;
-            color: #fff;
             font-style: normal;
-            position: absolute;
-            margin-bottom: 30px;
+            margin-top: 25px;
             display: block;
             width: 100%;
             height: 30px;
             line-height:30px;
             text-align: center;
-            //left: 20px;
-            top: 68px;
             strong {
               font-weight: normal;
               font-size: 20px;
@@ -180,6 +183,7 @@
     }
     .latest {
       border:none;
+      margin-left: 100px;
       .table_title {
         margin: 70px 0 20px 0;
         font-size: 25px;
@@ -187,7 +191,8 @@
       }
     }
     .deal_table {
-      width: 826px;
+      width: 710px;
+      margin-left: 100px;
       .table {
         width: 100%;
         height: auto;
@@ -210,11 +215,12 @@
         }
 
         .font_table{
-          background: #1e2126;
+          //background: #1e2126;
           td{
             font-size: 20px;
             color: #939498;
             text-align: center;
+            background: #1f2c3f;
             padding-top: 0px;
           }
         }
@@ -241,13 +247,13 @@
           color: #fff;
         }
         .font_table{
-          background: #1e2126;
+          background: #1f2c3f;
           td{
             font-size: 20px;
             color: #939498;
             text-align: center;
             padding-top: 0px;
-            background: #1e2126;
+            background: #1f2c3f;
           }
         }
         tr:hover {
@@ -264,12 +270,9 @@
           th{
             height: 20px;
             width: 100%;
-            border-bottom:none;
-            background: -moz-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -webkit-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -o-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -ms-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            //border-bottom:none;
+            background: #121e34;
+            border-bottom: 2px solid #b3904c;
           }
         }
       }
@@ -286,15 +289,16 @@
       //display: flex;
       //display: -webkit-box;
       //padding: 0 auto;
-      width: 872px;
+      width: 710px;
       height: 330px;
+      margin-left: 100px;
       hr {
         height: 0;
         width: 100%;
         border: none;
-        border-top: 4px groove #040508;
-        border-top: 1px solid #191c24;
-        border-top: 4px groove #40485a;
+        border-top: 2px solid #ab884e;
+        //border-top: 1px solid #191c24;
+        //border-top: 4px groove #40485a;
       }
       .account_top{
         //border: 1px solid red;
@@ -311,7 +315,7 @@
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #2d3039;
+          background-color: #efebe8;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
@@ -319,23 +323,24 @@
             //margin-left: 30px;
             //margin-right: 30px;
             //display: block;
+            display: block;
             height: 30px;
-            margin-bottom: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
             font-size: 20px;
-            color: #fff;
-             //line-height: 30px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
+            color: #b2914e;
+            font-weight: 500;
           }
           i {
             font-size: 20px;
-            color: #fff;
-            font-style: normal;
-            position: absolute;
-            margin-bottom: 30px;
-            left: 20px;
-            top: 68px;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
             strong {
               font-weight: normal;
               font-size: 20px;
@@ -343,32 +348,34 @@
             }
           }
           p {
-            font-style: normal;
+            display: block;
+            height: 30px;
+            width: 100%;
+            line-height: 30px;
+            text-align: center;
             font-size: 14px;
-            color: #fff;
-            position: absolute;
-            left: 20px;
-            top: 94px;
           }
           b {
             font-style: normal;
             font-size: 14px;
-            color: #fff;
-            position: absolute;
-            left: 20px;
-            bottom: 15px;
+            //color: #fff;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: block;
           }
           .account_i{
-            left: 152px;
-            top: 50px;
+            //left: 152px;
+            //top: 50px;
           }
           .account_p{
-            left: 109px;
-            top: 83px;
+            //left: 109px;
+            //top: 83px;
           }
           .account_b{
-            left: 97px;
-            bottom: 15px;
+            //left: 97px;
+            //bottom: 15px;
           }
           &:nth-child(1) {
             //background: #7f9ebf;
@@ -400,34 +407,31 @@
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #2d3039;
+          background-color: #efebe8;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
+          color: #76777c;
           span {
-            //margin-left: 30px;
-            //margin-right: 30px;
-            margin-bottom: 30px;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
             font-size: 20px;
-            color: #fff;
-            // line-height: 140px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
+            color: #b2914e;
+            font-weight: 500;
           }
           i {
             font-size: 30px;
-            color: #fff;
             font-style: normal;
-            position: absolute;
-            margin-bottom: 30px;
+            margin-top: 25px;
             display: block;
             width: 100%;
             height: 30px;
             line-height:30px;
             text-align: center;
-            //left: 20px;
-            top: 68px;
             strong {
               font-weight: normal;
               font-size: 20px;
@@ -460,6 +464,7 @@
     }
     .latest {
       border:none;
+      margin-left: 100px;
       .table_title {
         margin: 70px 0 20px 0;
         font-size: 25px;
@@ -467,7 +472,8 @@
       }
     }
     .deal_table {
-      width: 826px;
+      width: 710px;
+      margin-left: 100px;
       }
       .table {
         width: 100%;
@@ -491,7 +497,7 @@
         }
 
         .font_table{
-          background: #1e2126;
+          background: #1f2c3f;
           td{
             font-size: 20px;
             color: #939498;
@@ -522,13 +528,13 @@
           color: #fff;
         }
         .font_table{
-          background: #1e2126;
+          background: #1f2c3f;
           td{
             font-size: 20px;
             color: #939498;
             text-align: center;
             padding-top: 0px;
-            background: #1e2126;
+            background: #1f2c3f;
           }
         }
         tr:hover {
@@ -545,12 +551,9 @@
           th{
             height: 20px;
             width: 100%;
-            border-bottom:none;
-            background: -moz-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -webkit-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -o-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -ms-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            //border-bottom:none;
+            background: #121e34;
+            border-bottom: 2px solid #b3904c;
           }
         }
       }
@@ -567,15 +570,16 @@
       //display: flex;
       //display: -webkit-box;
       //padding: 0 auto;
-      width: 700px;
+      width: 500px;
       height: 300px;
+      margin-left: 100px;
       hr {
         height: 0;
         width: 100%;
         border: none;
-        border-top: 4px groove #040508;
-        border-top: 1px solid #191c24;
-        border-top: 4px groove #40485a;
+        border-top: 2px solid #ab884e;
+        //border-top: 1px solid #191c24;
+        //border-top: 4px groove #40485a;
       }
       .account_top{
         //border: 1px solid red;
@@ -599,24 +603,24 @@
           span {
             //margin-left: 30px;
             //margin-right: 30px;
-            //display: block;
+            display: block;
             height: 30px;
-            margin-bottom: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
             font-size: 20px;
-            color: #fff;
-            //line-height: 30px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
+            color: #b2914e;
+            font-weight: 500;
           }
           i {
             font-size: 20px;
-            color: #fff;
-            font-style: normal;
-            position: absolute;
-            margin-bottom: 30px;
-            left: 20px;
-            top: 68px;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
             strong {
               font-weight: normal;
               font-size: 20px;
@@ -624,32 +628,34 @@
             }
           }
           p {
-            font-style: normal;
+            display: block;
+            height: 30px;
+            width: 100%;
+            line-height: 30px;
+            text-align: center;
             font-size: 14px;
-            color: #fff;
-            position: absolute;
-            left: 20px;
-            top: 94px;
           }
           b {
             font-style: normal;
             font-size: 14px;
-            color: #fff;
-            position: absolute;
-            left: 20px;
-            bottom: 15px;
+            //color: #fff;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: block;
           }
           .account_i{
-            left: 152px;
-            top: 50px;
+            //left: 152px;
+            //top: 50px;
           }
           .account_p{
-            left: 109px;
-            top: 83px;
+            //left: 109px;
+            //top: 83px;
           }
           .account_b{
-            left: 97px;
-            bottom: 15px;
+            //left: 97px;
+            //bottom: 15px;
           }
           &:nth-child(1) {
             //background: #7f9ebf;
@@ -685,30 +691,27 @@
           border-radius: 6px;
           overflow: hidden;
           position: relative;
+          color: #76777c;
           span {
-            //margin-left: 30px;
-            //margin-right: 30px;
-            margin-bottom: 30px;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            margin-top: 25px;
             font-size: 20px;
-            color: #fff;
-            // line-height: 140px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
+            color: #b2914e;
+            font-weight: 500;
           }
           i {
             font-size: 30px;
-            color: #fff;
             font-style: normal;
-            position: absolute;
-            margin-bottom: 30px;
+            margin-top: 25px;
             display: block;
             width: 100%;
             height: 30px;
             line-height:30px;
             text-align: center;
-            //left: 20px;
-            top: 68px;
             strong {
               font-weight: normal;
               font-size: 20px;
@@ -741,6 +744,7 @@
     }
     .latest {
       border:none;
+      margin-left: 100px;
       .table_title {
         margin: 92px 0 10px 0;
         font-size: 20px;
@@ -749,6 +753,7 @@
     }
     .deal_table {
       width: 700px;
+      margin-left: 100px;
       .ylb_table{
         td{
           max-width: 150px;
@@ -777,7 +782,7 @@
         }
 
         .font_table{
-          background: #1e2126;
+          background: #1f2c3f;
           td{
             max-width: 100px;
             font-size: 20px;
@@ -811,13 +816,13 @@
           color: #fff;
         }
         .font_table{
-          background: #1e2126;
+          background: #1f2c3f;
           td{
             font-size: 20px;
             color: #939498;
             text-align: center;
             padding-top: 0px;
-            background: #1e2126;
+            background: #1f2c3f;
           }
         }
         tr:hover {
@@ -834,12 +839,14 @@
           th{
             height: 20px;
             width: 100%;
-            border-bottom:none;
-            background: -moz-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -webkit-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -o-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: -ms-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            background: linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            //border-bottom:none;
+            background: #121e34;
+            border-bottom: 2px solid #b3904c;
+            //background: -moz-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            //background: -webkit-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            //background: -o-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            //background: -ms-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            //background: linear-gradient(to bottom, #000000 0%,#1e2126 100%);
           }
         }
       }

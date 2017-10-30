@@ -63,13 +63,14 @@
 .pay{
   width:65%;
   color: rgb(177, 178, 182);
+  margin-left: 100px;
   .border_box{
     margin-top: 20px;
-    border-top: 2px solid rgb(1, 1, 3);
-    border-bottom: 2px solid rgb(40, 45, 64);
+    /* border-top: 2px solid #010103; */
+    border-bottom: 2px solid #b3904e;
     @media screen and (max-width: 1400px){
-      border-top: 2px solid rgb(1, 1, 3);
-      border-bottom: 2px solid rgb(40, 45, 64);
+      /* border-top: 2px solid #010103; */
+      border-bottom: 2px solid #b3904e;
     }
   }
   .pay_upper{
@@ -86,7 +87,8 @@
       width: 75%;
       height: 55px;
       border: none;
-      background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
+      //background-image: linear-gradient(rgb(253, 253, 253),rgb(179, 179, 179));
+      background: #1f2c3f;
       display: inline-block;
       border-radius: 6px;
       margin-left: 10px;
@@ -96,7 +98,10 @@
       }
     }
     textarea{
-      font-size:1em;
+      font-size: 1em;
+      color: #fff;
+      padding-top: 10px;
+      background: #1f2c3f;
       @media screen and (max-width: 1400px){
         font-size:0.5em;
       }
@@ -132,6 +137,9 @@
         li{
           margin-bottom: 20px;
         }
+        .rightFee{
+          input{color: #b3904e;}
+        }
       }
     }
   }
@@ -152,8 +160,8 @@
       height: 110px;
       resize: none;
       border: none;
-      box-shadow: 4px 4px rgb(14, 17, 24);
-      background-color: rgb(45, 48, 57);
+      /* box-shadow: 4px 4px #0e1118; */
+      background-color: #1f2c3f;
       @media screen and (max-width: 1400px){
         margin-left: 7px;
       }
@@ -162,19 +170,21 @@
 
   .pay_confirm{
     margin-top: 60px;
-    color: rgb(6, 127, 172);
+    color: #fff;
     text-align: center;
     font-size: 28px;
     position: relative;
-    background-image: linear-gradient(rgb(24, 25, 30),rgb(0, 1, 5));
+    //background-image: linear-gradient(rgb(24, 25, 30),rgb(0, 1, 5));
+    background: #b3904e;
     display: inline-block;
     padding-right: 10px;
+    padding-left: 20px;
     line-height: 60px;
     height: 60px;
     width: 25%;
     left: 35%;
-    border-radius: 6px;
-    box-shadow: 3px 3px 10px rgb(16, 20, 29);
+    border-radius: 20px;
+    //box-shadow: 3px 3px 10px rgb(16, 20, 29);
     cursor: pointer;
     @media screen and (max-width: 1400px){
       font-size: 18px;

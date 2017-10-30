@@ -113,7 +113,7 @@ window.Translations['en-us'] = {
   STEP: 'Step',
   CREATE_MASTER_PASSWORD: 'Create Master Secret',
   NEW_PASSWORD: 'New Master Secret',
-  NEW_PWD_TIP_1: 'System has already generated a new secure secret, you need to re-type this secret in the next step to confirm.',
+  NEW_PWD_TIP_1: 'New master password',
   NEXT_STEP: 'Next Step',
   SAVE_PASSWORD: 'Save Master Secret',
   CONFIRM_PASSWORD: 'Confirm master secret',

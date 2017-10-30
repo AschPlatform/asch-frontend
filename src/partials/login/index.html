@@ -1,36 +1,49 @@
 <div id="login" ng-controller="loginCtrl" ng-init="init()" >‘
 	<!-- 新增 logo&字样 -->
 	<div class="logo_bar">
-		<img class="logo_logo" src="assets/common/logo_absorb.png">
-		<img class="logo_title" src="assets/common/absorb_title.png">
+		<img class="logo_logo" src="assets/common/absorb_logo.png">
+		<div class="btn_new" ng-click="newuser()">
+			{{'NEW_ACCOUNT' | translate}}
+			<span></span>
+		</div>
+		<select class="select_language" ng-model="selectedLanguage" ng-options="l.value for l in languages" ng-change="changeLanguage()"></select>
+		<!--<img class="logo_logo" src="assets/common/logo_absorb.png">-->
+		<!--<img class="logo_title" src="assets/common/absorb_title.png">-->
 	</div>
-	<div class="border_box"></div>
+	<!--<div class="border_box"></div>-->
 	<!-- 登陆区域 仅在首页显示-->
 	<div class="wrap1 " ng-show="register">
 		<!-- <div class="header"></div> -->
 		<div class="content">
 			<div class="content_bottom">
 				<div class="psd_input">
-					<span class="psd_img"></span>
+					<img class="psd_img" src="assets/login/key.png">
 					<input type="password" placeholder="{{'INPUT_PASSWORD' | translate}}" ng-model="secret">
 				</div>
-				<div class="maintain_status">
-					<!-- <img src="assets/login/confirmed.png"> -->
-					<!-- <span class="status_img"></span> -->
-					<input type="checkbox" id="" class="" style="height: 20px;width: 20px;display: inline-block;" checked>
-					<p>{{'KEEP_SESSION' | translate}}</p>
-				</div>
-				<select ng-model="selectedLanguage" ng-options="l.value for l in languages" ng-change="changeLanguage()"></select>
+				<!--<div class="maintain_status">-->
+					<!--&lt;!&ndash; <img src="assets/login/confirmed.png"> &ndash;&gt;-->
+					<!--&lt;!&ndash; <span class="status_img"></span> &ndash;&gt;-->
+					<!--<input type="checkbox"  class="" style="height: 20px;width: 20px;display: inline-block;" checked>-->
+					<!--<p>{{'KEEP_SESSION' | translate}}</p>-->
+				<!--</div>-->
+				<!--<select ng-model="selectedLanguage" ng-options="l.value for l in languages" ng-change="changeLanguage()"></select>-->
 			</div>
+			<hr>
 			<div class="btn_group">
 				<div class="btn_login" ng-click="registerin()">
 					{{'LOGIN' | translate}}
 					<span></span>
 				</div>
-				<div class="btn_new" ng-click="newuser()">
-						{{'NEW_ACCOUNT' | translate}}
-					<span></span>
+				<div class="maintain_status">
+					<!-- <img src="assets/login/confirmed.png"> -->
+					<!-- <span class="status_img"></span> -->
+					<input type="checkbox"  class="" style="height: 20px;width: 20px;display: inline-block;" checked>
+					<p>{{'KEEP_SESSION' | translate}}</p>
 				</div>
+				<!--<div class="btn_new" ng-click="newuser()">-->
+						<!--{{'NEW_ACCOUNT' | translate}}-->
+					<!--<span></span>-->
+				<!--</div>-->
 			</div>
 			<!-- <button class="register" ng-click="registerin()">{{'LOGIN' | translate}}</button>
 			<button class="newuser" ng-click="newuser()">{{'NEW_ACCOUNT' | translate}}</button> -->
