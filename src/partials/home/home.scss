@@ -1,15 +1,15 @@
 #home {
   //background-color: #150826;
-  //width: 60%;
-  @media screen and (max-width: 1920px) {
+  //width: 60%; @media screen and (min-width:960px) and (max-width:1200px)
+  @media screen and (min-width:1400px) and (max-width:1920px) {
     .homeinfo {
       //display: box;
       //display: flex;
       //display: -webkit-box;
       //padding: 0 auto;
-      width: 710px;
+      width: 750px;
       height: 330px;
-      margin-left: 100px;
+      margin-left: 50px;
       hr {
         height: 0;
         width: 100%;
@@ -28,8 +28,9 @@
         justify-content:space-between;
         -webkit-align-items:center;
         align-items:center;
+        margin-bottom: 10px;
         .account{
-          width: 350px;
+          width: 365px;
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
@@ -122,7 +123,7 @@
         -webkit-align-items:center;
         align-items:center;
         .account{
-          width: 350px;
+          width: 365px;
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
@@ -183,7 +184,7 @@
     }
     .latest {
       border:none;
-      margin-left: 100px;
+      margin-left: 50px;
       .table_title {
         margin: 70px 0 20px 0;
         font-size: 25px;
@@ -191,8 +192,8 @@
       }
     }
     .deal_table {
-      width: 710px;
-      margin-left: 100px;
+      width: 750px;
+      margin-left: 50px;
       .table {
         width: 100%;
         height: auto;
@@ -289,9 +290,9 @@
       //display: flex;
       //display: -webkit-box;
       //padding: 0 auto;
-      width: 710px;
+      width: 800px;
       height: 330px;
-      margin-left: 100px;
+      margin-left: 50px;
       hr {
         height: 0;
         width: 100%;
@@ -310,8 +311,9 @@
         justify-content:space-between;
         -webkit-align-items:center;
         align-items:center;
+        margin-bottom: 10px;
         .account{
-          width: 350px;
+          width: 390px;
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
@@ -403,7 +405,7 @@
         -webkit-align-items:center;
         align-items:center;
         .account{
-          width: 350px;
+          width: 390px;
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
@@ -464,7 +466,7 @@
     }
     .latest {
       border:none;
-      margin-left: 100px;
+      margin-left: 50px;
       .table_title {
         margin: 70px 0 20px 0;
         font-size: 25px;
@@ -472,8 +474,8 @@
       }
     }
     .deal_table {
-      width: 710px;
-      margin-left: 100px;
+      width: 800px;
+      margin-left: 50px;
       }
       .table {
         width: 100%;
@@ -563,16 +565,15 @@
         color: #333;
       }
     }
-  }
   @media screen and (max-width: 1400px)  {
     .homeinfo {
       //display: box;
       //display: flex;
       //display: -webkit-box;
       //padding: 0 auto;
-      width: 500px;
+      width: 700px;
       height: 300px;
-      margin-left: 100px;
+      margin-left: 50px;
       hr {
         height: 0;
         width: 100%;
@@ -591,12 +592,13 @@
         justify-content:space-between;
         -webkit-align-items:center;
         align-items:center;
+        margin-bottom: 10px;
         .account{
-          width: 325px;
+          width: 340px;
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #2d3039;
+          background-color: #efebe8;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
@@ -683,11 +685,11 @@
         -webkit-align-items:center;
         align-items:center;
         .account{
-          width: 325px;
+          width: 340px;
           height: 140px;
           display: inline-block;
           //margin-right: 15px;
-          background-color: #2d3039;
+          background-color: #efebe8;
           border-radius: 6px;
           overflow: hidden;
           position: relative;
@@ -744,7 +746,7 @@
     }
     .latest {
       border:none;
-      margin-left: 100px;
+      margin-left: 50px;
       .table_title {
         margin: 92px 0 10px 0;
         font-size: 20px;
@@ -753,108 +755,135 @@
     }
     .deal_table {
       width: 700px;
-      margin-left: 100px;
+      margin-left: 50px;
+      .table{
+        .font_table td{
+          font-size: 20px;
+          color: #939498;
+          text-align: center;
+          padding-top: 0px;
+          background: #1f2c3f;
+          white-space: nowrap;
+        }
+        thead{
+          tr{
+            th{
+              //vertical-align: bottom;
+              border-bottom: 2px solid #b3904c;
+            }
+          }
+        }
+      }
       .ylb_table{
         td{
           max-width: 150px;
           min-width: 100px;
           font-size: 10px;
         }
-      .table {
-        width: 100%;
-        height: auto;
-        border-collapse: separate;
-        border-spacing: 0;
-        tr:first-child th:first-child {
-          border-top-left-radius: 12px;
-        }
-
-        tr:first-child th:last-child {
-          border-top-right-radius: 12px;
-        }
-
-        tr:last-child td:first-child {
-          border-bottom-left-radius: 12px;
-        }
-
-        tr:last-child td:last-child {
-          border-bottom-right-radius: 12px;
-        }
-
-        .font_table{
-          background: #1f2c3f;
-          td{
-            max-width: 100px;
-            font-size: 20px;
-            color: #939498;
-            text-align: center;
-            padding-top: 0px;
-          }
-        }
-        td {
-          text-align: center;
-          width: 100%;
-          border: 0;
-          //font-size: 25px;
-          max-width: 134px;
-          font-size: 10px;
-          text-overflow:ellipsis;
-          white-space:nowrap;
-          overflow:hidden;
-          overflow-x: auto;
-        }
-        tr:nth-child(even) {
-          background: black;
-          width: 100%;
-          border: 0;
-          color: #fff;
-        }
-        tr:nth-child(odd) {
-          width: 100%;
-          background: #121117;
-          border: 0;
-          color: #fff;
-        }
-        .font_table{
-          background: #1f2c3f;
-          td{
+        .table {
+         td{
             font-size: 20px;
             color: #939498;
             text-align: center;
             padding-top: 0px;
             background: #1f2c3f;
+           //white-space: nowrap;
           }
-        }
-        tr:hover {
+          width: 100%;
+          height: auto;
+          border-collapse: separate;
+          border-spacing: 0;
+          tr:first-child th:first-child {
+            border-top-left-radius: 12px;
+          }
 
-        }
-      }
-      thead{
-        width: 100%;
-        //height:45px;
-        border-collapse: separate;
-        border-spacing: 0;
-        border: 1px #d4d8da;
-        tr{
-          th{
-            height: 20px;
+          tr:first-child th:last-child {
+            border-top-right-radius: 12px;
+          }
+
+          tr:last-child td:first-child {
+            border-bottom-left-radius: 12px;
+          }
+
+          tr:last-child td:last-child {
+            border-bottom-right-radius: 12px;
+          }
+
+          .font_table{
+            background: #1f2c3f;
+            td{
+              max-width: 100px;
+              font-size: 20px;
+              color: #939498;
+              text-align: center;
+              padding-top: 0px;
+            }
+          }
+          td {
+            text-align: center;
             width: 100%;
-            //border-bottom:none;
-            background: #121e34;
-            border-bottom: 2px solid #b3904c;
-            //background: -moz-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            //background: -webkit-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            //background: -o-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            //background: -ms-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
-            //background: linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            border: 0;
+            //font-size: 25px;
+            max-width: 134px;
+            font-size: 10px;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            overflow:hidden;
+            overflow-x: auto;
+          }
+          tr:nth-child(even) {
+            background: black;
+            width: 100%;
+            border: 0;
+            color: #fff;
+          }
+          tr:nth-child(odd) {
+            width: 100%;
+            background: #121117;
+            border: 0;
+            color: #fff;
+          }
+          .font_table{
+            background: #1f2c3f;
+            td{
+              font-size: 20px;
+              color: #939498;
+              text-align: center;
+              padding-top: 0px;
+              background: #1f2c3f;
+            }
+          }
+          tr:hover {
+
           }
         }
-      }
+        thead{
+          width: 100%;
+          //height:45px;
+          border-collapse: separate;
+          border-spacing: 0;
+          border-bottom: 2px solid #b3904c;
+          tr{
+            th{
+              height: 20px;
+              width: 100%;
+              //border-bottom:none;
+              background: #121e34;
+              border-bottom: 2px solid #b3904c;
+              //background: -moz-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+              //background: -webkit-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+              //background: -o-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+              //background: -ms-linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+              //background: linear-gradient(to bottom, #000000 0%,#1e2126 100%);
+            }
+          }
+        }
 
-      .deal_table_title {
-        font-size: 20px;
-        color: #333;
+        .deal_table_title {
+          font-size: 20px;
+          color: #333;
+        }
       }
     }
   }
-}
+  }

@@ -37,15 +37,23 @@
             //margin-top: 20px;
             z-index: 99999;
             /* width: 780px; */
-            width: 220px;
+            width: 280px;
             /* overflow: hidden; */
             display: block;
             border-top: 2px solid #ab884e;
             background: #1f2c3f;
+            @media screen and (max-width: 1400px){
+                margin-left: 50px;
+                width:220px;
+            }
+            @media screen and (min-width:1400px) and (max-width:1920px){
+                margin-left: 130px;
+                width: 250px;
+            }
             .exitSystem{
-                width: 185px;
+                width: 270px;
                 position: absolute;
-                left: 193px;
+                left: 213px;
                 height: 35px;
                 line-height: 35px;
                 text-align: center;
@@ -57,6 +65,22 @@
                 display: none;
                 /* margin-left: 135px; */
                 /* padding-left: 10px; */
+                @media screen and (max-width: 1400px){
+                    margin-left: -112px;
+                    width:220px;
+                }
+                @media screen and (min-width:1400px) and (max-width:1920px){
+                    left: 200px;
+                    width: 250px;
+                    height: 40px;
+                    line-height: 40px;
+                }
+                @media screen and (min-width: 1920px){
+                    //margin-left: -112px;
+                    width:280px;
+                    height: 40px;
+                    line-height: 40px;
+                }
             }
             .signOut{
                 display: block;

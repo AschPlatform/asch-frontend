@@ -515,7 +515,13 @@ body {
     box-sizing: border-box;
     margin-left: 40px;
 }
-@media screen and (max-width: 2000px){
+
+@media screen and (min-width:1400px) and (max-width:1920px) {
+    .bodycontent{
+      left: 28%;
+    }
+}
+@media screen and (max-width: 1920px){
     .bodycontent{
         background: url(../assets/home/bg_cheetah.png) no-repeat rgb(18, 30, 52);
         background-position: 117% 190%;
@@ -555,7 +561,7 @@ body {
     background-size: 100% auto;
 }
 /* 设置各个页面的特殊背景 */
-@media screen and (max-width: 2000px){
+@media screen and (max-width: 1920px){
     .heart{
         background: url('../assets/login/wrap2_bg.png') no-repeat rgb(18, 30, 52);
         background-position: 70% 60%;
@@ -595,7 +601,7 @@ body {
         transition: all .5s linear .1s;
     }
 }
-@media screen and (min-width: 2000px){
+@media screen and (min-width: 1920px){
     .heart{
         background: url('../assets/login/wrap2_bg.png') no-repeat rgb(18, 30, 52);
         background-position: 70% 60%;

@@ -55,23 +55,25 @@
                 width: 85%;
                 height: 60px;
                 border-radius: 6px;
+              margin-bottom: 10px;
                 @media screen and (max-width: 1400px) {
                   position: relative;
                   height: 43px;
                 }
                 .psd_img{
-                  background: url("/assets/login/key.png") no-repeat;
-                  //background-position: 52% 28%;
-                  //background-size: 266% 240%;
+                  //background: url("/assets/login/key.png") no-repeat;
+                  background: url(/assets/login/key.png) no-repeat;
                   display: inline-block;
                   width: 50px;
                   height: 15px;
-                  margin-top: 13px;
+                  /* line-height: 60px; */
+                  margin-top: 23px;
                   @media screen and (max-width: 1400px) {
                     //background-position: 52% 28%;
                     //background-size: 266% 240%;
                     //width: 41px;
                     //height: 40px;
+                    margin-top: 15px;
                   }
                 }
                 input{
