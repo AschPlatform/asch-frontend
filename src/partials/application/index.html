@@ -36,7 +36,7 @@
 	<div class="content third" ng-show="installed">
 		<table class="table" ng-table="appinstalled" border="0" width="100%" cellpadding="0" cellspacing="0"
 			   template-pagination="custom/pager" >
-			<thread>
+			<thead>
 				<tr>
 					<td>{{'DAPP_ICON' | translate}}</td>
 					<td>{{'DAPP_NAME' | translate}}</td>
@@ -47,7 +47,7 @@
 					<td><div class = "balance">{{'DAPP_BANLANCE_DETAIL' | translate}}</div></td>
 					<td><div class = "download">{{'DAPP_SOURCE_CODE' | translate}}</div></td>
 				</tr>
-			</thread>
+			</thead>
 			<tr ng-repeat="i in $data"  >
 				<td><a target="_blank" ng-href="/dapps/{{i.transactionId }}"><img class="ico-img" src="{{i.icon}}"></a></td>
 				<td><a target="_blank" ng-href="/dapps/{{i.transactionId }}">{{i.name}}</a></td>

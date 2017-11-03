@@ -11,7 +11,7 @@ angular.module('asch').service('postSerivice', function ($http, $translate) {
         }
         return $http(req);
     }
-    this.retryPostImp = function (funcCreate, timeAdjust, countNum, cb) {
+    this.retryPostImp = async function (funcCreate, timeAdjust, countNum, cb) {
         AschJS.options.set('clientDriftSeconds', timeAdjust)
         var trs = funcCreate()
         that.post(trs).success(function (res) {

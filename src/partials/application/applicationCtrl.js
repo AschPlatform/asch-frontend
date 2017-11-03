@@ -4,6 +4,7 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 	$scope.newapplication = true;
 	$scope.installed = false;
   $scope.isShowBalance = false;
+  $scope.precisionMap = {};
 
   // 由于设置二级密码的bug 导致这里要刷新一下userService
   $scope.init = function (params) {
@@ -23,6 +24,10 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
       if(!assets) {
         $scope.currencys = [ { key: '0', value: 'XAS' } ]
         return;
+      } else {
+        for (var i = 0; i < assetsRes.assets.length; i++) {
+          $scope.precisionMap[assetsRes.assets[i].name] = assetsRes.assets[i].precision;
+        }
       }
       var uiaAssets = []
       for (var i = 0; i < assets.length; i++) {
@@ -93,7 +98,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 		}).success(function (balancesRes) {
 			if (!balancesRes.balances) {
         $scope.showBalances = balancesRes.balances;
-        console.log($scope.showBalances);
 				return;
 			}
      
@@ -104,7 +108,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 				}	
 			}
       $scope.showBalances = balancesRes.balances;
-      console.log($scope.showBalances);
       var tableHeight = $scope.showBalances.length > 4 ? 370 : ($scope.showBalances.length + 1 ) * 70 + 20
       $scope.tableStyle = {
         height: tableHeight + 'px',
@@ -121,7 +124,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
 	$scope.closeShowBalance = function() {
     $scope.isShowBalance = false;
     $scope.showBalances = [];
-    console.log($scope.showBalances);
 	};
 	$scope.closeDeposit = function() {
 		$scope.depositedDapp = null;
@@ -130,8 +132,14 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
   };
   // 重制create
   $scope.createTransaction = function () {
-    var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
-    return AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
+    if ($scope.currency.value == 'XAS') {
+      var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
+      return AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
+    } else {
+      var precisionSpecial = $scope.precisionMap[$scope.currency.value];
+      var amount = parseFloat(($scope.amount * (Math.pow( 10, precisionSpecial))).toFixed(0));
+      return AschJS.transfer.createInTransfer($scope.depositedDapp.transactionId, $scope.currency.value, amount, userService.secret, $scope.secondPassword);
+    }
   }
 	$scope.sentMsg = function () {
     var transaction;
@@ -147,7 +155,7 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
         toastError($translate.instant('ERR_AMOUNT_INVALID'));
         return false;
     }
-    var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
+    // var amount = parseFloat(($scope.amount * 100000000).toFixed(0));
     if ($scope.currency.value == 'XAS') {
        var fee = 10000000;
        if (amount + fee > userService.balance) {
@@ -155,7 +163,6 @@ angular.module('asch').controller('applicationCtrl', function ($scope, $rootScop
         return false;
       }
     }
-   
     if (userService.secondPublicKey && !$scope.secondPassword) {
         toastError($translate.instant('ERR_NO_SECND_PASSWORD'));
         return false;
