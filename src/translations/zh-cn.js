@@ -282,6 +282,7 @@ window.Translations['zh-cn'] = {
 
   // qrcode
   QRCODE: '主密钥二维码',
+  QRCODE_ADDRESS: '您的地址',
   CLICK_TO_SHOW: '点击获取',
   QRCODE_CLOSE: '点击二维码关闭'
 };

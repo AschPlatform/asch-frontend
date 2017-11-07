@@ -49,13 +49,22 @@
 									<span class="greyFont">{{'PUBLIC_KEY' | translate}} : </span><p>{{userService.publicKey}}</p>
 								</div>
 								<!-- 二维码行 -->
-								<div class="publickey_text text_row_last">
+								<!-- main secret qrcode -->
+								<div class="publickey_text text_row">
 									<span class="greyFont">{{'QRCODE' | translate}} : <button ng-click="showQrcode()">{{'CLICK_TO_SHOW' | translate}}</button></span>
 									<div class="qr_contain" ng-show="qrcode == true">
 										<p>{{'QRCODE_CLOSE' | translate}}</p>
 										<qr type-number="8" correction-level="'M'" size="400" input-mode="" text="string" image="false" ng-click="Close()"></qr>
 									</div>
 								</div>
+								<div class="publickey_text text_row_last">
+									<span class="greyFont">{{'QRCODE_ADDRESS' | translate}} : <button ng-click="showQrcode_address()">{{'CLICK_TO_SHOW' | translate}}</button></span>
+									<div class="qr_contain" ng-show="qrcode_address == true">
+										<p>{{'QRCODE_CLOSE' | translate}}</p>
+										<qr type-number="8" correction-level="'M'" size="400" input-mode="" text="string_address" image="false" ng-click="Close()"></qr>
+									</div>
+								</div>
+								<!-- address qrcode -->
 							</div>
 							<div class="clear"></div>
 						</div>

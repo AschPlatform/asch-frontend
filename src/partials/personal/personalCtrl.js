@@ -9,7 +9,10 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 	$scope.positionInfo = false;
 	$scope.timeLeft = '';
 	$scope.qrcode = false;
-	$scope.string = "/asch/secret/raw/" + $rootScope.qrcode;
+	$scope.qrcode_address = false;
+	// $scope.string = "/asch/secret/raw/" + $rootScope.qrcode;
+	$scope.string = $rootScope.qrcode;
+	$scope.string_address = userService.address;
 
 	// 二级密码 $scope.secondpassword
 
@@ -23,15 +26,13 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 				$scope.version = res.version;
 				userService.update(res.account, res.latestBlock);
 				$scope.userService = userService;
-				$scope.string = "/asch/secret/raw/" + $rootScope.qrcode;
-				console.log($scope.string);
+				$scope.string = $rootScope.qrcode;
+				$scope.string_address = userService.address;
 				$scope.positionLockStatus();
 				if (userService.latestBlockHeight > userService.lockHeight) {
 					$scope.isLocksure = false
-					console.log('init判定为非锁仓')
 				} else {
 					$scope.isLocksure = true
-					console.log('init判定为已锁仓')
 				}
 			};
 		}).error(function (res) {
@@ -75,10 +76,15 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 		$rootScope.isBodyMask = true;
 		$scope.qrcode = true;
 	}
+	$scope.showQrcode_address = function() {
+		$rootScope.isBodyMask = true;
+		$scope.qrcode_address = true;
+	}
 
 	$scope.Close = function () {
         $rootScope.isBodyMask = false;
-        $scope.qrcode = false;
+		$scope.qrcode = false;
+		$scope.qrcode_address = false;
     };
 	
 	// 解锁 / 上锁判断
