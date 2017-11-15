@@ -8,8 +8,8 @@
 			<b>XAS</b>
 		</div>
 		<div class="account">
-			<span>{{'LATEST_BLOCK_HEIGHT' | translate}}</span><i>{{ latestBlock.height }}</i>
-			<b>{{latestBlock.timestamp | timestampFilter }}</b>
+			<span>{{'LATEST_BLOCK_HEIGHT' | translate}}</span><i ng-show="latestBlock.height">{{ latestBlock.height }}</i><i ng-show="!latestBlock.height">Loading...</i>
+			<b ng-show="latestBlock.timestamp">{{latestBlock.timestamp | timestampFilter }}</b>
 		</div>
 		<div class="account">
 			<span>{{'VERSION_INFO' | translate}}</span><i>{{ version.version }}</i>

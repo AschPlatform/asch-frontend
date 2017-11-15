@@ -174,7 +174,7 @@ window.Translations['en-us'] = {
   ALREADY_SET: 'Already Set',
   NOT_SET: 'Not set yet',
   NOT_SET_BLOCKHEIGHT: 'Not lock your height yet',
-  NOT_SET_ALREADYUNBLOCK: 'Already unblock',
+  NOT_SET_ALREADYUNBLOCK: 'Already unlocked',
   POSITIONLOCK_INFO: 'Lock status',
 
   // vote
@@ -263,15 +263,15 @@ window.Translations['en-us'] = {
   NOT_ALLOW: 'Not Allow',
 
   // Fragil set
-  FRAGIL_PRE: 'Unlock when the number ',
+  FRAGIL_PRE: 'Account will be unlocked when the block height ',
   FRAGIL_LAT: ' has reached',
   FRAGIL_ABOUT: 'In about ',
   FRAGIL_DAY: ' Day ',
   FRAGIL_HOUR: ' Hour ',
   FRAGIL_MIN: ' Minute ',
   FRAGIL_SEC: ' Second to unlock',
-  FRAGIL_INPUT: 'The number input should at least 100 higher than the latest height',
-  FRAGIL_RANGE: 'The number should range from 1 to 10 000 000',
+  FRAGIL_INPUT: 'Lock height is not valid',
+  FRAGIL_RANGE: 'The lock time should range from 1 to 10 000 000 block intervals',
   FRAGIL_UNLOCK: '',
 
   //deposit
@@ -285,4 +285,15 @@ window.Translations['en-us'] = {
   DAPP_COIN_CURRENT_QUANTITY: 'Current Quantity',
   DAPP_COIN_BALANCE: 'DAPP Balance',
   DAPP_COIN_FEE: 'Fee: 0.1 xas',
+
+
+  // adjusting time
+  ADJUST_TIME_YOURSELF: 'You should adjust system time by hand',
+  ADJUST_TIME: 'We are adjusting time',
+
+  // qrcode
+  QRCODE: 'QRCode for secret',
+  QRCODE_ADDRESS: 'QRCode for address',
+  CLICK_TO_SHOW: 'Click to show',
+  QRCODE_CLOSE: 'Click to close'
 };

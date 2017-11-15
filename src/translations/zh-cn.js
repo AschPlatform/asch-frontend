@@ -255,15 +255,14 @@ window.Translations['zh-cn'] = {
   NOT_ALLOW: '不允许',
 
   // FRAGIL SET
-  FRAGIL_PRE: '区块将在高于 ',
-  FRAGIL_LAT: ' 高度后解锁',
+  FRAGIL_PRE: '账户将在区块高度大于 ',
+  FRAGIL_LAT: ' 后解锁',
   FRAGIL_ABOUT: '大约在',
   FRAGIL_DAY: '天',
   FRAGIL_HOUR: '时',
   FRAGIL_MIN: '分',
   FRAGIL_SEC: '秒',
-  FRAGIL_INPUT: '输入的高度不应低于大于最新高度100的数值，请仔细查看',
-  FRAGIL_RANGE: '请输入范围在(1~10 000 000)的数字',
+  FRAGIL_RANGE: '锁仓高度应大于当前区块高度，并且锁仓周期少于10000000个区块间隔',
   FRAGIL_UNLOCK: '后解锁',
 
   //deposit
@@ -276,4 +275,14 @@ window.Translations['zh-cn'] = {
   DAPP_COIN_CURRENT_QUANTITY: '当前流通量',
   DAPP_COIN_BALANCE: 'DAPP余额',
   DAPP_COIN_FEE: '本次充值手续费: 0.1 xas',
+
+  // 调教时间
+  ADJUST_TIME_YOURSELF: '您本地时间与系统时间差别过大，请手动调校时间',
+  ADJUST_TIME: '正在调校时间，请勿进行其他操作',
+
+  // qrcode
+  QRCODE: '主密钥二维码',
+  QRCODE_ADDRESS: '您的地址',
+  CLICK_TO_SHOW: '点击获取',
+  QRCODE_CLOSE: '点击二维码关闭'
 };

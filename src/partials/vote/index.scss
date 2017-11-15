@@ -11,6 +11,7 @@
     .titleitem{
       width: 162px;
       height: 50px;
+      float: left;
       display: inline-block;
       text-align: center;
       line-height: 50px;
@@ -59,6 +60,7 @@
         color:#fff;
         right: 0;
         top: 12px;
+        border-radius: 4px;
       }
       .delete{
         background: #3989de;

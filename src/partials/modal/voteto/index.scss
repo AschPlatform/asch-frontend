@@ -4,6 +4,9 @@
   background-color: #fff;
   box-sizing: border-box;
   padding: 0 46px;
+  border-radius: 15px;
+  max-height: 600px;
+  overflow-y: auto;
   .h_header {
     //height: 109px;
     line-height: 109px;
@@ -147,6 +150,7 @@
   top: 50%;
   margin-left: -420px;
   margin-top: -295px;
+  border-radius: 15px;
 }
 #deletevoteto{
   width: 840px;
@@ -158,4 +162,5 @@
   top: 50%;
   margin-left: -420px;
   margin-top: -295px;
+  border-radius: 15px;
 }

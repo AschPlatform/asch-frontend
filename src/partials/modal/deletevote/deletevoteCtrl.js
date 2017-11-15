@@ -6,6 +6,10 @@ angular.module('asch').controller('deletevoteCtrl', function ($scope, $rootScope
         $rootScope.isBodyMask = false;
         $rootScope.deletevotetoinfo = false;
     };
+    // 重制create
+    $scope.createTransaction = function () {
+        return AschJS.vote.createVote($rootScope.deletevoteContent, userService.secret, $scope.secondpassword)
+    }
 
     $scope.checkvoteto = function (params) {
         var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
@@ -13,20 +17,22 @@ angular.module('asch').controller('deletevoteCtrl', function ($scope, $rootScope
             toastError($translate.instant('ERR_SECOND_PASSWORD_FORMAT'));
             return;
         }
-        var transaction = AschJS.vote.createVote($rootScope.deletevoteContent, userService.secret, $scope.secondpassword)
-        postSerivice.post(transaction).success(function (res) {
-            if (res.success == true) {
-                $rootScope.coedobj = {}
-                $rootScope.checkobj = {}
-                // console.log($rootScope.checkobj);
-                $scope.Close();
-                $rootScope.$emit('downvoteSuccess');
-                toast($translate.instant('INF_DELETE_SUCCESS'));
-            } else {
-                toastError(res.error)
-            };
-        }).error(function (res) {
-            toastError($translate.instant('ERR_SERVER_ERROR'));
-        });
+        postSerivice.retryPost($scope.createTransaction, function(err, res){
+            if (err === null) {
+                if (res.success == true) {
+                    $rootScope.coedobj = {}
+                    $rootScope.checkobj = {}
+                    $scope.Close();
+                    $rootScope.$emit('downvoteSuccess');
+                    toast($translate.instant('INF_DELETE_SUCCESS'));
+                } else {
+                    toastError(res.error);
+                }
+            } else if(err === 'adjust'){
+                toastError($translate.instant('ADJUST_TIME_YOURSELF'));
+            } else {;
+                toastError($translate.instant('ERR_SERVER_ERROR'));
+            }
+        })
     };
 });

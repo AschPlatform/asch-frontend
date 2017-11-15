@@ -44,6 +44,7 @@
 	line-height: 40px;
 	margin-right: 20px;
 	cursor: pointer;
+	border-radius: 4px;
 }
 .nav .active{
 	background: #ffffff;
@@ -57,7 +58,7 @@
 /*.baseInfo 开始*/
 .baseInfo{
 	padding: 0 20px;
-	height: 440px;
+	height: 550px;
 }
 ._title{
 	height: 89px;
@@ -90,6 +91,19 @@
 	font-size: 22px;
 }
 
+.baseInfo .baseInfo_text .text_row_last{
+	height: 60px;
+	line-height:60px;
+	font-size: 22px;
+}
+
+.baseInfo_text button{
+	font-size: 0.6em;
+    height: 40px;
+    line-height: 40px;
+    color: darkslategray;
+}
+
 .greyFont{
 	font-size: 24px;
 	color: #aaaaaa;
@@ -120,6 +134,22 @@
 	border: 1px solid #dddddd;
 	margin-top:4px ;
 	margin-bottom:34px ;
+}
+
+.qr_contain {
+	width: 400px;
+	height: 400px;
+	z-index: 1000;
+	background-color: transparent;
+	position: absolute;
+	left: 23%;
+	top: 21%;
+	p{
+		text-align: center;
+		display: block !important;
+		font-size: 1.2em !important;
+		color: #fff;
+	}
 }
 
 /*.businessInfo 结束*/
@@ -206,6 +236,7 @@
 			background-color: #3989de;
 			border: 0;
 			outline: 0;
+			border-radius: 4px;
 		}
 	}
 
@@ -230,15 +261,18 @@
 			height: 120px;
 			width: 100%;
 			/*margin: 30px 0;*/
-			text-align: left;
+			text-align: center;
 			.block_type_in{
-				display: inline-block;
+				display: block;
 				width: 60%;
+				margin: auto;
+				height: 50px;
 				font-size: 22px;
 				border: 1px solid #ddd;
 			}
 			p{
 				display: inline-block;
+				margin-top: 20px;
 				margin-left: 15px;
 				font-size: 22px; 
 				color: #aaaaaa;
@@ -247,7 +281,7 @@
 		span{
 			display: block;
 			font-size: 22px;
-			margin: 30px 0 0 0;
+			margin: 60px 0 0 0;
 			color: #aaaaaa;
 		}
 		.pwd_btn{
@@ -263,6 +297,7 @@
 				background-color: #3989de;
 				border: 0;
 				outline: 0;
+				border-radius: 4px;
 			}
 		}
 	}

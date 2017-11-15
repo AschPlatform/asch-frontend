@@ -2,7 +2,9 @@
 	"server": {
 		"dev": "http://localhost:4096",
 		"dev2": "http://121.42.194.216:4097",
-		"dev3": "http://101.200.123.124:4096"
+		"dev3": "http://101.200.123.124:4097",
+		"dev4": "http://192.168.2.179:4096",
+		"dev5": "http://101.200.84.232:4097"
 	},
 	//登录接口
 	"loginApi": {
@@ -93,7 +95,7 @@
 	// 获取资产活动记录
 	"myTransactionsApi": {
 		"mock": "/data/assets/my-transactions.json",
-		"url": "/api/uia/transactions/:address"
+		"url": "/api/uia/transactions/my/:address"
 	},
 	// 获取资产访问控制列表
 	"assetAclApi": {

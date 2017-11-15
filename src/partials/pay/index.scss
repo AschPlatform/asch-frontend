@@ -25,6 +25,7 @@
       font-size: 20px;
       color:#aaa;
       padding: 6px;
+      border-radius: 5px;
     }
   }
   #pay_item4{
@@ -48,6 +49,7 @@
     outline: 0;
     border: 0;
     font-size: 20px;
+    border-radius: 4px;
   }
   .cancel{
     width: 163px;
@@ -58,5 +60,9 @@
     background-color: #fff;
     color: #3276c3;
     font-size:20px;
+  }
+  .invalidBtn{
+    background-color: #398982 !important;
+    cursor: wait;
   }
 } 

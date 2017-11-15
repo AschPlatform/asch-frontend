@@ -4,6 +4,7 @@
   box-sizing: border-box;
   padding: 0 46px;
   padding-bottom: 50px;
+  border-radius: 15px;
   .h_header {
     height: 109px;
     line-height: 109px;
@@ -37,6 +38,12 @@
       img {
         width: 100%;
       }
+    }
+  }
+  .deal_info{
+    td:first-child{
+      font-size: 1.1em;
+      font-weight: 600;
     }
   }
 }
