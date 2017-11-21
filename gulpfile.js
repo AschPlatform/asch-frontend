@@ -301,7 +301,7 @@ gulp.task('connect', function() {
 				}
 				gulp.src(url)
 				.pipe(gulpif('*.js', replace(/\{\{(\w+Api)\}\}/g, function(match, $1) {
-					var envArr = ['mock', 'dev', 'dev2', 'dev3', 'dev4', 'dev5', 'prod', 'beta'];
+					var envArr = ['mock', 'dev', 'dev2', 'dev3', 'dev4', 'prod', 'beta'];
 					//var env = cmd == 'beta' ? 'prod' : cmd;
 					var env = cmd;
 					// 默认使用serve环境的api, 如果有环境参数，则切换到对应环境

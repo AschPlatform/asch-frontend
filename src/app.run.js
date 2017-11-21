@@ -1,5 +1,6 @@
 angular.module('asch').run(function ($rootScope, $location, ipCookie, apiService, $window, userService) {
     $rootScope.isBodyMask = false;
+    $rootScope.isBodyMaskWhite = false;
     $rootScope.userlogin = false;
     $rootScope.checkobj = {};
     $rootScope.coedobj = {};

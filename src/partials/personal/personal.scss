@@ -137,6 +137,7 @@
 }
 
 .qr_contain {
+	text-align: center;
 	width: 400px;
 	height: 400px;
 	z-index: 1000;
@@ -148,7 +149,7 @@
 		text-align: center;
 		display: block !important;
 		font-size: 1.2em !important;
-		color: #fff;
+		color: #000;
 	}
 }
 

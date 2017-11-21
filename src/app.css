@@ -539,6 +539,14 @@ body {
     opacity: .8;
     z-index: 4;
 }
+.bodyMaskWhite {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: #fff;
+    opacity: .8;
+    z-index: 4;
+}
 .isbg{
     height: 100vh;
     width: 100vw;

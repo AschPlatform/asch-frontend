@@ -73,16 +73,16 @@ angular.module('asch').controller('personalCtrl', function ($scope, $rootScope, 
 
 	// 显示二维码
 	$scope.showQrcode = function() {
-		$rootScope.isBodyMask = true;
+		$rootScope.isBodyMaskWhite = true;
 		$scope.qrcode = true;
 	}
 	$scope.showQrcode_address = function() {
-		$rootScope.isBodyMask = true;
+		$rootScope.isBodyMaskWhite = true;
 		$scope.qrcode_address = true;
 	}
 
 	$scope.Close = function () {
-        $rootScope.isBodyMask = false;
+        $rootScope.isBodyMaskWhite = false;
 		$scope.qrcode = false;
 		$scope.qrcode_address = false;
     };
