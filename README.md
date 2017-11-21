@@ -7,6 +7,10 @@
 - bower
 - gulp
 
+## Environment Needed
+
+- Linux
+
 ## Install dependency
 
 ```
@@ -26,6 +30,8 @@ npm run build
 
 ```
 gulp serve
+# or
+npm start serve
 ```
 
 Then access localhost:8080 to debug the ui with statc mock http interface
@@ -40,4 +46,6 @@ gulp build-test
 
 ```
 gulp build-main
+# or
+npm start build-main
 ```
