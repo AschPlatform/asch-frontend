@@ -301,25 +301,31 @@ gulp.task('connect', function() {
 				}
 				gulp.src(url)
 				.pipe(gulpif('*.js', replace(/\{\{(\w+Api)\}\}/g, function(match, $1) {
-					var envArr = ['mock', 'dev', 'dev2', 'dev3', 'dev4', 'prod', 'beta'];
-					//var env = cmd == 'beta' ? 'prod' : cmd;
-					var env = cmd;
-					// 默认使用serve环境的api, 如果有环境参数，则切换到对应环境
-					if (params.env && envArr.indexOf(params.env) > -1) {
-						env = params.env;
-					}
+					// var envArr = ['mock', 'dev', 'dev2', 'dev3', 'dev4', 'prod', 'beta'];
+					// //var env = cmd == 'beta' ? 'prod' : cmd;
+					// var env = cmd;
+					// // 默认使用serve环境的api, 如果有环境参数，则切换到对应环境
+					// if (params.env && envArr.indexOf(params.env) > -1) {
+					// 	env = params.env;
+					// }
+					// if (!serverApi[$1]) {
+					// 	return $1;
+					// }
+					// if (env == 'mock') {
+					// 	return serverApi[$1][env];
+					// }
+					// var serverAddr = serverApi["server"][env];
+					// if (serverAddr) {
+					// 	return serverAddr + serverApi[$1]['url'];
+					// } else {
+					// 	return serverApi[$1]['url'];
+					// }
+
 					if (!serverApi[$1]) {
 						return $1;
 					}
-					if (env == 'mock') {
-						return serverApi[$1][env];
-					}
-					var serverAddr = serverApi["server"][env];
-					if (serverAddr) {
-						return serverAddr + serverApi[$1]['url'];
-					} else {
-						return serverApi[$1]['url'];
-					}
+					
+					return serverApi[$1]['url'];
 				})))
 				.pipe(gulpif('*.js', replace(/\{\{magic\}\}/g, TEST_MAGIC)))
 				// 动态编译scss文件

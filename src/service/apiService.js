@@ -1,4 +1,4 @@
-angular.module('asch').service('apiService', function ($http, $rootScope, $location) {
+angular.module('asch').service('apiService', function ($http, $rootScope, $location, nodeService) {
 
 	function json2url(json) {
 		var arr = [];
@@ -9,6 +9,8 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		}
 		return arr.join('&');
 	};
+
+	this.lastServer = null;
 	function fetch(url, data, method, headers) {
 		for (var k in data) {
 			if (url.indexOf(':' + k) != -1) {
@@ -16,12 +18,26 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 				delete data[k]
 			}
 		}
+
+		var server = nodeService.getCurrentServer();
+		while (server.status =="failed"){
+			nodeService.changeServer();
+			server = nodeService.getCurrentServer();
+		}
+		
+		if (this.lastServer != server.serverUrl){
+			console.debug("server changed: "+this.lastServer + "->" + server.serverUrl);
+			this.lastServer = server.serverUrl;
+		}
+
+		var realUrl = server.serverUrl + url;
+		
 		method = method.toLowerCase();
 		if (method == 'get') {
 			var params = json2url(data);
-			return $http.get(url + '?' + params);
+			return $http.get(realUrl + '?' + params);
 		} else {
-			return $http.post(url, data);
+			return $http.post(realUrl, data);
 		}
 	}
 	this.login = function (params) {

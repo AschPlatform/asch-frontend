@@ -1,4 +1,4 @@
-angular.module('asch').run(function ($rootScope, $location, ipCookie, apiService, $window, userService) {
+angular.module('asch').run(function ($rootScope, $location, ipCookie, apiService, $window, userService, nodeService) {
     $rootScope.isBodyMask = false;
     $rootScope.isBodyMaskWhite = false;
     $rootScope.userlogin = false;
@@ -9,4 +9,6 @@ angular.module('asch').run(function ($rootScope, $location, ipCookie, apiService
             $location.path('/login');
         }
     });
+
+    nodeService.findServers($location.host()+":"+$location.port()||80);
 });
