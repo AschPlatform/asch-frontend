@@ -115,5 +115,10 @@
 	"uiaAssetListApi": {
 		"mock": "",
 		"url": "/api/uia/assets"
+	},
+	// 获取全网xas总量
+	"supplyApi": {
+		"mock": "",
+		"url": "/api/blocks/getSupply"
 	}
 }
