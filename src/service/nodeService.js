@@ -5,12 +5,13 @@ angular.module('asch').service('nodeService', function ($http) {
 
         this.failedCount =0;
         this.serverUrl = url;
-        this.registerTimestamp = 0;
+        this.registerTimestamp = Date.now();
         this.state = "unknown";
         this.version = "";
         this.blockHeight = 0;
         this.blockTimestamp = 0;
         this.responseTime = 9999999;
+        this.blocksBehind= 0;
         this.serverTimestamp = 0; 
 
         function checkFailed(server){
@@ -30,7 +31,7 @@ angular.module('asch').service('nodeService', function ($http) {
             server.state= "pending";
             server.requestTimestamp = Date.now();
             
-            $http.get(server.serverUrl+"/api/blocks/getStatus", {timeout:3000}).success(function(res, status){  
+            $http.get(server.serverUrl+"/api/blocks/getStatus", {timeout:3000}).success(function(data, status, headers){  
                 if (status != 200){
                     checkFailed(server);
                 }     
@@ -38,20 +39,30 @@ angular.module('asch').service('nodeService', function ($http) {
                 server.failedCount = 0;
                 server.version = "1.3.4";
                 server.state="success";
-                server.blockHeight = res.height;
-                server.blockTimestamp = 3324;
                 server.responseTime = Date.now() - server.requestTimestamp;
-                server.serverTimestamp = Date.now(); 
-            }).error(function(res){
+                server.updateStatus(headers);
+            }).error(function(data, status, headers){
                 checkFailed(server);
+                server.updateStatus(headers);
             });
         };
 
-        this.isHealthy = function(){
-            //响应时间小于3秒，且区块落后不超过6块
+        this.updateStatus = function(responseHeaders){
+            if (responseHeaders('node-status')){
+                var serverStatus = JSON.parse(responseHeaders("node-status"));
+                this.blocksBehind = serverStatus.blocksBehind;
+                this.blockHeight = serverStatus.blockHeight;
+                this.blockTimestamp = serverStatus.blockTime;             
+                this.serverTimestamp = serverStatus.serverTime; 
 
-            return this.responseTime <= 1000 * 3 &&
-            true; //(this.serverTimestamp - this.blockTimestamp) <= 10000 * 6 ;
+                return true;
+            }
+            return false;
+        }
+
+        this.isHealthy = function(){
+            //响应时间小于3秒，且区块落后不超过3块
+            return this.responseTime <= 1000 * 3 && this.blocksBehind <= 3;
         }
     
         this.isServerAvalible = function(){
@@ -60,7 +71,8 @@ angular.module('asch').service('nodeService', function ($http) {
         }
 
         this.startCheckStatus = function(){
-            this.timer = setInterval(this.checkServerStatus.bind(this), 10* 1000);
+            setTimeout(this.checkServerStatus.bind(this), 10);
+            this.timer = setInterval(this.checkServerStatus.bind(this), 30* 1000);
         }
 
         this.stopCheckStatus = function(){
@@ -130,20 +142,21 @@ angular.module('asch').service('nodeService', function ($http) {
     }
 
     function getSeeds(){
-        return ['http://mainnet.asch.cn', 'http://mainnet.asch.so'];
+        return ['http://127.0.0.1:4096'];
+        //return ['http://mainnet.asch.cn', 'http://mainnet.asch.so'];
     }
  
 
     function getPeers(seedServerUrl, onSuccess, onFailed){
-        $http.get(seedServerUrl+"/api/peers?limit=100").success(function(res){
-            if (!res.success){
+        $http.get(seedServerUrl+"/api/peers?limit=100").success(function(data, status, headers){
+            if (!data.success){
                 onFailed();
                 return;
             }
 
             //种子节点也作为服务节点对待
             registerServer(seedServerUrl);
-            angular.forEach(res.peers, function(node){
+            angular.forEach(data.peers, function(node){
                 //状态为2是正常
                 if (node.state != 2) return;
           
@@ -151,6 +164,8 @@ angular.module('asch').service('nodeService', function ($http) {
                 registerServer(serverUrl);
             });
             onSuccess();
+        }, function(data, status, headers){
+            onFailed();
         });        
     }
 
@@ -170,13 +185,9 @@ angular.module('asch').service('nodeService', function ($http) {
         depth = depth || 1;
         if (depth >5) return;
         //加入当前服务器
-        if (depth == 1){
-            if (serverUrl != null){
-                var server = registerServer(serverUrl);
-                if (originalServer == null){
-                    originalServer = server;
-                }
-            }
+        if (depth == 1 && serverUrl != null){
+            var server = registerServer(serverUrl);
+            originalServer = originalServer || server;
         }
 
         var idx = parseInt( Math.random() * getSeeds().length, 10 );

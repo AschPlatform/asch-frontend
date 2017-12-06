@@ -11,6 +11,7 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	};
 
 	this.lastServer = null;
+	
 	function fetch(url, data, method, headers) {
 		for (var k in data) {
 			if (url.indexOf(':' + k) != -1) {
@@ -30,16 +31,34 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 			this.lastServer = server.serverUrl;
 		}
 
-		var realUrl = server.serverUrl + url;
+		var realUrl = server.serverUrl + url;		
 		
-		method = method.toLowerCase();
-		if (method == 'get') {
-			var params = json2url(data);
-			return $http.get(realUrl + '?' + params);
-		} else {
-			return $http.post(realUrl, data);
-		}
+		var promise = (method.toLowerCase() == 'get') ?
+			$http.get(realUrl + '?' + json2url(data)) :
+			$http.post(realUrl, data);
+
+		var PromiseWrapper = function(promise) {
+			this.promise = promise;
+			this.success = function(successFunc){
+				promise.success(function(data, status, headers, config){
+					server.updateStatus(headers);
+					successFunc(data, status, headers, config);
+				});
+				return this;
+			};
+
+			this.error = function(errorFunc){
+				this.promise.error(function(data, status, headers, config){
+					server.updateStatus(headers);
+					errorFunc(data, status, headers, config);
+				});
+				return this;
+			}
+		};
+
+		return new PromiseWrapper(promise);
 	}
+
 	this.login = function (params) {
 		return fetch('{{loginApi}}', params, 'post');
 	};
