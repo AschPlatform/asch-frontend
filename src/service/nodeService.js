@@ -3,16 +3,16 @@ angular.module('asch').service('nodeService', function ($http) {
     function AschServer(url){
         this.timer = null;
 
-        this.failedCount =0;
+        this.failedCount = 0;
         this.serverUrl = url;
         this.registerTimestamp = Date.now();
         this.state = "unknown";
-        this.version = "";
-        this.blockHeight = 0;
-        this.blockTimestamp = 0;
-        this.responseTime = 9999999;
-        this.blocksBehind= 0;
         this.serverTimestamp = 0; 
+        this.responseTime = 9999999;
+
+        this.version = "";
+        this.lastBlock = null;
+        this.systemLoad = null;
 
         function checkFailed(server){
             server.failedCount ++;
@@ -22,8 +22,24 @@ angular.module('asch').service('nodeService', function ($http) {
 
             server.state= "failed";
             server.version = "unknown";
-            server.responseTime = Date.now() - this.requestTimestamp;
+            server.responseTime = Date.now() - server.requestTimestamp;
         };
+
+        function checkSuccess(server, systemInfo){
+            server.failedCount = 0;
+            server.state="success";
+            server.responseTime = Date.now() - server.requestTimestamp;
+
+            server.version = systemInfo.version;
+            server.serverTimestamp = systemInfo.timestamp;
+            server.lastBlock = systemInfo.lastBlock;
+            server.systemLoad = systemInfo.systemLoad;
+        }
+
+        this.versionNotLessThan = function(ver){
+            //TODO: 
+            return true; //this.version >= ver;
+        }
 
         this.checkServerStatus = function(){
             var server = this;
@@ -31,48 +47,45 @@ angular.module('asch').service('nodeService', function ($http) {
             server.state= "pending";
             server.requestTimestamp = Date.now();
             
-            $http.get(server.serverUrl+"/api/blocks/getStatus", {timeout:3000}).success(function(data, status, headers){  
+            $http.get(server.serverUrl+"/api/system/", {timeout:3000}).success(function(data, status, headers){  
                 if (status != 200){
                     checkFailed(server);
-                }     
+                    return;
+                }
 
-                server.failedCount = 0;
-                server.version = "1.3.4";
-                server.state="success";
-                server.responseTime = Date.now() - server.requestTimestamp;
-                server.updateStatus(headers);
+                checkSuccess(server, data);
+
             }).error(function(data, status, headers){
-                checkFailed(server);
-                server.updateStatus(headers);
+                checkFailed(server);                
             });
         };
 
         this.updateStatus = function(responseHeaders){
             if (responseHeaders('node-status')){
-                var serverStatus = JSON.parse(responseHeaders("node-status"));
-                this.blocksBehind = serverStatus.blocksBehind;
-                this.blockHeight = serverStatus.blockHeight;
-                this.blockTimestamp = serverStatus.blockTime;             
-                this.serverTimestamp = serverStatus.serverTime; 
-
+                var lastBlock = JSON.parse(responseHeaders("node-status"));
+                this.lastBlock = lastBlock;
+                log("server status updated");
                 return true;
             }
             return false;
         }
 
         this.isHealthy = function(){
-            //响应时间小于3秒，且区块落后不超过3块
-            return this.responseTime <= 1000 * 3 && this.blocksBehind <= 3;
+            //响应时间小于3秒，且区块落后不超过3块，最近一分钟负载不高于0.8
+            return ( this.systemLoad && this.lastBlock ) &&
+                this.responseTime <= 1000 * 3 && 
+                this.lastBlock.behind <= 3 && 
+                this.systemLoad.loadAverage[0] / this.systemLoad.cores <= 0.8 ;
         }
     
         this.isServerAvalible = function(){
             //版本不低于1.3.4,且是健康的节点
-            return /*this.version >= "1.3.4" && */ this.state=="success" && this.isHealthy();
+            return this.state=="success" && this.versionNotLessThan("1.3.4") && this.isHealthy();
         }
 
         this.startCheckStatus = function(){
             setTimeout(this.checkServerStatus.bind(this), 10);
-            this.timer = setInterval(this.checkServerStatus.bind(this), 30* 1000);
+            this.timer = setInterval(this.checkServerStatus.bind(this), 30 * 1000);
         }
 
         this.stopCheckStatus = function(){
@@ -92,8 +105,8 @@ angular.module('asch').service('nodeService', function ($http) {
             return isServer1Avalible ? 1 : -1;
         }
 
-        if (server1.blockHeight != server2.blockHeight){
-            return server1.blockHeight > server2.blockHeight  ? 1 : -1;
+        if (server1.lastBlock.height != server2.lastBlock.height){
+            return server1.lastBlock.height > server2.lastBlock.height  ? 1 : -1;
         }
 
         if (server1.responseTime != server2.responseTime){
@@ -106,6 +119,15 @@ angular.module('asch').service('nodeService', function ($http) {
     var servers = new Array();
     var originalServer = null;
     var currentServer = null;
+    var seedServers = "{{seedServers}}".split(",");
+
+    function getSeeds(){
+        return seedServers;
+    } 
+
+    function log(info){
+        console.debug(info);
+    }
 
     function registerServer(serverUrl){
         if (findServerIndex(serverUrl) < 0){
@@ -123,7 +145,7 @@ angular.module('asch').service('nodeService', function ($http) {
         if (index > -1){
             servers[index].stopCheckStatus();
             servers.slice(index, 1);
-            console.debug("unregister server " +serverUrl);
+            log("unregister server " +serverUrl);
         }
     }
 
@@ -140,12 +162,6 @@ angular.module('asch').service('nodeService', function ($http) {
         }
         return -1;
     }
-
-    function getSeeds(){
-        return ['http://127.0.0.1:4096'];
-        //return ['http://mainnet.asch.cn', 'http://mainnet.asch.so'];
-    }
- 
 
     function getPeers(seedServerUrl, onSuccess, onFailed){
         $http.get(seedServerUrl+"/api/peers?limit=100").success(function(data, status, headers){
@@ -183,7 +199,7 @@ angular.module('asch').service('nodeService', function ($http) {
 
     function findServerFromPeers(serverUrl, depth){
         depth = depth || 1;
-        if (depth >5) return;
+        if (depth > 5) return;
         //加入当前服务器
         if (depth == 1 && serverUrl != null){
             var server = registerServer(serverUrl);
@@ -192,7 +208,7 @@ angular.module('asch').service('nodeService', function ($http) {
 
         var idx = parseInt( Math.random() * getSeeds().length, 10 );
         getPeers(getSeeds()[idx], function(){
-            console.debug("find server success " + servers.length);
+            log("find server success " + servers.length);
         },function(){ 
             findServerFromPeers(null, depth +1); 
         });     
@@ -216,6 +232,7 @@ angular.module('asch').service('nodeService', function ($http) {
     this.getBestServer = function(){
         var avalibleServers = this.getSortedAvalibleServers();
         var best = avalibleServers.length == 0 ? originalServer : avalibleServers[0];
+
         return best;
     } 
     

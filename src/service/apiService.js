@@ -12,7 +12,7 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 
 	this.lastServer = null;
 	
-	function fetch(url, data, method, headers) {
+	function fetch(url, data, method, postHeaders) {
 		for (var k in data) {
 			if (url.indexOf(':' + k) != -1) {
 				url = url.replace(':' + k, data[k])
@@ -32,10 +32,11 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		}
 
 		var realUrl = server.serverUrl + url;		
-		
+		console.debug(realUrl);
+
 		var promise = (method.toLowerCase() == 'get') ?
 			$http.get(realUrl + '?' + json2url(data)) :
-			$http.post(realUrl, data);
+			$http.post(realUrl, data, postHeaders);
 
 		var PromiseWrapper = function(promise) {
 			this.promise = promise;
@@ -143,5 +144,9 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	},
 	this.uiaAssetListApi = function (params) {
 		return fetch('{{uiaAssetListApi}}', params, 'get')
+	},
+	//广播交易 
+	this.broadcastTransaction = function(trans){
+		return fetch('{{postApi}}', {transaction : trans}, 'post', { headers: { 'magic': '{{magic}}', 'version': ''}});
 	}
 });

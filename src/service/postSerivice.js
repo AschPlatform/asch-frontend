@@ -1,4 +1,5 @@
-angular.module('asch').service('postSerivice', function ($http, $translate) {
+angular.module('asch').service('postSerivice', function ($http, $translate, apiService, nodeService) {
+    /*
     var that = this;
     this.post = function (data) {
         var req = {
@@ -46,5 +47,37 @@ angular.module('asch').service('postSerivice', function ($http, $translate) {
             }
         }
         return $http(req);
+    }
+    */
+
+    var postService = this;
+
+    this.postWithRetry = function(trans, countDown, callback){
+        var retryOrCallbak = function(data){
+            if (countDown <= 0){
+                callback(1, data);
+                return;
+            }
+            nodeService.changeServer();
+            postService.postWithRetry(trans, countDown-1, callback);
+        }
+
+        apiService.broadcastTransaction(trans).success(function(data, status, headers, config){    
+            if (data.success){
+                callback(null, data);
+                return;
+            }
+            console.debug( data );
+            retryOrCallbak();
+
+        }).error(function(data, status, headers, config){
+            retryOrCallbak();
+        });
+    },
+
+    this.retryPost = function(createTransFunc, callback, retryTimes){
+        var trans = createTransFunc();
+        var maxRetry = retryTimes | 5;
+        this.postWithRetry(trans, maxRetry, callback);
     }
 });
