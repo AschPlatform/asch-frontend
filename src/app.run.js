@@ -10,5 +10,5 @@ angular.module('asch').run(function ($rootScope, $location, ipCookie, apiService
         }
     });
 
-    nodeService.findServers($location.host()+":"+$location.port()||80);
+    nodeService.findServers($location.protocol() +"://"+$location.host()+":"+$location.port()||80);
 });

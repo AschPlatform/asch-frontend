@@ -215,6 +215,7 @@ angular.module('asch').service('nodeService', function ($http) {
     }
     
     this.findServers = function (serverUrl){
+        log("find server from " +serverUrl);
         findServerFromPeers(serverUrl);
     };
 
