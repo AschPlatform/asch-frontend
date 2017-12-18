@@ -8,7 +8,8 @@ angular.module('asch').controller('loginCtrl', function ($scope, $rootScope, api
 
 	$scope.languages = [
 		{key: 'en-us', value: 'English'},
-		{key: 'zh-cn', value: '中文简体'}
+		{key: 'zh-cn', value: '中文简体'},
+		{key: 'de-de', value: 'Deutsch'}
 	];
 
 	$scope.changeLanguage = function () {
