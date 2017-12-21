@@ -84,4 +84,8 @@ angular.module('asch').service('postSerivice', function ($http, $translate, apiS
     this.post = function (trans) {
         return apiService.broadcastTransaction(trans);
     }
+
+    this.writeoff = function (trans) {
+        return apiService.broadcastTransaction(trans);
+    }
 });
