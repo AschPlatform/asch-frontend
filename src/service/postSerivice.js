@@ -80,4 +80,8 @@ angular.module('asch').service('postSerivice', function ($http, $translate, apiS
         var maxRetry = retryTimes | 5;
         this.postWithRetry(trans, maxRetry, callback);
     }
+
+    this.post = function (trans) {
+        return apiService.broadcastTransaction(trans);
+    }
 });

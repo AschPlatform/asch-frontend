@@ -113,6 +113,10 @@ angular.module('asch').service('nodeService', function ($http) {
             return server1.responseTime > server2.responseTime  ? 1 : -1;
         }
 
+        if (server1.systemLoad.loadAverage[0] != server2.systemLoad.loadAverage[0]){
+            return server1.systemLoad.loadAverage[0] > server2.systemLoad.loadAverage[0]  ? 1 : -1;
+        }
+
         return 0;
     }
     
