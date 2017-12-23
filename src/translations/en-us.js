@@ -61,6 +61,8 @@ window.Translations['en-us'] = {
   DAPP_DEPOSIT: 'Deposit',
   DAPP_BANLANCE_DETAIL: 'Balance Detail',
   DAPP_DETAIL: 'Detail',
+  DAPP_BILLION: ' Billion',
+  DAPP_MILLION: ' Million',
   // dapp category filter
   DAPP_CATEGORY_COMMON: 'General',
   DAPP_CATEGORY_BUSINESS: 'Business',
@@ -152,6 +154,9 @@ window.Translations['en-us'] = {
   ADD_LIST:'Add List',
   CURRENT_LIST:'Current List',
   UPDATE_ACL:'Update ACL',
+  PUBLISHER_ALREADY_REGISTERED: 'You have already registered this publisher',
+  NO_ASSET_RELATED_INFORMATION: 'No asset related information',
+  STRATEGY_WARNING: 'If you do not know how to use it, do not arbitrarily set this field',
   // personal
   ACCOUNT_INFO: 'Account Info',
   ACCOUNT_LOCK_TIP: 'Unlock after the blockheight reach this number',
@@ -222,29 +227,36 @@ window.Translations['en-us'] = {
 
   // toast errors
   ERR_INPUT_PASSWORD: 'Please input secret',
-  ERR_VIOLATE_BIP39: '密码格式不符合BIP39安全规范',
+  ERR_VIOLATE_BIP39: 'The password format does not comply with BIP39 safety regulations',
   ERR_SERVER_ERROR: 'Server error !',
-  ERR_PASSWORD_NOT_EQUAL: '您输入的主密码不一致',
+  ERR_PASSWORD_NOT_EQUAL: 'The master password you entered is not consistent',
   ERR_DELEGATE_NAME_EMPTY: 'Delegate name should not empty',
   ERR_DELEGATE_NAME_ADDRESS: 'Delegate name should not be address',
-  ERR_DELEGATE_NAME_FORMAT: '受托人名称格式不正确',
-  ERR_SECOND_PASSWORD_FORMAT: '二级密码输入格式不正确',
-  ERR_NO_RECIPIENT_ADDRESS: '必须输入接收地址',
-  ERR_RECIPIENT_ADDRESS_FORMAT: '接收地址格式不正确',
-  ERR_RECIPIENT_EQUAL_SENDER: '接受地址与发送地址不能相同',
-  ERR_AMOUNT_INVALID: '发送金额输入不正确',
-  ERR_BALANCE_NOT_ENOUGH: '余额不足',
-  ERR_NO_SECND_PASSWORD: '必须输入二级密码',
-  ERR_TWO_INPUTS_NOT_EQUAL: '两次输入不一致',
-  ERR_PASSWORD_INVALID_FORMAT: '密码格式不正确',
-  ERR_AT_LEAST_SELECT_ONE_DELEGATE: 'Please select one at least',
-  ERR_DELETE_NO_MORE_THAN_33: '一次删除至多33位候选人',
-  ERR_VOTE_NO_MORE_THAN_33: '一次投票至多33位候选人',
+  ERR_DELEGATE_NAME_FORMAT: 'Incorrect delegate name format',
+  ERR_SECOND_PASSWORD_FORMAT: 'The secondary password input format is incorrect',
+  ERR_NO_RECIPIENT_ADDRESS: 'You must enter the receiving address',
+  ERR_RECIPIENT_ADDRESS_FORMAT: 'Receiving address format is incorrect',
+  ERR_RECIPIENT_EQUAL_SENDER: 'Receiving address and send address can not be the same',
+  ERR_AMOUNT_INVALID: 'Send amount incorrectly entered',
+  ERR_BALANCE_NOT_ENOUGH: 'Insufficient balance',
+  ERR_NO_SECND_PASSWORD: 'You must enter the secondary password',
+  ERR_TWO_INPUTS_NOT_EQUAL: 'The two inputs are not equal',
+  ERR_PASSWORD_INVALID_FORMAT: 'Incorrect password format',
+  ERR_AT_LEAST_SELECT_ONE_DELEGATE: 'Please select at least one delegate',
+  ERR_DELETE_NO_MORE_THAN_33: 'Remove up to 33 delegates at a time',
+  ERR_VOTE_NO_MORE_THAN_33: 'Vote for up to 33 candidates at a time',
   ERR_POSITIONLOCK_EMPTY: 'Please type in',
   ERR_POSITIONLOCK_NOT_NUM: 'Please confirm the number you typed',
   ERR_INVALID_REMARK: 'Ensure your remark is right',
   ERR_NO_BALANCE: 'No balance, Please Deposit',
   ERR_NO_DEPOSIT_COIN: 'No choose coin, Please Choose',
+  ERR_PUBLISHER_NOT_EMPTY: 'You must enter the publishers name and description',
+  ERR_NO_PUBLISHER_REGISTERED_YET: 'You have not registered a publisher yet',
+  ERR_ASSET_NAME_3_TO_6_CAPITAL_LETTERS: 'Please enter 3-6 capital letters for the asset name',
+  ERR_MISSING_ASSET_DESCRIPTION: 'Please enter an asset description',
+  ERR_ASSET_TOPLIMIT_NOT_CORRECT: 'The top limit you entered is not correct',
+  ERR_ASSET_PRECISION_NOT_CORRECT: 'The precision for the asset you entered is not correct',
+  ERR_ASSET_PRECISION_MUST_BE_INTEGER_BETWEEN_0_16: 'The asset precision must be an integer between 0 and 16',
 
   // toast info
   INF_REGISTER_SUCCESS: 'Register success !',
@@ -254,6 +266,9 @@ window.Translations['en-us'] = {
   INF_VOTE_SUCCESS: 'Vote success !',
   INF_SECND_PASSWORD_SET_SUCCESS: 'Second secret set success !',
   INF_POSITIONLOCK_SET_SUCCESS: 'Set the position lock successfully !',
+
+  // dialog
+  OPERATION_REQUIRES_FEE: 'This operation requires a fee of',
 
   ALLOW_WWB: 'Allow Writeoff/Whitelist/Blacklist',
   ALLOW_WRITEOFF: 'Allow Writeoff',
@@ -282,9 +297,9 @@ window.Translations['en-us'] = {
 
   DAPP_SUPPORT_COIN: 'Support Coin',
   DAPP_COIN_TOTAL_AMOUNT: 'Total Amount',
-  DAPP_COIN_CURRENT_QUANTITY: 'Current Quantity',
+  DAPP_COIN_CURRENT_QUANTITY: 'Quantity',
   DAPP_COIN_BALANCE: 'DAPP Balance',
-  DAPP_COIN_FEE: 'Fee: 0.1 xas',
+  DAPP_COIN_FEE: 'Fee: 0.1 XAS',
 
 
   // adjusting time
