@@ -108,10 +108,10 @@
 							{{'ALREADY_SET_POSITIONLOCK' | translate}}
 						</div>
 					</div> -->
-					<div class="_title" ng-hide="isLocksure">
+					<div class="_title">
 							{{'LOCK_POSITION_TITLE' | translate}}
 					</div>
-					<div class="position_input_set" ng-hide="isLocksure">
+					<div class="position_input_set">
 						<div class="input_box">
 							<input type="number" class="block_type_in orangeFont" ng-keyup="calTimeLeft()" ng-model="block_number" placeholder="{{'ACCOUNT_TYPE_HINT' | translate}}"><p>{{'ACCOUNT_LOCK_TIP' | translate}}</p>
 							<input type="password" class="block_type_in orangeFont" ng-model="secondpassword" placeholder="{{'ACCOUNT_TYPE2_HINT' | translate}}" ng-hide="!userService.secondPublicKey">
