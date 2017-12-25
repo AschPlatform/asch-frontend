@@ -1,7 +1,7 @@
 {
 	"server": {
 		"dev": "http://localhost:4096",
-		"dev2": "http://121.42.194.216:4097",
+		"dev2": "http://testnet.asch.cn:4096",
 		"dev3": "http://101.200.123.124:4097",
 		"dev4": "http://192.168.2.179:4096"
 	},

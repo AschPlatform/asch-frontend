@@ -4,8 +4,13 @@ app.config(function ($httpProvider) {
     // Use x-www-form-urlencoded Content-Type
     // $httpProvider.defaults.headers.post['Origin'] = '*';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
-    $httpProvider.defaults.headers.put['Content-Type'] = 'application/json';
+    $httpProvider.defaults.headers.put['Content-Type'] = 'application/json'; 
+      
+    $httpProvider.defaults.headers.common = { "request-node-status":"yes"};
 });
+
+
+
 
 app.config(function ($translateProvider) {
     var browserLang = navigator.browserLanguage ? navigator.browserLanguage : navigator.language;

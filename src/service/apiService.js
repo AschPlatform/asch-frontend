@@ -1,4 +1,4 @@
-angular.module('asch').service('apiService', function ($http, $rootScope, $location) {
+angular.module('asch').service('apiService', function ($http, $rootScope, $location, nodeService) {
 
 	function json2url(json) {
 		var arr = [];
@@ -9,21 +9,51 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		}
 		return arr.join('&');
 	};
-	function fetch(url, data, method, headers) {
+
+	function fetch(url, data, method, postHeaders) {
 		for (var k in data) {
 			if (url.indexOf(':' + k) != -1) {
 				url = url.replace(':' + k, data[k])
 				delete data[k]
 			}
 		}
-		method = method.toLowerCase();
-		if (method == 'get') {
-			var params = json2url(data);
-			return $http.get(url + '?' + params);
-		} else {
-			return $http.post(url, data);
-		}
+
+		var server = nodeService.getCurrentServer();
+		var retryTimes = 0;
+		while ((!server.isServerAvalible(true)) && (retryTimes ++ < 10)){
+			console.log("current server unavalible");
+			nodeService.changeServer(true);
+			server = nodeService.getCurrentServer();
+		}		
+
+		var realUrl = server.serverUrl + url;		
+
+		var promise = (method.toLowerCase() == 'get') ?
+			$http.get(realUrl + '?' + json2url(data)) :
+			$http.post(realUrl, data, postHeaders);
+
+		var PromiseWrapper = function(promise) {
+			this.promise = promise;
+			this.success = function(successFunc){
+				promise.success(function(data, status, headers, config){
+					server.updateStatus(headers);
+					successFunc(data, status, headers, config);
+				});
+				return this;
+			};
+
+			this.error = function(errorFunc){
+				this.promise.error(function(data, status, headers, config){
+					server.updateStatus(headers);
+					errorFunc(data, status, headers, config);
+				});
+				return this;
+			}
+		};
+
+		return new PromiseWrapper(promise);
 	}
+
 	this.login = function (params) {
 		return fetch('{{loginApi}}', params, 'post');
 	};
@@ -108,5 +138,9 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 	},
 	this.uiaAssetListApi = function (params) {
 		return fetch('{{uiaAssetListApi}}', params, 'get')
+	},
+	//广播交易 
+	this.broadcastTransaction = function(trans){
+		return fetch('{{postApi}}', {transaction : trans}, 'post', { headers: { 'magic': '{{magic}}', 'version': ''}});
 	}
 });

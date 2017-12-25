@@ -1,4 +1,5 @@
-angular.module('asch').service('postSerivice', function ($http, $translate) {
+angular.module('asch').service('postSerivice', function ($http, $translate, apiService, nodeService) {
+    /*
     var that = this;
     this.post = function (data) {
         var req = {
@@ -46,5 +47,55 @@ angular.module('asch').service('postSerivice', function ($http, $translate) {
             }
         }
         return $http(req);
+    }
+    */
+
+    function canRetry(ret){
+        return ret.error && /blockchain/.test(ret.error.toLowerCase()) ;        
+    }
+
+    var postService = this;
+
+    this.postWithRetry = function(trans, countDown, callback){
+        var retryOrCallbak = function(data){
+            if (countDown <= 0){
+                callback(1, data);
+                return;
+            }
+
+            console.log("change server and retry broadcast transaction")
+            nodeService.changeServer(true);
+            postService.postWithRetry(trans, countDown-1, callback);
+        }
+
+        apiService.broadcastTransaction(trans).success(function(data, status, headers, config){    
+            if (data.success){
+                callback(null, data);
+                return;
+            }
+            else if (canRetry(data)){
+                retryOrCallbak(data);
+                return;
+            }            
+            //失败返回
+            callback(1, data);
+
+        }).error(function(data, status, headers, config){
+            retryOrCallbak(data);
+        });
+    },
+
+    this.retryPost = function(createTransFunc, callback, retryTimes){
+        var trans = createTransFunc();
+        var maxRetry = retryTimes | 5;
+        this.postWithRetry(trans, maxRetry, callback);
+    }
+
+    this.post = function (trans) {
+        return apiService.broadcastTransaction(trans);
+    }
+
+    this.writeoff = function (trans) {
+        return apiService.broadcastTransaction(trans);
     }
 });

@@ -55,6 +55,13 @@ var scssOptions = {
 };
 var timestamp = dateFormat('yyyyMMddhhmmss', new Date());
 
+var netSeedServers = {
+	dev:  "http://127.0.0.1:4096",
+	test: "http://testnet.asch.io:4096",
+	main: "http://mainnet.asch.cn, http://mainnet.asch.io, http://mainnet.asch.so"
+};
+var SEED_SERVERS = netSeedServers.dev;
+
 var magic = '';
 var TEST_MAGIC = '594fe0f3';
 var MAIN_MAGIC = '5f5b3cf5';
@@ -165,6 +172,8 @@ function outputHtml(path) {
 			return serverApi[$1]['url'];
 		})))
 		.pipe(gulpif('*.js', replace(/\{\{magic\}\}/g, magic)))
+		//不同环境使用不同种节点
+		.pipe(gulpif('*.js', replace(/\{\{seedServers\}\}/g, SEED_SERVERS)))
 		// string模版路径替换成对应的文件内容
 		.pipe(gulpif('*.js', ngAnnotate()))
 		// 引入css和js的入口加上时间戳，清除浏览器缓存
@@ -311,17 +320,27 @@ gulp.task('connect', function() {
 					if (!serverApi[$1]) {
 						return $1;
 					}
-					if (env == 'mock') {
-						return serverApi[$1][env];
-					}
-					var serverAddr = serverApi["server"][env];
-					if (serverAddr) {
-						return serverAddr + serverApi[$1]['url'];
-					} else {
-						return serverApi[$1]['url'];
-					}
+					return serverApi[$1]['url'];
+
+					// if (env == 'mock') {
+					// 	return serverApi[$1][env];
+					// }
+					
+					// var serverAddr = serverApi["server"][env];
+					// if (serverAddr) {
+					// 	return serverAddr + serverApi[$1]['url'];
+					// } else {
+					// 	return serverApi[$1]['url'];
+					// }
+
+					// if (!serverApi[$1]) {
+					// 	return $1;
+					// }
+					
+
 				})))
 				.pipe(gulpif('*.js', replace(/\{\{magic\}\}/g, TEST_MAGIC)))
+				.pipe(gulpif('*.js', replace(/\{\{seedServers\}\}/g, SEED_SERVERS)))
 				// 动态编译scss文件
 				.pipe(gulpif('*.scss', gulpScss(scssOptions)))
 				.pipe(respond(res));
@@ -346,11 +365,13 @@ gulp.task('clean', function() {
 gulp.task('replace:test', function() {
 	cmd = 'test';
 	magic = TEST_MAGIC;
+	SEED_SERVERS = netSeedServers.test;
 });
 
 gulp.task('replace:main', function() {
 	cmd = 'main';
 	magic = MAIN_MAGIC;
+	SEED_SERVERS = netSeedServers.main;
 });
 
 gulp.task('handle', function() {

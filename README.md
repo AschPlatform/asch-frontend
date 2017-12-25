@@ -29,6 +29,7 @@ npm run build
 ### Realtime build for local dev
 
 ```
+sudo apt install ruby-sass
 gulp serve
 # or
 npm start serve
