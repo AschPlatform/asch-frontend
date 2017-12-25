@@ -215,7 +215,7 @@ window.Translations['zh-cn'] = {
   // toast errors
   ERR_INPUT_PASSWORD: '请输入密码',
   ERR_VIOLATE_BIP39: '密码格式不符合BIP39安全规范',
-  ERR_SERVER_ERROR: '服务器错误',
+  ERR_SERVER_ERROR: '服务器错误,请检查您填写的信息是否正确',
   ERR_PASSWORD_NOT_EQUAL: '您输入的主密码不一致',
   ERR_DELEGATE_NAME_EMPTY: '受托人名称不能为空',
   ERR_DELEGATE_NAME_ADDRESS: '受托人名称不能为账户地址',
@@ -282,7 +282,7 @@ window.Translations['zh-cn'] = {
 
   // qrcode
   QRCODE: '主密钥二维码',
-  QRCODE_ADDRESS: '您的地址',
+  QRCODE_ADDRESS: '您的地址二维码',
   CLICK_TO_SHOW: '点击获取',
   QRCODE_CLOSE: '点击二维码关闭'
 };
