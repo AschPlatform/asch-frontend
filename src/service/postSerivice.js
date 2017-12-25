@@ -50,6 +50,10 @@ angular.module('asch').service('postSerivice', function ($http, $translate, apiS
     }
     */
 
+    function canRetry(ret){
+        return ret.error && /blockchain/.test(ret.error.toLowerCase()) ;        
+    }
+
     var postService = this;
 
     this.postWithRetry = function(trans, countDown, callback){
@@ -58,7 +62,9 @@ angular.module('asch').service('postSerivice', function ($http, $translate, apiS
                 callback(1, data);
                 return;
             }
-            nodeService.changeServer();
+
+            console.log("change server and retry broadcast transaction")
+            nodeService.changeServer(true);
             postService.postWithRetry(trans, countDown-1, callback);
         }
 
@@ -67,11 +73,15 @@ angular.module('asch').service('postSerivice', function ($http, $translate, apiS
                 callback(null, data);
                 return;
             }
-            console.debug( data );
-            retryOrCallbak();
+            else if (canRetry(data)){
+                retryOrCallbak(data);
+                return;
+            }            
+            //失败返回
+            callback(1, data);
 
         }).error(function(data, status, headers, config){
-            retryOrCallbak();
+            retryOrCallbak(data);
         });
     },
 

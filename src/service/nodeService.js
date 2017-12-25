@@ -1,8 +1,20 @@
 angular.module('asch').service('nodeService', function ($http) {
     
+    var CHECK_STATUS_INTERVAL = 1000 * 30;
+    var CHECK_SERVER_TIMEOUT = 1000 * 3;
+    var MAX_RESPONSE_TIME = 1000 *3;
+    var MAX_SERVER_LOAD = 0.8;
+    var MAX_BLOCK_BEHINDS = 3;
+    var SERVER_STATE_OK = 2;
+    var MAX_CANDIDATE_SERVERS = 5;
+    var MAX_FIND_DEPTH = 5;
+
+    var HTTP_STATUS_OK = 200;
+
     function AschServer(url){
         this.timer = null;
 
+        this.clientTimeDrift = 0;
         this.failedCount = 0;
         this.serverUrl = url;
         this.registerTimestamp = Date.now();
@@ -34,6 +46,8 @@ angular.module('asch').service('nodeService', function ($http) {
             server.serverTimestamp = systemInfo.timestamp;
             server.lastBlock = systemInfo.lastBlock;
             server.systemLoad = systemInfo.systemLoad;
+             //忽略处理时间
+             server.clientTimeDrift = server.serverTimestamp - Date.now();            
         }
 
         this.versionNotLessThan = function(ver){
@@ -47,8 +61,8 @@ angular.module('asch').service('nodeService', function ($http) {
             server.state= "pending";
             server.requestTimestamp = Date.now();
             
-            $http.get(server.serverUrl+"/api/system/", {timeout:3000}).success(function(data, status, headers){  
-                if (status != 200){
+            $http.get(server.serverUrl+"/api/system/", {timeout:CHECK_SERVER_TIMEOUT}).success(function(data, status, headers){  
+                if (status != HTTP_STATUS_OK){
                     checkFailed(server);
                     return;
                 }
@@ -63,29 +77,34 @@ angular.module('asch').service('nodeService', function ($http) {
         this.updateStatus = function(responseHeaders){
             if (responseHeaders('node-status')){
                 var lastBlock = JSON.parse(responseHeaders("node-status"));
-                this.lastBlock = lastBlock;
-                log("server status updated");
+                this.lastBlock = {
+                    height: lastBlock.blockHeight,
+                    timestamp : lastBlock.blockTime,
+                    behind: lastBlock.blocksBehind
+                }
+
                 return true;
             }
             return false;
         }
 
         this.isHealthy = function(){
-            //响应时间小于3秒，且区块落后不超过3块，最近一分钟负载不高于0.8
+            //响应时间小于XX秒，且区块落后不超过XX块，最近一分钟负载不高于XX
             return ( this.systemLoad && this.lastBlock ) &&
-                this.responseTime <= 1000 * 3 && 
-                this.lastBlock.behind <= 3 && 
-                this.systemLoad.loadAverage[0] / this.systemLoad.cores <= 0.8 ;
+                this.responseTime <= MAX_RESPONSE_TIME && 
+                this.lastBlock.behind <= MAX_BLOCK_BEHINDS && 
+                this.systemLoad.loadAverage[0] / this.systemLoad.cores <= MAX_SERVER_LOAD ;
         }
     
-        this.isServerAvalible = function(){
+        this.isServerAvalible = function(ignorePending){
             //版本不低于1.3.4,且是健康的节点
-            return this.state=="success" && this.versionNotLessThan("1.3.4") && this.isHealthy();
+            return ( this.state=="success" || (ignorePending && this.state == "pending") ) && 
+                this.versionNotLessThan("1.3.4") && this.isHealthy();
         }
 
         this.startCheckStatus = function(){
             setTimeout(this.checkServerStatus.bind(this), 10);
-            this.timer = setInterval(this.checkServerStatus.bind(this), 30 * 1000);
+            this.timer = setInterval(this.checkServerStatus.bind(this), CHECK_STATUS_INTERVAL);
         }
 
         this.stopCheckStatus = function(){
@@ -167,6 +186,29 @@ angular.module('asch').service('nodeService', function ($http) {
         return -1;
     }
 
+    function selectServerNodes(allNodes){
+        var okServers = new Array();
+        for(var i = 0; i < allNodes.length; i++){
+            var node = allNodes[i];
+            if (node.state != SERVER_STATE_OK) continue;
+           
+            okServers.push(node);
+        }
+
+        if (okServers.length <= MAX_CANDIDATE_SERVERS){
+            return okServers;
+        }
+
+        var selectedServers = new Array();
+        for(var i = 0; i < MAX_CANDIDATE_SERVERS; i++ ){
+            var selectedIndex = parseInt( Math.random() * okServers.length, 10 );
+            selectedServers.push(okServers[selectedIndex]);
+            okServers.slice(selectedIndex, 1);
+        }
+
+        return selectedServers;
+    }
+
     function getPeers(seedServerUrl, onSuccess, onFailed){
         $http.get(seedServerUrl+"/api/peers?limit=100").success(function(data, status, headers){
             if (!data.success){
@@ -176,10 +218,7 @@ angular.module('asch').service('nodeService', function ($http) {
 
             //种子节点也作为服务节点对待
             registerServer(seedServerUrl);
-            angular.forEach(data.peers, function(node){
-                //状态为2是正常
-                if (node.state != 2) return;
-          
+            angular.forEach(selectServerNodes(data.peers), function(node){
                 var serverUrl = "http://" + node.ip + ":" + node.port;
                 registerServer(serverUrl);
             });
@@ -203,7 +242,7 @@ angular.module('asch').service('nodeService', function ($http) {
 
     function findServerFromPeers(serverUrl, depth){
         depth = depth || 1;
-        if (depth > 5) return;
+        if (depth > MAX_FIND_DEPTH) return;
         //加入当前服务器
         if (depth == 1 && serverUrl != null){
             var server = registerServer(serverUrl);
@@ -212,10 +251,16 @@ angular.module('asch').service('nodeService', function ($http) {
 
         var idx = parseInt( Math.random() * getSeeds().length, 10 );
         getPeers(getSeeds()[idx], function(){
-            log("find server success " + servers.length);
+            log("find servers success " + servers.length);
         },function(){ 
             findServerFromPeers(null, depth +1); 
         });     
+    }
+
+    function adjustClientDriftSeconds(server){
+        var timeAdjust =  Math.floor(server.clientTimeDrift / 1000);
+        log("adjust client time drift " + timeAdjust +"s");
+        AschJS.options.set('clientDriftSeconds', timeAdjust);
     }
     
     this.findServers = function (serverUrl){
@@ -248,18 +293,41 @@ angular.module('asch').service('nodeService', function ($http) {
         return currentServer;
     }
 
-    this.changeServer = function(){
+    this.doChangedServer = function(newServer){
+        log("server changed:" + 
+            (!currentServer ? "null" : currentServer.serverUrl) + "->" + 
+            (!newServer ? "null" : newServer.serverUrl));
+
+        currentServer = newServer; 
+        adjustClientDriftSeconds(newServer);
+    }
+
+    this.changeServer = function(randomSelect){
         if (currentServer != null){
             var avalibleServers = this.getSortedAvalibleServers();
             var index = findServerIndex(currentServer.serverUrl, avalibleServers);
 
+            if (avalibleServers.length == 0 || (avalibleServers.length == 1 && index == 0)){
+                 return false;
+            }
+
+            if (randomSelect){
+                var selectedIndex = index;
+                while(selectedIndex == index){
+                    selectedIndex = parseInt( Math.random() * avalibleServers.length, 10 );
+                }
+                this.doChangedServer(avalibleServers[selectedIndex]);
+                return true;
+            }
+
+            //当前不是第一个
             if (index != 0 && avalibleServers.length >0){
-                currentServer = avalibleServers[0];
+                this.doChangedServer(avalibleServers[0])
                 return true ;
             }
 
             if (index == 0 && avalibleServers.length > 1){
-                currentServer = avalibleServers[1];
+                this.doChangedServer(avalibleServers[1])
                 return true;
             }
             

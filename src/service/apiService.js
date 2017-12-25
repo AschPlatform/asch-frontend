@@ -10,8 +10,6 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		return arr.join('&');
 	};
 
-	this.lastServer = null;
-	
 	function fetch(url, data, method, postHeaders) {
 		for (var k in data) {
 			if (url.indexOf(':' + k) != -1) {
@@ -21,18 +19,14 @@ angular.module('asch').service('apiService', function ($http, $rootScope, $locat
 		}
 
 		var server = nodeService.getCurrentServer();
-		while (server.status =="failed"){
-			nodeService.changeServer();
+		var retryTimes = 0;
+		while ((!server.isServerAvalible(true)) && (retryTimes ++ < 10)){
+			console.log("current server unavalible");
+			nodeService.changeServer(true);
 			server = nodeService.getCurrentServer();
-		}
-		
-		if (this.lastServer != server.serverUrl){
-			console.debug("server changed: "+this.lastServer + "->" + server.serverUrl);
-			this.lastServer = server.serverUrl;
-		}
+		}		
 
 		var realUrl = server.serverUrl + url;		
-		console.debug(realUrl);
 
 		var promise = (method.toLowerCase() == 'get') ?
 			$http.get(realUrl + '?' + json2url(data)) :
