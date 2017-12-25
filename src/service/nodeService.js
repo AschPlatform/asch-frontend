@@ -6,7 +6,7 @@ angular.module('asch').service('nodeService', function ($http) {
     var MAX_SERVER_LOAD = 0.8;
     var MAX_BLOCK_BEHINDS = 3;
     var SERVER_STATE_OK = 2;
-    var MAX_CANDIDATE_SERVERS = 5;
+    var MAX_CANDIDATE_SERVERS = 10;
     var MAX_FIND_DEPTH = 5;
 
     var HTTP_STATUS_OK = 200;
