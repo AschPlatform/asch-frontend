@@ -134,10 +134,10 @@
                 var row = xhr.getResponseHeader('Date');
                 var serveTime = new Date(row).getTime();
                 var localTime = new Date().getTime();
-                if (serveTime<localTime || (serveTime-localTime)>30000) {
-                    alert('您本地的时间与系统时间不符，请您校准！');
-                }
                 console.log('serve:',serveTime,'localTime',localTime);
+                if ((localTime - serveTime)>5000 || (serveTime-localTime)>(120 * 1000)) {
+                    alert('本地时间有误！不推荐使用');
+                }
             }
         });
     });
